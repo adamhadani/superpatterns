@@ -1,0 +1,11 @@
+C=0.76  h=2: E[T]/2=0.9922 (beta=0.40 lam=1.10)   h=3: E[T]/3=0.8746 (beta=0.50 lams=1.00,0.60)
+C=0.80  h=2: E[T]/2=0.9423 (beta=0.50 lam=1.10)   h=3: E[T]/3=0.8323 (beta=0.50 lams=1.20,0.60)
+C=0.85  h=2: E[T]/2=0.8898 (beta=0.50 lam=0.90)   h=3: E[T]/3=0.7834 (beta=0.50 lams=1.00,0.60)
+C=0.90  h=2: E[T]/2=0.8413 (beta=0.50 lam=1.00)   h=3: E[T]/3=0.7431 (beta=0.50 lams=1.00,0.80)
+C=1.00  h=2: E[T]/2=0.7541 (beta=0.40 lam=0.90)   h=3: E[T]/3=0.6664 (beta=0.50 lams=0.80,0.60)
+Chernoff exponent eta(C) >= sup_theta min_h (theta - ln M_h(theta)/h):
+  C=0.80  E[T2]/2=0.9457 E[T3]/3=0.8415  eta>=0.0014   (rigid rows: C-1-lnC=0.0000)
+  C=0.85  E[T2]/2=0.8917 E[T3]/3=0.7922  eta>=0.0058   (rigid rows: C-1-lnC=0.0000)
+  C=0.90  E[T2]/2=0.8439 E[T3]/3=0.7493  eta>=0.0130   (rigid rows: C-1-lnC=0.0000)
+  C=1.00  E[T2]/2=0.7596 E[T3]/3=0.6771  eta>=0.0348   (rigid rows: C-1-lnC=0.0000)
+  C=1.20  E[T2]/2=0.6395 E[T3]/3=0.5747  eta>=0.0961   (rigid rows: C-1-lnC=0.0177)

@@ -96,3 +96,7 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
 - W21 `experiments/w21-threshold-numerics/` (agent a6c54e5e36bf755e1): n_1/2(π)/k² for random vs identity at
   k=20..32, ≥500 samples; decide 1/4 vs ≈0.23.
 - Poll by files every ~10 min; verify before folding in (norm). Lean CI run 33249984762 was still in progress.
+- 15:05: W19 COMPLETED and VERIFIED (reduction re-derived; strip cost re-simulated: E T/2 = 1.0009 at C=0.757, h=3
+  0.89). Folded as Theorem 11: every π ∈ S_k contained at 0.757k² w.h.p. (first uniform threshold < k²); rigid rows k²;
+  union bound (1+o(1))k² ln k; barrier: greedies have speed ≤ min(k,h). The brief's "verbatim for all π" was false
+  (strips must be chains) — W19 caught it. W20, W21 still running.

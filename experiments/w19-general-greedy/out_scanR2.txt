@@ -1,0 +1,12 @@
+runs beta=0.4 lam=1.1 k=100 C=0.78 reps=300 L=2 var=1 success=251 thm=251 noncopy=0 avg#strips=41.6 avg#corner-values=99.6 meanX/value=0.9037
+runs beta=0.4 lam=1.1 k=200 C=0.78 reps=300 L=2 var=1 success=269 thm=269 noncopy=0 avg#strips=82.9 avg#corner-values=199.6 meanX/value=0.9074
+runs beta=0.4 lam=1.1 k=400 C=0.78 reps=300 L=2 var=1 success=291 thm=291 noncopy=0 avg#strips=165.7 avg#corner-values=399.5 meanX/value=0.9101
+runs beta=0.4 lam=1.1 k=800 C=0.78 reps=300 L=2 var=1 success=298 thm=298 noncopy=0 avg#strips=331.0 avg#corner-values=799.6 meanX/value=0.9111
+runs beta=0.4 lam=1.1 k=100 C=0.8 reps=300 L=2 var=1 success=267 thm=267 noncopy=0 avg#strips=41.7 avg#corner-values=99.6 meanX/value=0.8795
+runs beta=0.4 lam=1.1 k=200 C=0.8 reps=300 L=2 var=1 success=282 thm=282 noncopy=0 avg#strips=82.8 avg#corner-values=199.6 meanX/value=0.8890
+runs beta=0.4 lam=1.1 k=400 C=0.8 reps=300 L=2 var=1 success=291 thm=291 noncopy=0 avg#strips=165.8 avg#corner-values=399.6 meanX/value=0.8953
+runs beta=0.4 lam=1.1 k=800 C=0.8 reps=300 L=2 var=1 success=299 thm=299 noncopy=0 avg#strips=330.7 avg#corner-values=799.6 meanX/value=0.8909
+runs beta=0.4 lam=1.1 k=100 C=0.85 reps=300 L=2 var=1 success=286 thm=286 noncopy=0 avg#strips=41.7 avg#corner-values=99.6 meanX/value=0.8468
+runs beta=0.4 lam=1.1 k=200 C=0.85 reps=300 L=2 var=1 success=297 thm=297 noncopy=0 avg#strips=83.1 avg#corner-values=199.6 meanX/value=0.8436
+runs beta=0.4 lam=1.1 k=400 C=0.85 reps=300 L=2 var=1 success=300 thm=300 noncopy=0 avg#strips=165.5 avg#corner-values=399.6 meanX/value=0.8391
+runs beta=0.4 lam=1.1 k=800 C=0.85 reps=300 L=2 var=1 success=300 thm=300 noncopy=0 avg#strips=330.8 avg#corner-values=799.6 meanX/value=0.8377

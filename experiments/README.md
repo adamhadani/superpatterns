@@ -24,3 +24,4 @@ session appears in the paper); tools are C (`cc -O2`) or Python 3; raw outputs a
 | `w16-universal` | Push κ toward 2; is the identity the easiest pattern? | No improvement; identity is *hardest* at k ≤ 20 (numerics) |
 | `w17-hammersley` | c₂₁ via renewal sweeps | c₂₁ ≥ 0.7866; c_τ ≥ 0.535 (S₃), ≥ 0.385 (S₄); method capped at ≈ 0.84 |
 | `w18-lag` | Lag lemma for thread overlap | **False**: linear loss in lag; thread framework capped on tilted grids |
+| `w19-general-greedy` | Corner greedy for arbitrary π; speed of greedy embeddings | Verbatim extension is false (works iff strips are chains); reserve greedy gives universal per-pattern threshold 0.757k² for all of S_k (numerical constant, reduction proved); rigid rows: every π at k², union bound at (1+o(1))k²(ln k+ln ln k); two-phase repair; greedy/repair barrier: speed ≤ min(k,h) |

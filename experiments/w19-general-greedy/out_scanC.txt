@@ -1,0 +1,28 @@
+rows k=100 C=0.5 reps=400 success=0 thm=0 noncopy=0  bound=Pr(Poisson(Ck)<=k-1)
+runs k=100 C=0.5 reps=400 L=2 var=0 success=0 thm=0 noncopy=0 avg#strips=41.7 avg#corner-values=99.6 meanX/value=1.0000
+runs k=100 C=0.5 reps=400 L=2 var=1 success=0 thm=0 noncopy=0 avg#strips=41.6 avg#corner-values=99.6 meanX/value=1.0000
+runs k=100 C=0.5 reps=400 L=3 var=1 success=0 thm=0 noncopy=0 avg#strips=69.1 avg#corner-values=44.3 meanX/value=1.0000
+rows k=100 C=0.6 reps=400 success=0 thm=0 noncopy=0  bound=Pr(Poisson(Ck)<=k-1)
+runs k=100 C=0.6 reps=400 L=2 var=0 success=6 thm=0 noncopy=0 avg#strips=41.8 avg#corner-values=99.6 meanX/value=0.9995
+runs k=100 C=0.6 reps=400 L=2 var=1 success=11 thm=2 noncopy=0 avg#strips=41.8 avg#corner-values=99.6 meanX/value=0.9984
+runs k=100 C=0.6 reps=400 L=3 var=1 success=0 thm=0 noncopy=0 avg#strips=69.4 avg#corner-values=43.9 meanX/value=1.0000
+rows k=100 C=0.7 reps=400 success=1 thm=1 noncopy=0  bound=Pr(Poisson(Ck)<=k-1)
+runs k=100 C=0.7 reps=400 L=2 var=0 success=49 thm=0 noncopy=0 avg#strips=41.8 avg#corner-values=99.6 meanX/value=0.9914
+runs k=100 C=0.7 reps=400 L=2 var=1 success=84 thm=9 noncopy=0 avg#strips=41.6 avg#corner-values=99.6 meanX/value=0.9833
+runs k=100 C=0.7 reps=400 L=3 var=1 success=14 thm=9 noncopy=0 avg#strips=69.6 avg#corner-values=43.7 meanX/value=0.9982
+rows k=100 C=0.8 reps=400 success=8 thm=8 noncopy=0  bound=Pr(Poisson(Ck)<=k-1)
+runs k=100 C=0.8 reps=400 L=2 var=0 success=195 thm=1 noncopy=0 avg#strips=41.7 avg#corner-values=99.6 meanX/value=0.9459
+runs k=100 C=0.8 reps=400 L=2 var=1 success=198 thm=47 noncopy=0 avg#strips=41.7 avg#corner-values=99.6 meanX/value=0.9367
+runs k=100 C=0.8 reps=400 L=3 var=1 success=84 thm=53 noncopy=0 avg#strips=69.9 avg#corner-values=43.3 meanX/value=0.9835
+rows k=100 C=0.9 reps=400 success=68 thm=68 noncopy=0  bound=Pr(Poisson(Ck)<=k-1)
+runs k=100 C=0.9 reps=400 L=2 var=0 success=283 thm=0 noncopy=0 avg#strips=41.6 avg#corner-values=99.6 meanX/value=0.8870
+runs k=100 C=0.9 reps=400 L=2 var=1 success=312 thm=96 noncopy=0 avg#strips=41.7 avg#corner-values=99.5 meanX/value=0.8457
+runs k=100 C=0.9 reps=400 L=3 var=1 success=236 thm=173 noncopy=0 avg#strips=70.2 avg#corner-values=42.8 meanX/value=0.9340
+rows k=100 C=1 reps=400 success=195 thm=195 noncopy=0  bound=Pr(Poisson(Ck)<=k-1)
+runs k=100 C=1 reps=400 L=2 var=0 success=332 thm=1 noncopy=0 avg#strips=41.6 avg#corner-values=99.6 meanX/value=0.8166
+runs k=100 C=1 reps=400 L=2 var=1 success=348 thm=143 noncopy=0 avg#strips=41.7 avg#corner-values=99.5 meanX/value=0.7821
+runs k=100 C=1 reps=400 L=3 var=1 success=362 thm=281 noncopy=0 avg#strips=70.0 avg#corner-values=43.0 meanX/value=0.8566
+rows k=100 C=1.2 reps=400 success=389 thm=389 noncopy=0  bound=Pr(Poisson(Ck)<=k-1)
+runs k=100 C=1.2 reps=400 L=2 var=0 success=377 thm=6 noncopy=0 avg#strips=41.7 avg#corner-values=99.6 meanX/value=0.7005
+runs k=100 C=1.2 reps=400 L=2 var=1 success=382 thm=228 noncopy=0 avg#strips=41.8 avg#corner-values=99.6 meanX/value=0.6532
+runs k=100 C=1.2 reps=400 L=3 var=1 success=393 thm=337 noncopy=0 avg#strips=69.5 avg#corner-values=43.7 meanX/value=0.7199
