@@ -34,3 +34,5 @@ session appears in the paper); tools are C (`cc -O2`) or Python 3; raw outputs a
 | `w26-pareto-ld` | Pareto-front / alternating-chain certificates for (12)^h | Theorem 13 (speed N for C > 27.63) |
 | `w27-comparison` | Comparison principle "identity hardest" | Theorem 14 (Mirsky on cells: speed N for bounded-block sums and 𝒢(r,h)); CP(1) false at k = 4; rate-form CP* |
 | `w28-hardcore` | Hard-core / cluster reduction of the union bound (why R = e^{O(k)}) | Thm 1.1: R ≤ EM²/μ = Σ p_π E[M|π⊄σ]/μ (second-moment criterion, escapes the Janson cap); ES disjointness of id/rev (factor 2 only); numerics: no hard core (p_π flat within ×4), R is pure conditional clustering, tail of M|M>0 heavy up to m ≈ e^{0.7k} |
+| `w28-hardcore` | Hard-core / witness reduction of the union bound | Prop. 15: R ≤ E M²/μ ≤ max_π Λ_π; no hard core; M driven by local emptiness |
+| `w29-random-threshold` | Gap-reserve greedy for typical patterns | Theorem 16: random π contained at 0.527k²; ½ barrier for value-blind gap rules |

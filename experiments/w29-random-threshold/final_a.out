@@ -1,0 +1,4 @@
+h=256 w=3.5 beta=0.7 mode=1 wmin=0.7 ns=1500  Omega=0.51812  sd(T/h)=0.01237 minW=0.7000
+h=256 w=3.25 beta=0.7 mode=1 wmin=0.7 ns=1500  Omega=0.51742  sd(T/h)=0.01165 minW=0.7000
+h=256 w=3 beta=0.7 mode=1 wmin=0.7 ns=1500  Omega=0.51850  sd(T/h)=0.01084 minW=0.7000
+h=256 w=3 beta=0.75 mode=1 wmin=0.75 ns=1500  Omega=0.51941  sd(T/h)=0.01044 minW=0.7500

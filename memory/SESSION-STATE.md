@@ -145,3 +145,7 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
   item W30: count patterns killed by one empty rectangle (the combinatorial step Prop 15 needs). Running: W27 (scans),
   W24 tails (unattended), W29.
 - 19:15: W29 `experiments/w29-random-threshold/` launched (agent a436ab1b1319f3263): rigorous threshold < 1/4 (or < 0.757) for random π. Queue: W30 (patterns killed by one empty rectangle).
+- 19:35: W29 COMPLETED and VERIFIED (Lemmas 1.1–1.2, Thms 2.1/3.2 correct; Ω_h reproduced by scratchpad/w29check.py;
+  Thm 4.1 proved only for value-blind rules — caveat recorded). Folded as Theorem 16 + table row. W24 tails and W27
+  scans still running unattended. Launching W30 (patterns killed by one empty rectangle). Queue after W30: W31
+  x-lookahead / 2-D rule for random π below ½; W32 certified (quadrature) Ω_h.

@@ -1,0 +1,4 @@
+k=400 h=40 C=0.5 w=3.0 beta=0.8: success 2/20
+k=400 h=40 C=0.55 w=3.0 beta=0.8: success 13/20
+k=400 h=40 C=0.6 w=3.0 beta=0.8: success 20/20
+k=400 h=40 C=0.7 w=3.0 beta=0.8: success 20/20

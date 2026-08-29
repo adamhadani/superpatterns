@@ -85,6 +85,12 @@ Negative / dead ends (with the reason; each is a theorem or a brute-force-checke
   missing set is one diffuse cluster, NOT up-sets of missing (k−1)-patterns; R made in the far tail; M driven by local
   emptiness of σ (Spearman +0.42 with largest empty rectangle; +0.11 with LIS). id/rev co-miss impossible for
   n ≥ (k−1)²+1 (Erdős–Szekeres) — factor 2 only. Needed: #patterns killed by one empty rectangle of area ≍ 1/k² is e^{O(k)}.
+- W29 (Thm 16): gap-reserve greedy (strips carry ARBITRARY sub-patterns; window = gap minus reserve β per unplaced
+  value; leftmost point). Reduction proved for every π; for uniformly random π strips are i.i.d. uniform ⇒ threshold
+  ≤ Ω_h k² with Ω_64 = 0.527, Ω_1024 = 0.515 (recomputed by me: 0.5265) — first typical-vs-worst separation (0.757).
+  BARRIER: value-blind gap-window rules have Ω_h ≥ ½+1/(2h) (proved; the value-aware rule used respects it numerically
+  but the proof's rank-independence step does not cover it — gap noted in w29 proof.md). Below ½ needs x-lookahead
+  or a 2-D argument. Dead ends: diamond scores, absolute row targets, single strip h=k, HK-quasirandom, second moment.
 - Alon–Spencer toolbox (W22 review): Janson/extended Janson/Suen exponent ≤ C/2 at N=Ck² for ANY copy-event family
   (Δ ≥ μ²/C, single-point overlaps); Talagrand ≤ C/4; Azuma ≤ C/2; Kim–Vu vacuous; LLL only positivity. NOT capped:
   certificate counting (Dilworth cover ⇒ Pr(LIS<k) ≤ (e/C)^N, speed N) → try antichain-cover certificates for
