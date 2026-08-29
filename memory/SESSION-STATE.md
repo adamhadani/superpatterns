@@ -87,3 +87,12 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
   at the root (gitignored) — remove once no process depends on them.
 - Publishing guide applied: experiments/witnesses/ (witness file, independent Python checker, hashes), paper sections
   "Novelty audit" and "Discovery method and AI disclosure", memory/PUBLICATION-CHECKLIST.md.
+
+## 14:30 — second Alon push launched (after user "go ahead")
+- W19 `experiments/w19-general-greedy/` (agent adae1b3b6b2420af4): corner greedy for ALL π (uniform per-pattern
+  threshold Ck²) + repair rule for speed N/poly(r) tail → union bound → n=O(k²)?
+- W20 `experiments/w20-hammersley-grid/` (agent a49eee1d67abeafc1): exact threshold constant for tilted grids
+  (coupled Hammersley processes / hydrodynamic limit; subadditivity for existence; target 1/4).
+- W21 `experiments/w21-threshold-numerics/` (agent a6c54e5e36bf755e1): n_1/2(π)/k² for random vs identity at
+  k=20..32, ≥500 samples; decide 1/4 vs ≈0.23.
+- Poll by files every ~10 min; verify before folding in (norm). Lean CI run 33249984762 was still in progress.
