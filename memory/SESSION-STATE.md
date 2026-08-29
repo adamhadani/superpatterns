@@ -187,3 +187,4 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
   analogue); or a two-pass scheme (first pass explores, second commits) — check whether it escapes (F).
 - W38: certify C^mix_2 (Feynman–Kac) and the Thm 18 constants; Lean for Lemma 2.2 scaling.
 - W39: pointwise O(1) slope via Prop 4.1 of W33 (hitting time of the prefix pattern under the avoiding measure).
+- 21:40: W24 COMPLETED (results.md final: ln R at t(k) = 1.34,1.93,2.59,3.26,3.87 for k=5..9); paper numbers updated. ALL AGENTS DONE; loop stopped.

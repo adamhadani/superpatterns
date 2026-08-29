@@ -25,3 +25,4 @@ Date: 2026-08-29. Dir: experiments/w24-union-slack/. Machine shared (load ≈ 35
   Cluster analysis added: missing set = 2–4 components (k=7, n≈t) under adjacent transpositions; largest component ≈ 70% of M.
 - 18:40 k=9 n=68: one σ with M=539 of 53 events; added 'R w/o max' column.
 - 19:20 queue C done; started queue D (k=8 n=46,48,50 seed 12; k=9 n=60 seed 13).
+- 20:30 k=5 done (n=15..32), k=9 n=60 s13 done. analysis.txt regenerated; results.md assembled (build_results.py from results_head.md + results_body.md + analysis.txt). Fits: ln R(t(k)) = 0.640k − 1.88 (rms .018) = 0.319 ln k! − 0.16; √k rejected; k vs k ln k not separable.
