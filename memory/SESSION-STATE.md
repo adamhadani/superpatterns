@@ -100,3 +100,7 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
   0.89). Folded as Theorem 11: every π ∈ S_k contained at 0.757k² w.h.p. (first uniform threshold < k²); rigid rows k²;
   union bound (1+o(1))k² ln k; barrier: greedies have speed ≤ min(k,h). The brief's "verbatim for all π" was false
   (strips must be chains) — W19 caught it. W20, W21 still running.
+- 15:25: W20 proof.md drafted (not yet verified): Thm 4.2 mean-field upper bound C^fix(r,h) ≤ C_mf(h) as r→∞; Prop 4.3
+  Bellman recursion; Prop 4.5 C_mf(h) ↓ π/8; Prop 3.1 fresh-quadrant barrier; Remark 4.7 free ≤ min(fixed directions).
+  Key message: FIXED-strip constant is (conjecturally) π/8 — corner greedy optimal there; 1/4 can only come from the
+  FREE model (copy chooses its own strip boundaries). W20 still running numerics; W21 k=32 sweep running.
