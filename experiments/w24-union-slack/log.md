@@ -18,3 +18,8 @@ Date: 2026-08-29. Dir: experiments/w24-union-slack/. Machine shared (load ≈ 35
 - 16:15 appended k=5 grid (n=15..32) to queue A for a 5th point in the k-fits.
 - 16:25 k=6 done; analyze.py fixed (ln 0 guard). k=6: ln R ≈ 1.9 at t(6), ≈0.4 at n=k², →0 by n≈1.1k².
 - 17:31 appended extra k=9 seeds (n=58,60,62; new n=66) to queue B.
+- 17:50 k=6,7 complete; k=9 n=49..64 complete. Interim: ln R at t(k) = 1.93 (k=6), 2.59 (k=7), 3.95 (k=9) ≈ 0.30·ln k!.
+  At n = k²: ln R ≈ 0.4–0.5 (k=6,7); R → 1 by n ≈ 1.1k² (but Pr(M>0) < 1e-3 there, few events).
+  Pairwise: ρ(π, π∘adjacent transposition) ≈ 160–230 at t(7); dihedral images ρ ≈ 20–25; random pairs ρ ≈ 12–16 ≈ E[M²]/E[M]².
+  Reverse/complement pairs of the identity: 0 co-misses in 20000 samples (ρ≈0) — LIS and LDS are *negatively* related at fixed n.
+  Cluster analysis added: missing set = 2–4 components (k=7, n≈t) under adjacent transpositions; largest component ≈ 70% of M.

@@ -120,3 +120,12 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
   §Thm C, open problems). W25 COMPLETED. Running: W21 (told to add correction-exponent fit and wrap up), W23 (relaunch), W24.
 - 17:45: W23 COMPLETED and VERIFIED (Thm 2.1, Cor 2.1′, Prop 2.3 read; Lemma 2.0 = generalised W11 Mirsky lemma). Folded
   as a certificate-counting remark after Theorem 9. Running: W21 (finalising), W24 (k=7 runs).
+- 17:58: the sp(7)=22 SAT/CEGAR run (k7n22_rc_near_s2) is no longer running (last line it=4, t=10316 s; possibly killed with the orphan python workers at 14:45). Not restarted — low value (2 h/solve, 100 patterns missing at it=4); restart with 'cd experiments/w6-exact-sp7 && nohup python3 spsat.py 7 22 --sym rc --init near > k7n22_rc_near_s3.txt &' if wanted.
+
+## 18:10 — reformulation and standing queue
+- Conjecture LD: Pr(π ⊄ Π_{Ck²}) ≤ e^{−c(C)N} uniformly in π above threshold ⇒ Alon with constant max C*(π) (=1/4 per W21).
+  Equivalent route: comparison principle CP(K): Pr(π⊄Π_N) ≤ e^{O(k)} Pr(id⊄Π_{N/K}) + LIS lower tail (speed N).
+- Launched W26 `experiments/w26-pareto-ld/` (agent a3c828a52224b02cb): speed N for (12)^h via Pareto-front certificates.
+- Launched W27 `experiments/w27-comparison/` (agent a98dc6b4175cd236a): comparison principle — exhaustive numerics k≤7,
+  all n; theory for layered/grid/run-union classes; coupling attempts.
+- Queued (not launched): W28 hard-core reduction from W24's missing-pattern data; W29 rigorous threshold < 1/4 for random π.

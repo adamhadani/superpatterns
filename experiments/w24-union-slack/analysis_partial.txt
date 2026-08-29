@@ -1,0 +1,610 @@
+### Task 1: distribution of M = #missing k-patterns (pooled over seeds)
+Columns: samples; Pr(M>0) (#events); E[M]; R=E[M|M>0]; ln R (± bootstrap SE); median, q10, q90, q99 of M|M>0; max M; geometric mean of M|M>0; E[M²]/E[M]².
+
+#### k = 6  (k! = 720, k² = 36)
+| n | n/k² | samples | Pr(M>0) | #M>0 | E[M] | R | ln R | med | q10 | q90 | q99 | max | geo | E[M²]/E[M]² |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 22 | 0.61 | 4000 | 0.9890 | 3956 | 43.31 | 43.8 | 3.780±0.015 | 30 | 6 | 100 | 202 | 343 | 26.7 | 2.01 |
+| 24 | 0.67 | 4000 | 0.8955 | 3582 | 17.85 | 19.93 | 2.992±0.020 | 11 | 2 | 51 | 122 | 284 | 9.8 | 2.95 |
+| 26 | 0.72 | 4000 | 0.6800 | 2720 | 7.033 | 10.34 | 2.336±0.026 | 5 | 1 | 26 | 73 | 217 | 5.05 | 4.81 |
+| 27 | 0.75 | 4000 | 0.5450 | 2180 | 4.113 | 7.546 | 2.021±0.033 | 3 | 1 | 19 | 63 | 149 | 3.67 | 6.91 |
+| 28 | 0.78 | 30000 | 0.4144 | 12432 | 2.407 | 5.808 | 1.759±0.015 | 3 | 1 | 14 | 48 | 166 | 3.05 | 8.66 |
+| 30 | 0.83 | 6000 | 0.2015 | 1209 | 0.7425 | 3.685 | 1.304±0.043 | 2 | 1 | 9 | 27 | 66 | 2.19 | 15.9 |
+| 32 | 0.89 | 6000 | 0.0813 | 488 | 0.2375 | 2.92 | 1.072±0.063 | 1 | 1 | 6 | 24 | 29 | 1.89 | 34.7 |
+| 34 | 0.94 | 10000 | 0.0251 | 251 | 0.0504 | 2.008 | 0.697±0.089 | 1 | 1 | 4 | 8 | 48 | 1.52 | 143 |
+| 36 | 1.00 | 10000 | 0.0085 | 85 | 0.013 | 1.529 | 0.425±0.107 | 1 | 1 | 2 | 14 | 14 | 1.25 | 263 |
+| 38 | 1.06 | 10000 | 0.0022 | 22 | 0.0038 | 1.727 | 0.547±0.228 | 1 | 1 | 3 | 10 | 10 | 1.35 | 1.01e+03 |
+| 40 | 1.11 | 20000 | 0.0006 | 11 | 0.00065 | 1.182 | 0.167±0.108 | 1 | 1 | 2 | 2 | 2 | 1.13 | 2.01e+03 |
+| 44 | 1.22 | 20000 | 0.0000 | 0 | 0 | nan | nan±nan | nan | nan | nan | nan | 0 | nan | nan |
+| 47 | 1.31 | 20000 | 0.0000 | 0 | 0 | nan | nan±nan | nan | nan | nan | nan | 0 | nan | nan |
+
+#### k = 7  (k! = 5040, k² = 49)
+| n | n/k² | samples | Pr(M>0) | #M>0 | E[M] | R | ln R | med | q10 | q90 | q99 | max | geo | E[M²]/E[M]² |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 29 | 0.59 | 3000 | 0.9967 | 2990 | 200.7 | 201.4 | 5.305±0.020 | 131 | 24 | 471 | 1009 | 2862 | 115 | 2.16 |
+| 31 | 0.63 | 3000 | 0.9783 | 2935 | 95.01 | 97.12 | 4.576±0.023 | 49 | 6 | 235 | 662 | 1556 | 42.9 | 3.08 |
+| 33 | 0.67 | 3000 | 0.8963 | 2689 | 44.99 | 50.19 | 3.916±0.037 | 18 | 2 | 131 | 447 | 1854 | 17.5 | 4.78 |
+| 35 | 0.71 | 3000 | 0.7047 | 2114 | 16.42 | 23.3 | 3.149±0.047 | 8 | 1 | 56 | 258 | 1095 | 8.11 | 8.2 |
+| 36 | 0.73 | 3000 | 0.6010 | 1803 | 10.59 | 17.62 | 2.869±0.041 | 6 | 1 | 44 | 159 | 501 | 6.32 | 8.24 |
+| 37 | 0.76 | 20000 | 0.4820 | 9640 | 6.125 | 12.71 | 2.542±0.022 | 4 | 1 | 29 | 143 | 549 | 4.62 | 12.7 |
+| 38 | 0.78 | 3000 | 0.3633 | 1090 | 3.656 | 10.06 | 2.309±0.062 | 3 | 1 | 22 | 132 | 263 | 3.85 | 16.9 |
+| 40 | 0.82 | 3000 | 0.1827 | 548 | 1.283 | 7.026 | 1.950±0.100 | 2 | 1 | 13 | 94 | 210 | 2.92 | 36.3 |
+| 42 | 0.86 | 6000 | 0.0898 | 539 | 0.3438 | 3.827 | 1.342±0.083 | 2 | 1 | 8 | 38 | 80 | 2.1 | 51.3 |
+| 44 | 0.90 | 10000 | 0.0310 | 310 | 0.0863 | 2.784 | 1.024±0.107 | 1 | 1 | 6 | 17 | 74 | 1.77 | 143 |
+| 46 | 0.94 | 10000 | 0.0128 | 128 | 0.0325 | 2.539 | 0.932±0.115 | 1 | 1 | 5 | 21 | 25 | 1.71 | 221 |
+| 48 | 0.98 | 10000 | 0.0046 | 46 | 0.0087 | 1.891 | 0.637±0.132 | 1 | 1 | 3 | 10 | 10 | 1.5 | 416 |
+| 52 | 1.06 | 10000 | 0.0003 | 3 | 0.0003 | 1 | 0.000±0.000 | 1 | 1 | 1 | 1 | 1 | 1 | 3.33e+03 |
+| 56 | 1.14 | 10000 | 0.0000 | 0 | 0 | nan | nan±nan | nan | nan | nan | nan | 0 | nan | nan |
+| 60 | 1.22 | 10000 | 0.0000 | 0 | 0 | nan | nan±nan | nan | nan | nan | nan | 0 | nan | nan |
+| 64 | 1.31 | 10000 | 0.0000 | 0 | 0 | nan | nan±nan | nan | nan | nan | nan | 0 | nan | nan |
+
+#### k = 9  (k! = 362880, k² = 81)
+| n | n/k² | samples | Pr(M>0) | #M>0 | E[M] | R | ln R | med | q10 | q90 | q99 | max | geo | E[M²]/E[M]² |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 49 | 0.60 | 300 | 1.0000 | 300 | 1865 | 1865 | 7.531±nan | 653 | 65 | 4667 | 18730 | 43143 | 591 | 5.11 |
+| 52 | 0.64 | 300 | 0.9800 | 294 | 757.8 | 773.3 | 6.651±0.156 | 167 | 9 | 1919 | 7707 | 23829 | 154 | 7.43 |
+| 55 | 0.68 | 600 | 0.8500 | 510 | 164.1 | 193.1 | 5.263±0.119 | 36 | 2 | 417 | 2606 | 4729 | 32.9 | 8.99 |
+| 58 | 0.72 | 600 | 0.6050 | 363 | 50.92 | 84.17 | 4.433±0.218 | 8 | 1 | 163 | 1197 | 5857 | 10.6 | 33 |
+| 60 | 0.74 | 1000 | 0.4170 | 417 | 14.9 | 35.72 | 3.576±0.186 | 5 | 1 | 79 | 391 | 2222 | 7.03 | 34.3 |
+| 64 | 0.79 | 1000 | 0.1330 | 133 | 2.226 | 16.74 | 2.818±0.384 | 3 | 1 | 20 | 251 | 831 | 3.65 | 168 |
+
+### Histograms of ln M given M>0 (bins of width 1 in ln M; counts)
+k=6 n=22: [0,1):125 [1,2):378 [2,3):945 [3,4):1423 [4,5):948 [5,6):137
+k=6 n=24: [0,1):583 [1,2):889 [2,3):1009 [3,4):789 [4,5):298 [5,6):14
+k=6 n=26: [0,1):856 [1,2):844 [2,3):634 [3,4):327 [4,5):55 [5,6):4
+k=6 n=27: [0,1):922 [1,2):679 [2,3):386 [3,4):162 [4,5):30 [5,6):1
+k=6 n=28: [0,1):6097 [1,2):3735 [2,3):1937 [3,4):573 [4,5):88 [5,6):2
+k=6 n=30: [0,1):762 [1,2):298 [2,3):124 [3,4):24 [4,5):1
+k=6 n=32: [0,1):336 [1,2):117 [2,3):27 [3,4):8
+k=6 n=34: [0,1):206 [1,2):41 [2,3):3 [3,4):1
+k=6 n=36: [0,1):77 [1,2):6 [2,3):2
+k=6 n=38: [0,1):19 [1,2):2 [2,3):1
+k=6 n=40: [0,1):11
+k=7 n=29: [0,1):23 [1,2):51 [2,3):168 [3,4):490 [4,5):888 [5,6):976 [6,7):375 [7,8):19
+k=7 n=31: [0,1):104 [1,2):241 [2,3):489 [3,4):719 [4,5):789 [5,6):479 [6,7):110 [7,8):4
+k=7 n=33: [0,1):339 [1,2):469 [2,3):598 [3,4):604 [4,5):463 [5,6):180 [6,7):35 [7,8):1
+k=7 n=35: [0,1):516 [1,2):529 [2,3):460 [3,4):389 [4,5):175 [5,6):40 [6,7):5
+k=7 n=36: [0,1):540 [1,2):466 [2,3):417 [3,4):237 [4,5):116 [5,6):26 [6,7):1
+k=7 n=37: [0,1):3717 [1,2):2682 [2,3):1831 [3,4):929 [4,5):390 [5,6):86 [6,7):5
+k=7 n=38: [0,1):474 [1,2):321 [2,3):174 [3,4):83 [4,5):28 [5,6):10
+k=7 n=40: [0,1):284 [1,2):156 [2,3):73 [3,4):22 [4,5):12 [5,6):1
+k=7 n=42: [0,1):356 [1,2):126 [2,3):42 [3,4):12 [4,5):3
+k=7 n=44: [0,1):226 [1,2):63 [2,3):18 [3,4):2 [4,5):1
+k=7 n=46: [0,1):95 [1,2):25 [2,3):6 [3,4):2
+k=7 n=48: [0,1):37 [1,2):7 [2,3):2
+k=7 n=52: [0,1):3
+k=9 n=49: [0,1):1 [1,2):3 [2,3):6 [3,4):19 [4,5):29 [5,6):62 [6,7):68 [7,8):63 [8,9):37 [9,10):11 [10,11):1
+k=9 n=52: [0,1):7 [1,2):18 [2,3):24 [3,4):40 [4,5):49 [5,6):58 [6,7):46 [7,8):33 [8,9):17 [9,10):1 [10,11):1
+k=9 n=55: [0,1):60 [1,2):72 [2,3):79 [3,4):87 [4,5):92 [5,6):63 [6,7):33 [7,8):21 [8,9):3
+k=9 n=58: [0,1):94 [1,2):80 [2,3):67 [3,4):56 [4,5):29 [5,6):22 [6,7):11 [7,8):3 [8,9):1
+k=9 n=60: [0,1):131 [1,2):109 [2,3):73 [3,4):47 [4,5):34 [5,6):19 [6,7):3 [7,8):1
+k=9 n=64: [0,1):65 [1,2):30 [2,3):26 [3,4):7 [4,5):2 [5,6):2 [6,7):1
+
+### Task 2: ln R vs k at fixed n/k² and at n = t(k) (Pr(M>0)=1/2)
+| k | t(k) (interp.) | ln R at t(k) | ln E[M] at t(k) | ln R @0.65k² | @0.75k² | @0.85k² | @1.0k² | @1.2k² | n,lnR @P=.9 | @P=.1 | @P=.02 | k ln k | k | √k |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 6 | 27.3 | 1.931 | 1.229 | 3.23 | 2.02 | 1.23 | 0.42 | nan | 23.9,3.03 | 31.7,1.11 | 34.6,0.61 | 10.75 | 6 | 2.45 |
+| 7 | 36.8 | 2.592 | 1.895 | 4.30 | 2.62 | 1.45 | 0.48 | nan | 32.9,3.95 | 41.8,1.41 | 45.2,0.97 | 13.62 | 7 | 2.65 |
+| 9 | 59.1 | 3.954 | 3.244 | 6.35 | 3.43 | nan | nan | nan | 53.8,5.80 | nan,nan | nan,nan | 19.78 | 9 | 3.00 |
+
+Growth diagnostics (successive k):
+- ln R at t(k): k6→7: Δ=+0.661, d lnR/d ln k=4.29, ratio to Δ(k ln k)=0.230, to Δk=0.661, to Δ√k=3.367; k7→9: Δ=+1.363, d lnR/d ln k=5.42, ratio to Δ(k ln k)=0.221, to Δk=0.681, to Δ√k=3.846
+- ln R at 0.75k²: k6→7: Δ=+0.603, d lnR/d ln k=3.91, ratio to Δ(k ln k)=0.210, to Δk=0.603, to Δ√k=3.071; k7→9: Δ=+0.810, d lnR/d ln k=3.22, ratio to Δ(k ln k)=0.132, to Δk=0.405, to Δ√k=2.286
+- ln R at 1.0k²: k6→7: Δ=+0.053, d lnR/d ln k=0.34, ratio to Δ(k ln k)=0.018, to Δk=0.053, to Δ√k=0.270
+- ln R at P=.1: k6→7: Δ=+0.301, d lnR/d ln k=1.95, ratio to Δ(k ln k)=0.105, to Δk=0.301, to Δ√k=1.534
+- ln R at P=.02: k6→7: Δ=+0.355, d lnR/d ln k=2.30, ratio to Δ(k ln k)=0.124, to Δk=0.355, to Δ√k=1.807
+
+### Task 3: pairwise correlation ratios  ρ(π,π') = Pr(A_π ∧ A_π') / (Pr A_π · Pr A_π')
+Pooled estimators over all pairs of the given type: ρ_pool = (Σ_pairs #co-miss / S) / (Σ_pairs m_π m_π' / S²).
+Also E[M²]/E[M]² ≈ ρ for a uniformly random pair (plus the diagonal 1/E[M] term).
+
+**k=6, n=22** (S=4000, Pr(M>0)=0.989, E[M]=43.3, R=43.8, E[M²]/E[M]²=2.01)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 6.38 (pairs with both missed: 3600, Σco-miss=335407)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 2.03 (pairs with both missed: 2420, Σco-miss=71222)
+- π vs 6 uniformly random π': ρ_pool = 1.99 (pairs with both missed: 4291, Σco-miss=123476)
+- id [miss rate 0.0720, 1.20× avg]: swap pos 1,2: ρ=5.5 (m1=288, m2=287, co=114); swap pos mid: ρ=5.5 (m1=288, m2=333, co=131); reverse: ρ=0.0 (m1=288, m2=284, co=0); complement: ρ=0.0 (m1=288, m2=284, co=0); inverse: same; rev∘comp: same
+- top1=124356 [miss rate 0.0833, 1.38× avg]: swap pos 1,2: ρ=5.1 (m1=333, m2=299, co=128); swap pos mid: ρ=5.5 (m1=333, m2=288, co=131); reverse: ρ=0.4 (m1=333, m2=290, co=9); complement: ρ=0.4 (m1=333, m2=290, co=9); inverse: same; rev∘comp: same
+- top2=634512 [miss rate 0.0820, 1.36× avg]: swap pos 1,2: ρ=5.5 (m1=328, m2=263, co=118); swap pos mid: ρ=5.4 (m1=328, m2=272, co=121); reverse: ρ=0.5 (m1=328, m2=293, co=11); complement: ρ=0.4 (m1=328, m2=311, co=11); inverse: ρ=2.2 (m1=328, m2=297, co=54); rev∘comp: ρ=2.2 (m1=328, m2=297, co=54)
+- top3=154326 [miss rate 0.0815, 1.35× avg]: swap pos 1,2: ρ=5.7 (m1=326, m2=276, co=128); swap pos mid: ρ=6.2 (m1=326, m2=282, co=142); reverse: ρ=0.7 (m1=326, m2=317, co=17); complement: ρ=0.7 (m1=326, m2=317, co=17); inverse: same; rev∘comp: same
+
+**k=6, n=24** (S=4000, Pr(M>0)=0.895, E[M]=17.9, R=19.9, E[M²]/E[M]²=2.95)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 12.49 (pairs with both missed: 3600, Σco-miss=112273)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 3.06 (pairs with both missed: 2420, Σco-miss=18339)
+- π vs 6 uniformly random π': ρ_pool = 2.87 (pairs with both missed: 4298, Σco-miss=30433)
+- id [miss rate 0.0362, 1.46× avg]: swap pos 1,2: ρ=10.5 (m1=145, m2=129, co=49); swap pos mid: ρ=10.0 (m1=145, m2=121, co=44); reverse: ρ=0.0 (m1=145, m2=122, co=0); complement: ρ=0.0 (m1=145, m2=122, co=0); inverse: same; rev∘comp: same
+- top1=125436 [miss rate 0.0432, 1.74× avg]: swap pos 1,2: ρ=8.6 (m1=173, m2=150, co=56); swap pos mid: ρ=10.4 (m1=173, m2=127, co=57); reverse: ρ=0.0 (m1=173, m2=130, co=0); complement: ρ=0.4 (m1=173, m2=121, co=2); inverse: same; rev∘comp: ρ=4.4 (m1=173, m2=136, co=26)
+- top2=124365 [miss rate 0.0398, 1.60× avg]: swap pos 1,2: ρ=7.8 (m1=159, m2=133, co=41); swap pos mid: ρ=10.9 (m1=159, m2=131, co=57); reverse: ρ=0.2 (m1=159, m2=136, co=1); complement: ρ=0.4 (m1=159, m2=121, co=2); inverse: same; rev∘comp: ρ=2.3 (m1=159, m2=111, co=10)
+- top3=215436 [miss rate 0.0375, 1.51× avg]: swap pos 1,2: ρ=8.6 (m1=150, m2=173, co=56); swap pos mid: ρ=11.4 (m1=150, m2=119, co=51); reverse: ρ=0.2 (m1=150, m2=120, co=1); complement: ρ=0.4 (m1=150, m2=139, co=2); inverse: same; rev∘comp: ρ=4.1 (m1=150, m2=118, co=18)
+
+**k=6, n=26** (S=4000, Pr(M>0)=0.680, E[M]=7.03, R=10.3, E[M²]/E[M]²=4.81)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 25.38 (pairs with both missed: 3600, Σco-miss=35754)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 5.20 (pairs with both missed: 2420, Σco-miss=4885)
+- π vs 6 uniformly random π': ρ_pool = 4.61 (pairs with both missed: 4299, Σco-miss=7592)
+- id [miss rate 0.0123, 1.25× avg]: swap pos 1,2: ρ=20.4 (m1=49, m2=60, co=15); swap pos mid: ρ=13.6 (m1=49, m2=60, co=10); reverse: ρ=0.0 (m1=49, m2=49, co=0); complement: ρ=0.0 (m1=49, m2=49, co=0); inverse: same; rev∘comp: same
+- top1=432156 [miss rate 0.0192, 1.97× avg]: swap pos 1,2: ρ=25.4 (m1=77, m2=45, co=22); swap pos mid: ρ=16.9 (m1=77, m2=43, co=14); reverse: ρ=0.0 (m1=77, m2=57, co=0); complement: ρ=1.0 (m1=77, m2=53, co=1); inverse: same; rev∘comp: ρ=0.0 (m1=77, m2=50, co=0)
+- top2=124365 [miss rate 0.0187, 1.92× avg]: swap pos 1,2: ρ=10.1 (m1=75, m2=58, co=11); swap pos mid: ρ=13.3 (m1=75, m2=60, co=15); reverse: ρ=0.0 (m1=75, m2=39, co=0); complement: ρ=0.0 (m1=75, m2=65, co=0); inverse: same; rev∘comp: ρ=2.7 (m1=75, m2=60, co=3)
+- top3=432165 [miss rate 0.0175, 1.79× avg]: swap pos 1,2: ρ=15.8 (m1=70, m2=47, co=13); swap pos mid: ρ=25.8 (m1=70, m2=51, co=23); reverse: ρ=1.1 (m1=70, m2=53, co=1); complement: ρ=1.0 (m1=70, m2=56, co=1); inverse: same; rev∘comp: ρ=3.4 (m1=70, m2=51, co=3)
+
+**k=6, n=27** (S=4000, Pr(M>0)=0.545, E[M]=4.11, R=7.55, E[M²]/E[M]²=6.91)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 39.26 (pairs with both missed: 3600, Σco-miss=19074)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 7.80 (pairs with both missed: 2420, Σco-miss=2514)
+- π vs 6 uniformly random π': ρ_pool = 6.38 (pairs with both missed: 4307, Σco-miss=3594)
+- id [miss rate 0.0073, 1.27× avg]: swap pos 1,2: ρ=17.8 (m1=29, m2=31, co=4); swap pos mid: ρ=24.6 (m1=29, m2=28, co=5); reverse: ρ=0.0 (m1=29, m2=28, co=0); complement: ρ=0.0 (m1=29, m2=28, co=0); inverse: same; rev∘comp: same
+- top1=456321 [miss rate 0.0112, 1.97× avg]: swap pos 1,2: ρ=13.7 (m1=45, m2=26, co=4); swap pos mid: ρ=23.2 (m1=45, m2=23, co=6); reverse: ρ=0.0 (m1=45, m2=27, co=0); complement: ρ=0.0 (m1=45, m2=33, co=0); inverse: ρ=2.9 (m1=45, m2=31, co=1); rev∘comp: ρ=2.9 (m1=45, m2=31, co=1)
+- top2=321546 [miss rate 0.0107, 1.88× avg]: swap pos 1,2: ρ=36.5 (m1=43, m2=28, co=11); swap pos mid: ρ=32.8 (m1=43, m2=34, co=12); reverse: ρ=0.0 (m1=43, m2=29, co=0); complement: ρ=0.0 (m1=43, m2=42, co=0); inverse: same; rev∘comp: ρ=3.4 (m1=43, m2=27, co=1)
+- top3=562341 [miss rate 0.0107, 1.88× avg]: swap pos 1,2: ρ=25.4 (m1=43, m2=33, co=9); swap pos mid: ρ=36.6 (m1=43, m2=33, co=13); reverse: ρ=0.0 (m1=43, m2=37, co=0); complement: ρ=0.0 (m1=43, m2=40, co=0); inverse: ρ=6.0 (m1=43, m2=31, co=2); rev∘comp: ρ=6.0 (m1=43, m2=31, co=2)
+
+**k=6, n=28** (S=30000, Pr(M>0)=0.414, E[M]=2.41, R=5.81, E[M²]/E[M]²=8.66)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 57.76 (pairs with both missed: 3600, Σco-miss=72611)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 9.22 (pairs with both missed: 2420, Σco-miss=7764)
+- π vs 6 uniformly random π': ρ_pool = 8.20 (pairs with both missed: 4305, Σco-miss=11883)
+- id [miss rate 0.0047, 1.41× avg]: swap pos 1,2: ρ=45.4 (m1=141, m2=136, co=29); swap pos mid: ρ=42.8 (m1=141, m2=164, co=33); reverse: ρ=0.0 (m1=141, m2=153, co=0); complement: ρ=0.0 (m1=141, m2=153, co=0); inverse: same; rev∘comp: same
+- top1=564231 [miss rate 0.0064, 1.90× avg]: swap pos 1,2: ρ=31.8 (m1=191, m2=173, co=35); swap pos mid: ρ=47.1 (m1=191, m2=120, co=36); reverse: ρ=0.0 (m1=191, m2=171, co=0); complement: ρ=0.0 (m1=191, m2=162, co=0); inverse: ρ=8.4 (m1=191, m2=149, co=8); rev∘comp: ρ=8.4 (m1=191, m2=149, co=8)
+- top2=125436 [miss rate 0.0063, 1.87× avg]: swap pos 1,2: ρ=37.9 (m1=188, m2=177, co=42); swap pos mid: ρ=47.9 (m1=188, m2=110, co=33); reverse: ρ=0.0 (m1=188, m2=186, co=0); complement: ρ=0.0 (m1=188, m2=187, co=0); inverse: same; rev∘comp: ρ=10.4 (m1=188, m2=169, co=11)
+- top3=652341 [miss rate 0.0062, 1.86× avg]: swap pos 1,2: ρ=33.4 (m1=187, m2=173, co=36); swap pos mid: ρ=49.0 (m1=187, m2=131, co=40); reverse: ρ=1.9 (m1=187, m2=169, co=2); complement: ρ=0.0 (m1=187, m2=188, co=0); inverse: ρ=8.6 (m1=187, m2=186, co=10); rev∘comp: ρ=8.6 (m1=187, m2=186, co=10)
+
+**k=6, n=30** (S=6000, Pr(M>0)=0.202, E[M]=0.743, R=3.68, E[M²]/E[M]²=15.9)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 140.61 (pairs with both missed: 3600, Σco-miss=3437)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 18.28 (pairs with both missed: 2420, Σco-miss=296)
+- π vs 6 uniformly random π': ρ_pool = 15.35 (pairs with both missed: 4282, Σco-miss=421)
+- id [miss rate 0.0010, 0.97× avg]: swap pos 1,2: ρ=71.4 (m1=6, m2=14, co=1); swap pos mid: ρ=0.0 (m1=6, m2=10, co=0); reverse: ρ=0.0 (m1=6, m2=11, co=0); complement: ρ=0.0 (m1=6, m2=11, co=0); inverse: same; rev∘comp: same
+- top1=564123 [miss rate 0.0033, 3.23× avg]: swap pos 1,2: ρ=66.7 (m1=20, m2=9, co=2); swap pos mid: ρ=100.0 (m1=20, m2=6, co=2); reverse: ρ=0.0 (m1=20, m2=9, co=0); complement: ρ=0.0 (m1=20, m2=14, co=0); inverse: ρ=0.0 (m1=20, m2=11, co=0); rev∘comp: ρ=0.0 (m1=20, m2=11, co=0)
+- top2=456123 [miss rate 0.0028, 2.75× avg]: swap pos 1,2: ρ=162.9 (m1=17, m2=13, co=6); swap pos mid: ρ=196.1 (m1=17, m2=9, co=5); reverse: ρ=0.0 (m1=17, m2=11, co=0); complement: ρ=0.0 (m1=17, m2=11, co=0); inverse: same; rev∘comp: same
+- top3=345621 [miss rate 0.0027, 2.59× avg]: swap pos 1,2: ρ=0.0 (m1=16, m2=3, co=0); swap pos mid: ρ=75.0 (m1=16, m2=10, co=2); reverse: ρ=0.0 (m1=16, m2=8, co=0); complement: ρ=0.0 (m1=16, m2=9, co=0); inverse: ρ=0.0 (m1=16, m2=7, co=0); rev∘comp: ρ=0.0 (m1=16, m2=7, co=0)
+
+**k=6, n=32** (S=6000, Pr(M>0)=0.081, E[M]=0.237, R=2.92, E[M²]/E[M]²=34.7)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 350.01 (pairs with both missed: 3448, Σco-miss=940)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 42.08 (pairs with both missed: 2318, Σco-miss=70)
+- π vs 6 uniformly random π': ρ_pool = 31.70 (pairs with both missed: 3504, Σco-miss=90)
+- top1=652341 [miss rate 0.0017, 5.05× avg]: swap pos 1,2: ρ=171.4 (m1=10, m2=7, co=2); swap pos mid: ρ=0.0 (m1=10, m2=2, co=0); reverse: ρ=0.0 (m1=10, m2=6, co=0); complement: ρ=0.0 (m1=10, m2=3, co=0); inverse: ρ=0.0 (m1=10, m2=2, co=0); rev∘comp: ρ=0.0 (m1=10, m2=2, co=0)
+- top2=652314 [miss rate 0.0015, 4.55× avg]: swap pos 1,2: ρ=333.3 (m1=9, m2=2, co=1); swap pos mid: ρ=nan (m1=9, m2=0, co=0); reverse: ρ=0.0 (m1=9, m2=1, co=0); complement: ρ=0.0 (m1=9, m2=5, co=0); inverse: ρ=0.0 (m1=9, m2=4, co=0); rev∘comp: ρ=nan (m1=9, m2=0, co=0)
+- top3=563412 [miss rate 0.0013, 4.04× avg]: swap pos 1,2: ρ=0.0 (m1=8, m2=5, co=0); swap pos mid: ρ=0.0 (m1=8, m2=3, co=0); reverse: ρ=0.0 (m1=8, m2=1, co=0); complement: ρ=0.0 (m1=8, m2=1, co=0); inverse: same; rev∘comp: same
+
+**k=6, n=34** (S=10000, Pr(M>0)=0.025, E[M]=0.0504, R=2.01, E[M²]/E[M]²=143)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 1128.88 (pairs with both missed: 2617, Σco-miss=240)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 123.17 (pairs with both missed: 1777, Σco-miss=16)
+- π vs 6 uniformly random π': ρ_pool = 153.06 (pairs with both missed: 2146, Σco-miss=33)
+
+**k=7, n=31** (S=3000, Pr(M>0)=0.978, E[M]=95, R=97.1, E[M²]/E[M]²=3.08)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 17.49 (pairs with both missed: 30240, Σco-miss=583466)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 3.62 (pairs with both missed: 17384, Σco-miss=68983)
+- π vs 6 uniformly random π': ρ_pool = 3.07 (pairs with both missed: 30220, Σco-miss=98763)
+- id [miss rate 0.0307, 1.63× avg]: swap pos 1,2: ρ=12.6 (m1=92, m2=83, co=32); swap pos mid: ρ=12.1 (m1=92, m2=100, co=37); reverse: ρ=0.0 (m1=92, m2=98, co=0); complement: ρ=0.0 (m1=92, m2=98, co=0); inverse: same; rev∘comp: same
+- top1=7652341 [miss rate 0.0407, 2.16× avg]: swap pos 1,2: ρ=8.5 (m1=122, m2=116, co=40); swap pos mid: ρ=13.0 (m1=122, m2=85, co=45); reverse: ρ=0.0 (m1=122, m2=73, co=0); complement: ρ=0.0 (m1=122, m2=86, co=0); inverse: ρ=5.7 (m1=122, m2=86, co=20); rev∘comp: ρ=5.7 (m1=122, m2=86, co=20)
+- top2=6752341 [miss rate 0.0387, 2.05× avg]: swap pos 1,2: ρ=8.5 (m1=116, m2=122, co=40); swap pos mid: ρ=14.4 (m1=116, m2=79, co=44); reverse: ρ=0.3 (m1=116, m2=79, co=1); complement: ρ=0.3 (m1=116, m2=95, co=1); inverse: ρ=3.0 (m1=116, m2=68, co=8); rev∘comp: ρ=3.0 (m1=116, m2=68, co=8)
+- top3=7653421 [miss rate 0.0370, 1.96× avg]: swap pos 1,2: ρ=12.1 (m1=111, m2=85, co=38); swap pos mid: ρ=13.4 (m1=111, m2=91, co=45); reverse: ρ=0.5 (m1=111, m2=100, co=2); complement: ρ=0.7 (m1=111, m2=73, co=2); inverse: ρ=12.5 (m1=111, m2=89, co=41); rev∘comp: ρ=12.5 (m1=111, m2=89, co=41)
+
+**k=7, n=33** (S=3000, Pr(M>0)=0.896, E[M]=45, R=50.2, E[M²]/E[M]²=4.78)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 32.36 (pairs with both missed: 30240, Σco-miss=245895)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 6.01 (pairs with both missed: 17384, Σco-miss=25847)
+- π vs 6 uniformly random π': ρ_pool = 4.78 (pairs with both missed: 30212, Σco-miss=34380)
+- id [miss rate 0.0157, 1.76× avg]: swap pos 1,2: ρ=13.6 (m1=47, m2=47, co=10); swap pos mid: ρ=24.1 (m1=47, m2=45, co=17); reverse: ρ=0.0 (m1=47, m2=44, co=0); complement: ρ=0.0 (m1=47, m2=44, co=0); inverse: same; rev∘comp: same
+- top1=2345671 [miss rate 0.0213, 2.39× avg]: swap pos 1,2: ρ=12.9 (m1=64, m2=40, co=11); swap pos mid: ρ=27.3 (m1=64, m2=43, co=25); reverse: ρ=0.0 (m1=64, m2=31, co=0); complement: ρ=1.0 (m1=64, m2=48, co=1); inverse: ρ=1.2 (m1=64, m2=39, co=1); rev∘comp: ρ=1.2 (m1=64, m2=39, co=1)
+- top2=5763412 [miss rate 0.0213, 2.39× avg]: swap pos 1,2: ρ=18.1 (m1=64, m2=44, co=17); swap pos mid: ρ=14.2 (m1=64, m2=33, co=10); reverse: ρ=0.0 (m1=64, m2=38, co=0); complement: ρ=0.0 (m1=64, m2=37, co=0); inverse: ρ=6.5 (m1=64, m2=36, co=5); rev∘comp: ρ=2.9 (m1=64, m2=32, co=2)
+- top3=7634512 [miss rate 0.0210, 2.35× avg]: swap pos 1,2: ρ=13.6 (m1=63, m2=42, co=12); swap pos mid: ρ=23.8 (m1=63, m2=56, co=28); reverse: ρ=0.0 (m1=63, m2=53, co=0); complement: ρ=0.0 (m1=63, m2=45, co=0); inverse: ρ=4.4 (m1=63, m2=43, co=4); rev∘comp: ρ=4.4 (m1=63, m2=43, co=4)
+
+**k=7, n=35** (S=3000, Pr(M>0)=0.705, E[M]=16.4, R=23.3, E[M²]/E[M]²=8.2)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 70.74 (pairs with both missed: 30240, Σco-miss=72989)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 10.72 (pairs with both missed: 17384, Σco-miss=6255)
+- π vs 6 uniformly random π': ρ_pool = 8.16 (pairs with both missed: 30218, Σco-miss=7823)
+- id [miss rate 0.0053, 1.64× avg]: swap pos 1,2: ρ=39.1 (m1=16, m2=24, co=5); swap pos mid: ρ=30.0 (m1=16, m2=25, co=4); reverse: ρ=0.0 (m1=16, m2=21, co=0); complement: ρ=0.0 (m1=16, m2=21, co=0); inverse: same; rev∘comp: same
+- top1=2165437 [miss rate 0.0107, 3.27× avg]: swap pos 1,2: ρ=26.2 (m1=32, m2=25, co=7); swap pos mid: ρ=39.5 (m1=32, m2=19, co=8); reverse: ρ=0.0 (m1=32, m2=13, co=0); complement: ρ=0.0 (m1=32, m2=27, co=0); inverse: same; rev∘comp: ρ=4.1 (m1=32, m2=23, co=1)
+- top2=2136547 [miss rate 0.0097, 2.97× avg]: swap pos 1,2: ρ=18.3 (m1=29, m2=17, co=3); swap pos mid: ρ=81.3 (m1=29, m2=14, co=11); reverse: ρ=0.0 (m1=29, m2=20, co=0); complement: ρ=0.0 (m1=29, m2=19, co=0); inverse: same; rev∘comp: ρ=0.0 (m1=29, m2=15, co=0)
+- top3=6723451 [miss rate 0.0090, 2.76× avg]: swap pos 1,2: ρ=29.2 (m1=27, m2=19, co=5); swap pos mid: ρ=59.3 (m1=27, m2=15, co=8); reverse: ρ=0.0 (m1=27, m2=23, co=0); complement: ρ=0.0 (m1=27, m2=32, co=0); inverse: ρ=0.0 (m1=27, m2=13, co=0); rev∘comp: ρ=0.0 (m1=27, m2=13, co=0)
+
+**k=7, n=36** (S=3000, Pr(M>0)=0.601, E[M]=10.6, R=17.6, E[M²]/E[M]²=8.24)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 97.77 (pairs with both missed: 30237, Σco-miss=42834)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 13.59 (pairs with both missed: 17384, Σco-miss=3352)
+- π vs 6 uniformly random π': ρ_pool = 8.23 (pairs with both missed: 30102, Σco-miss=3296)
+- id [miss rate 0.0037, 1.75× avg]: swap pos 1,2: ρ=54.5 (m1=11, m2=10, co=2); swap pos mid: ρ=58.4 (m1=11, m2=14, co=3); reverse: ρ=0.0 (m1=11, m2=13, co=0); complement: ρ=0.0 (m1=11, m2=13, co=0); inverse: same; rev∘comp: same
+- top1=7634521 [miss rate 0.0083, 3.97× avg]: swap pos 1,2: ρ=40.0 (m1=25, m2=24, co=8); swap pos mid: ρ=55.4 (m1=25, m2=13, co=6); reverse: ρ=0.0 (m1=25, m2=9, co=0); complement: ρ=0.0 (m1=25, m2=9, co=0); inverse: same; rev∘comp: same
+- top2=6734521 [miss rate 0.0080, 3.81× avg]: swap pos 1,2: ρ=40.0 (m1=24, m2=25, co=8); swap pos mid: ρ=27.8 (m1=24, m2=9, co=2); reverse: ρ=0.0 (m1=24, m2=11, co=0); complement: ρ=0.0 (m1=24, m2=16, co=0); inverse: ρ=8.9 (m1=24, m2=14, co=1); rev∘comp: ρ=8.9 (m1=24, m2=14, co=1)
+- top3=7364512 [miss rate 0.0070, 3.33× avg]: swap pos 1,2: ρ=63.5 (m1=21, m2=9, co=4); swap pos mid: ρ=76.9 (m1=21, m2=13, co=7); reverse: ρ=0.0 (m1=21, m2=8, co=0); complement: ρ=0.0 (m1=21, m2=5, co=0); inverse: ρ=0.0 (m1=21, m2=14, co=0); rev∘comp: ρ=35.7 (m1=21, m2=8, co=2)
+
+**k=7, n=37** (S=20000, Pr(M>0)=0.482, E[M]=6.12, R=12.7, E[M²]/E[M]²=12.7)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 159.31 (pairs with both missed: 30240, Σco-miss=154314)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 19.80 (pairs with both missed: 17384, Σco-miss=11033)
+- π vs 6 uniformly random π': ρ_pool = 12.31 (pairs with both missed: 30219, Σco-miss=10959)
+- id [miss rate 0.0030, 2.47× avg]: swap pos 1,2: ρ=44.0 (m1=60, m2=53, co=7); swap pos mid: ρ=85.5 (m1=60, m2=39, co=10); reverse: ρ=0.0 (m1=60, m2=50, co=0); complement: ρ=0.0 (m1=60, m2=50, co=0); inverse: same; rev∘comp: same
+- top1=7456231 [miss rate 0.0035, 2.88× avg]: swap pos 1,2: ρ=85.7 (m1=70, m2=30, co=9); swap pos mid: ρ=114.3 (m1=70, m2=35, co=14); reverse: ρ=0.0 (m1=70, m2=64, co=0); complement: ρ=0.0 (m1=70, m2=53, co=0); inverse: ρ=38.7 (m1=70, m2=59, co=8); rev∘comp: ρ=38.7 (m1=70, m2=59, co=8)
+- top2=7234561 [miss rate 0.0034, 2.84× avg]: swap pos 1,2: ρ=79.7 (m1=69, m2=40, co=11); swap pos mid: ρ=106.8 (m1=69, m2=38, co=14); reverse: ρ=0.0 (m1=69, m2=62, co=0); complement: ρ=0.0 (m1=69, m2=62, co=0); inverse: same; rev∘comp: same
+- top3=1543276 [miss rate 0.0034, 2.80× avg]: swap pos 1,2: ρ=102.9 (m1=68, m2=40, co=14); swap pos mid: ρ=90.0 (m1=68, m2=49, co=15); reverse: ρ=0.0 (m1=68, m2=65, co=0); complement: ρ=0.0 (m1=68, m2=54, co=0); inverse: same; rev∘comp: ρ=10.3 (m1=68, m2=57, co=2)
+
+**k=7, n=38** (S=3000, Pr(M>0)=0.363, E[M]=3.66, R=10.1, E[M²]/E[M]²=16.9)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 231.61 (pairs with both missed: 29257, Σco-miss=13035)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 25.55 (pairs with both missed: 16917, Σco-miss=787)
+- π vs 6 uniformly random π': ρ_pool = 16.14 (pairs with both missed: 26037, Σco-miss=764)
+- id [miss rate 0.0020, 2.76× avg]: swap pos 1,2: ρ=0.0 (m1=6, m2=6, co=0); swap pos mid: ρ=125.0 (m1=6, m2=4, co=1); reverse: ρ=0.0 (m1=6, m2=5, co=0); complement: ρ=0.0 (m1=6, m2=5, co=0); inverse: same; rev∘comp: same
+- top1=1254367 [miss rate 0.0037, 5.05× avg]: swap pos 1,2: ρ=77.9 (m1=11, m2=7, co=2); swap pos mid: ρ=0.0 (m1=11, m2=2, co=0); reverse: ρ=0.0 (m1=11, m2=7, co=0); complement: ρ=0.0 (m1=11, m2=7, co=0); inverse: same; rev∘comp: same
+- top2=1236547 [miss rate 0.0037, 5.05× avg]: swap pos 1,2: ρ=181.8 (m1=11, m2=6, co=4); swap pos mid: ρ=0.0 (m1=11, m2=2, co=0); reverse: ρ=0.0 (m1=11, m2=8, co=0); complement: ρ=0.0 (m1=11, m2=2, co=0); inverse: same; rev∘comp: ρ=0.0 (m1=11, m2=7, co=0)
+- top3=7623451 [miss rate 0.0037, 5.05× avg]: swap pos 1,2: ρ=77.9 (m1=11, m2=7, co=2); swap pos mid: ρ=136.4 (m1=11, m2=2, co=1); reverse: ρ=0.0 (m1=11, m2=6, co=0); complement: ρ=0.0 (m1=11, m2=9, co=0); inverse: ρ=0.0 (m1=11, m2=6, co=0); rev∘comp: ρ=0.0 (m1=11, m2=6, co=0)
+
+**k=7, n=40** (S=3000, Pr(M>0)=0.183, E[M]=1.28, R=7.03, E[M²]/E[M]²=36.3)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 513.61 (pairs with both missed: 21876, Σco-miss=3995)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 72.79 (pairs with both missed: 12998, Σco-miss=276)
+- π vs 6 uniformly random π': ρ_pool = 37.42 (pairs with both missed: 15506, Σco-miss=220)
+- top1=6734512 [miss rate 0.0020, 7.85× avg]: swap pos 1,2: ρ=0.0 (m1=6, m2=1, co=0); swap pos mid: ρ=500.0 (m1=6, m2=1, co=1); reverse: ρ=0.0 (m1=6, m2=4, co=0); complement: ρ=0.0 (m1=6, m2=4, co=0); inverse: same; rev∘comp: same
+- top2=5734612 [miss rate 0.0020, 7.85× avg]: swap pos 1,2: ρ=500.0 (m1=6, m2=1, co=1); swap pos mid: ρ=166.7 (m1=6, m2=3, co=1); reverse: ρ=0.0 (m1=6, m2=2, co=0); complement: ρ=0.0 (m1=6, m2=3, co=0); inverse: ρ=0.0 (m1=6, m2=2, co=0); rev∘comp: ρ=166.7 (m1=6, m2=3, co=1)
+- top3=7345621 [miss rate 0.0020, 7.85× avg]: swap pos 1,2: ρ=nan (m1=6, m2=0, co=0); swap pos mid: ρ=500.0 (m1=6, m2=1, co=1); reverse: ρ=nan (m1=6, m2=0, co=0); complement: ρ=0.0 (m1=6, m2=6, co=0); inverse: ρ=500.0 (m1=6, m2=1, co=1); rev∘comp: ρ=500.0 (m1=6, m2=1, co=1)
+
+**k=7, n=42** (S=6000, Pr(M>0)=0.090, E[M]=0.344, R=3.83, E[M²]/E[M]²=51.3)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 1016.91 (pairs with both missed: 15054, Σco-miss=1383)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 101.52 (pairs with both missed: 8792, Σco-miss=68)
+- π vs 6 uniformly random π': ρ_pool = 35.30 (pairs with both missed: 9525, Σco-miss=30)
+- top1=1326547 [miss rate 0.0010, 14.66× avg]: swap pos 1,2: ρ=nan (m1=6, m2=0, co=0); swap pos mid: ρ=nan (m1=6, m2=0, co=0); reverse: ρ=0.0 (m1=6, m2=2, co=0); complement: ρ=0.0 (m1=6, m2=1, co=0); inverse: same; rev∘comp: ρ=1000.0 (m1=6, m2=1, co=1)
+- top2=7634521 [miss rate 0.0008, 12.22× avg]: swap pos 1,2: ρ=0.0 (m1=5, m2=1, co=0); swap pos mid: ρ=400.0 (m1=5, m2=3, co=1); reverse: ρ=0.0 (m1=5, m2=1, co=0); complement: ρ=0.0 (m1=5, m2=1, co=0); inverse: same; rev∘comp: same
+- top3=2136547 [miss rate 0.0008, 12.22× avg]: swap pos 1,2: ρ=0.0 (m1=5, m2=1, co=0); swap pos mid: ρ=1200.0 (m1=5, m2=1, co=1); reverse: ρ=0.0 (m1=5, m2=2, co=0); complement: ρ=0.0 (m1=5, m2=1, co=0); inverse: same; rev∘comp: ρ=1200.0 (m1=5, m2=1, co=1)
+
+**k=7, n=44** (S=10000, Pr(M>0)=0.031, E[M]=0.0863, R=2.78, E[M²]/E[M]²=143)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 3025.21 (pairs with both missed: 8056, Σco-miss=468)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 271.90 (pairs with both missed: 4743, Σco-miss=18)
+- π vs 6 uniformly random π': ρ_pool = 123.60 (pairs with both missed: 4588, Σco-miss=11)
+
+**k=9, n=52** (S=300, Pr(M>0)=0.980, E[M]=758, R=773, E[M²]/E[M]²=7.43)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 97.51 (pairs with both missed: 1528663, Σco-miss=316923)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 8.06 (pairs with both missed: 719072, Σco-miss=7949)
+- π vs 6 uniformly random π': ρ_pool = 3.91 (pairs with both missed: 764654, Σco-miss=5654)
+- top1=132465789 [miss rate 0.0267, 12.77× avg]: swap pos 1,2: ρ=18.8 (m1=8, m2=2, co=1); swap pos mid: ρ=37.5 (m1=8, m2=2, co=2); reverse: ρ=0.0 (m1=8, m2=2, co=0); complement: ρ=0.0 (m1=8, m2=1, co=0); inverse: same; rev∘comp: ρ=9.4 (m1=8, m2=4, co=1)
+- top2=532146987 [miss rate 0.0233, 11.17× avg]: swap pos 1,2: ρ=nan (m1=7, m2=0, co=0); swap pos mid: ρ=21.4 (m1=7, m2=2, co=1); reverse: ρ=0.0 (m1=7, m2=1, co=0); complement: ρ=0.0 (m1=7, m2=2, co=0); inverse: ρ=21.4 (m1=7, m2=2, co=1); rev∘comp: ρ=0.0 (m1=7, m2=1, co=0)
+- top3=341256897 [miss rate 0.0200, 9.58× avg]: swap pos 1,2: ρ=16.7 (m1=6, m2=3, co=1); swap pos mid: ρ=50.0 (m1=6, m2=1, co=1); reverse: ρ=nan (m1=6, m2=0, co=0); complement: ρ=0.0 (m1=6, m2=1, co=0); inverse: ρ=25.0 (m1=6, m2=4, co=2); rev∘comp: ρ=0.0 (m1=6, m2=1, co=0)
+
+**k=9, n=55** (S=600, Pr(M>0)=0.850, E[M]=164, R=193, E[M²]/E[M]²=8.99)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 243.16 (pairs with both missed: 1074061, Σco-miss=173293)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 19.36 (pairs with both missed: 506618, Σco-miss=3875)
+- π vs 6 uniformly random π': ρ_pool = 8.75 (pairs with both missed: 505127, Σco-miss=2338)
+- top1=324817659 [miss rate 0.0100, 22.11× avg]: swap pos 1,2: ρ=100.0 (m1=6, m2=1, co=1); swap pos mid: ρ=75.0 (m1=6, m2=4, co=3); reverse: ρ=nan (m1=6, m2=0, co=0); complement: ρ=nan (m1=6, m2=0, co=0); inverse: ρ=50.0 (m1=6, m2=4, co=2); rev∘comp: ρ=nan (m1=6, m2=0, co=0)
+- top2=154326789 [miss rate 0.0100, 22.11× avg]: swap pos 1,2: ρ=100.0 (m1=6, m2=1, co=1); swap pos mid: ρ=50.0 (m1=6, m2=2, co=1); reverse: ρ=0.0 (m1=6, m2=1, co=0); complement: ρ=0.0 (m1=6, m2=1, co=0); inverse: same; rev∘comp: ρ=0.0 (m1=6, m2=1, co=0)
+- top3=432175689 [miss rate 0.0100, 22.11× avg]: swap pos 1,2: ρ=100.0 (m1=6, m2=3, co=3); swap pos mid: ρ=nan (m1=6, m2=0, co=0); reverse: ρ=0.0 (m1=6, m2=1, co=0); complement: ρ=0.0 (m1=6, m2=1, co=0); inverse: ρ=33.3 (m1=6, m2=3, co=1); rev∘comp: ρ=nan (m1=6, m2=0, co=0)
+
+**k=9, n=58** (S=600, Pr(M>0)=0.605, E[M]=50.9, R=84.2, E[M²]/E[M]²=33)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 398.74 (pairs with both missed: 332042, Σco-miss=35067)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 40.31 (pairs with both missed: 156509, Σco-miss=594)
+- π vs 6 uniformly random π': ρ_pool = 17.40 (pairs with both missed: 141390, Σco-miss=294)
+
+**k=9, n=60** (S=1000, Pr(M>0)=0.417, E[M]=14.9, R=35.7, E[M²]/E[M]²=34.3)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 707.37 (pairs with both missed: 205395, Σco-miss=20141)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 160.57 (pairs with both missed: 96323, Σco-miss=693)
+- π vs 6 uniformly random π': ρ_pool = 36.29 (pairs with both missed: 86307, Σco-miss=132)
+
+**k=9, n=64** (S=1000, Pr(M>0)=0.133, E[M]=2.23, R=16.7, E[M²]/E[M]²=168)
+- π vs π∘(adjacent transposition), positions and values: ρ_pool = 943.19 (pairs with both missed: 32291, Σco-miss=2955)
+- π vs dihedral images (rev/comp/inv/…): ρ_pool = 320.75 (pairs with both missed: 15273, Σco-miss=34)
+- π vs 6 uniformly random π': ρ_pool = 171.05 (pairs with both missed: 13260, Σco-miss=13)
+
+### Task 4: which patterns are missing (LIS, LDS, monotone runs, decomposability) — missing vs population
+
+**k=6, n=22** (S=4000, Pr(M>0)=0.989, distinct patterns ever missed: 720 of 720, total misses 173256)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.154 | 3.140 |
+| LDS | 3.146 | 3.140 |
+| max(LIS,LDS) | 3.676 | 3.650 |
+| #monotone runs | 3.645 | 3.667 |
+| #ascending runs | 3.497 | 3.500 |
+| ⊕-decomposable | 0.379 | 0.360 |
+| ⊖-decomposable | 0.372 | 0.360 |
+| indecomposable (neither) | 0.249 | 0.281 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.408 vs 0.425, 4: 0.512 vs 0.503, 5: 0.077 vs 0.069, 6: 0.003 vs 0.003
+#monotone runs distribution, missing vs population: 1: 0.003 vs 0.003, 2: 0.090 vs 0.083, 3: 0.330 vs 0.328, 4: 0.410 vs 0.417, 5: 0.166 vs 0.169
+top-12 missed patterns (miss count, ×avg): 124356 (333, 1.4×), 634512 (328, 1.4×), 154326 (326, 1.4×), 124365 (325, 1.4×), 132546 (324, 1.3×), 143256 (322, 1.3×), 623451 (317, 1.3×), 132456 (314, 1.3×), 321546 (313, 1.3×), 132654 (312, 1.3×), 143265 (311, 1.3×), 561234 (310, 1.3×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.935; a dihedral-image pair: 0.629
+
+**k=6, n=24** (S=4000, Pr(M>0)=0.895, distinct patterns ever missed: 720 of 720, total misses 71404)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.151 | 3.140 |
+| LDS | 3.148 | 3.140 |
+| max(LIS,LDS) | 3.685 | 3.650 |
+| #monotone runs | 3.637 | 3.667 |
+| #ascending runs | 3.504 | 3.500 |
+| ⊕-decomposable | 0.385 | 0.360 |
+| ⊖-decomposable | 0.377 | 0.360 |
+| indecomposable (neither) | 0.238 | 0.281 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.402 vs 0.425, 4: 0.514 vs 0.503, 5: 0.080 vs 0.069, 6: 0.004 vs 0.003
+#monotone runs distribution, missing vs population: 1: 0.004 vs 0.003, 2: 0.091 vs 0.083, 3: 0.333 vs 0.328, 4: 0.410 vs 0.417, 5: 0.163 vs 0.169
+top-12 missed patterns (miss count, ×avg): 125436 (173, 1.7×), 124365 (159, 1.6×), 215436 (150, 1.5×), 312546 (149, 1.5×), 123546 (147, 1.5×), 123456 (145, 1.5×), 132546 (142, 1.4×), 654231 (142, 1.4×), 564123 (140, 1.4×), 562341 (139, 1.4×), 123654 (139, 1.4×), 563412 (137, 1.4×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.746; a dihedral-image pair: 0.338
+
+**k=6, n=26** (S=4000, Pr(M>0)=0.680, distinct patterns ever missed: 720 of 720, total misses 28131)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.159 | 3.140 |
+| LDS | 3.141 | 3.140 |
+| max(LIS,LDS) | 3.685 | 3.650 |
+| #monotone runs | 3.635 | 3.667 |
+| #ascending runs | 3.479 | 3.500 |
+| ⊕-decomposable | 0.391 | 0.360 |
+| ⊖-decomposable | 0.380 | 0.360 |
+| indecomposable (neither) | 0.229 | 0.281 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.404 vs 0.425, 4: 0.510 vs 0.503, 5: 0.082 vs 0.069, 6: 0.003 vs 0.003
+#monotone runs distribution, missing vs population: 1: 0.003 vs 0.003, 2: 0.095 vs 0.083, 3: 0.329 vs 0.328, 4: 0.408 vs 0.417, 5: 0.164 vs 0.169
+top-12 missed patterns (miss count, ×avg): 432156 (77, 2.0×), 124365 (75, 1.9×), 432165 (70, 1.8×), 132654 (66, 1.7×), 456123 (65, 1.7×), 653412 (65, 1.7×), 623451 (64, 1.6×), 132564 (64, 1.6×), 645231 (63, 1.6×), 456231 (63, 1.6×), 215436 (63, 1.6×), 213654 (61, 1.6×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.593; a dihedral-image pair: 0.186
+
+**k=6, n=27** (S=4000, Pr(M>0)=0.545, distinct patterns ever missed: 720 of 720, total misses 16451)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.175 | 3.140 |
+| LDS | 3.131 | 3.140 |
+| max(LIS,LDS) | 3.688 | 3.650 |
+| #monotone runs | 3.623 | 3.667 |
+| #ascending runs | 3.491 | 3.500 |
+| ⊕-decomposable | 0.410 | 0.360 |
+| ⊖-decomposable | 0.369 | 0.360 |
+| indecomposable (neither) | 0.221 | 0.281 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.396 vs 0.425, 4: 0.523 vs 0.503, 5: 0.078 vs 0.069, 6: 0.003 vs 0.003
+#monotone runs distribution, missing vs population: 1: 0.003 vs 0.003, 2: 0.096 vs 0.083, 3: 0.334 vs 0.328, 4: 0.409 vs 0.417, 5: 0.158 vs 0.169
+top-12 missed patterns (miss count, ×avg): 456321 (45, 2.0×), 321546 (43, 1.9×), 562341 (43, 1.9×), 456231 (42, 1.8×), 456123 (41, 1.8×), 432156 (41, 1.8×), 132546 (40, 1.8×), 215436 (40, 1.8×), 216543 (40, 1.8×), 645312 (40, 1.8×), 213654 (39, 1.7×), 213564 (39, 1.7×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.505; a dihedral-image pair: 0.129
+
+**k=6, n=28** (S=30000, Pr(M>0)=0.414, distinct patterns ever missed: 720 of 720, total misses 72206)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.146 | 3.140 |
+| LDS | 3.164 | 3.140 |
+| max(LIS,LDS) | 3.705 | 3.650 |
+| #monotone runs | 3.618 | 3.667 |
+| #ascending runs | 3.507 | 3.500 |
+| ⊕-decomposable | 0.393 | 0.360 |
+| ⊖-decomposable | 0.393 | 0.360 |
+| indecomposable (neither) | 0.214 | 0.281 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.390 vs 0.425, 4: 0.519 vs 0.503, 5: 0.087 vs 0.069, 6: 0.004 vs 0.003
+#monotone runs distribution, missing vs population: 1: 0.004 vs 0.003, 2: 0.096 vs 0.083, 3: 0.338 vs 0.328, 4: 0.402 vs 0.417, 5: 0.160 vs 0.169
+top-12 missed patterns (miss count, ×avg): 564231 (191, 1.9×), 125436 (188, 1.9×), 652341 (187, 1.9×), 645231 (187, 1.9×), 634521 (186, 1.9×), 645321 (183, 1.8×), 432165 (183, 1.8×), 623451 (181, 1.8×), 154326 (178, 1.8×), 634512 (178, 1.8×), 143265 (177, 1.8×), 215436 (177, 1.8×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.442; a dihedral-image pair: 0.090
+
+**k=6, n=30** (S=6000, Pr(M>0)=0.202, distinct patterns ever missed: 717 of 720, total misses 4455)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.165 | 3.140 |
+| LDS | 3.152 | 3.140 |
+| max(LIS,LDS) | 3.719 | 3.650 |
+| #monotone runs | 3.607 | 3.667 |
+| #ascending runs | 3.489 | 3.500 |
+| ⊕-decomposable | 0.381 | 0.360 |
+| ⊖-decomposable | 0.405 | 0.360 |
+| indecomposable (neither) | 0.214 | 0.281 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.382 vs 0.425, 4: 0.521 vs 0.503, 5: 0.093 vs 0.069, 6: 0.004 vs 0.003
+#monotone runs distribution, missing vs population: 1: 0.004 vs 0.003, 2: 0.103 vs 0.083, 3: 0.329 vs 0.328, 4: 0.411 vs 0.417, 5: 0.154 vs 0.169
+top-12 missed patterns (miss count, ×avg): 564123 (20, 3.2×), 456123 (17, 2.7×), 345621 (16, 2.6×), 612345 (15, 2.4×), 623451 (15, 2.4×), 143256 (15, 2.4×), 651324 (15, 2.4×), 214356 (15, 2.4×), 213654 (14, 2.3×), 543216 (14, 2.3×), 634512 (14, 2.3×), 345612 (14, 2.3×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.333; a dihedral-image pair: 0.046
+
+**k=6, n=32** (S=6000, Pr(M>0)=0.081, distinct patterns ever missed: 587 of 720, total misses 1425)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.174 | 3.140 |
+| LDS | 3.153 | 3.140 |
+| max(LIS,LDS) | 3.718 | 3.650 |
+| #monotone runs | 3.657 | 3.667 |
+| #ascending runs | 3.495 | 3.500 |
+| ⊕-decomposable | 0.399 | 0.360 |
+| ⊖-decomposable | 0.418 | 0.360 |
+| indecomposable (neither) | 0.183 | 0.281 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.385 vs 0.425, 4: 0.516 vs 0.503, 5: 0.095 vs 0.069, 6: 0.004 vs 0.003
+#monotone runs distribution, missing vs population: 1: 0.004 vs 0.003, 2: 0.094 vs 0.083, 3: 0.319 vs 0.328, 4: 0.407 vs 0.417, 5: 0.176 vs 0.169
+top-12 missed patterns (miss count, ×avg): 652341 (10, 5.1×), 652314 (9, 4.5×), 563412 (8, 4.0×), 652431 (7, 3.5×), 123645 (7, 3.5×), 234561 (7, 3.5×), 562341 (7, 3.5×), 634512 (7, 3.5×), 643512 (6, 3.0×), 143256 (6, 3.0×), 126345 (6, 3.0×), 453612 (6, 3.0×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.299; a dihedral-image pair: 0.033
+
+**k=6, n=34** (S=10000, Pr(M>0)=0.025, distinct patterns ever missed: 359 of 720, total misses 504)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.171 | 3.140 |
+| LDS | 3.214 | 3.140 |
+| max(LIS,LDS) | 3.768 | 3.650 |
+| #monotone runs | 3.585 | 3.667 |
+| #ascending runs | 3.460 | 3.500 |
+| ⊕-decomposable | 0.411 | 0.360 |
+| ⊖-decomposable | 0.438 | 0.360 |
+| indecomposable (neither) | 0.151 | 0.281 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.345 vs 0.425, 4: 0.552 vs 0.503, 5: 0.093 vs 0.069, 6: 0.010 vs 0.003
+#monotone runs distribution, missing vs population: 1: 0.010 vs 0.003, 2: 0.115 vs 0.083, 3: 0.319 vs 0.328, 4: 0.391 vs 0.417, 5: 0.165 vs 0.169
+top-12 missed patterns (miss count, ×avg): 621345 (4, 5.7×), 563421 (4, 5.7×), 632541 (4, 5.7×), 654231 (4, 5.7×), 123465 (3, 4.3×), 631245 (3, 4.3×), 653241 (3, 4.3×), 653412 (3, 4.3×), 456231 (3, 4.3×), 632145 (3, 4.3×), 654321 (3, 4.3×), 456132 (3, 4.3×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.203; a dihedral-image pair: 0.016
+
+**k=7, n=31** (S=3000, Pr(M>0)=0.978, distinct patterns ever missed: 5040 of 5040, total misses 285040)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.468 | 3.465 |
+| LDS | 3.502 | 3.465 |
+| max(LIS,LDS) | 4.075 | 4.022 |
+| #monotone runs | 4.289 | 4.333 |
+| #ascending runs | 4.012 | 4.000 |
+| ⊕-decomposable | 0.337 | 0.316 |
+| ⊖-decomposable | 0.356 | 0.316 |
+| indecomposable (neither) | 0.307 | 0.368 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.156 vs 0.175, 4: 0.634 vs 0.643, 5: 0.190 vs 0.167, 6: 0.020 vs 0.014, 7: 0.001 vs 0.000
+#monotone runs distribution, missing vs population: 1: 0.001 vs 0.000, 2: 0.030 vs 0.025, 3: 0.176 vs 0.166, 4: 0.368 vs 0.367, 5: 0.324 vs 0.334, 6: 0.101 vs 0.108
+top-12 missed patterns (miss count, ×avg): 7652341 (122, 2.2×), 6752341 (116, 2.1×), 7653421 (111, 2.0×), 6734512 (109, 1.9×), 6723451 (108, 1.9×), 7234561 (106, 1.9×), 7564321 (106, 1.9×), 5762341 (106, 1.9×), 7563421 (105, 1.9×), 1265437 (104, 1.8×), 7564312 (103, 1.8×), 1543276 (102, 1.8×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.917; a dihedral-image pair: 0.529
+
+**k=7, n=33** (S=3000, Pr(M>0)=0.896, distinct patterns ever missed: 5040 of 5040, total misses 134957)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.443 | 3.465 |
+| LDS | 3.526 | 3.465 |
+| max(LIS,LDS) | 4.079 | 4.022 |
+| #monotone runs | 4.280 | 4.333 |
+| #ascending runs | 4.030 | 4.000 |
+| ⊕-decomposable | 0.330 | 0.316 |
+| ⊖-decomposable | 0.371 | 0.316 |
+| indecomposable (neither) | 0.299 | 0.368 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.155 vs 0.175, 4: 0.632 vs 0.643, 5: 0.191 vs 0.167, 6: 0.020 vs 0.014, 7: 0.001 vs 0.000
+#monotone runs distribution, missing vs population: 1: 0.001 vs 0.000, 2: 0.030 vs 0.025, 3: 0.178 vs 0.166, 4: 0.371 vs 0.367, 5: 0.322 vs 0.334, 6: 0.099 vs 0.108
+top-12 missed patterns (miss count, ×avg): 2345671 (64, 2.4×), 5763412 (64, 2.4×), 7634512 (63, 2.4×), 6752341 (61, 2.3×), 2134657 (60, 2.2×), 7645312 (59, 2.2×), 7456123 (59, 2.2×), 3215467 (58, 2.2×), 5762341 (58, 2.2×), 7564312 (58, 2.2×), 7632451 (57, 2.1×), 7623451 (57, 2.1×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.791; a dihedral-image pair: 0.327
+
+**k=7, n=35** (S=3000, Pr(M>0)=0.705, distinct patterns ever missed: 5040 of 5040, total misses 49259)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.491 | 3.465 |
+| LDS | 3.480 | 3.465 |
+| max(LIS,LDS) | 4.085 | 4.022 |
+| #monotone runs | 4.268 | 4.333 |
+| #ascending runs | 3.989 | 4.000 |
+| ⊕-decomposable | 0.366 | 0.316 |
+| ⊖-decomposable | 0.346 | 0.316 |
+| indecomposable (neither) | 0.288 | 0.368 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.154 vs 0.175, 4: 0.630 vs 0.643, 5: 0.193 vs 0.167, 6: 0.022 vs 0.014, 7: 0.001 vs 0.000
+#monotone runs distribution, missing vs population: 1: 0.001 vs 0.000, 2: 0.032 vs 0.025, 3: 0.176 vs 0.166, 4: 0.377 vs 0.367, 5: 0.314 vs 0.334, 6: 0.099 vs 0.108
+top-12 missed patterns (miss count, ×avg): 2165437 (32, 3.3×), 2136547 (29, 3.0×), 6723451 (27, 2.8×), 1654327 (27, 2.8×), 2154367 (26, 2.7×), 1243675 (26, 2.7×), 1265437 (25, 2.6×), 5671234 (25, 2.6×), 1543267 (25, 2.6×), 1254376 (25, 2.6×), 1243567 (25, 2.6×), 4567123 (25, 2.6×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.651; a dihedral-image pair: 0.174
+
+**k=7, n=36** (S=3000, Pr(M>0)=0.601, distinct patterns ever missed: 5020 of 5040, total misses 31769)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.470 | 3.465 |
+| LDS | 3.501 | 3.465 |
+| max(LIS,LDS) | 4.089 | 4.022 |
+| #monotone runs | 4.277 | 4.333 |
+| #ascending runs | 4.024 | 4.000 |
+| ⊕-decomposable | 0.355 | 0.316 |
+| ⊖-decomposable | 0.362 | 0.316 |
+| indecomposable (neither) | 0.283 | 0.368 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.160 vs 0.175, 4: 0.615 vs 0.643, 5: 0.202 vs 0.167, 6: 0.022 vs 0.014, 7: 0.001 vs 0.000
+#monotone runs distribution, missing vs population: 1: 0.001 vs 0.000, 2: 0.031 vs 0.025, 3: 0.180 vs 0.166, 4: 0.368 vs 0.367, 5: 0.319 vs 0.334, 6: 0.101 vs 0.108
+top-12 missed patterns (miss count, ×avg): 7634521 (25, 4.0×), 6734521 (24, 3.8×), 7364512 (21, 3.3×), 3216547 (21, 3.3×), 7234561 (21, 3.3×), 2176543 (21, 3.3×), 6735421 (20, 3.2×), 1276543 (20, 3.2×), 7345621 (20, 3.2×), 1243576 (19, 3.0×), 7645312 (19, 3.0×), 7435621 (18, 2.9×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.604; a dihedral-image pair: 0.141
+
+**k=7, n=37** (S=20000, Pr(M>0)=0.482, distinct patterns ever missed: 5040 of 5040, total misses 122493)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.504 | 3.465 |
+| LDS | 3.475 | 3.465 |
+| max(LIS,LDS) | 4.092 | 4.022 |
+| #monotone runs | 4.277 | 4.333 |
+| #ascending runs | 3.986 | 4.000 |
+| ⊕-decomposable | 0.370 | 0.316 |
+| ⊖-decomposable | 0.364 | 0.316 |
+| indecomposable (neither) | 0.266 | 0.368 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.150 vs 0.175, 4: 0.630 vs 0.643, 5: 0.198 vs 0.167, 6: 0.021 vs 0.014, 7: 0.001 vs 0.000
+#monotone runs distribution, missing vs population: 1: 0.001 vs 0.000, 2: 0.031 vs 0.025, 3: 0.177 vs 0.166, 4: 0.372 vs 0.367, 5: 0.319 vs 0.334, 6: 0.100 vs 0.108
+top-12 missed patterns (miss count, ×avg): 7456231 (70, 2.9×), 7234561 (69, 2.8×), 1543276 (68, 2.8×), 7634512 (68, 2.8×), 7645231 (66, 2.7×), 2136547 (66, 2.7×), 7564231 (66, 2.7×), 6723451 (65, 2.7×), 1432576 (64, 2.6×), 1326547 (64, 2.6×), 7345621 (64, 2.6×), 7645123 (63, 2.6×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.518; a dihedral-image pair: 0.099
+
+**k=7, n=38** (S=3000, Pr(M>0)=0.363, distinct patterns ever missed: 4342 of 5040, total misses 10969)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.498 | 3.465 |
+| LDS | 3.508 | 3.465 |
+| max(LIS,LDS) | 4.117 | 4.022 |
+| #monotone runs | 4.241 | 4.333 |
+| #ascending runs | 4.012 | 4.000 |
+| ⊕-decomposable | 0.388 | 0.316 |
+| ⊖-decomposable | 0.358 | 0.316 |
+| indecomposable (neither) | 0.253 | 0.368 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.143 vs 0.175, 4: 0.625 vs 0.643, 5: 0.206 vs 0.167, 6: 0.025 vs 0.014, 7: 0.001 vs 0.000
+#monotone runs distribution, missing vs population: 1: 0.001 vs 0.000, 2: 0.037 vs 0.025, 3: 0.191 vs 0.166, 4: 0.361 vs 0.367, 5: 0.311 vs 0.334, 6: 0.099 vs 0.108
+top-12 missed patterns (miss count, ×avg): 1254367 (11, 5.1×), 1236547 (11, 5.1×), 7623451 (11, 5.1×), 5673412 (10, 4.6×), 1654327 (10, 4.6×), 5673421 (9, 4.1×), 6534271 (9, 4.1×), 1327654 (9, 4.1×), 7465123 (9, 4.1×), 6574321 (9, 4.1×), 1265437 (9, 4.1×), 7123546 (9, 4.1×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.487; a dihedral-image pair: 0.066
+
+**k=7, n=40** (S=3000, Pr(M>0)=0.183, distinct patterns ever missed: 2585 of 5040, total misses 3850)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.539 | 3.465 |
+| LDS | 3.437 | 3.465 |
+| max(LIS,LDS) | 4.096 | 4.022 |
+| #monotone runs | 4.288 | 4.333 |
+| #ascending runs | 3.921 | 4.000 |
+| ⊕-decomposable | 0.380 | 0.316 |
+| ⊖-decomposable | 0.360 | 0.316 |
+| indecomposable (neither) | 0.260 | 0.368 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.155 vs 0.175, 4: 0.613 vs 0.643, 5: 0.212 vs 0.167, 6: 0.019 vs 0.014, 7: 0.000 vs 0.000
+#monotone runs distribution, missing vs population: 1: 0.000 vs 0.000, 2: 0.028 vs 0.025, 3: 0.178 vs 0.166, 4: 0.368 vs 0.367, 5: 0.330 vs 0.334, 6: 0.096 vs 0.108
+top-12 missed patterns (miss count, ×avg): 6734512 (6, 7.9×), 5734612 (6, 7.9×), 7345621 (6, 7.9×), 1543276 (6, 7.9×), 5762341 (6, 7.9×), 1543267 (6, 7.9×), 5321764 (5, 6.5×), 1274563 (5, 6.5×), 6734125 (5, 6.5×), 7561234 (5, 6.5×), 6534217 (5, 6.5×), 6745312 (5, 6.5×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.391; a dihedral-image pair: 0.051
+
+**k=7, n=42** (S=6000, Pr(M>0)=0.090, distinct patterns ever missed: 1588 of 5040, total misses 2063)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.475 | 3.465 |
+| LDS | 3.575 | 3.465 |
+| max(LIS,LDS) | 4.196 | 4.022 |
+| #monotone runs | 4.170 | 4.333 |
+| #ascending runs | 4.063 | 4.000 |
+| ⊕-decomposable | 0.399 | 0.316 |
+| ⊖-decomposable | 0.414 | 0.316 |
+| indecomposable (neither) | 0.187 | 0.368 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.123 vs 0.175, 4: 0.599 vs 0.643, 5: 0.238 vs 0.167, 6: 0.037 vs 0.014, 7: 0.002 vs 0.000
+#monotone runs distribution, missing vs population: 1: 0.002 vs 0.000, 2: 0.040 vs 0.025, 3: 0.209 vs 0.166, 4: 0.366 vs 0.367, 5: 0.300 vs 0.334, 6: 0.082 vs 0.108
+top-12 missed patterns (miss count, ×avg): 1326547 (6, 14.7×), 7634521 (5, 12.2×), 2136547 (5, 12.2×), 7642531 (5, 12.2×), 1324765 (4, 9.8×), 7651324 (4, 9.8×), 1235476 (4, 9.8×), 2376541 (4, 9.8×), 1265437 (4, 9.8×), 2137645 (4, 9.8×), 7564231 (4, 9.8×), 1325467 (4, 9.8×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.276; a dihedral-image pair: 0.020
+
+**k=7, n=44** (S=10000, Pr(M>0)=0.031, distinct patterns ever missed: 765 of 5040, total misses 863)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.629 | 3.465 |
+| LDS | 3.387 | 3.465 |
+| max(LIS,LDS) | 4.149 | 4.022 |
+| #monotone runs | 4.167 | 4.333 |
+| #ascending runs | 3.888 | 4.000 |
+| ⊕-decomposable | 0.406 | 0.316 |
+| ⊖-decomposable | 0.349 | 0.316 |
+| indecomposable (neither) | 0.246 | 0.368 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.152 vs 0.175, 4: 0.578 vs 0.643, 5: 0.241 vs 0.167, 6: 0.027 vs 0.014, 7: 0.002 vs 0.000
+#monotone runs distribution, missing vs population: 1: 0.002 vs 0.000, 2: 0.041 vs 0.025, 3: 0.198 vs 0.166, 4: 0.384 vs 0.367, 5: 0.298 vs 0.334, 6: 0.078 vs 0.108
+top-12 missed patterns (miss count, ×avg): 2765134 (3, 17.5×), 7632145 (3, 17.5×), 3612754 (3, 17.5×), 1647325 (3, 17.5×), 5312764 (3, 17.5×), 2154763 (3, 17.5×), 6451273 (3, 17.5×), 6745312 (3, 17.5×), 1265437 (3, 17.5×), 2135476 (3, 17.5×), 7563412 (3, 17.5×), 2746135 (2, 11.7×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.203; a dihedral-image pair: 0.016
+
+**k=9, n=55** (S=600, Pr(M>0)=0.850, distinct patterns ever missed: 84188 of 362880, total misses 98486)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 4.120 | 4.059 |
+| LDS | 4.095 | 4.059 |
+| max(LIS,LDS) | 4.778 | 4.647 |
+| #monotone runs | 5.578 | 5.667 |
+| #ascending runs | 5.004 | 5.000 |
+| ⊕-decomposable | 0.334 | 0.247 |
+| ⊖-decomposable | 0.317 | 0.247 |
+| indecomposable (neither) | 0.350 | 0.507 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.003 vs 0.005, 4: 0.384 vs 0.452, 5: 0.463 vs 0.444, 6: 0.132 vs 0.091, 7: 0.017 vs 0.008, 8: 0.001 vs 0.000, 9: 0.000 vs 0.000
+#monotone runs distribution, missing vs population: 1: 0.000 vs 0.000, 2: 0.003 vs 0.001, 3: 0.035 vs 0.024, 4: 0.140 vs 0.124, 5: 0.285 vs 0.285, 6: 0.320 vs 0.331, 7: 0.176 vs 0.191, 8: 0.041 vs 0.044
+top-12 missed patterns (miss count, ×avg): 324817659 (6, 22.1×), 154326789 (6, 22.1×), 432175689 (6, 22.1×), 879345612 (6, 22.1×), 798564123 (5, 18.4×), 132987654 (5, 18.4×), 132476589 (5, 18.4×), 321487659 (5, 18.4×), 215436987 (5, 18.4×), 156234798 (5, 18.4×), 421765398 (5, 18.4×), 217654398 (5, 18.4×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.816; a dihedral-image pair: 0.194
+
+**k=9, n=58** (S=600, Pr(M>0)=0.605, distinct patterns ever missed: 23565 of 362880, total misses 24695)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 4.065 | 4.059 |
+| LDS | 4.218 | 4.059 |
+| max(LIS,LDS) | 4.808 | 4.647 |
+| #monotone runs | 5.547 | 5.667 |
+| #ascending runs | 5.041 | 5.000 |
+| ⊕-decomposable | 0.322 | 0.247 |
+| ⊖-decomposable | 0.386 | 0.247 |
+| indecomposable (neither) | 0.292 | 0.507 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.004 vs 0.005, 4: 0.357 vs 0.452, 5: 0.488 vs 0.444, 6: 0.132 vs 0.091, 7: 0.019 vs 0.008, 8: 0.001 vs 0.000, 9: 0.000 vs 0.000
+#monotone runs distribution, missing vs population: 1: 0.000 vs 0.000, 2: 0.004 vs 0.001, 3: 0.035 vs 0.024, 4: 0.146 vs 0.124, 5: 0.282 vs 0.285, 6: 0.328 vs 0.331, 7: 0.164 vs 0.191, 8: 0.040 vs 0.044
+top-12 missed patterns (miss count, ×avg): 894365721 (4, 58.8×), 321547698 (4, 58.8×), 678593421 (4, 58.8×), 918753264 (3, 44.1×), 918752634 (3, 44.1×), 918732564 (3, 44.1×), 918735264 (3, 44.1×), 169875342 (3, 44.1×), 137652948 (3, 44.1×), 137642958 (3, 44.1×), 127653948 (3, 44.1×), 126543978 (3, 44.1×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.616; a dihedral-image pair: 0.086
+
+**k=9, n=60** (S=1000, Pr(M>0)=0.417, distinct patterns ever missed: 14385 of 362880, total misses 14896)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 3.882 | 4.059 |
+| LDS | 4.488 | 4.059 |
+| max(LIS,LDS) | 4.983 | 4.647 |
+| #monotone runs | 5.440 | 5.667 |
+| #ascending runs | 5.255 | 5.000 |
+| ⊕-decomposable | 0.261 | 0.247 |
+| ⊖-decomposable | 0.487 | 0.247 |
+| indecomposable (neither) | 0.251 | 0.507 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.002 vs 0.005, 4: 0.285 vs 0.452, 5: 0.479 vs 0.444, 6: 0.196 vs 0.091, 7: 0.034 vs 0.008, 8: 0.002 vs 0.000, 9: 0.000 vs 0.000
+#monotone runs distribution, missing vs population: 1: 0.000 vs 0.000, 2: 0.004 vs 0.001, 3: 0.039 vs 0.024, 4: 0.166 vs 0.124, 5: 0.309 vs 0.285, 6: 0.295 vs 0.331, 7: 0.160 vs 0.191, 8: 0.028 vs 0.044
+top-12 missed patterns (miss count, ×avg): 895634217 (3, 73.1×), 985134627 (3, 73.1×), 984236571 (3, 73.1×), 128743659 (3, 73.1×), 987136542 (3, 73.1×), 986573421 (3, 73.1×), 789546123 (3, 73.1×), 978546123 (3, 73.1×), 875694123 (3, 73.1×), 976412583 (3, 73.1×), 876412593 (3, 73.1×), 976415283 (3, 73.1×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.532; a dihedral-image pair: 0.060
+
+**k=9, n=64** (S=1000, Pr(M>0)=0.133, distinct patterns ever missed: 2210 of 362880, total misses 2226)
+| feature | missing (weighted by miss count) | population S_k |
+|---|---|---|
+| LIS | 4.487 | 4.059 |
+| LDS | 3.839 | 4.059 |
+| max(LIS,LDS) | 4.925 | 4.647 |
+| #monotone runs | 5.670 | 5.667 |
+| #ascending runs | 4.705 | 5.000 |
+| ⊕-decomposable | 0.542 | 0.247 |
+| ⊖-decomposable | 0.188 | 0.247 |
+| indecomposable (neither) | 0.270 | 0.507 |
+max(LIS,LDS) distribution, missing vs population: 3: 0.001 vs 0.005, 4: 0.299 vs 0.452, 5: 0.505 vs 0.444, 6: 0.165 vs 0.091, 7: 0.029 vs 0.008, 8: 0.001 vs 0.000, 9: 0.000 vs 0.000
+#monotone runs distribution, missing vs population: 1: 0.000 vs 0.000, 2: 0.002 vs 0.001, 3: 0.035 vs 0.024, 4: 0.097 vs 0.124, 5: 0.345 vs 0.285, 6: 0.236 vs 0.331, 7: 0.246 vs 0.191, 8: 0.038 vs 0.044
+top-12 missed patterns (miss count, ×avg): 186723459 (2, 326.0×), 143265978 (2, 326.0×), 697823451 (2, 326.0×), 943278651 (2, 326.0×), 216975843 (2, 326.0×), 291583764 (2, 326.0×), 249685713 (2, 326.0×), 194352867 (2, 326.0×), 164532879 (2, 326.0×), 163452879 (2, 326.0×), 167342859 (2, 326.0×), 156342879 (2, 326.0×)
+among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: 0.391; a dihedral-image pair: 0.038

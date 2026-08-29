@@ -215,6 +215,26 @@ def struct(data, which=None):
                     q = list(p); q[i], q[i+1] = q[i+1], q[i]; yield tuple(q)
             if any(encode(q) in st for p in ps for q in adjs(p)): nadj += 1
         print(f"among σ with M>0: fraction whose missing set contains an adjacent-transposition pair: {nadj/npos:.3f}; a dihedral-image pair: {ndih/npos:.3f}")
+        # cluster structure: components of the missing set under adjacent transpositions (positions and values)
+        comps = []; bigfrac = []
+        for codes in d['miss'].values():
+            st = set(codes)
+            if len(st) > 3000: continue
+            seen = set(); ncomp = 0; big = 0
+            for c0 in codes:
+                if c0 in seen: continue
+                ncomp += 1; stack = [c0]; seen.add(c0); size = 0
+                while stack:
+                    c = stack.pop(); size += 1; p = decode(c, k)
+                    for i in range(k-1):
+                        q = list(p); q[i], q[i+1] = q[i+1], q[i]; cq = encode(q)
+                        if cq in st and cq not in seen: seen.add(cq); stack.append(cq)
+                        q = list(p); a, b = q.index(i+1), q.index(i+2); q[a], q[b] = q[b], q[a]; cq = encode(q)
+                        if cq in st and cq not in seen: seen.add(cq); stack.append(cq)
+                big = max(big, size)
+            comps.append(ncomp); bigfrac.append(big/len(st))
+        Mpos = [len(v) for v in d['miss'].values() if len(v) <= 3000]
+        print(f"cluster structure (adjacent-transposition graph on the missing set, σ with 0<M≤3000, {len(comps)} σ): mean M={sum(Mpos)/len(Mpos):.2f}, mean #components={sum(comps)/len(comps):.2f}, mean fraction of M in largest component={sum(bigfrac)/len(bigfrac):.3f}; among σ with M≥10: mean #components={(lambda L: sum(L)/len(L) if L else float('nan'))([c for c, m in zip(comps, Mpos) if m >= 10]):.2f}, mean M={(lambda L: sum(L)/len(L) if L else float('nan'))([m for m in Mpos if m >= 10]):.1f}")
 
 if __name__ == '__main__':
     what = sys.argv[1] if len(sys.argv) > 1 else 'all'
