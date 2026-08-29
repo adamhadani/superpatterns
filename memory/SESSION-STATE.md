@@ -130,3 +130,4 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
   all n; theory for layered/grid/run-union classes; coupling attempts.
 - Queued (not launched): W28 hard-core reduction from W24's missing-pattern data; W29 rigorous threshold < 1/4 for random π.
 - 18:15: W21 results.md complete (k=40 filled) and folded into paper (identity hardest; random limit ≈0.22). Awaiting its final report.
+- 18:40: W26 COMPLETED and VERIFIED (Lemma 1.2/1.3, count, asymptotics; C_0 = 27.63 recomputed). Folded as Theorem 13. Running: W24 (k=8), W27 (comparison). W28 queued behind W24.

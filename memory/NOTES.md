@@ -66,6 +66,9 @@ Negative / dead ends (with the reason; each is a theorem or a brute-force-checke
   periodic word/block-grids fixed model: speed N/(3r²) at threshold 9r ln(3er) (factor r better than Thm 9).
   NEGATIVE: any bad-box-tolerance lemma has f ≤ 1/r ⇒ threshold ≥ ln r (Mirsky grids); fixed-model rate ≤ 1/r for all C;
   canonical covers don't beat e. Residual class still k² polylog k.
+- W26 (Thm 13): speed-N bound for (12)^h via alternating-chain certificates: Pr ≤ e^{−ρ(C)N}, ρ>0 iff C>27.63 (k-uniform;
+  first speed-N beyond monotone/box patterns). NEGATIVE: relaxation threshold 9/16 vs 1/4; exact Pareto coarse-graining
+  costs e^{Θ(k³)}; r strips: C_0(r) ≈ 3.5 r³; nothing for the union bound over S_k.
 - Alon–Spencer toolbox (W22 review): Janson/extended Janson/Suen exponent ≤ C/2 at N=Ck² for ANY copy-event family
   (Δ ≥ μ²/C, single-point overlaps); Talagrand ≤ C/4; Azuma ≤ C/2; Kim–Vu vacuous; LLL only positivity. NOT capped:
   certificate counting (Dilworth cover ⇒ Pr(LIS<k) ≤ (e/C)^N, speed N) → try antichain-cover certificates for
