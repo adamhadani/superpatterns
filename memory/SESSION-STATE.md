@@ -137,3 +137,6 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
   W27 agent paused waiting for smc scans (k=5–7 crossover numerics); its theory (proof.md §0–2, §4) VERIFIED line by
   line (constants q̄(6)=0.938, ι=0.122/0.277, D(½‖0.86)=0.365, Av_7 counts recomputed; note τ_j vs τ_j⁻¹ slip in Thm 2.5
   is harmless). Folded as Theorem 14 + table row. Launching W28 now.
+- 18:55: W28 `experiments/w28-hardcore/` launched (agent a114bad863bf853e9): hard-core/cluster reduction Pr(M>0) ≥ μ/R from
+  W24 dumps — Janson Δ vs actual, missing-set structure, sufficient condition for R ≤ e^{O(k)}. Still queued: W29
+  (rigorous sub-1/4 threshold for random π). Running: W27 (scans), W24 tails (unattended), W28.
