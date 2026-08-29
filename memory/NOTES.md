@@ -59,8 +59,9 @@ Negative / dead ends (with the reason; each is a theorem or a brute-force-checke
 - Renewal/greedy rules for c_21 cap at ≈ 0.84 (W17 Prop 4); the last 20% to c_21 = 1 needs block-to-block correlation.
 - The corner greedy does NOT extend verbatim to arbitrary π (strips must be chains; W19 Prop 3.1). Every greedy or repaired
   greedy has failure speed ≤ min(k, strip height): cannot deliver the e^{−k ln k} per pattern the union bound needs (W19).
-- Numerically (W16/W21): the identity is the HARDEST pattern at finite k (random π contained 3–10% earlier, k ≤ 28);
-  whether both limits are 1/4 is undecided.
+- NUMERICAL (W21, k ≤ 40, decided as far as numerics can): identity is the HARDEST pattern; random-π n_1/2/k² → ≈0.22±0.02
+  (< 1/4), ratio rand/id .959→.881 decreasing, excess over k²/4 stops growing, log-log slope test; layered as hard as
+  identity, tilted grids as easy as random. ⇒ 1/4 is the max over patterns; κ_univ ≈ 2.13 > 2.
 - Certificate counting (W23): identity Dilworth bound (N+k)^k (e(k−1)²/(N−k+1))^N (rate ln(C/e), loss 0.60 at C=e);
   periodic word/block-grids fixed model: speed N/(3r²) at threshold 9r ln(3er) (factor r better than Thm 9).
   NEGATIVE: any bad-box-tolerance lemma has f ≤ 1/r ⇒ threshold ≥ ln r (Mirsky grids); fixed-model rate ≤ 1/r for all C;

@@ -103,7 +103,7 @@ if __name__=="__main__":
         A,s=lstsq([[1,x] for x in xs],ys); rms=math.sqrt(sum((A+s*x-y)**2 for x,y in zip(xs,ys))/len(xs)); return s,A,rms
     idk=[int(k) for k in sorted(lis,key=int) if int(k)>=12]; idn=[lis[str(k)]["n_half"] for k in idk]
     for lab,kk,nn in [("identity (LIS, k=12..48)",idk,idn),("identity (LIS, k=20..40)",[k for k in idk if 20<=k<=40],[n for k,n in zip(idk,idn) if 20<=k<=40]),
-                      ("random pi mean (k=12..36)",ks,means),("random pi mean (k=20..36)",ks[2:],means[2:])]:
+                      ("random pi mean (k=%d..%d)"%(ks[0],ks[-1]),ks,means),("random pi mean (k=%d..%d)"%(ks[2],ks[-1]),ks[2:],means[2:])]:
         r=loglog(kk,nn,0.25)
         print("  %-28s c=1/4: slope=%.3f rms=%.3f"%(lab,r[0],r[2]) if r else "  %s: n/k^2-1/4 <= 0 somewhere"%lab, end="")
         # which c gives slope -2/3 ?
@@ -114,7 +114,7 @@ if __name__=="__main__":
         print("   | c with slope=-2/3: c=%.4f (rms %.3f)"%(best[0],best[2]))
         print("     slope vs c: "+"  ".join("c=%.3f:%s"%(c,("%.2f"%loglog(kk,nn,c)[0]) if loglog(kk,nn,c) else "n/a") for c in [0.18,0.20,0.22,0.23,0.24,0.25]))
     # per-pattern-family log-log at c=1/4 (each random pattern separately, k=20..36 where the same seed index exists)
-    print("  per-pattern (c=1/4, k=20..36) slopes:")
+    print("  per-pattern (c=1/4, k=20..%d) slopes:"%ks[-1])
     for j in range(4):
         kk=[k for k in ks if k>=20]; nn=[table[k]["r%d_%d"%(k,j)][0] for k in kk]; r=loglog(kk,nn,0.25)
         print("    r*_%d: slope=%.3f rms=%.3f"%(j,r[0],r[2]) if r else "    r*_%d: n/a"%j)

@@ -45,3 +45,16 @@ series give 0.255–0.274 (true value 1/4) — the bias of the forms is upward, 
 anything lower.  Launched k = 40 (4 π, 600 samples, n = 400..460 step 12) and s36 (6×6 tilted grid).
 Dead end noted: contain_mrv (W16) is ~100× slower than contain_bc at k=20 and was hopeless at k ≥ 28 for the
 identity (52 M nodes/sample) — the LIS/LDS cell prune fixed that (identity now O(1) nodes).
+
+## k = 40 done (4 π, 600 samples, n = 400..460 step 12; ≈ 2000–3300 s wall per n with 3 workers on the loaded machine)
+rand mean 427.9 (sd 1.3) vs id(LIS) 485.7 → ratio .881.  n_rand − k²/4 = 27.9: DECREASING now (28.9 at k = 36).
+Full series k = 12..40: ratio .959 .936 .924 .911 .904 .894 .887 .881.
+Log-log re-analysis (coordinator/W25): slope of log(n/k² − 1/4) vs log k is −0.62 for the identity (LIS,
+control; TW predicts −2/3) but −1.4 (k = 12..40) / −1.7 (k = 20..40) for random π, per pattern −1.6…−1.8,
+with poor fits; the c that makes the random series TW-like (slope −2/3) is 0.200–0.203 (same estimator gives
+0.220 for the identity, so bias-corrected ≈ 0.23).  Results in results.md §3a.
+Structured: 6×6 tilted grid at k = 36: 350.4 vs random 351.8 (same); identity 397.9.
+s24 (layered (21)^{12} etc.) still running at the time of the k = 40 fit — the layered pattern costs ≈ 0.5 s/sample
+at k = 24 (the LIS/LDS prune does not help it: LDS = 2 in every cell); filled in below when done.
+Negative/inconclusive: nothing in the data supports a common limit 1/4; the only escape is a correction term
+that is positive at k ≤ 40 and negative later (n = k²/4 + d k − e k^{4/3}), which no finite-k experiment excludes.

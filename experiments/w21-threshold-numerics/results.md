@@ -48,49 +48,49 @@ use all 8 (k ≤ 32).
 | 28 | 223.89 ±.38 | 224.43 ±.39 | 223.31 ±.37 | 222.47 ±.36 | 224.22 (1.38; 0.49) | .2860 | 248.03 | .9040 |
 | 32 | 287.11 ±.47 | 284.49 ±.44 | 284.62 ±.46 | 285.40 ±.46 | 284.95 (0.93; 0.33) | .2783 | 318.70 | .8941 |
 | 36 | 352.52 ±.9 | 355.09 ±1.0 | 351.39 ±.9 | 352.66 ±1.0 | 352.92 (1.56; 0.78) | .2723 | 397.86 | .8870 |
-| 40 | K40_ROW |
+| 40 | 428.19 ±1.5 | 428.18 ±1.5 | 426.08 ±1.4 | 429.23 ±1.4 | 427.92 (1.32; 0.66) | .2675 | 485.72 | .8810 |
 
 (± = half-width of the 95 % bootstrap CI.)  The threshold of a random pattern is strongly self-averaging: the
 spread across random π is 0.3–1 % of n_½ at every k, far below the identity–random gap (7–13 %).
 The transition is also sharper for random π (logistic width w ≈ 0.055 n_½) than for the identity (w ≈ 0.073 n_½).
 
-Ratio n_rand/n_id vs k (12 … 36): .959 .936 .924 .911 .904 .894 .887 K40_RATIO — monotone decreasing, no sign
+Ratio n_rand/n_id vs k (12 … 36): .959 .936 .924 .911 .904 .894 .887 **.881** — monotone decreasing, no sign
 of turning towards 1.  (W16 had .95 .97 .97 .97 .94 .90 for k = 8..20 from ≤ 500 samples; the new series
 supersedes it.)
 
 ## 3. Fits of the k-dependence and implied limits
 
-Four forms were fitted to n_½(k) (means over random π, k = 12..36; bootstrap CIs from the per-k sem, floor 0.3):
+Four forms were fitted to n_½(k) (means over random π, k = 12..40; bootstrap CIs from the per-k sem, floor 0.3):
 A: √n = a k + b k^{1/3} (Tracy–Widom form; limit a²);  B: n = c k² + d k;  C: n = c k² + d k^{4/3};
 D: n = c k² + d k^{4/3} + e k^{2/3}.  The SAME forms fitted to the exact identity series (LIS, k = 12..48,
 true limit 1/4) calibrate the finite-k bias of each form.
 
-| form | identity (true limit .2500) | random π, k = 12..36 | random π, k = 24..36 |
+| form | identity (true limit .2500) | random π, k = 12..40 | random π, k = 16..40 |
 |---|---|---|---|
-| A: a² | .2585 [.2575, .2596], b = .497, rms .19 | .2102 [.2077, .2129], b = .697, rms .46 | .2057 [.2005, .2110], rms .20 |
-| B: c | .2744 [.2737, .2749], d = 1.16, rms .71 | .2316 [.2293, .2341], d = 1.49, rms .74 | .2268 [.2220, .2313], rms .28 |
-| C: c | .2553 [.2543, .2562], d = .564, rms .09 | .2012 [.1977, .2052], d = .777, rms .23 | .1993 [.1923, .2062], rms .17 |
-| D: c | .2558 [.2523, .2595], rms .09 | .1928 [.1781, .2090], rms .12 | .1837 [.1200, .2499], rms .12 |
+| A: a² | .2585 [.2575, .2596], b = .497, rms .19 | .2092 [.2073, .2115], b = .706, rms .50 | .2077 [.2054, .2101], rms .36 |
+| B: c | .2744 [.2737, .2749], d = 1.16, rms .71 | .2295 [.2278, .2312], d = 1.54, rms .86 | .2283 [.2263, .2303], rms .66 |
+| C: c | .2553 [.2543, .2562], d = .564, rms .09 | .2008 [.1982, .2035], d = .780, rms .23 | .2004 [.1974, .2034], rms .20 |
+| D: c | .2558 [.2523, .2595], rms .09 | .1947 [.1848, .2056], e = −.49, rms .12 | .1943 [.1800, .2084], rms .13 |
 
 Every form puts the random-π limit 0.04–0.06 below the value the same form returns for the identity, whose
 bias is upward (+.005 … +.024); a bias-corrected reading is c_rand ≈ 0.20–0.23 (form B, the least curved
-correction, gives .232 − .024 = .21; form C gives .201 − .005 = .20; form A .210 − .009 = .20).
+correction, gives .230 − .024 = .21; form C gives .201 − .005 = .20; form A .209 − .009 = .20).
 
 Direct diagnostics (means over random π):
 
 | k | 20 | 24 | 28 | 32 | 36 | 40 |
 |---|---|---|---|---|---|---|
-| n_½ − k²/4 | 22.8 | 25.7 | 28.2 | 29.0 | 28.9 | K40_EXC |
-| (n_½ − k²/4)/k | 1.14 | 1.07 | 1.01 | 0.905 | 0.803 | K40_EXCK |
-| (n_½ − k²/4)/k^{4/3} | .420 | .372 | .332 | .285 | .243 | K40_EXC43 |
+| n_½ − k²/4 | 22.8 | 25.7 | 28.2 | 29.0 | 28.9 | 27.9 |
+| (n_½ − k²/4)/k | 1.14 | 1.07 | 1.01 | 0.905 | 0.803 | 0.698 |
+| (n_½ − k²/4)/k^{4/3} | .420 | .372 | .332 | .285 | .243 | .204 |
 | identity: (n_½ − k²/4)/k^{4/3} | .606 | .610 | .612 | .617 | .621 | .627 |
 
 For the identity the excess over k²/4 grows like 0.6 k^{4/3} (Tracy–Widom, coefficient slowly rising towards its
-limit).  For random π the excess over k²/4 has STOPPED GROWING at k ≈ 28–36 (≈ 29 permutation points): a limit
+limit).  For random π the excess over k²/4 has STOPPED GROWING at k ≈ 32–36 (≈ 29 permutation points) and decreases at k = 40: a limit
 of 1/4 would require the finite-size correction to be positive but bounded (or to turn negative) — i.e. a
 correction of the form d k − e k^{4/3} with e > 0.  Forcing c = 1/4 and fitting n − k²/4 = d k + e k^{4/3} on
-k ≥ 24 indeed gives e = −0.67 (d = 3.0); with e = 0 the fit has rms 3.0 (vs 0.2–0.3 for the free forms).
-With the leading constant free, a linear-in-k correction (form B) fits with c = 0.227–0.232 and every simpler
+k ≥ 24 indeed gives e = −0.60 (d = 2.8); with e = 0 (n = k²/4 + d k) the fit has rms 4.5 (vs 0.2–0.9 for the free forms).
+With the leading constant free, a linear-in-k correction (form B) fits with c = 0.228–0.230 and every simpler
 form agrees on c ∈ [0.19, 0.23].
 
 ### 3a. Log-log analysis (coordinator/W25 request): slope of log(n_½/k² − c) vs log k
@@ -101,13 +101,13 @@ If lim n_½/k² = c with a Tracy–Widom-type finite-size correction, n_½/k² �
 |---|---|---|---|
 | identity, LIS, k = 12..48 (control) | −0.617 (.003) | .220 | −.37 / −.44 / −.48 / −.54 |
 | identity, LIS, k = 20..40 (control) | −0.619 (.002) | .220 | −.35 / −.43 / −.48 / −.54 |
-| random π mean, k = 12..36 | −1.32 (.061) | .203 | −.65 / −.81 / −.92 / −1.08 |
-| random π mean, k = 20..36 | −1.58 (.030) | .2005 | −.66 / −.86 / −1.01 / −1.23 |
-| single patterns r_0..r_3, k = 20..36, c = 1/4 | −1.45, −1.51, −1.68, −1.80 | | |
+| random π mean, k = 12..40 | −1.41 (.082) | .2025 | −.65 / −.82 / −.95 / −1.13 |
+| random π mean, k = 20..40 | −1.69 (.045) | .2000 | −.67 / −.87 / −1.04 / −1.28 |
+| single patterns r_0..r_3, k = 20..40, c = 1/4 | −1.60, −1.65, −1.80, −1.81 (rms .02–.07) | | |
 
 Control: the identity gives slope −0.62 at its true limit — close to −2/3 (the 7 % shortfall is the known
 sub-leading term; it also makes the "c with slope −2/3" estimator biased LOW by 0.03).  Random π at c = 1/4
-gives slope −1.3 to −1.8, steepening with k, with a poor fit (rms 0.03–0.06 vs 0.002–0.003 for the identity
+gives slope −1.4 to −1.8, steepening with k, with a poor fit (rms 0.05–0.08 vs 0.002–0.003 for the identity
 and 0.002–0.005 for the random series at c ≈ 0.20): the random-π data are NOT compatible with a k^{−2/3}
 approach to 1/4.  A TW-type approach is restored at c ≈ 0.20 (bias-corrected by the control: ≈ 0.23).
 Conclusion of the re-analysis: the finite-size exponent, not just the value at k = 40, separates the two
@@ -133,8 +133,8 @@ the easy one (≈ .27–.28 at k = 32–36), and the gap is widening with k.
 ## 5. Verdict
 
 Decided at the level a numerical experiment can decide, in favour of "strictly below 1/4":
-1. n_rand/n_id decreases monotonically from .959 (k = 12) to .887 (k = 36) K40_VERDICT with sem ≲ 0.003.
-2. n_rand − k²/4 has stopped growing (28.2, 29.0, 28.9 at k = 28, 32, 36), whereas any limit of 1/4 with a
+1. n_rand/n_id decreases monotonically from .959 (k = 12) to .881 (k = 40) with sem ≲ 0.003.
+2. n_rand − k²/4 has stopped growing (28.2, 29.0, 28.9, 27.9 at k = 28, 32, 36, 40 — it has started to decrease), whereas any limit of 1/4 with a
    positive TW-type correction needs it to grow like k^{4/3} (the identity's does: 0.6 k^{4/3}).
 3. The log-log slope at c = 1/4 is −1.3 … −1.8 and steepening (identity control: −0.62 ≈ −2/3); the value of
    c that makes the random series TW-like is 0.20 (bias-corrected ≈ 0.23).

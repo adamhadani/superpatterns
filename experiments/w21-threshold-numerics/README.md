@@ -40,6 +40,8 @@ python3 lis_thr.py > lis_thr.out
 ./run_struct.sh s20 20 2000 95,100,...,160 1
 ./run_struct.sh s24 24 2000 135,140,...,210 1
 ./run_struct.sh s25 25 2000 150,156,...,222 1
-./run_struct.sh s36 36 1000 ... 1
+# s36: id, tilted 6x6, r0 only (layered/dechalf omitted at k=36: too slow)
+W=1 python3 sweep.py s36 36 1000 320,330,340,350,360,370,380 id=... tilt=... r0=...   (see log.md)
+./run_k.sh k12 12 4000 38,40,...,64 1 ; ./run_k.sh k16 16 4000 66,69,...,105 1
 python3 analyze.py > analyze.out
 ```

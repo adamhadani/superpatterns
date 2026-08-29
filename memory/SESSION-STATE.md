@@ -129,3 +129,4 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
 - Launched W27 `experiments/w27-comparison/` (agent a98dc6b4175cd236a): comparison principle — exhaustive numerics k≤7,
   all n; theory for layered/grid/run-union classes; coupling attempts.
 - Queued (not launched): W28 hard-core reduction from W24's missing-pattern data; W29 rigorous threshold < 1/4 for random π.
+- 18:15: W21 results.md complete (k=40 filled) and folded into paper (identity hardest; random limit ≈0.22). Awaiting its final report.
