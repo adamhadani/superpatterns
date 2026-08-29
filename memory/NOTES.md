@@ -79,6 +79,12 @@ Negative / dead ends (with the reason; each is a theorem or a brute-force-checke
   ln R ≈ 0.4–0.5 at n=k², R→1 by 1.1k². Missing set heavy-tailed and clustered (adjacent transpositions ρ≈160–230 at
   t(7); dihedral 20–25; random pairs 12–16; reverse/complement of identity never co-miss). First moment off by e^{Θ(k)}
   at threshold — a hard-core / clustering correction is what a proof of the constant needs (→ W28).
+- W28 (Prop 15, verified): witness reduction R ≤ E M²/μ = Σ p_π Λ_π/μ ≤ max_π Λ_π (Λ_π = E[M | π⊄σ_n]); if R = e^{o(k²)}
+  (and ln μ drops Ω(1) per unit n — numerical/speed-N) the threshold constant IS the first-moment constant. Janson and
+  Bonferroni are void at k=6,7 (Δ/μ = 20–430). NEGATIVE: no hard core (p_π within ×4; layered patterns hardest, not id);
+  missing set is one diffuse cluster, NOT up-sets of missing (k−1)-patterns; R made in the far tail; M driven by local
+  emptiness of σ (Spearman +0.42 with largest empty rectangle; +0.11 with LIS). id/rev co-miss impossible for
+  n ≥ (k−1)²+1 (Erdős–Szekeres) — factor 2 only. Needed: #patterns killed by one empty rectangle of area ≍ 1/k² is e^{O(k)}.
 - Alon–Spencer toolbox (W22 review): Janson/extended Janson/Suen exponent ≤ C/2 at N=Ck² for ANY copy-event family
   (Δ ≥ μ²/C, single-point overlaps); Talagrand ≤ C/4; Azuma ≤ C/2; Kim–Vu vacuous; LLL only positivity. NOT capped:
   certificate counting (Dilworth cover ⇒ Pr(LIS<k) ≤ (e/C)^N, speed N) → try antichain-cover certificates for

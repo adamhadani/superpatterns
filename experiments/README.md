@@ -33,3 +33,4 @@ session appears in the paper); tools are C (`cc -O2`) or Python 3; raw outputs a
 | `w25-asymptopia-review` | Spencer's *Asymptopia* vs. our tools | Theorem C′ (λ = 1.00734 via exact Bernoulli tail) |
 | `w26-pareto-ld` | Pareto-front / alternating-chain certificates for (12)^h | Theorem 13 (speed N for C > 27.63) |
 | `w27-comparison` | Comparison principle "identity hardest" | Theorem 14 (Mirsky on cells: speed N for bounded-block sums and 𝒢(r,h)); CP(1) false at k = 4; rate-form CP* |
+| `w28-hardcore` | Hard-core / cluster reduction of the union bound (why R = e^{O(k)}) | Thm 1.1: R ≤ EM²/μ = Σ p_π E[M|π⊄σ]/μ (second-moment criterion, escapes the Janson cap); ES disjointness of id/rev (factor 2 only); numerics: no hard core (p_π flat within ×4), R is pure conditional clustering, tail of M|M>0 heavy up to m ≈ e^{0.7k} |

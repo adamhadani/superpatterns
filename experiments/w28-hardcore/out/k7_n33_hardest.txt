@@ -1,0 +1,36 @@
+# k=7 n=33 samples=3000 mu=44.99; uniform mean p = 0.00893
+## 15 hardest patterns (p_pi = Pr(pi not in sigma_n)); LIS LDS runs inv; E[M | pi missing]
+(2, 3, 4, 5, 6, 7, 1)  p=0.0213 (2.39x mean)  lis=6 lds=2 runs=2 inv=6  E[M|miss]=90.1 (#ev 64)
+(5, 7, 6, 3, 4, 1, 2)  p=0.0213 (2.39x mean)  lis=2 lds=4 runs=5 inv=17  E[M|miss]=135.9 (#ev 64)
+(7, 6, 3, 4, 5, 1, 2)  p=0.0210 (2.35x mean)  lis=3 lds=4 runs=4 inv=17  E[M|miss]=154.1 (#ev 63)
+(6, 7, 5, 2, 3, 4, 1)  p=0.0203 (2.28x mean)  lis=3 lds=4 runs=4 inv=17  E[M|miss]=154.1 (#ev 61)
+(2, 1, 3, 4, 6, 5, 7)  p=0.0200 (2.24x mean)  lis=5 lds=2 runs=4 inv=2  E[M|miss]=103.2 (#ev 60)
+(7, 6, 4, 5, 3, 1, 2)  p=0.0197 (2.20x mean)  lis=2 lds=5 runs=4 inv=19  E[M|miss]=164.9 (#ev 59)
+(7, 4, 5, 6, 1, 2, 3)  p=0.0197 (2.20x mean)  lis=3 lds=3 runs=4 inv=15  E[M|miss]=202.6 (#ev 59)
+(3, 2, 1, 5, 4, 6, 7)  p=0.0193 (2.17x mean)  lis=4 lds=3 runs=4 inv=4  E[M|miss]=99.2 (#ev 58)
+(5, 7, 6, 2, 3, 4, 1)  p=0.0193 (2.17x mean)  lis=3 lds=4 runs=4 inv=16  E[M|miss]=142.5 (#ev 58)
+(7, 5, 6, 4, 3, 1, 2)  p=0.0193 (2.17x mean)  lis=2 lds=5 runs=4 inv=19  E[M|miss]=121.4 (#ev 58)
+(7, 6, 3, 2, 4, 5, 1)  p=0.0190 (2.13x mean)  lis=3 lds=5 runs=3 inv=16  E[M|miss]=147.4 (#ev 57)
+(7, 6, 2, 3, 4, 5, 1)  p=0.0190 (2.13x mean)  lis=4 lds=4 runs=3 inv=15  E[M|miss]=127.1 (#ev 57)
+(7, 6, 4, 3, 5, 1, 2)  p=0.0187 (2.09x mean)  lis=2 lds=5 runs=4 inv=18  E[M|miss]=156.6 (#ev 56)
+(7, 6, 4, 5, 2, 1, 3)  p=0.0187 (2.09x mean)  lis=2 lds=5 runs=4 inv=18  E[M|miss]=162.0 (#ev 56)
+(7, 4, 5, 6, 2, 1, 3)  p=0.0187 (2.09x mean)  lis=3 lds=4 runs=4 inv=16  E[M|miss]=157.7 (#ev 56)
+## 8 easiest patterns with >= 20 events
+(1, 7, 2, 5, 6, 4, 3)  p=0.0067 (0.75x)  lis=4 lds=4 runs=4  E[M|miss]=130.8
+(6, 1, 5, 2, 4, 7, 3)  p=0.0067 (0.75x)  lis=4 lds=4 runs=5  E[M|miss]=406.4
+(1, 4, 2, 7, 3, 5, 6)  p=0.0067 (0.75x)  lis=5 lds=2 runs=5  E[M|miss]=170.7
+(1, 7, 3, 5, 6, 4, 2)  p=0.0067 (0.75x)  lis=4 lds=4 runs=4  E[M|miss]=151.8
+(3, 2, 6, 7, 5, 1, 4)  p=0.0067 (0.75x)  lis=3 lds=3 runs=4  E[M|miss]=232.2
+(1, 2, 7, 3, 5, 6, 4)  p=0.0067 (0.75x)  lis=5 lds=3 runs=4  E[M|miss]=115.4
+(2, 4, 1, 5, 7, 3, 6)  p=0.0067 (0.75x)  lis=4 lds=2 runs=5  E[M|miss]=305.9
+(1, 5, 2, 6, 4, 7, 3)  p=0.0067 (0.75x)  lis=4 lds=3 runs=6  E[M|miss]=204.7
+## dihedral-class spread: max/min of p within the 8-element symmetry class, averaged over classes (>=20 events each)
+classes=313 mean max/min = 1.59, median 1.55, 90% 1.95
+## Null comparison: statistics of actual missing sets vs uniformly random subsets of S_k of the same size, and vs p-weighted random subsets
+actual           (N=300, mean M=42.1): #comp adj 13.64, #comp 1pt 1.65, largest1pt/M 0.888, cover# 9.15
+uniform null     (N=300, mean M=42.1): #comp adj 38.64, #comp 1pt 8.11, largest1pt/M 0.481, cover# 22.19
+p-weighted null  (N=300, mean M=42.1): #comp adj 38.28, #comp 1pt 8.00, largest1pt/M 0.476, cover# 22.06
+## same, restricted to events with M >= 10
+actual           (N=190, mean M=64.2): #comp adj 19.73, #comp 1pt 1.63, largest1pt/M 0.931, cover# 13.17
+uniform null     (N=190, mean M=64.2): #comp adj 58.74, #comp 1pt 10.73, largest1pt/M 0.481, cover# 32.92
+p-weighted null  (N=190, mean M=64.2): #comp adj 58.16, #comp 1pt 10.52, largest1pt/M 0.484, cover# 32.71

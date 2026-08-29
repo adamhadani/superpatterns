@@ -140,3 +140,7 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
 - 18:55: W28 `experiments/w28-hardcore/` launched (agent a114bad863bf853e9): hard-core/cluster reduction Pr(M>0) ≥ μ/R from
   W24 dumps — Janson Δ vs actual, missing-set structure, sufficient condition for R ≤ e^{O(k)}. Still queued: W29
   (rigorous sub-1/4 threshold for random π). Running: W27 (scans), W24 tails (unattended), W28.
+- 19:10: W28 COMPLETED and VERIFIED (Thm 1.1/Cor 1.2/Thm 2.1/Props 3.1–3.3 read; ln(E M²/μ) at k=6 reproduced by my
+  sampler). Folded as Proposition 15 + table row. Launching W29 (rigorous sub-1/4 threshold for random π). New queue
+  item W30: count patterns killed by one empty rectangle (the combinatorial step Prop 15 needs). Running: W27 (scans),
+  W24 tails (unattended), W29.

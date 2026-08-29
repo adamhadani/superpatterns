@@ -220,3 +220,27 @@ excess factor e^{o(k²)} is tolerable.
   sets, i.e. exactly the union-bound entropy k ln k; no ρ makes the constraint "cheap".
 - Direct-sum splitting (Lemma 2.3) loses a factor 4 in the exponent per ⊕-level: useless for the identity itself
   (depth k) and for any pattern with a deep ⊕/⊖ tree; fine for bounded depth.
+
+## 3. Numerics (NUMERICAL; tables in results.md)
+
+Setup: ln p_π(n) for every dihedral class, k = 4 (7 classes, n ≤ 24), 5 (23, n ≤ 38), 6 (115, n ≤ 48/54),
+7 (694, n ≤ 45), by the SMC growth estimator (validated against exact avoider counts and the exact LIS tail);
+deep-tail runs with larger populations for the extremal patterns at k = 6, 7, 8 (deep/). Excess := ln p_π − ln p_id.
+
+**3.1 Which patterns are harder than the identity.** At every k the set {π : p_π(n) > p_id(n)} for n ≳ 0.5k² is
+exactly the set of ⊕-sums (up to symmetry) that contain a DECREASING block of length ≥ 2 next to increasing ones:
+k=4: 1324 only; k=5: 14325, 13254, 12435, 12354, 15432, 21354 (+21543 marginally); k=6: 154326, 132546, 123546,
+125436, 124365, 123654, 143265, … (26 classes, 110 of 720 patterns at n = 48). The hardest is always
+1 ⊕ dec_{k−2} ⊕ 1 (1324, 14325, 154326) or 1 ⊕ 21 ⊕ ⋯ ⊕ 1 (132546 ties at k = 6); Wilf-equivalent classes of the
+identity (1243, 2143, 1432 at k = 4) sit at excess 0 within noise. Random-like patterns are much EASIER
+(k = 6, n = 48: median excess −1.4, minimum −4.2 for 235164): the identity is close to the hardest pattern but is
+not the hardest, and the exceptions are a structurally tiny family (⊕-sums with decreasing blocks).
+
+**3.2 Size of the excess.** Max excess at n = k²: 0.07, 0.32, 0.76 (k = 4,5,6); at n = 1.33k²: 0.19, 0.92, 1.61;
+per point at 1.33k²: 0.009, 0.028, 0.034. So the excess grows with k; whether it is Θ(k) (harmless: absorbed by the
+e^{O(k)} error factor of CP(1)) or Θ(k²) at fixed n/k² (would refute CP(1) with e^{O(k)} but not CP(K), K > 1)
+is what the k = 7, 8 deep runs are for (§3.4 below).
+
+**3.3 Crossovers.** n_×(π)/k² (first n from which the excess stays > 0.02): 0.81 (1324, k=4); 0.52–0.64 (k=5);
+0.39–0.58 (k=6). The crossover sits INSIDE the window [k²/2, 3k²/2] and, if anything, moves to smaller n/k² with k —
+CP(1) cannot be rescued by "above threshold only" at fixed K = 1. CP(K) with K > 1 is untouched (Fact 1.2).

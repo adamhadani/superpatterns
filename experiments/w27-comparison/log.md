@@ -29,3 +29,8 @@
   strips) so Mirsky-cover counting explodes; the relabelling identity (Prop 2.4) is exact but the constrained family
   has density 1/k!, i.e. it restates the union-bound entropy.
 - Queued deep/ targeted runs (after k=5 scan): k=6,7,8 identity vs 1⊕dec⊕1 vs layered (21)^h vs grids (12)^h,(1234)^2.
+- k=4,5,6 scans done. Patterns HARDER than the identity (excess>0) at every k are exactly the ⊕-sums with a decreasing
+  block: 1324; 14325, 13254, 12435, 12354, 15432, 21354; 154326, 132546, 123546, 125436, 124365, 123654, 143265 …
+  (orbit-weighted 2/24, 18/120, 110/720 of all patterns at n≈1.3k²). Max excess at n=k²: 0.07, 0.32, 0.76 (k=4,5,6);
+  at n=1.33k²: 0.19, 0.92, 1.61. Crossovers n_× ≈ 0.4–0.65 k² (inside the window, not moving out). Random-like
+  patterns are far easier (median excess −1.4 at k=6, n=48; bottom −4.2).
