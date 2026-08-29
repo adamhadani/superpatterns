@@ -150,3 +150,6 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
   scans still running unattended. Launching W30 (patterns killed by one empty rectangle). Queue after W30: W31
   x-lookahead / 2-D rule for random π below ½; W32 certified (quadrature) Ω_h.
 - 19:40: W30 `experiments/w30-empty-rectangle/` launched (agent aa269e0cb3c891816): patterns killed by one empty rectangle (e^{O(k)} vs e^{Θ(k ln k)}). Running: W27 scans, W24 tails, W30.
+- 20:00: W30 COMPLETED and VERIFIED (Lemma 1.2, Prop 2.1, Lemma 3.1/3.3, Prop 3.2 re-derived). Folded as a remark
+  after Prop 15. Launching W31 (x-lookahead / 2-D rule for random π below ½). Queue: W32 certified Ω_h; W33 uniform
+  O(1) slope of ln μ (would give e^{O(k√ln k)} in W30 Prop 3.2). Running: W27 scans, W24 tails, W31.

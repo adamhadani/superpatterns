@@ -91,6 +91,11 @@ Negative / dead ends (with the reason; each is a theorem or a brute-force-checke
   BARRIER: value-blind gap-window rules have Ω_h ≥ ½+1/(2h) (proved; the value-aware rule used respects it numerically
   but the proof's rank-independence step does not cover it — gap noted in w29 proof.md). Below ½ needs x-lookahead
   or a 2-D argument. Dead ends: diamond scores, absolute row targets, single strip h=k, HK-quasirandom, second moment.
+- W30 (verified; mostly NEGATIVE): "patterns killed by an empty rectangle" is not defect-specific — random new point
+  revives exactly 1−μ(n+1)/μ(n) ≈ 0.4 of M (exact identity), centre of largest empty rectangle ≈ 0.75 regardless of
+  area/aspect, 9-point grid 0.96. Question = tail of M itself. PROVED: completion-cell characterisation; strip deletion
+  E[M | Q empty] ≤ μ(n − min(w,h)); p_π(n−1) ≤ n p_π(n) ⇒ only e^{O(k ln^{3/2} k)} (e^{O(k√ln k)} if slope O(1), open).
+  Deterministic version false (sp(6) witness + 1 point revives 0.88·6! of missing 7-patterns).
 - Alon–Spencer toolbox (W22 review): Janson/extended Janson/Suen exponent ≤ C/2 at N=Ck² for ANY copy-event family
   (Δ ≥ μ²/C, single-point overlaps); Talagrand ≤ C/4; Azuma ≤ C/2; Kim–Vu vacuous; LLL only positivity. NOT capped:
   certificate counting (Dilworth cover ⇒ Pr(LIS<k) ≤ (e/C)^N, speed N) → try antichain-cover certificates for
