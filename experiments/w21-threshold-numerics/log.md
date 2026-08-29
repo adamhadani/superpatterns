@@ -24,3 +24,14 @@ and vs an LIS oracle for the identity; then thresholds for k = 20, 24, 28, 32.
 
 ## Sweeps launched (sweep.py, 2000 samples per point, seed 1000+n, all patterns on the same samples)
 k=20: n = 100..165 step 5;  k=24: n = 145..215 step 5.
+
+## Results so far (logistic fits, fit.py; details in results.md)
+k=20: id 132.7 (LIS 1e5: 132.9), rand mean 122.8 (8 π, sd 1.4)  ratio .925
+k=24: id 186.4 (LIS 186.2),      rand mean 169.7 (sd 0.6)        ratio .911
+k=28: id 248.1 (LIS 248.0),      rand mean 224.2 (sd 1.4)        ratio .904
+Identity LIS thresholds k=8..48 (lis_thr.out).  Calibration: free-constant fits to the EXACT identity series
+give an implied limit 0.255–0.258 (forms A, C) or 0.274 (form B) instead of 1/4 — the fits are biased upward
+by 2–10 % at k ≤ 48, so an "implied limit" for random π must be read with the same bias in mind.
+(n_rand − k²/4)/k = 1.14, 1.07, 1.01 at k = 20, 24, 28: decreasing linearly, as c < 1/4 predicts.
+Structured, k=25: tilted 5×5 grid n_half ≈ random π (slightly below), identity = decreasing (as it must).
+Launched k=36 (4 random π, 1000 samples); k=40 to follow (≈1.5 s/sample near threshold).

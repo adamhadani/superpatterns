@@ -104,3 +104,7 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
   Bellman recursion; Prop 4.5 C_mf(h) ↓ π/8; Prop 3.1 fresh-quadrant barrier; Remark 4.7 free ≤ min(fixed directions).
   Key message: FIXED-strip constant is (conjecturally) π/8 — corner greedy optimal there; 1/4 can only come from the
   FREE model (copy chooses its own strip boundaries). W20 still running numerics; W21 k=32 sweep running.
+- 15:45: W22 launched (agent a6ef860cc511e6cfc): review of Alon–Spencer 'The Probabilistic Method' for tools vs. our gap → experiments/w22-probabilistic-method-review/review.md. Book PDF in ~/Library/CloudStorage/Dropbox/Books/Mathematics/.
+- 16:00: W22 COMPLETED (review verified on the two key claims: Δ ≥ μ²/C; Dilworth certificate (e/C)^N). Folded into
+  paper (§Alon, "What the standard concentration tools give") and NOTES ledger. Launching W23 (certificate counting
+  for block-grid/periodic patterns) and W24 (union-bound slack numerics) per its recommendations.

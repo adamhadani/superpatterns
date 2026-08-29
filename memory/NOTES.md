@@ -61,6 +61,10 @@ Negative / dead ends (with the reason; each is a theorem or a brute-force-checke
   greedy has failure speed ≤ min(k, strip height): cannot deliver the e^{−k ln k} per pattern the union bound needs (W19).
 - Numerically (W16/W21): the identity is the HARDEST pattern at finite k (random π contained 3–10% earlier, k ≤ 28);
   whether both limits are 1/4 is undecided.
+- Alon–Spencer toolbox (W22 review): Janson/extended Janson/Suen exponent ≤ C/2 at N=Ck² for ANY copy-event family
+  (Δ ≥ μ²/C, single-point overlaps); Talagrand ≤ C/4; Azuma ≤ C/2; Kim–Vu vacuous; LLL only positivity. NOT capped:
+  certificate counting (Dilworth cover ⇒ Pr(LIS<k) ≤ (e/C)^N, speed N) → try antichain-cover certificates for
+  block-grid/periodic patterns; and measuring the union-bound slack R = E#missing / Pr(#missing>0).
 - Tilted-grid constant (W20, in progress): lookahead within the quadrant cannot beat the greedy; clock uncertainty Θ(√r)
   blocks rigorous rules below π/8; 2-strip DP state is a Pareto staircase, no known hydrodynamic limit; numerics → 1/4.
 
