@@ -118,15 +118,17 @@ hypotheses; the identity behaves as TW predicts, the random patterns do not appr
 | k | identity | decreasing | layered (21)^{k/2} | dec-half (k..k/2+1, then random) | tilted √k×√k grid | random r_0 |
 |---|---|---|---|---|---|---|
 | 20 | 132.7 ±.4 | 133.1 ±.4 | 132.8 ±.4 | 130.5 ±.4 | — | 121.5 ±.3 |
-| 24 | S24_ROW |
+| 24 | 186.3 ±.5 | 186.0 ±.5 | 186.9 ±.5 | 184.5 ±.4 | — | 169.2 ±.4 |
 | 25 | 200.9 ±.5 | 200.9 ±.5 | — | — | 180.8 ±.4 (5×5) | 182.5 ±.4 |
 | 36 | 397.9 (LIS) | — | — | — | 350.4 ±.9 (6×6) | 351.8 ±.9 |
 
 - decreasing = identity (as the reflection symmetry requires; a check of the solver's symmetry-independence).
-- The layered pattern (21)^{k/2} (LIS = k/2, LDS = 2) is as hard as the identity: n_½ = 132.8 vs 132.7 at k = 20.
+- The layered pattern (21)^{k/2} (LIS = k/2, LDS = 2) is as hard as the identity: n_½ = 132.8 vs 132.7 at k = 20,
+  186.9 vs 186.3 at k = 24 (if anything marginally harder).
 - The tilted grid (LIS = LDS = √k) sits exactly with the random patterns (180.8 vs 182.5 at k = 25;
   350.4 vs 351.8 at k = 36), i.e. patterns with balanced small LIS/LDS are as easy as random ones.
-- dec-half (LDS ≥ k/2) is only 1.6 % easier than the identity at k = 20: a long monotone run dominates.
+- dec-half (LDS ≥ k/2) is only 1–1.6 % easier than the identity (130.5 vs 132.7 at k = 20; 184.5 vs 186.3 at
+  k = 24): a monotone run of length k/2 already dominates the threshold.
 So the identity and the layered patterns are the hard (n_½/k² ≈ .31–.33) family, random and grid-like patterns
 the easy one (≈ .27–.28 at k = 32–36), and the gap is widening with k.
 

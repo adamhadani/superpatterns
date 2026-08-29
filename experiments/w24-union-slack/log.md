@@ -23,3 +23,4 @@ Date: 2026-08-29. Dir: experiments/w24-union-slack/. Machine shared (load ≈ 35
   Pairwise: ρ(π, π∘adjacent transposition) ≈ 160–230 at t(7); dihedral images ρ ≈ 20–25; random pairs ρ ≈ 12–16 ≈ E[M²]/E[M]².
   Reverse/complement pairs of the identity: 0 co-misses in 20000 samples (ρ≈0) — LIS and LDS are *negatively* related at fixed n.
   Cluster analysis added: missing set = 2–4 components (k=7, n≈t) under adjacent transpositions; largest component ≈ 70% of M.
+- 18:40 k=9 n=68: one σ with M=539 of 53 events; added 'R w/o max' column.

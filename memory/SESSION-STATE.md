@@ -131,3 +131,9 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
 - Queued (not launched): W28 hard-core reduction from W24's missing-pattern data; W29 rigorous threshold < 1/4 for random π.
 - 18:15: W21 results.md complete (k=40 filled) and folded into paper (identity hardest; random limit ≈0.22). Awaiting its final report.
 - 18:40: W26 COMPLETED and VERIFIED (Lemma 1.2/1.3, count, asymptotics; C_0 = 27.63 recomputed). Folded as Theorem 13. Running: W24 (k=8), W27 (comparison). W28 queued behind W24.
+- 18:50: W24 agent stopped (tails k=8 n=62, k=9 n=72/58, k=5 grid still running unattended in run_queue.sh; results.md
+  not yet written — `python3 analyze.py all` regenerates tables). Key numbers VERIFIED (own brute-force sampler
+  scratchpad/w24check.c at k=6 n=28 agrees). Folded into paper (§Alon "How slack is the union bound?" + table row).
+  W27 agent paused waiting for smc scans (k=5–7 crossover numerics); its theory (proof.md §0–2, §4) VERIFIED line by
+  line (constants q̄(6)=0.938, ι=0.122/0.277, D(½‖0.86)=0.365, Av_7 counts recomputed; note τ_j vs τ_j⁻¹ slip in Thm 2.5
+  is harmless). Folded as Theorem 14 + table row. Launching W28 now.

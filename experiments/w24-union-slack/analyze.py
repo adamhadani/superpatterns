@@ -41,7 +41,7 @@ def stats(M):
     se = (sum((x-sum(lnRs)/len(lnRs))**2 for x in lnRs)/(len(lnRs)-1))**0.5 if len(lnRs) > 2 else float('nan')
     EM2 = sum(x*x for x in M)/S
     return dict(S=S, P=P, npos=len(pos), EM=EM, R=R, lnR=math.log(R) if pos else float('nan'), se=se,
-                med=quant(pos, .5), q10=quant(pos, .1), q90=quant(pos, .9), q99=quant(pos, .99), mx=max(M),
+                med=quant(pos, .5), q10=quant(pos, .1), q90=quant(pos, .9), q99=quant(pos, .99), mx=max(M), Rtrim=((sum(pos)-max(pos))/(len(pos)-1)) if len(pos)>1 else float('nan'),
                 geo=math.exp(sum(math.log(x) for x in pos)/len(pos)) if pos else float('nan'),
                 ratio2=EM2/EM**2 if EM > 0 else float('nan'))
 
@@ -50,12 +50,12 @@ def table(data):
     print('Columns: samples; Pr(M>0) (#events); E[M]; R=E[M|M>0]; ln R (± bootstrap SE); median, q10, q90, q99 of M|M>0; max M; geometric mean of M|M>0; E[M²]/E[M]².')
     for k in sorted({k for k, n in data}):
         print(f'\n#### k = {k}  (k! = {math.factorial(k)}, k² = {k*k})')
-        print('| n | n/k² | samples | Pr(M>0) | #M>0 | E[M] | R | ln R | med | q10 | q90 | q99 | max | geo | E[M²]/E[M]² |')
-        print('|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|')
+        print('| n | n/k² | samples | Pr(M>0) | #M>0 | E[M] | R | ln R | med | q10 | q90 | q99 | max | R w/o max | geo | E[M²]/E[M]² |')
+        print('|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|')
         for (kk, n) in sorted(data):
             if kk != k: continue
             s = stats(data[(k, n)]['M'])
-            print(f"| {n} | {n/k/k:.2f} | {s['S']} | {s['P']:.4f} | {s['npos']} | {s['EM']:.4g} | {s['R']:.4g} | {s['lnR']:.3f}±{s['se']:.3f} | {s['med']} | {s['q10']} | {s['q90']} | {s['q99']} | {s['mx']} | {s['geo']:.3g} | {s['ratio2']:.3g} |")
+            print(f"| {n} | {n/k/k:.2f} | {s['S']} | {s['P']:.4f} | {s['npos']} | {s['EM']:.4g} | {s['R']:.4g} | {s['lnR']:.3f}±{s['se']:.3f} | {s['med']} | {s['q10']} | {s['q90']} | {s['q99']} | {s['mx']} | {s['Rtrim']:.3g} | {s['geo']:.3g} | {s['ratio2']:.3g} |")
 
 def hist(data):
     print('\n### Histograms of ln M given M>0 (bins of width 1 in ln M; counts)')

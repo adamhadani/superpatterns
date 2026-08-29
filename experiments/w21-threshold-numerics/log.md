@@ -58,3 +58,7 @@ s24 (layered (21)^{12} etc.) still running at the time of the k = 40 fit — the
 at k = 24 (the LIS/LDS prune does not help it: LDS = 2 in every cell); filled in below when done.
 Negative/inconclusive: nothing in the data supports a common limit 1/4; the only escape is a correction term
 that is positive at k ≤ 40 and negative later (n = k²/4 + d k − e k^{4/3}), which no finite-k experiment excludes.
+
+## s24 done (layered etc., k = 24, 2000 samples, n = 135..210 step 5)
+id 186.3, dec 186.0, layered 186.9, dechalf 184.5, r0 169.2 — layered = identity again; dechalf 1 % easier.
+All jobs finished; results.md / README.md / log.md complete.  Total solver CPU ≈ 12 core-hours.

@@ -65,49 +65,82 @@ Stanley–Wilf regime; §3 measures how the crossover n_×(π) moves with k.
 ### 2.1 Coarse-graining + Mirsky: direct sums of bounded blocks (PROVED)
 
 Setting. Π_N as N i.i.d. uniform points in [0,1]²; cut the square into a g×g array of cells (area 1/g² each).
-n_c = number of points in cell c (multinomial(N; 1/g², …, 1/g²)); given (n_c) the standardised patterns of the cells
-are independent and uniform. Fix b ≥ 1 and call a cell **good** if its pattern contains every τ ∈ S_b (it is a
-b-superpattern). Let q_b(n) = Pr(Π_n is a b-superpattern), nondecreasing in n, and q̄ = q̄_b(N, g) := E q_b(n_c),
-n_c ~ Bin(N, 1/g²). Write L := ln(1/(1−q̄)).
+n_c = number of points in cell c (multinomial(N; 1/g², …)); given (n_c) the standardised patterns of the cells are
+independent and uniform. Fix b ≥ 1 and call a cell **good** if its pattern contains every τ ∈ S_b. Let
+q_b(n) = Pr(Π_n contains every τ ∈ S_b) (nondecreasing in n) and q̄ := E q_b(n_c), n_c ~ Bin(N, 1/g²).
 
-**Theorem 2.1.** Let π = τ_1 ⊕ τ_2 ⊕ ⋯ ⊕ τ_h with |τ_i| ≤ b for all i (or the same with ⊖ throughout). Then for
-every g ≥ 1,
-      p_π(N) ≤ 16^{g(h−1)} · (1 − q̄)^{g² − (h−1)(2g−1)}.
-In particular, with g = ⌊√(N/m)⌋ (m = points per cell) and N ≥ mΛ²h² for a Λ with (1 − 2/Λ)L > (ln 16)/Λ,
-      p_π(N) ≤ exp(−ι N),   ι = [(1 − 2/Λ)L − (ln 16)/Λ]/m  > 0,
-where L = L_b(m) depends only on b and m (not on k, h or the τ_i). Since h ≤ k, N ≥ mΛ²k² suffices.
+**Theorem 2.1.** Let π = τ_1 ⊕ ⋯ ⊕ τ_h with all |τ_i| ≤ b (or the same with ⊖ throughout). Then for every g,
+      p_π(N) ≤ Pr( #good cells ≤ (h−1)(2g−1) ) ≤ exp( −g² · D( (h−1)(2g−1)/g² ‖ q̄ ) )   whenever (h−1)(2g−1) < q̄ g²,
+D(a‖q) = a ln(a/q) + (1−a) ln((1−a)/(1−q)). With g = Λh and N = m g² (m points per cell) this is
+      p_π(N) ≤ exp( −(N/m) · D(2/Λ ‖ q̄) ) = e^{−ι N},   N ≥ mΛ²h² (h ≤ k, so N ≥ mΛ²k² suffices),
+with ι = D(2/Λ‖q̄)/m > 0 as soon as Λ > 2/q̄; q̄ = q̄_b(m) depends only on b and m, not on k, h, τ_i.
 
-*Proof.* (a) If the good cells contain a chain c_1 < c_2 < ⋯ < c_h that is strictly increasing in both cell
-coordinates, then π ⊂ Π_N: every point of c_i lies strictly SW of every point of c_{i+1}, cell c_i is good so it
-contains a copy of τ_i, and the union of these copies is a copy of τ_1 ⊕ ⋯ ⊕ τ_h.
-(b) (Mirsky) If the poset of good cells (strict product order on [g]²) has no chain of length h, the good cells are
-covered by h−1 antichains. An antichain of [g]² (no two cells with x < x′ and y < y′) is contained in a maximal
-one, which is a weakly decreasing staircase (a lattice path of 2g−1 cells); there are ≤ C(2g−2, g−1) ≤ 4^g maximal
-antichains, each with ≤ 2^{2g−1} subsets, so ≤ 16^g antichains, and a union S of h−1 of them has |S| ≤ (h−1)(2g−1).
-Hence {no h-chain of good cells} ⊆ ∪_S {every cell outside S is bad}, a union of ≤ 16^{g(h−1)} events.
-(c) For a fixed set T of cells, Pr(all c ∈ T bad) = E ∏_{c∈T} (1 − q_b(n_c)) (conditional independence given counts).
-The functions n ↦ 1 − q_b(n) are nonnegative and nonincreasing and the multinomial vector (n_c) is negatively
-associated (Joag-Dev–Proschan), so E ∏_{c∈T} f(n_c) ≤ ∏_{c∈T} E f(n_c) = (1 − q̄)^{|T|}. Combine with (b), |T| ≥
-g² − (h−1)(2g−1). (d) With g ≥ Λh: exponent ≤ gh ln 16 − (g² − 2gh)L ≤ −g²[(1−2/Λ)L − (ln 16)/Λ] and g² ≥ N/m − O(√N/m);
-absorb the O(√N) into the constant or read ι as the asymptotic rate. ∎
+*Proof.* (a) A chain c_1 < ⋯ < c_h of good cells, strictly increasing in both cell coordinates, gives π ⊂ Π_N:
+every point of c_i is strictly SW of every point of c_{i+1}, c_i contains a copy of τ_i, and the union is a copy of
+τ_1 ⊕ ⋯ ⊕ τ_h. (b) (Mirsky) If the poset E of good cells (strict product order on [g]²) has no chain of length h,
+E is a union of h−1 antichains of E, each an antichain of [g]²; the width of [g]² under the strict product order is
+2g−1 (the 2g−1 diagonals {(x+t, y+t)} are chains covering [g]², and {(1,y)} ∪ {(x,1)} is an antichain of that size).
+Hence |E| ≤ (h−1)(2g−1). (c) The indicators 1[c good] are nondecreasing functions of the n_c (given counts, goodness is
+an independent coin with success probability q_b(n_c), which we may realise as 1[U_c ≤ q_b(n_c)] with independent
+uniforms U_c), and the multinomial vector (n_c) is negatively associated (Joag-Dev–Proschan); so the indicators are
+NA, E e^{−λΣ} ≤ ∏ E e^{−λ 1[c good]}, and the Chernoff lower-tail bound for Bin(g², q̄) applies verbatim. ∎
 
-**Corollary 2.2 (explicit instances; q̄ computed with Poisson(m) counts, which is what Bin(N, m/N) tends to).**
-(i) Identity (b = 1, q_1(n) = 1[n ≥ 1], q̄ = 1 − e^{−m}): m = 5, L = 5.0, Λ = 3: ι = (5/3 − 0.924)/5 = 0.148 for
-N ≥ 45k². (The DZ/W23 rate ln(C/e) is far better; the point is an elementary speed-N proof by a mechanism that
-does not use the LIS structure.)
-(ii) Layered patterns with all layers of length ≤ b, in particular (21)^{k/2} (b = 2; q_2(n) = 1 − 1/n! − 1[n ≤ 1]·(1−1/n!)
-i.e. "n ≥ 2 and not increasing"): m = 6 gives q̄ = 0.938, L = 2.78, Λ = 4: ι = (1.39 − 0.69)/6 = 0.116 for N ≥ 96h² = 24k².
-This is the first speed-N tail bound for (21)^{k/2} and for every layered pattern with bounded layers; W19's
-greedy has failure speed ≤ min(k, strip height) = 2 for these patterns, so it could not give it.
+(No union bound over antichain covers is needed: only the SIZE of the cover enters. The first version of this
+proof used the 16^{g(h−1)} count of covers; it is superseded.)
+
+**Corollary 2.2 (explicit instances; q̄ evaluated with Poisson(m) counts).**
+(i) Identity: b = 1, q̄ = 1−e^{−m}. m = 3, Λ = 4: ι = D(0.5‖0.95)/3 = 0.28 for N ≥ 48k². Elementary speed-N proof
+of the LIS lower tail by a mechanism that does not use the LIS structure (the DZ/W23 rate ln(C/e) is far better).
+(ii) Layered patterns with layers ≤ b, in particular (21)^{k/2} (b = 2; a cell is good iff it has ≥ 2 points and is
+not increasing; q̄(6) = 0.938): m = 6, Λ = 4: ι = D(0.5‖0.938)/6 = 0.12 for N ≥ 96h² = 24k². First speed-N tail bound
+for (21)^{k/2} and for every layered pattern with bounded layers; W19's greedy has failure speed ≤ min(k, strip
+height) = 2 for these, so it could not give it.
 (iii) Every ⊕-sum (or ⊖-sum) of blocks of size ≤ b: p_π(N) ≤ e^{−ι_b N} for N ≥ Λ_b k², where m = m_b must make a
-uniform Π_m a b-superpattern with probability bounded away from 0 — m_b = O(b² log log b) by He–Kwan, m_b = O(b²) if
-Alon's conjecture holds at scale b. So Alon's conjecture at scale b implies uniform speed-N tails (with C_0 = O(1))
-for all block-diagonal patterns with blocks ≤ b, of any total length k.
+uniform Π_m a b-superpattern with probability bounded away from 0 — m_b = O(b² log log b) by He–Kwan, O(b²) if
+Alon's conjecture holds at scale b. So Alon at scale b implies uniform speed-N tails for all block-diagonal
+patterns with blocks ≤ b, of any total length.
 
-Remark. CP itself is NOT proved for these patterns: Theorem 2.1 gives I_π(C) ≥ ι_b > 0 (the CP* form), not
-I_π(C) ≥ I_id(C)/K. The rate ι_b degrades with b like 1/m_b ≈ 1/b², so the theorem says nothing uniform over
-patterns whose blocks grow with k.
+### 2.1′ The same trick for GRID patterns: rigid rows, r strips (PROVED; new)
 
+Let 𝒢(r,h) be the one-point-per-cell grid patterns: π ∈ S_{rh} with π((j−1)r + s) = (τ_j(s) − 1)h + j for
+arbitrary τ_1, …, τ_h ∈ S_r (block j = positions (j−1)r+1 … jr; strip s = values (s−1)h+1 … sh; τ_j = order in
+which block j visits the strips). It contains the tilted grids (12⋯r)^h (all τ_j = id), He–Kwan's family, and
+W15's perturbed grids 𝓕 (|𝒢(r,h)| = (r!)^h = e^{k ln r − O(k)}, e^{(1/2 − o(1))k ln k} for r = √k).
+
+**Theorem 2.5.** Cut the square into g_x = rn columns and g_y = rn rows (n ≥ 1), and group them into n column
+blocks B_1 < ⋯ < B_n of r consecutive columns and r horizontal strips S_1 < ⋯ < S_r of n consecutive rows. For
+i, y ∈ [n] let Z_{i,y} = 1[for every s ∈ [r] the cell (column (i−1)r + τ_j(s)… — precisely: all r cells
+{column (i−1)r + t, row (s−1)n + y : t = τ(s) for the block that will use it} are nonempty]. Since the chain will
+assign block index j to element (i,y) in order, define Z_{i,y}^{(j)} with τ_j; to keep Z independent of j use the
+stronger requirement Z_{i,y} = 1[all r² cells of the r×r sub-array (block B_i) × (row y of every strip) are nonempty].
+Then a chain (i_1,y_1) ≺ ⋯ ≺ (i_h,y_h) (both coordinates strictly increasing) with all Z = 1 gives a copy of every
+π ∈ 𝒢(r,h) simultaneously: for block j take, in column block B_{i_j}, the point of strip s in column
+(i_j −1)r + τ_j(s) at row y_j of strip s. Positions increase with j and within a block follow τ_j; values in strip s
+increase with j (rows y_j increase) and strips are ordered. Hence, with E = {(i,y): Z_{i,y} = 1} ⊆ [n]² and Mirsky
+as in 2.1(b): {π ⊄ Π_N} ⊆ {|E| ≤ (h−1)(2n−1)}. Let q_r := Pr(Z_{i,y} = 1) ≥ 1 − r² e^{−m}·(1+o(1)) (union bound over
+r² cells, m = N/(rn)² points per cell; the o(1) is the binomial/Poisson correction). The Z's are NA (nondecreasing
+functions of disjoint groups of the multinomial counts), so
+      p_π(N) ≤ exp( −n² D( 2/Λ ‖ q_r ) )   for n = Λh,  N = m r² n² = m Λ² r² h² = m Λ² k²,
+uniformly over π ∈ 𝒢(r,h). With m = 2 ln r + 2 (so q_r ≥ 1 − e^{−2} = 0.86), Λ = 4 and D(1/2‖0.86) = 0.365:
+      p_π(N) ≤ exp(−0.365 n²) = exp( −N /(2.74 m r²) ) = exp( −N /(2.74 r² (2 ln r + 2)) )   for N ≥ 16 (2 ln r + 2) k²,
+uniformly over π ∈ 𝒢(r,h). For the tilted grids (all τ_j = id) only the r "diagonal" cells of each sub-array are
+needed, so m = ln r + 2 suffices: p_{(12⋯r)^h}(N) ≤ exp(−N/(2.74 r² (ln r + 2))) for N ≥ 16(ln r + 2)k².
+
+**Honest assessment.** Speed N, but the rate is ∝ 1/(r² ln r): one chain element costs r cells (m r points) and the
+sub-columns dedicated to one strip waste a fraction (r−1)/r of the area (their cells in the other strips serve no
+element), whence the two factors of r. This is the same 1/r² as W23's periodic-word bound (speed N/(3r²)) — W23's
+negative result "any bad-box-tolerance lemma has f ≤ 1/r" is exactly this — with the threshold improved from
+9r ln(3er)·k² to 16(ln r + 2)·k² and the class enlarged from the periodic word to all of 𝒢(r,h) (a factor ln r in m).
+For r = h = √k the exponent at N = 16(2 ln r + 2)k² is 16k²/(2.74 r²) ≈ 5.8k: **e^{−Θ(k)}, no better than Thm 10 plus
+block splitting**. So rigid coarse-graining cannot pass the k-versus-k² barrier for grids with min(r,h) → ∞; it
+does pass it for bounded r (Thm 2.5 with r fixed: rate Θ(1)), for direct sums of bounded blocks (Thm 2.1) and for the
+identity — precisely the patterns that are chains of O(1)-cost gadgets.
+
+*Remark (generalisation).* The argument needs only (1) a 2-D chain structure: a copy is a chain of h "block-rows",
+(2) each block-row's requirement being a local event on disjoint cells of probability ≥ q > 1/2, uniformly in the
+block. It therefore covers all patterns of the form "h blocks × r strips with one bounded-size gadget per cell and
+all cells of a block-row aligned" (gadgets of size ≤ b need m ≥ m_b(ln r + c)), e.g. the periodic-word patterns
+(1^{b}2^{b}⋯r^{b})^h, and by symmetry the same with strips and blocks exchanged.
 ### 2.2 Direct sums of two arbitrary patterns (PROVED, trivial but useful)
 
 **Lemma 2.3.** For α ∈ S_a, β ∈ S_b and any x, y ∈ (0,1):
@@ -133,3 +166,57 @@ Examples: ρ = reversal of value blocks of size s turns (21)^h into "an increasi
 each of h prescribed value strips"; ρ = the tilted grid relabelling turns (12⋯r)^h into an increasing subsequence
 with one point in each cell of an r×h grid of value strips × ??? — no: only values are relabelled, positions are not,
 so grids are not reachable this way (see §4). The identity is the cheapest instance (no constraint).
+
+## 4. The obstruction: patterns that are not sums of bounded blocks (tilted grids, random π)
+
+**4.1 Why Theorem 2.1 stops at bounded blocks.** The certificate in 2.1 is a cover of the *coarse* poset (cells)
+by h−1 antichains; its count 16^{gh} is e^{O(gh)} = e^{O(N/(Λm)·(h/g))} = o(N)·… only because h ≤ g/Λ, i.e. the chain
+is required to be a positive fraction of the grid side. The gain over the fine-scale Dilworth certificate of the
+identity ((k−1)^N labels) is that goodness of a cell is a *local, i.i.d.-like* event of constant probability, so
+the cost is paid per cell (Θ(N) cells) — a genuine speed-N mechanism with no LIS structure. It needs the pattern to
+be a CHAIN of local gadgets. A tilted grid (12⋯r)^h with r, h → ∞ is a *lattice* of gadgets: a copy is an r×h array
+of points with increasing positions along each block and increasing values along each strip. The natural coarse
+version is the fixed-strip model of W20: one cell per (block, strip), one point per cell, with 2(r−1)h order
+constraints between neighbouring cells. Its failure has speed min(r, h) (a single empty cell in a *fixed* grid kills
+the copy: Pr ≥ k·e^{−m}, and W19 Prop. 3.1 shows every greedy inherits this), and the true event is the intersection
+over all ≈ N^{r+h} choices of grid lines — the "Θ(1)-precision coordination of the shared clock across strips" of
+W20. The Mirsky trick does not apply: there is no poset whose chains are the grid copies (the constraint graph is
+a 2-D lattice, not a chain), and Dilworth-type certificates for 2-D constraint systems (covers of the *gadget*
+poset — one gadget per (cell, point) — by antichains) have count e^{Θ(N ln k)} because whole strips are antichains.
+
+**4.2 The e^{O(k)} error factor and the greedy's speed (task (ii), block grids).** Theorem 10 (W11) gives for
+block-grid patterns p_π(N) ≤ e^{−c·min(r,h)} at N ≥ (π/8 + ε)k²; block splitting (Lemma 0.2) improves this to
+p_π(N) ≤ exp(−c·min(r,h)·N/((π/8+ε)k²)) — speed N·min(r,h)/k². CP(K) would need speed N. So for the diagonal grids
+r = h = √k the greedy delivers exponent Θ(√k·C) at N = Ck², versus the k² needed: the greedy's speed min(r,h) DOES
+obstruct any CP-type conclusion for grids, with a gap of k^{3/2}; and the e^{O(k)} error factor is irrelevant next to
+it (it would matter only once speed N is available, and then only for the constant K: with speed N and rate ι at
+C_0, K can be taken ι^{-1}·C_0·H_0-ish). For r or h bounded (Thm 9 / W23: speed N/(3r²)) CP* holds with ι ≈ 1/r².
+
+**4.3 Random π (task (i)/(iii)).** For random π no structured super-pattern of size O(k) is available
+(π is not (a×b)-griddable with a+b < 2√k, not a merge of < √k/2 monotone sequences, and not in a direct sum of
+fewer than k blocks), so neither Theorem 2.1 nor a reduction to grids applies; the relabelling identity (Prop 2.4)
+converts p_π(N) into a constrained-LIS lower tail with a constraint of density 1/k! among value sets, and the
+identity is the unconstrained instance. A proof of CP* for random π must therefore control the LIS lower tail
+*under a value-set constraint of density e^{−k ln k}* — a large-deviation problem with an entropy cost of exactly the
+size of the union bound, which is the same obstruction seen from the other side (W19: per-pattern e^{−ηk}; W22:
+every copy-event inequality capped at exponent O(C)).
+
+**4.4 What CP "above threshold" buys (task (iv)).** Lemma 0.2(a): a bound at one N = C_0k² with exponent ω(k ln k),
+uniform in π, is enough; no statement at small N (where the Stanley–Wilf crossovers of §3 live) is needed. So the
+deep-tail failures of CP(1) at fixed k are harmless for Alon provided the crossover n_×(π) stays inside a window
+where p_id itself is still ≥ e^{−o(k²)}... — precisely: CP(K) is only needed for N ≥ Kk²/4·(1+ε), and there any
+excess factor e^{o(k²)} is tolerable.
+
+### 2.4 Dead ends on the theory side (recorded with reasons)
+- Greene/RSK for layered patterns: containment of (21)^h is NOT a function of the RSK shape. λ_1+λ_2 ≥ 2h is
+  necessary but far from sufficient: 3412 and 2143 have the same shape (2,2) and only the latter is (21)^2;
+  (h+1)(h+2)⋯(2h) 1 2 ⋯ h has shape (h,h) and avoids (21)^2. So no exact λ-characterisation, and the RSK lower tail
+  cannot be transferred.
+- Gadget posets for (12)^h ("tight" pairs low point/next high point; or (gap, low point) pairs): the chains are
+  copies, but whole strips are antichains, so an antichain cover has e^{Θ(N ln k)} realisations and the size
+  argument of Thm 2.1 fails because element goodness is not a product of local events. The rigid-row version
+  (Thm 2.5) is what survives, at the price of r cells per element.
+- Relabelling identity (Prop 2.4): exact but tautological — the constrained family has density 1/k! among value
+  sets, i.e. exactly the union-bound entropy k ln k; no ρ makes the constraint "cheap".
+- Direct-sum splitting (Lemma 2.3) loses a factor 4 in the exponent per ⊕-level: useless for the identity itself
+  (depth k) and for any pattern with a deep ⊕/⊖ tree; fine for bounded depth.

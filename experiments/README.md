@@ -25,3 +25,11 @@ session appears in the paper); tools are C (`cc -O2`) or Python 3; raw outputs a
 | `w17-hammersley` | c₂₁ via renewal sweeps | c₂₁ ≥ 0.7866; c_τ ≥ 0.535 (S₃), ≥ 0.385 (S₄); method capped at ≈ 0.84 |
 | `w18-lag` | Lag lemma for thread overlap | **False**: linear loss in lag; thread framework capped on tilted grids |
 | `w19-general-greedy` | Corner greedy for arbitrary π; speed of greedy embeddings | Verbatim extension is false (works iff strips are chains); reserve greedy gives universal per-pattern threshold 0.757k² for all of S_k (numerical constant, reduction proved); rigid rows: every π at k², union bound at (1+o(1))k²(ln k+ln ln k); two-phase repair; greedy/repair barrier: speed ≤ min(k,h) |
+| `w20-hammersley-grid` | Tilted grids: mean-field / Hammersley coupling | Theorem 12 (C_mf(h) ↓ π/8; fresh-quadrant barrier) |
+| `w21-threshold-numerics` | n_{1/2}(π)/k² for random vs identity, k ≤ 40 | Identity is the hardest pattern; random limit ≈ 0.22 ± 0.02 |
+| `w22-probabilistic-method-review` | Alon–Spencer toolbox vs. our gap | Janson/Talagrand/Azuma all capped at O(C) exponent; certificate counting uncapped |
+| `w23-certificates` | Dilworth/Mirsky certificate counting | Identity (e/C)^N; periodic word speed N/(3r²); box tolerance f ≤ 1/r (negative) |
+| `w24-union-slack` | Union-bound slack R = E[M]/Pr(M>0), k = 5–9 | ln R ≈ 0.7k at threshold; missing patterns cluster |
+| `w25-asymptopia-review` | Spencer's *Asymptopia* vs. our tools | Theorem C′ (λ = 1.00734 via exact Bernoulli tail) |
+| `w26-pareto-ld` | Pareto-front / alternating-chain certificates for (12)^h | Theorem 13 (speed N for C > 27.63) |
+| `w27-comparison` | Comparison principle "identity hardest" | Theorem 14 (Mirsky on cells: speed N for bounded-block sums and 𝒢(r,h)); CP(1) false at k = 4; rate-form CP* |

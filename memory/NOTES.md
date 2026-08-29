@@ -69,6 +69,16 @@ Negative / dead ends (with the reason; each is a theorem or a brute-force-checke
 - W26 (Thm 13): speed-N bound for (12)^h via alternating-chain certificates: Pr ≤ e^{−ρ(C)N}, ρ>0 iff C>27.63 (k-uniform;
   first speed-N beyond monotone/box patterns). NEGATIVE: relaxation threshold 9/16 vs 1/4; exact Pareto coarse-graining
   costs e^{Θ(k³)}; r strips: C_0(r) ≈ 3.5 r³; nothing for the union bound over S_k.
+- W27 (Thm 14, theory verified; numerics pending): coarse-graining + Mirsky on cells ⇒ speed-N tails for direct sums of
+  bounded blocks ((21)^{k/2}: e^{−0.122N} for N ≥ 24k²; identity e^{−0.277N} for N ≥ 48k²) and for ALL of 𝒢(r,h) with
+  rigid rows (rate N/(2.74 r²(2 ln r+2)) for N ≥ 16(2 ln r+2)k²) — but rate ∝ 1/(r² ln r), so e^{−Θ(k)} at r=h=√k.
+  Barrier isolated: Mirsky needs a CHAIN of O(1)-cost gadgets; a grid with min(r,h)→∞ is a LATTICE. Exact facts: block
+  splitting (bound at one N=C_0k² with exponent ≫ k ln k suffices); CP(1) false at k=4 (Av_7(1324)=2762>2761); CP(K>1)
+  vacuous at fixed k ⇒ only per-point rates I_π(C) at N≍k² matter; relabelling identity p_π = constrained-LIS tail.
+- W24 (numerics, k=6 re-sampled by me): union-bound slack ln R at t(k) = 1.93, 2.59, 3.27, 3.98 (k=6..9), ≈0.7k ≈ 0.23 ln k!;
+  ln R ≈ 0.4–0.5 at n=k², R→1 by 1.1k². Missing set heavy-tailed and clustered (adjacent transpositions ρ≈160–230 at
+  t(7); dihedral 20–25; random pairs 12–16; reverse/complement of identity never co-miss). First moment off by e^{Θ(k)}
+  at threshold — a hard-core / clustering correction is what a proof of the constant needs (→ W28).
 - Alon–Spencer toolbox (W22 review): Janson/extended Janson/Suen exponent ≤ C/2 at N=Ck² for ANY copy-event family
   (Δ ≥ μ²/C, single-point overlaps); Talagrand ≤ C/4; Azuma ≤ C/2; Kim–Vu vacuous; LLL only positivity. NOT capped:
   certificate counting (Dilworth cover ⇒ Pr(LIS<k) ≤ (e/C)^N, speed N) → try antichain-cover certificates for
