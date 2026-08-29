@@ -35,7 +35,7 @@ Lower: k²/e² (trivial C(n,k) ≥ k!) → 1.000076·k²/e² (Chroman–Kwan–S
 ## Results ledger of this project (2026-08-29) — positive AND negative; details in experiments/wN/{log,proof}.md and the paper
 
 Positive (all independently verified by the coordinating session before entering the paper):
-- Thm A: sp(k) ≥ (1.0003125−o(1))k²/e² (W3; Lean-verified). Thm C: 1.00483 (W7; first draft's lemma was FALSE, corrected).
+- Thm A: sp(k) ≥ (1.0003125−o(1))k²/e² (W3; Lean-verified). Thm C: 1.00483 (W7; first draft's lemma was FALSE, corrected); Thm C′: 1.00734 via exact Bernoulli/KL tail for the slot count (W25 Lemma B.1, verified; finite-k certified at k=1e5, 3e5).
 - sp(7) ≤ 23, sp(8) ≤ 30 (W1; three independent checkers incl. Lean). Structured 7-superpattern of length 24 (W2).
 - f(k;k+1) = (k²+k)/2 for k ≤ 5 (W4, SAT); Gupta rosaries: r(n) = ⌊n²/2⌋ for n ≤ 5, ≤ ⌊n²/2⌋ for n ≤ 11 (W4).
 - t(7) = 37, t(9) ≈ 60, t(10) ≈ 70–72 (W5); c_τ = 2/|τ| numerically for |τ| ≤ 5 (W10).

@@ -92,3 +92,29 @@ if __name__=="__main__":
     print("\n## robustness: free fits on k>=24 only")
     fit_forms(ks[1:],means[1:],sems[1:],"random pi (k>=24)")
     print("\n## ratio n_rand(mean)/n_id(LIS) vs k: "+" ".join("%d:%.4f"%(k,m/lis[str(k)]["n_half"]) for k,m in zip(ks,means)))
+    # ---- log-log re-analysis (coordinator/W25): fit log(n/k^2 - c) = A + s log k.  s = -2/3 <=> TW-type approach to c.
+    print("\n## log-log analysis: log(n_half/k^2 - c) vs log k  (slope s; TW-type finite-size correction has s = -2/3)")
+    def loglog(kk,nn,c):
+        xs=[math.log(k) for k in kk]; ys=[]
+        for k,n in zip(kk,nn):
+            v=n/k/k-c
+            if v<=0: return None
+            ys.append(math.log(v))
+        A,s=lstsq([[1,x] for x in xs],ys); rms=math.sqrt(sum((A+s*x-y)**2 for x,y in zip(xs,ys))/len(xs)); return s,A,rms
+    idk=[int(k) for k in sorted(lis,key=int) if int(k)>=12]; idn=[lis[str(k)]["n_half"] for k in idk]
+    for lab,kk,nn in [("identity (LIS, k=12..48)",idk,idn),("identity (LIS, k=20..40)",[k for k in idk if 20<=k<=40],[n for k,n in zip(idk,idn) if 20<=k<=40]),
+                      ("random pi mean (k=12..36)",ks,means),("random pi mean (k=20..36)",ks[2:],means[2:])]:
+        r=loglog(kk,nn,0.25)
+        print("  %-28s c=1/4: slope=%.3f rms=%.3f"%(lab,r[0],r[2]) if r else "  %s: n/k^2-1/4 <= 0 somewhere"%lab, end="")
+        # which c gives slope -2/3 ?
+        best=None
+        for i in range(0,241):
+            c=0.10+i*0.0005; r=loglog(kk,nn,c)
+            if r and (best is None or abs(r[0]+2/3)<abs(best[1]+2/3)): best=(c,r[0],r[2])
+        print("   | c with slope=-2/3: c=%.4f (rms %.3f)"%(best[0],best[2]))
+        print("     slope vs c: "+"  ".join("c=%.3f:%s"%(c,("%.2f"%loglog(kk,nn,c)[0]) if loglog(kk,nn,c) else "n/a") for c in [0.18,0.20,0.22,0.23,0.24,0.25]))
+    # per-pattern-family log-log at c=1/4 (each random pattern separately, k=20..36 where the same seed index exists)
+    print("  per-pattern (c=1/4, k=20..36) slopes:")
+    for j in range(4):
+        kk=[k for k in ks if k>=20]; nn=[table[k]["r%d_%d"%(k,j)][0] for k in kk]; r=loglog(kk,nn,0.25)
+        print("    r*_%d: slope=%.3f rms=%.3f"%(j,r[0],r[2]) if r else "    r*_%d: n/a"%j)

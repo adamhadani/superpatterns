@@ -117,3 +117,18 @@ k=36
     per-k (n-k^2/4)/k^(4/3): 0.461 0.420 0.372 0.332 0.285 0.243
 
 ## ratio n_rand(mean)/n_id(LIS) vs k: 12:0.9586 16:0.9364 20:0.9240 24:0.9114 28:0.9040 32:0.8941 36:0.8870
+
+## log-log analysis: log(n_half/k^2 - c) vs log k  (slope s; TW-type finite-size correction has s = -2/3)
+  identity (LIS, k=12..48)     c=1/4: slope=-0.617 rms=0.003   | c with slope=-2/3: c=0.2200 (rms 0.008)
+     slope vs c: c=0.180:-0.32  c=0.200:-0.37  c=0.220:-0.44  c=0.230:-0.48  c=0.240:-0.54  c=0.250:-0.62
+  identity (LIS, k=20..40)     c=1/4: slope=-0.619 rms=0.002   | c with slope=-2/3: c=0.2200 (rms 0.003)
+     slope vs c: c=0.180:-0.30  c=0.200:-0.35  c=0.220:-0.43  c=0.230:-0.48  c=0.240:-0.54  c=0.250:-0.62
+  random pi mean (k=12..36)    c=1/4: slope=-1.321 rms=0.061   | c with slope=-2/3: c=0.2030 (rms 0.005)
+     slope vs c: c=0.180:-0.54  c=0.200:-0.65  c=0.220:-0.81  c=0.230:-0.92  c=0.240:-1.08  c=0.250:-1.32
+  random pi mean (k=20..36)    c=1/4: slope=-1.582 rms=0.030   | c with slope=-2/3: c=0.2005 (rms 0.002)
+     slope vs c: c=0.180:-0.54  c=0.200:-0.66  c=0.220:-0.86  c=0.230:-1.01  c=0.240:-1.23  c=0.250:-1.58
+  per-pattern (c=1/4, k=20..36) slopes:
+    r*_0: slope=-1.454 rms=0.054
+    r*_1: slope=-1.506 rms=0.023
+    r*_2: slope=-1.675 rms=0.032
+    r*_3: slope=-1.796 rms=0.026

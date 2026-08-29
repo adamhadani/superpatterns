@@ -1,0 +1,4 @@
+k=100001 lambda=1.0065: (1/k)log(bound/k!) = -0.000637  [per-k logs: EWgood=-0.00817 Bad=-0.00763 binTail=-0.05802 widthTail=-0.03981] eps(beta)=0.072
+k=100001 lambda=1.007: (1/k)log(bound/k!) = -0.000141  [per-k logs: EWgood=-0.00819 Bad=-0.00763 binTail=-0.05787 widthTail=-0.03981] eps(beta)=0.072
+k=300001 lambda=1.0065: (1/k)log(bound/k!) = -0.000757  [per-k logs: EWgood=-0.00817 Bad=-0.00776 binTail=-0.05802 widthTail=-0.01327] eps(beta)=0.072
+k=300001 lambda=1.007: (1/k)log(bound/k!) = -0.000261  [per-k logs: EWgood=-0.00819 Bad=-0.00776 binTail=-0.05788 widthTail=-0.01327] eps(beta)=0.072

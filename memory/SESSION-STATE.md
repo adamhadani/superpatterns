@@ -114,3 +114,7 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
 - 16:15: W20 COMPLETED and VERIFIED (Thm 4.2/4.3/4.5/3.1 read line by line; C_mf(2) recomputed 0.748 vs 0.750). Folded as
   Theorem 12 + numerics ((12)^h easier than identity). Running: W21, W23, W24.
 - 16:35: W25 launched (agent ad4d410d9c5bb5e02): review of Spencer's Asymptopia (Laplace method for the lower-bound constant, LIS material, threshold heuristics, large deviations) → experiments/w25-asymptopia-review/review.md.
+- 17:20: W23 first attempt died (max output tokens, nothing written); relaunched as agent a4511c89f2b56d42e with short-output instructions. W25 (Asymptopia) COMPLETED: proposes Bernoulli (KL) tail in Theorem C → λ_C ≈ 1.00734 (limit rate independently reproduced by me; finite-k certificate being redone in log-space in experiments/w25-asymptopia-review/finite_check_bern.py).
+- 17:35: Theorem C′ (λ = 1.00734, W25's Bernoulli tail) VERIFIED (Lemma B.1 checked; limit root reproduced by my own
+  code; finite-k log-space certificate negative at k=1e5, 3e5 for λ=1.007) and folded into paper (abstract, table,
+  §Thm C, open problems). W25 COMPLETED. Running: W21 (told to add correction-exponent fit and wrap up), W23 (relaunch), W24.

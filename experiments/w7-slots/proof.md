@@ -209,3 +209,10 @@ computation gives λ ≈ 1.0117 (heur0.py), so about 40% of the heuristic excess
 - Not done (possible improvements): width-dependent ε (flat Chernoff exponent) gives λ = 1.00501 (rate2.py);
   both parities as in Theorem B; keeping Π f(b_i) on the bad event instead of 1 (requires nothing new but a
   Cauchy–Schwarz split); replacing Chernoff by an exact large deviation for the Poisson-binomial slot count.
+
+## Addendum (2026-08-29, W25 / coordinator): Bernoulli tail — λ_C' = 1.00734
+Step 4's Poisson-type Chernoff bound e^{−m h(ε)} is replaced by the exact binomial (KL) tail via Lemma B.1 of
+experiments/w25-asymptopia-review/review.md (log-MGF of each indicator is increasing and concave in |A_ℓ|; Jensen with
+Σ|A_ℓ| ≤ n−b−1 dominates the slot count's Laplace transform by Bin(b−2, m(b)/(b−2))). With width-dependent ε_b (flat
+exponent R k) the rate root is λ = 1.00734 (rate_bernoulli2.py; independently reproduced), finite-k certificate
+finite_check_bern.py: −1.4e−4 at k=1e5, −2.6e−4 at k=3e5 for λ=1.007. Verified by the coordinator line by line.
