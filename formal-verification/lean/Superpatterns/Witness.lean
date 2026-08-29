@@ -16,7 +16,7 @@ and `p = 1/n!`.  Conditional expectations are stated *without division*, as
 form `condE` with the `max` over the witness values is derived in `witness_reduction_max`.
 
 Given a finite family of events `A π` (`π : ι`, `ι` a `Fintype`) let `M ω = #{π | ω ∈ A π}` and
-`μ = E M`.  Proved (all sorry-free):
+`μ = E M`.  Proved (all complete, no placeholders):
 
 * (a) `mean_eq_E_on_pos`: `μ = E[M ; M > 0]`; `Pr_pos_le_mean`: `Pr(M>0) ≤ μ` (`R ≥ 1`);
   `Pr_le_one`: `Pr(M>0) ≤ 1` (`R ≥ μ`); `mean_eq_sum_Pr`: `μ = ∑ π, Pr(A π)`.
