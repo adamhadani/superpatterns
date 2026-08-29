@@ -36,3 +36,4 @@ session appears in the paper); tools are C (`cc -O2`) or Python 3; raw outputs a
 | `w28-hardcore` | Hard-core / witness reduction of the union bound | Prop. 15: R ≤ E M²/μ ≤ max_π Λ_π; no hard core; M driven by local emptiness |
 | `w29-random-threshold` | Gap-reserve greedy for typical patterns | Theorem 16: random π contained at 0.527k²; ½ barrier for value-blind gap rules |
 | `w30-empty-rectangle` | Patterns killed by one empty rectangle | Not defect-specific (revival ≈ 0.75 M for any large Q); strip-deletion bound; deterministic version false |
+| `w31-lookahead` | Value-aware in-gap x-lookahead for random π | Theorem 17: random π contained at 0.465k² (certified Bellman constant); in-gap rules capped at ≈0.462 |

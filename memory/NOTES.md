@@ -100,6 +100,10 @@ Negative / dead ends (with the reason; each is a theorem or a brute-force-checke
   area/aspect, 9-point grid 0.96. Question = tail of M itself. PROVED: completion-cell characterisation; strip deletion
   E[M | Q empty] ≤ μ(n − min(w,h)); p_π(n−1) ≤ n p_π(n) ⇒ only e^{O(k ln^{3/2} k)} (e^{O(k√ln k)} if slope O(1), open).
   Deterministic version false (sp(6) witness + 1 point revives 0.88·6! of missing 7-patterns).
+- W31 (Thm 17, verified; recursion re-implemented by me): value-aware x-lookahead inside the gap with exact mean-field
+  cost-to-go Φ = V_{m_b}/(y−y_L)+V_{m_a}/(y_R−y), safe clock for freshness ⇒ random π contained at 0.465k² (certified
+  Bellman constant; 0.4765 at h=64). ½ barrier FALSE for value-aware rules (h ≥ 20); all in-gap rules capped at
+  ≈0.4623 in the fresh-window model (Bellman optimality). Next: information outside the current gap / 2-D construction.
 - Alon–Spencer toolbox (W22 review): Janson/extended Janson/Suen exponent ≤ C/2 at N=Ck² for ANY copy-event family
   (Δ ≥ μ²/C, single-point overlaps); Talagrand ≤ C/4; Azuma ≤ C/2; Kim–Vu vacuous; LLL only positivity. NOT capped:
   certificate counting (Dilworth cover ⇒ Pr(LIS<k) ≤ (e/C)^N, speed N) → try antichain-cover certificates for

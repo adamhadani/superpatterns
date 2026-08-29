@@ -157,3 +157,16 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
 - 20:15: W27 COMPLETED. Numerics checked by exact enumeration (av9.c/av10.c): qualitative claim right, SMC magnitudes
   biased (noted in w27 proof.md). One sentence added to paper. Running: W31, W24 tails (unattended; two W27 k=8 deep
   runs may still be on 1 core).
+- 20:30: W31 COMPLETED and VERIFIED (Lemmas 1.1, 2.1–2.4, Thm 2.1, Lemma 3.1–3.2, Thm 4.1 read; recursion recomputed
+  independently in scratchpad/w31check.py: V64/64² = 0.47453 (ε=0), 0.47615 (ε=.05) ≤ certified 0.47646; MC check of
+  W(A,B)). Folded as Theorem 17 + table row. ALL AGENTS DONE (W27, W28, W29, W30, W31). Loop stopped.
+  Unattended: W24 replicate seeds/k=5 grid still running via run_queue.sh (queueA/B/D) — when finished run
+  `cd experiments/w24-union-slack && python3 analyze.py all > analysis.txt` and check ln R trend (all replicates so
+  far agree with seed 11). One orphan W27 avoid2 k=8 deep run on 1 core (harmless; kill if load matters).
+## Next 3–4 directions (queue)
+- W32: rules using information OUTSIDE the current gap (search the other gaps' half-strips; joint DP over gaps) for
+  random π — target < 0.46, ideally toward 0.22; or prove a cap for all sequential rules.
+- W33: uniform O(1) slope −∂_n ln μ (would upgrade W30 Prop 3.2 to e^{O(k√ln k)} and quantify Cor 1.2 of W28).
+- W34: apply the W31 lookahead idea to the IDENTITY / monotone strips (corner rule + cost-to-go) to push π/8 for
+  block-grid patterns toward 1/4 (Thm 10/12 fresh-quadrant barrier is for rules without lookahead).
+- W35: Lean-formalise the W28 witness reduction (Prop 15) and the block-splitting lemma (cheap, exact).

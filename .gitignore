@@ -85,3 +85,4 @@ experiments/w4-alphabet-rosary/sa7_1.txt
 experiments/w24-union-slack/out/
 experiments/w30-empty-rectangle/out/
 experiments/w30-empty-rectangle/erect
+experiments/w31-lookahead/*.out
