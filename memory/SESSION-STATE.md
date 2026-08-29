@@ -113,3 +113,4 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
   `experiments/w24-union-slack/` (agent aee98fc61e4771a4f): union-bound slack R = E[M]/Pr(M>0) at k=6–9.
 - 16:15: W20 COMPLETED and VERIFIED (Thm 4.2/4.3/4.5/3.1 read line by line; C_mf(2) recomputed 0.748 vs 0.750). Folded as
   Theorem 12 + numerics ((12)^h easier than identity). Running: W21, W23, W24.
+- 16:35: W25 launched (agent ad4d410d9c5bb5e02): review of Spencer's Asymptopia (Laplace method for the lower-bound constant, LIS material, threshold heuristics, large deviations) → experiments/w25-asymptopia-review/review.md.

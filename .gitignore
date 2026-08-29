@@ -82,3 +82,4 @@ experiments/**/.claude/
 /experiments/w16-universal/contain_gen
 /experiments/w16-universal/exact_all
 experiments/w4-alphabet-rosary/sa7_1.txt
+experiments/w24-union-slack/out/

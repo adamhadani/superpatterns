@@ -82,3 +82,13 @@ if __name__=="__main__":
         sd=math.sqrt(sum((x-mean)**2 for x in rs)/(len(rs)-1)); means.append(mean); sems.append(max(sd/math.sqrt(len(rs)),0.3))
     fit_forms(ks,means,sems,"random pi (mean over patterns)")
     # include W16's k=8..16 random means? (contain_gen, fewer samples) -- optional, listed separately
+    # forced-limit fits: n - k^2/4 = d k + e k^(4/3)  (what a limit of 1/4 would require of the correction)
+    print("\n## forced c = 1/4: n - k^2/4 = d k + e k^(4/3)  (random pi means)")
+    for lab,kk,nn in [("all",ks,means),("k>=24",ks[1:],means[1:])]:
+        d,e=lstsq([[k,k**(4/3)] for k in kk],[n-k*k/4 for k,n in zip(kk,nn)])
+        d1,=lstsq([[k] for k in kk],[n-k*k/4 for k,n in zip(kk,nn)])
+        print("  %s: d=%.3f e=%.3f ; with e=0: d=%.3f rms=%.2f ; per-k (n-k^2/4): %s"%(lab,d,e,d1,
+              math.sqrt(sum((d1*k-(n-k*k/4))**2 for k,n in zip(kk,nn))/len(kk))," ".join("%.1f"%(n-k*k/4) for k,n in zip(kk,nn))))
+    print("\n## robustness: free fits on k>=24 only")
+    fit_forms(ks[1:],means[1:],sems[1:],"random pi (k>=24)")
+    print("\n## ratio n_rand(mean)/n_id(LIS) vs k: "+" ".join("%d:%.4f"%(k,m/lis[str(k)]["n_half"]) for k,m in zip(ks,means)))

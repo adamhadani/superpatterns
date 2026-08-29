@@ -35,3 +35,13 @@ by 2–10 % at k ≤ 48, so an "implied limit" for random π must be read with t
 (n_rand − k²/4)/k = 1.14, 1.07, 1.01 at k = 20, 24, 28: decreasing linearly, as c < 1/4 predicts.
 Structured, k=25: tilted 5×5 grid n_half ≈ random π (slightly below), identity = decreasing (as it must).
 Launched k=36 (4 random π, 1000 samples); k=40 to follow (≈1.5 s/sample near threshold).
+
+## k = 32, 36 done; k = 12, 16 added (contain_bc, 8 random π each, 4000 samples) for the k-fit
+k=32: rand mean 285.0 (sd 0.9) vs id 318.7 → ratio .894;  k=36 (4 π, 1000 samples): 352.9 vs 397.9 → .887.
+Ratio series k = 12..36: .959 .936 .924 .911 .904 .894 .887 — monotone, no sign of turning up.
+n_rand − k²/4 = 22.8 25.7 28.2 29.0 28.9 (k = 20..36): flat since k = 28.  Forcing c = 1/4 needs a NEGATIVE
+k^{4/3} term (e = −0.67); free fits give c = 0.20–0.23 for all forms, while the same forms on the exact identity
+series give 0.255–0.274 (true value 1/4) — the bias of the forms is upward, so bias-corrected c_rand is if
+anything lower.  Launched k = 40 (4 π, 600 samples, n = 400..460 step 12) and s36 (6×6 tilted grid).
+Dead end noted: contain_mrv (W16) is ~100× slower than contain_bc at k=20 and was hopeless at k ≥ 28 for the
+identity (52 M nodes/sample) — the LIS/LDS cell prune fixed that (identity now O(1) nodes).
