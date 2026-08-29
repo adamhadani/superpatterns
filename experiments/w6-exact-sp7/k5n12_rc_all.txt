@@ -1,0 +1,1 @@
+UNSAT k=5 n=12 sym=rc extra='' after 1 iterations, 120 patterns, 45120 pattern clauses, 7290 vars, 20.0s

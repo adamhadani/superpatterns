@@ -1,0 +1,33 @@
+uniform random                       k= 400 | pi    max=0.10 #>k/4=   0 #>k/8=   0 #>k/16= 184 | pi^-1 max=0.10 #>k/4=   0 #>k/8=   0 #>k/16= 183
+uniform random                       k= 900 | pi    max=0.07 #>k/4=   0 #>k/8=   0 #>k/16=  23 | pi^-1 max=0.07 #>k/4=   0 #>k/8=   0 #>k/16=  13
+tilted grid 20x20                    k= 400 | pi    max=0.95 #>k/4= 259 #>k/8= 331 #>k/16= 366 | pi^-1 max=0.95 #>k/4= 259 #>k/8= 331 #>k/16= 366
+tilted grid 30x30                    k= 900 | pi    max=0.97 #>k/4= 585 #>k/8= 743 #>k/16= 821 | pi^-1 max=0.97 #>k/4= 585 #>k/8= 743 #>k/16= 821
+grid rows permuted(random tau) r=20 h=20 k= 400 | pi    max=0.95 #>k/4=  64 #>k/8= 271 #>k/16= 341 | pi^-1 max=0.95 #>k/4=  90 #>k/8= 245 #>k/16= 322
+grid rows permuted(random tau) r=10 h=40 k= 400 | pi    max=0.97 #>k/4= 129 #>k/8= 301 #>k/16= 374 | pi^-1 max=0.97 #>k/4= 156 #>k/8= 277 #>k/16= 338
+grid rows permuted(random tau) r=40 h=10 k= 400 | pi    max=0.90 #>k/4=  10 #>k/8= 159 #>k/16= 319 | pi^-1 max=0.90 #>k/4=  20 #>k/8= 195 #>k/16= 299
+grid rows permuted(random tau) r=30 h=30 k= 900 | pi    max=0.97 #>k/4=  37 #>k/8= 442 #>k/16= 764 | pi^-1 max=0.97 #>k/4= 110 #>k/8= 492 #>k/16= 697
+grid rows permuted(random tau) r=8 h=100 k= 800 | pi    max=0.99 #>k/4= 417 #>k/8= 566 #>k/16= 748 | pi^-1 max=0.99 #>k/4= 360 #>k/8= 579 #>k/16= 690
+block-perturbed r=20 h=20 eps=0.2    k= 400 | pi    max=0.67 #>k/4= 208 #>k/8= 310 #>k/16= 359 | pi^-1 max=0.64 #>k/4= 187 #>k/8= 291 #>k/16= 351
+block-perturbed r=20 h=20 eps=0.45   k= 400 | pi    max=0.51 #>k/4= 131 #>k/8= 295 #>k/16= 355 | pi^-1 max=0.40 #>k/4=  48 #>k/8= 216 #>k/16= 315
+block-perturbed r=20 h=20 eps=0.6    k= 400 | pi    max=0.38 #>k/4=  61 #>k/8= 267 #>k/16= 353 | pi^-1 max=0.18 #>k/4=   0 #>k/8=  51 #>k/16= 244
+block-perturbed r=30 h=30 eps=0.2    k= 900 | pi    max=0.68 #>k/4= 459 #>k/8= 693 #>k/16= 803 | pi^-1 max=0.66 #>k/4= 438 #>k/8= 681 #>k/16= 788
+block-perturbed r=30 h=30 eps=0.45   k= 900 | pi    max=0.41 #>k/4= 195 #>k/8= 590 #>k/16= 777 | pi^-1 max=0.33 #>k/4=  68 #>k/8= 443 #>k/16= 681
+block-perturbed r=30 h=30 eps=0.6    k= 900 | pi    max=0.33 #>k/4=  74 #>k/8= 528 #>k/16= 764 | pi^-1 max=0.19 #>k/4=   0 #>k/8= 128 #>k/16= 511
+block-perturbed r=10 h=60 eps=0.2    k= 600 | pi    max=0.79 #>k/4= 351 #>k/8= 486 #>k/16= 562 | pi^-1 max=0.75 #>k/4= 324 #>k/8= 463 #>k/16= 533
+block-perturbed r=10 h=60 eps=0.45   k= 600 | pi    max=0.57 #>k/4= 270 #>k/8= 464 #>k/16= 561 | pi^-1 max=0.47 #>k/4= 158 #>k/8= 366 #>k/16= 477
+block-perturbed r=10 h=60 eps=0.6    k= 600 | pi    max=0.49 #>k/4= 210 #>k/8= 455 #>k/16= 560 | pi^-1 max=0.27 #>k/4=  10 #>k/8= 231 #>k/16= 428
+block-perturbed r=60 h=10 eps=0.2    k= 600 | pi    max=0.70 #>k/4= 302 #>k/8= 448 #>k/16= 528 | pi^-1 max=0.68 #>k/4= 303 #>k/8= 452 #>k/16= 532
+block-perturbed r=60 h=10 eps=0.45   k= 600 | pi    max=0.34 #>k/4=  60 #>k/8= 328 #>k/16= 485 | pi^-1 max=0.29 #>k/4=  14 #>k/8= 242 #>k/16= 433
+block-perturbed r=60 h=10 eps=0.6    k= 600 | pi    max=0.29 #>k/4=  22 #>k/8= 286 #>k/16= 488 | pi^-1 max=0.22 #>k/4=   0 #>k/8= 139 #>k/16= 379
+affine k=401 a=7                     k= 401 | pi    max=0.98 #>k/4= 262 #>k/8= 331 #>k/16= 365 | pi^-1 max=0.98 #>k/4= 265 #>k/8= 332 #>k/16= 375
+affine k=401 a=123                   k= 401 | pi    max=0.96 #>k/4= 257 #>k/8= 332 #>k/16= 366 | pi^-1 max=0.96 #>k/4= 261 #>k/8= 330 #>k/16= 362
+affine k=907 a=31                    k= 907 | pi    max=0.97 #>k/4= 589 #>k/8= 751 #>k/16= 829 | pi^-1 max=0.97 #>k/4= 593 #>k/8= 750 #>k/16= 828
+random L_8                           k= 400 | pi    max=0.45 #>k/4=   6 #>k/8= 226 #>k/16= 374 | pi^-1 max=0.17 #>k/4=   0 #>k/8=  63 #>k/16= 259
+random L_8^c                         k= 400 | pi    max=0.45 #>k/4=   6 #>k/8= 226 #>k/16= 374 | pi^-1 max=0.17 #>k/4=   0 #>k/8=  63 #>k/16= 259
+periodic L_8                         k= 400 | pi    max=0.98 #>k/4= 257 #>k/8= 324 #>k/16= 374 | pi^-1 max=0.98 #>k/4= 259 #>k/8= 328 #>k/16= 363
+random L_32                          k= 400 | pi    max=0.24 #>k/4=   0 #>k/8=  12 #>k/16= 230 | pi^-1 max=0.10 #>k/4=   0 #>k/8=   0 #>k/16= 190
+random L_32^c                        k= 400 | pi    max=0.24 #>k/4=   0 #>k/8=  12 #>k/16= 230 | pi^-1 max=0.10 #>k/4=   0 #>k/8=   0 #>k/16= 190
+periodic L_32                        k= 400 | pi    max=0.92 #>k/4=  91 #>k/8= 165 #>k/16= 199 | pi^-1 max=0.97 #>k/4= 260 #>k/8= 327 #>k/16= 363
+random L_30                          k= 900 | pi    max=0.25 #>k/4=   0 #>k/8=  26 #>k/16= 549 | pi^-1 max=0.08 #>k/4=   0 #>k/8=   0 #>k/16= 107
+random L_30^c                        k= 900 | pi    max=0.25 #>k/4=   0 #>k/8=  26 #>k/16= 549 | pi^-1 max=0.08 #>k/4=   0 #>k/8=   0 #>k/16= 107
+periodic L_30                        k= 900 | pi    max=0.97 #>k/4= 585 #>k/8= 743 #>k/16= 821 | pi^-1 max=0.97 #>k/4= 585 #>k/8= 743 #>k/16= 821

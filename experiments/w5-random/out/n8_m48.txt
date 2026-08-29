@@ -1,0 +1,1 @@
+n=8 m=48 samples=300 frac_super=0.5867 mean_missing=6.960

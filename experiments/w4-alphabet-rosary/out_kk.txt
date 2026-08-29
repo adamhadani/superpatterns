@@ -1,0 +1,16 @@
+k=3 r=3 n=3: UNSAT (0.0s, 31 vars)
+k=3 r=3 n=4: UNSAT (0.0s, 53 vars)
+k=3 r=3 n=5: UNSAT (0.0s, 75 vars)
+k=3 r=3 n=6: UNSAT (0.0s, 97 vars)
+k=3 r=3 n=7: SAT (0.0s, 119 vars)
+  witness: 1231321 verified
+k=4 r=4 n=4: UNSAT (0.0s, 117 vars)
+k=4 r=4 n=5: UNSAT (0.0s, 218 vars)
+k=4 r=4 n=6: UNSAT (0.0s, 319 vars)
+k=4 r=4 n=7: UNSAT (0.0s, 420 vars)
+k=4 r=4 n=8: UNSAT (0.0s, 521 vars)
+k=4 r=4 n=9: UNSAT (0.0s, 622 vars)
+k=4 r=4 n=10: UNSAT (0.0s, 723 vars)
+k=4 r=4 n=11: UNSAT (0.0s, 824 vars)
+k=4 r=4 n=12: SAT (0.0s, 925 vars)
+  witness: 143241342314 verified

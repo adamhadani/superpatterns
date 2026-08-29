@@ -1,0 +1,12 @@
+  tilted grid 20x20          D=  1 (lag= 20): P(fail)=0.158 P(all3 fail)=0.003 ratio=0.64
+  tilted grid 20x20          D=  5 (lag=100): P(fail)=0.158 P(all3 fail)=0.005 ratio=1.28
+  tilted grid 20x20          D= 20 (lag=  1): P(fail)=0.175 P(all3 fail)=0.040 ratio=7.46
+  tilted grid 20x20          D= 21 (lag= 21): P(fail)=0.152 P(all3 fail)=0.003 ratio=0.72
+  tilted grid 20x20          D=100 (lag=  5): P(fail)=0.156 P(all3 fail)=0.010 ratio=2.64
+  tilted grid 20x20          D=105 (lag=105): P(fail)=0.142 P(all3 fail)=0.000 ratio=0.00
+  block-perturbed eps=0.2    D=  1 (lag= 20): P(fail)=0.147 P(all3 fail)=0.003 ratio=0.79
+  block-perturbed eps=0.2    D=  5 (lag=100): P(fail)=0.152 P(all3 fail)=0.003 ratio=0.72
+  block-perturbed eps=0.2    D= 20 (lag=  1): P(fail)=0.147 P(all3 fail)=0.018 ratio=5.45
+  block-perturbed eps=0.2    D= 21 (lag= 21): P(fail)=0.165 P(all3 fail)=0.007 ratio=1.67
+  block-perturbed eps=0.2    D=100 (lag=  5): P(fail)=0.149 P(all3 fail)=0.005 ratio=1.51
+  block-perturbed eps=0.2    D=105 (lag=105): P(fail)=0.148 P(all3 fail)=0.005 ratio=1.53

@@ -1,0 +1,6 @@
+n=40 s=1.50 t=1.50  all-leftmost kappa=2.29119   mixed L/D kappa=2.34663
+n=40 s=1.40 t=1.50  all-leftmost kappa=2.29553   mixed L/D kappa=2.35733
+n=40 s=1.50 t=1.40  all-leftmost kappa=2.29409   mixed L/D kappa=2.35583
+n=40 s=1.30 t=1.60  all-leftmost kappa=2.30873   mixed L/D kappa=2.37181
+n=40 s=1.60 t=1.30  all-leftmost kappa=2.30432   mixed L/D kappa=2.36726
+n=40 s=1.20 t=1.70  all-leftmost kappa=2.33440   mixed L/D kappa=2.40013

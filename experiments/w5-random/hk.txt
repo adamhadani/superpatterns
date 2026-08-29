@@ -1,0 +1,1010 @@
+Universality of random permutations
+Xiaoyu He ∗
+
+Matthew Kwan †
+
+arXiv:1911.12878v2 [math.CO] 3 Apr 2020
+
+Abstract
+It is a classical fact that for any ε > 0, a random permutation of length n = (1 + ε)k 2 /4
+typically contains an increasing subsequence of length k. As a far-reaching generalization,
+Alon conjectured that a random permutation of this same length n is typically k-universal,
+meaning that it simultaneously contains every pattern of length k. He also made the simple observation that for n = O(k 2 log k), a random length-n permutation is typically kuniversal. We make the first significant progress towards Alon’s conjecture by showing that
+n = 2000k 2 log log k suffices.
+
+1
+
+Introduction
+
+A mathematical structure is said to be universal if it contains all possible substructures, in some
+speciﬁed sense. This notion may have been ﬁrst considered in a 1964 paper by Rado [17], in
+which he found examples of graphs, simplicial complexes and functions which are universal in
+various ways. Another famous universal structure is a de Bruijn sequence (with parameters k and
+q, say), which is a string over a size-q alphabet in which every possible length-k string appears
+exactly once as a substring.
+One topic that has received particular attention over the years is the case of universality for
+ﬁnite graphs. We say that a graph is k-universal (or k-induced-universal ) if it contains every
+graph on k vertices as an induced subgraph. The problems that have received the most interest in
+this area are (1) to ﬁnd a k-universal graph with as few vertices as possible, and (2) to understand
+for which n a “typical” n-vertex graph is k-universal. These problems are related to the problem
+of ﬁnding optimal adjacency labeling schemes in theoretical computer science; for more details
+we refer the reader to [4] and the references therein.
+In an exciting recent paper by Alon [3], both of these problems were eﬀectively resolved. He
+showed with a probabilistic proof that there exists a k-universal graph with (1 + o(1))2(k−1)/2
+vertices, asymptotically matching a lower bound due to Moon [16]. Alon also showed that as
+soon as n is large enough that a random n-vertex graph typically contains a k-vertex clique
+and a k-vertex independent set, then such a random graph is typically also k-universal. His
+proofs involved a classiﬁcation of graphs according to their numbers of automorphisms, taking
+advantage of the fact that graphs with few automorphisms are easier to embed into random
+graphs.
+Alon’s work essentially closes the book on the study of k-universal graphs, but substantial
+challenges remain in many other settings. One important example is the case of permutations,
+where there is no natural notion of an automorphism, and no natural scheme to embed subpermutations using “quasirandomness” conditions. Let Sn be the set of all permutations of the
+n-element set [n] := {1, . . . , n}. We say that a permutation σ ∈ Sn contains a pattern π ∈ Sk ,
+and write π ∈ σ, if there are indices 1 ≤ x1 < · · · < xk ≤ n such that for 1 ≤ i, j ≤ k we
+have σ(xi ) < σ(xj ) if and only if π(i) < π(j). Say that σ is k-universal or a k-superpattern if
+∗
+
+Department of Mathematics, Stanford University, Stanford, CA 94305. Email: alkjash@stanford.edu. Research supported by a NSF Graduate Research Fellowship.
+†
+Department of Mathematics, Stanford University, Stanford, CA 94305. Email: mattkwan@stanford.edu.
+Research supported in part by SNSF project 178493.
+
+1
+
+it contains every π ∈ Sk . As before, there are two main directions to consider: (1) ﬁnding the
+shortest possible k-universal permutation and (2) understanding for which n a typical length n
+permutation is k-universal.
+As a simple lower bound for both problems, note that if σ ∈ Sn is k-universal, then we must
+n
+have
+k ≥ k!, since σ contains k! distinct patterns. Using Stirling’s approximation and the fact
+
+n
+k /k!, we deduce the lower bound
+≤
+n
+k
+
+
+1
+−
+o(1)
+k2 .
+n≥
+e2
+For the ﬁrst problem (of ﬁnding short k-universal permutations), this lower bound is not too far
+from best-possible: Miller [15] constructed a k-universal permutation with length n ≤ (1/2 +
+o(1))k2 , and the o(1)-term was recently improved by Engen and Vatter [10]. This constant
+1/2 was conjectured to be tight by Eriksson, Eriksson, Linusson and Wästlund [11], while the
+constant 1/e2 from the lower bound was conjectured to be tight by Arratia [5].
+Regarding universality of random permutations, much less is known. Note that containing
+the identity permutation 1k ∈ Sk is equivalent to containing an increasing sequence of length k,
+√
+and the longest increasing subsequence of a typical σ ∈ Sn is known1 to be of length (2+o(1)) n.
+It follows that we cannot hope for a typical σ ∈ Sn to be k-universal unless n ≥ (1/4 + o(1))k2 .
+In 1999, Alon made the following striking conjecture (see [2, 5]).
+Conjecture 1.1. For a fixed ε > 0, a random permutation of length (1 + ε)k2 /4 is w.h.p.2
+k-universal.
+Intuitively, Conjecture 1.1 can be justiﬁed by comparison to universality in graphs: in much
+the same way that cliques and independent sets are the “hardest” subgraphs to ﬁnd in a random graph, it is believed that monotonically increasing and decreasing patterns are the hardest
+patterns to ﬁnd in a random permutation. We also remark that Conjecture 1.1 contradicts the
+aforementioned conjecture by Eriksson, Eriksson, Linusson and Wästlund.
+In the “ordered” setting of random permutations, most of the standard tools used in the
+unordered setting of graphs are not applicable, and Conjecture 1.1 seems rather challenging to
+prove. Indeed, in a recent discussion of the problem, Alon [2] highlighted the more modest
+problem of simply showing that for n = 1000k2 a typical σ ∈ Sk is k-universal. He also observed
+a simple upper bound of the form n = O(k2 log k) (we will sketch a proof of this in Section 1.1).
+Our main result is the following substantial improvement.
+Theorem 1.2. A random permutation of length 2000k2 log log k is w.h.p. k-universal.
+Since there is no natural notion of symmetry for permutations, we were not able to take
+quite the same approach as Alon took for the graph case. However, the proof of Theorem 1.2 still
+proceeds via a “structure-vs-randomness” dichotomy (see [19] for a discussion of this phenomenon
+in general). In our proof of Theorem 1.2 we show that every π ∈ Sk can be decomposed into
+a “structured part” and a “quasirandom part”. The “structured part” of π is likely to appear
+in σ for one reason, and the “quasirandom part” is likely to appear for a diﬀerent reason. We
+outline the proof in more detail in Section 1.1, but it is worth mentioning here that because most
+permutations are entirely quasirandom in our sense, the following theorem also follows from our
+proof approach.
+Theorem 1.3. For any k ≥ 1, there is a set Qk ⊆ Sk of (1 − o(1))k! length-k permutations such
+that w.h.p. a random permutation of length 20k2 contains every π ∈ Qk .
+1
+
+This fact is actually surprisingly difficult to prove, and is due independently to Logan and Shepp [13] and to
+Vershik and Kerov [20] (see also [1]). The study of increasing subsequences in random permutations has a rich
+history, see for example the survey [18].
+2
+We say that an event holds with high probability, or w.h.p. for short, if it holds with probability 1 − o(1).
+Here and for the rest of the paper, asymptotics are as k → ∞ and/or n → ∞.
+
+2
+
+The deﬁnition of the set Qk is too technical to describe here, but it is completely explicit,
+see Section 3. We made no attempt to optimize the constants in Theorems 1.2 and 1.3, but we
+believe new ideas would be required to push n down to (1 + o(1))k 2 /4 in Theorem 1.3.
+Of course, Conjecture 1.1 and Theorems 1.2 and 1.3 can also be interpreted in terms of
+counting k-universal permutations, and one natural avenue towards Conjecture 1.1 is to study
+the number of permutations σ ∈ Sn avoiding a speciﬁc pattern π ∈ Sk . To be precise, given
+π ∈ Sk , we let
+Sn (π) := {σ ∈ Sn | σ does not contain π}.
+If we could prove that |Sn (π)| = o(n!/k!) for all π ∈ Sk , it would follow that there are at
+least n! − o(n!) permutations in Sn which are k-universal, and therefore that w.h.p. a random
+permutation of length n is k-universal. The problem of estimating |Sn (π)| has a long and rich
+history, largely in the regime where k is ﬁxed and n is large (we refer the reader to the survey [8],
+the book [6], and the references therein). The most important result in this area is due to Marcus
+and Tardos [14], who resolved a conjecture of Stanley and Wilf, showing that for every π ∈ Sk
+there exists cπ for which |Sn (π)| ≤ cnπ . Note that for a given k, if we let ck := max{cπ | π ∈ Sk },
+then by the result of Marcus and Tardos we obtain that there are at most k!cnk permutations
+from Sn that avoid some pattern of length k.
+One may naively hope to prove new bounds for Conjecture 1.1 via bounds on ck , but unfortunately this is hopeless. Fox [12] showed that the dependence of ck on k is extremely poor:
+1/4
+ck = 2Ω(k ) . Nevertheless, it is still plausible that one may be able to prove |Sn (π)| = o(n!/k!)
+√
+in the special case where k is about n, and this idea guides our proofs of Theorems 1.2 and 1.3.
+5/4
+In fact, it is possible to strengthen Theorem 1.3 to prove the strong bound |Sn (π)| ≤ n!e−Ω(k )
+for π ∈ Qk , see Section 5 for details.
+
+1.1
+
+Discussion and proof outline
+
+Before describing our approach, we make a very convenient technical observation. For any q ∈ N,
+taking m = ⌊n/(2q)⌋, it is possible to couple a uniform random σ ∈ Sn with a uniform random
+q × m zero-one matrix M (whose entries are independently zero or one with probability 1/2), in
+such a way that σ contains π whenever M “contains” π. Here we say a matrix M contains π if
+one can delete columns and rows, and change ones to zeros, to obtain the permutation matrix
+Pπ of π. Say that M is k-universal if it contains all k-permutations, so that σ is k-universal if M
+is k-universal. One should think of M as a reduced version of the permutation matrix Pσ of σ,
+modiﬁed so that the entries of M are independent. For the details of the coupling see Section 2.
+To illustrate the utility of M , we start by sketching a proof of the (previously known) fact
+that for some constant C and n = Ck 2 log k, a typical σ ∈ Sn is k-universal. Let q = k, so that
+m = ⌊n/(2k)⌋ and M is a uniform random k × m zero-one matrix. The idea is to consider a
+simple greedy algorithm that scans through M attempting to ﬁnd a copy of π ∈ Sk . We will see
+that this algorithm fails with probability e−Ω(m) = e−Ω(n/k) , meaning that |Sn (π)| ≤ n!e−Ω(n/k) .
+So if n = Ck2 log k for large C then we can just sum over all k! = eΘ(k log k) possibilities for π.
+Here is how the algorithm works. For M to contain a permutation matrix Pπ means that there
+are indices i1 < · · · < ik such that M (π(j), ij ) = 1 for each j. The algorithm proceeds in the
+simplest possible way: we scan through the indices i = 1, . . . , m one-by-one, repeatedly querying
+whether M (π(1), i) = 1. Once we succeed in ﬁnding i1 with M (π(1), i1 ) = 1 we continue running
+through the indices i = i1 + 1, . . . , m, now querying whether M (π(2), i) = 1 until we ﬁnd i2 , and
+so on. If at least k of the queries succeed during this algorithm, then it successfully ﬁnds a copy
+of π. Since each of the queries is independent and has success probability 1/2, a straightforward
+Chernoﬀ bound shows that the algorithm succeeds to ﬁnd π with probability 1 − e−Ω(m) , as
+desired.
+A crucial observation about this algorithm is that regardless of whether or not it ﬁnds a copy
+of π, it exposes only a very small amount of information about M . We can imagine the algorithm
+3
+
+tracing a “thread” through M , exposing at most one entry per column, and leaving the other
+entries completely untouched. The hope is to run our greedy algorithm several times to look for
+π in slightly diﬀerent ways, tracing diﬀerent threads through M .
+We do this as follows. Instead of taking q = k we can take q = 2k (so M has 2k rows), and
+then use our greedy algorithm to attempt to ﬁnd π in rows 1 + t, . . . , k + t, for several diﬀerent
+choices of t ∈ [k]. That is, we scan through multiple “shifted” threads in the same matrix, and
+if any of our threads succeeds, we have that π ∈ σ.
+The aim is to judiciously choose the thread indices t in such a way that the threads are
+mostly disjoint, meaning that the searches are mostly independent of each other. If this were
+possible, it would allow us to amplify the probability that a single thread fails, thereby giving
+much stronger bounds on |Sn (π)| and thus proving k-universality for a smaller value of n.
+This plan fails for two diﬀerent reasons. The ﬁrst is that, since we are concerned with very
+small probabilities of order e−Ω(n/k) , we cannot rule out the event that there is a very long run of
+zeros in some row of M . Indeed, the probability that a single row is entirely zero is also of order
+e−Ω(n/k) . Such a run of zeros would be simultaneously disastrous for multiple threads at once,
+since many threads could heavily intersect in that row. The second issue is that if a permutation
+is very “self-similar” then two diﬀerent threads can “synchronize”. For example, if there are two
+long sequences of indices a1 < · · · < aL and b1 < · · · < bL such that π(ai ) = π(bi ) + ∆ for
+each i (we call this situation a ∆-shift of length L in π), then for any t, the part of thread t
+that searches for π(b1 ), . . . , π(bL ) could coincide with the part of thread t + ∆ that searches for
+π(a1 ), . . . , π(aL ).
+It is actually quite simple to overcome the ﬁrst of these two issues because the appearance of
+long runs in M is unlikely in absolute terms (in a typical outcome of M , the longest horizontal
+run of zeros has length O(log k)). We can simply deﬁne an event A that there are no long runs
+of zeros, show that Pr(A) = 1 − o(1), and analyze our multi-threaded scanning procedure in
+the conditional probability space where A holds, taking a union bound over all π only in this
+conditional space. Note that this conditioning means that our approach no longer directly gives
+bounds on the number of π-free permutations |Sn (π)|.
+The second of the aforementioned issues is more serious, but it is only a problem if π contains
+a long ∆-shift, and it turns out that long ∆-shifts are quite atypical. Indeed, it is possible to
+deﬁne a set Qk of (1 − o(1))k! “quasirandom” permutations π which have no long ∆-shifts, so
+that no two threads can “synchronize” too much. This yields a proof of Theorem 1.3, the details
+of which are in Section 3.
+Now, if π is non-quasirandom to such an extent that multi-threaded scanning is completely
+ineﬀective, then it must have long ∆-shifts for many ∆, which heavily constrains the structure
+of π. We might hope that there are very few non-quasirandom permutations, so that the basic
+bound |Sn (π)| ≤ n!e−Ω(n/k) suﬃces for a union bound over all non-quasirandom π, for some n
+much smaller than k2 log k. While this approach can yield a small constant-factor improvement,
+the number of non-quasirandom permutations is unfortunately still too large: for example, there
+are (k/2)! = eΘ(k log k) permutations π satisfying π(i) = i for i ≤ k/2.
+Instead, our approach is as follows. We deﬁne a notion of a “structured map” φ : Z → [k],
+where Z ⊆ [k], in such a way that there are only eO(k log log k) diﬀerent structured maps (in
+contrast to the eΘ(k log k) many permutations π ∈ Sk ). We then prove that every permutation
+π ∈ Sk can be partitioned into a quasirandom part and a structured part, in the sense that there
+is a partition [k] = Q ∪ Z such that the restriction π|Z : Z → [k] is a structured map, and the
+restriction π|Q : Q → [k] is in some sense quasirandom with respect to π.
+Of course, since there are few structured maps, it would be straightforward to use the union
+bound to prove that a random permutation σ ∈ Sn typically contains every structured map, for
+some n = O(k2 log log k). But since we need to handle “hybrid” permutations that may have their
+quasirandom and structured parts arbitrarily interleaved, this approach is insuﬃcient. Instead
+we show that M typically has a technical property we call B that for any set of positions in M
+4
+
+corresponding to a copy of φ, the average length of the runs of zeros starting at these positions
+is O(log log k), which is much shorter than the bound O(log k) guaranteed by A for individual
+runs. Once we condition on A ∩ B, we then encounter no problems analyzing the multi-threaded
+scanning algorithm, yielding a proof of Theorem 1.2. The details are in Section 4.
+
+2
+
+Multi-threaded scanning
+
+Our ﬁrst lemma reduces permutation universality to a notion of matrix universality. It will
+be useful to deﬁne the notion of an interval minor introduced by Fox [12], which generalizes
+permutation containment.
+Definition 2.1. The interval contraction of a pair of consecutive rows (resp. columns) in a
+zero-one matrix replaces those rows (resp. columns) by their entrywise binary OR. If P and M
+are two zero-one matrices, then P is an interval minor of M if it can be obtained from M by
+repeatedly performing interval contractions and replacing ones with zeros.
+Note that being an interval minor is transitive in the sense that if M1 is an interval minor of
+M2 , and M2 is an interval minor of M3 , then M1 is an interval minor of M3 .
+We remark that one can also interpret a sequence of interval contractions in the following
+alternative way. For a zero-one matrix M , ﬁx an interval partition of its set of rows and an
+interval partition of its set of columns, thereby interpreting M as a block matrix. We can then
+deﬁne a contracted zero-one matrix with an entry for each block, where an entry is a zero if and
+only if its corresponding block is an all-zero matrix.
+Write Pπ for the permutation matrix of π, and note that a permutation σ contains a pattern
+π if and only if Pπ is an interval minor of Pσ . We say that a zero-one matrix M contains a
+permutation π ∈ Sk if Pπ is an interval minor of M .
+Lemma 2.2. Let σ be a uniform random permutation in Sn , and let M be a uniform random
+(2k) × m zero-one matrix, where3 m := n/(4k). Then we can couple σ and M in such a way that
+M is always an interval minor of Pσ .
+Proof. First, we observe that a uniform random permutation σ ∈ Sn can be obtained via a
+sequence of n i.i.d. Unif(0, 1) random variables U1 , . . . , Un (whose values are distinct with probability 1), by taking σ to be the unique permutation for which Uσ(1) < · · · < Uσ(n) .
+We divide the interval [0, 1] into 2k consecutive equal-sized intervals I1 , . . . , I2k (so Iy is the
+interval between (y − 1)/(2k) and y/(2k)), and we divide the discrete interval {1, . . . , n} into
+m := n/(4k) consecutive (discrete) equal-sized intervals J1 , . . . , Jm (so Jx contains the integers
+from 4k(x − 1) + 1 to 4kx inclusive). Let MU be the random (2k) × m matrix with (y, x)-entry4
+(
+1 if there is j ∈ Jx with Uj ∈ Iy ,
+MU (y, x) =
+0 otherwise.
+Observe that MU is an interval minor of Pσ . It remains to check that there is a coupling between
+MU and M such that M ≤ MU . Since the columns of MU are i.i.d., we just need to show that the
+ﬁrst column of M is stochastically dominated by the ﬁrst column of MU . Consider any y ∈ [2k],
+and condition on any outcome of the values of MU (y ′ , 1) for (y ′ , 1) 6= (y, 1). It suﬃces to show
+that, conditionally, we have MU (y, 1) = 1 with probability at least 1/2.
+To see this, note that to reveal whether MU (y ′ , 1) = 1, it suﬃces to run through the indices
+i ∈ J1 , and keep checking whether Ui ∈ Iy′ until we ﬁrst see a success. So, after revealing this
+3
+
+To be fully rigorous we should assume that n is divisible by 4k. Such divisibility considerations will be
+inconsequential throughout the paper, and we do not discuss them further.
+4
+Here x represents the column index (i.e., the horizontal coordinate), and y represents the row index (i.e., the
+vertical coordinate). It is rather unfortunate that the accepted convention for indexing matrices is opposite to
+the convention for indexing points in 2-dimensional space.
+
+5
+
+information for all y ′ 6= y, there are at least 4k − (2k − 1) ≥ 2k indices i ∈ J1 for which Ui
+could still lie in Iy . In fact, each such Ui is conditionally uniform on some set containing Iy ,
+meaning that Ui ∈ Iy with probability at least 1/(2k). So, the conditional probability of the
+event MU (y, 1) = 0 is at most (1 − 1/(2k))2k ≤ 1/e ≤ 1/2, as desired.
+We say that a matrix M is k-universal (with respect to permutations from Sk ) if it contains
+every π ∈ Sk . The above lemma shows that in order to prove that a uniform random σ ∈ Sn is kuniversal, it suﬃces to show that a random (2k)×m matrix M is k-universal, where m = n/(4k).
+Remark. The matrix M is typically “dense” (about half of its entries are ones), and one may
+wonder whether this density alone is enough to ensure that M is k-universal (provided m ≥ 2k,
+say). Although this suﬃces for the containment of certain permutations such as the identity
+1k ∈ Sk , Fox [12, Theorem 6] established the existence of a matrix, almost all of whose entries
+are ones, which fails to contain almost all π ∈ Sk . Thus, the density of ones alone is not enough
+to guarantee the k-universality of M .
+Fix π ∈ Sk . We now describe a procedure for ﬁnding a copy of π in a random M . We will
+use this procedure in the proofs of Theorems 1.2 and 1.3.
+For each t ∈ [k], we attempt to ﬁnd a copy of π in rows5 t + 1, . . . , t + k in the following
+greedy fashion. First scan through row π(1) + t from left to right until a one is found in some
+position (π(1) + t, x1 ), then scan through row π(2) + t, starting from column x1 + 1, until a one
+is found in some position (π(2) + t, x2 ), and so on (see Figure 1 below). We call this procedure
+“scanning along thread t to ﬁnd π”. Note that thread t successfully ﬁnds π if and only if some
+copy of π lies in rows t + 1, . . . , t + k, and it exposes at most m entries of M since it checks at
+most one entry in each column.
+∗
+∗
+
+0
+
+∗
+
+∗
+∗
+
+
+∗
+∗
+1
+∗
+∗
+∗
+
+∗
+∗
+∗
+∗
+0
+∗
+
+∗
+∗
+∗
+∗
+0
+∗
+
+∗
+∗
+∗
+∗
+0
+∗
+
+∗
+∗
+∗
+∗
+0
+∗
+
+∗
+∗
+∗
+∗
+0
+∗
+
+∗
+∗
+∗
+∗
+1
+∗
+
+∗
+∗
+∗
+0
+∗
+∗
+
+∗
+∗
+∗
+0
+∗
+∗
+
+∗
+∗
+∗
+1
+∗
+∗
+
+
+∗
+∗
+
+∗
+
+∗
+
+∗
+∗
+
+Figure 1. One possible outcome for thread 2 successfully ﬁnding a copy of π = 132 in rows
+{3, 4, 5} of a 6 × 12 random matrix M . Starred entries remain unexposed.
+Remark. Since submitting the ﬁrst version of this paper, it was brought to our attention that the
+same multi-threaded scanning procedure was recently also considered by Cibulka and Kynčl [7],
+in a diﬀerent context.
+We conclude this section with a simple lemma that will be useful for analyzing our scanning
+process. Given coordinates (y, x) ∈ [2k] × [m], let
+r(y, x) = max{t ∈ [m] : M (y, x + s) = 0 for 0 ≤ s ≤ t}
+be the length of the run of zeros in M starting at (y, x) and continuing left-to-right (so r(y, x) = 0
+if M (y, x) = 1). Note that r(y, x) has a geometric distribution supported on the nonnegative
+integers, with success probability 1/2. The following lemma shows that long runs of zeros are
+unlikely, in a fairly general sense.
+5
+
+It would be more natural to also consider t = 0, since otherwise we actually never touch the first row of the
+matrix. However considering only t ∈ [k] makes the indexing slightly more convenient.
+
+6
+
+Lemma 2.3. There is an absolute constant c > 0 such that the following holds for sufficiently
+large k. If (y1 , x1 ), . . . , (yℓ , xℓ ) are ℓ ≤ k positions in M , in distinct rows, then for r ≥ 4ℓ we
+have
+Pr(r(y1 , x1 ) + · · · + r(yℓ , xℓ ) ≥ r) < e−r/8 .
+Proof. As the ℓ positions (yi , xi ) all lie in distinct rows, the run lengths r(y1 , x1 ), . . . , r(yℓ , xℓ )
+are independent random variables. As observed above, they are individually geometric random
+variables. Thus the the sum r(y1 , x1 ) + · · · + r(yℓ , xℓ ) has a negative binomial distribution, and
+the desired inequality follows directly from a concentration inequality for the negative binomial
+distribution. See [9, Problem 2.5].
+
+3
+
+Quasirandom permutations
+
+In this section we prove Theorem 1.3. The ideas will also be relevant for Theorem 1.2.
+For π ∈ Sk , we say that a subset A ⊆ [k] is a ∆-shift of another subset B ⊆ [k] in π if,
+writing a1 < · · · < aL for the elements of A and b1 < · · · < bL for the elements of B, we
+have π(ai ) = π(bi ) + ∆ for each i. For π ∈ Sk , let L∆ (π) be the largest L for which there are
+L-sets A, B ⊆ [k] such that A is a ∆-shift of B. Equivalently, L∆ (π) is the length of the longest
+increasing subsequence of the function i 7→ π −1 (π(i) + ∆), where i ranges over all indices for
+which π(i) ≤ k − ∆.
+∗
+∗
+
+0
+
+0
+
+∗
+∗
+
+
+∗
+∗
+1
+0
+∗
+∗
+
+∗
+∗
+∗
+0
+0
+∗
+
+∗
+∗
+∗
+0
+0
+∗
+
+∗
+∗
+∗
+1
+0
+∗
+
+∗
+∗
+∗
+∗
+0
+1
+
+∗
+∗
+∗
+∗
+0
+∗
+
+∗
+∗
+∗
+∗
+0
+∗
+
+∗
+∗
+∗
+∗
+1
+∗
+
+∗
+∗
+∗
+0
+∗
+∗
+
+∗
+∗
+∗
+0
+∗
+∗
+
+
+∗
+∗
+
+∗
+
+0
+
+∗
+∗
+
+Figure 2. One possible outcome for threads 2 and 3 searching for a copy of π = 132 in a 6 × 12
+random matrix M , where thread 2 fails but thread 3 succeeds. Bolded entries are those checked
+by thread 3. Note that because L1 (132) = 1, the two threads can intersect in at most one row
+(in this case row 5).
+The purpose of this deﬁnition is that the values L∆ (π) measure the extent to which threads
+t and t + ∆ can intersect each other (see Figure 2), in the multi-threaded scanning procedure
+described in Section 2. The following lemma shows that for almost all π ∈ Sk , each of the values
+L∆ (π) is quite small.
+√
+Lemma 3.1. W.h.p, a uniform random permutation π ∈ Sk satisfies L∆ (π) ≤ 3 k for all
+∆ ∈ [k].
+To prove Lemma 3.1, it will be convenient to make a few deﬁnitions. For a function f and a
+subset A of its domain, we use the notation f |A for the restriction of f to A. Also, for subsets
+A, B ⊆ [k] with elements a1 < · · · < aL and b1 < · · · < bL , let G(A, B) be the graph on the vertex
+set A ∪ B with edge set {ai bi }L
+i=1 . In particular, if A ∩ B = ∅ then G(A, B) is a matching, and
+in general G(A, B) is always a vertex-disjoint union of paths. Whenever we use this deﬁnition
+we we will have ai 6= bi for all i, so that G(A, B) has no loops.
+Proof of Lemma 3.1. For a ﬁxed subset B ⊆ [k] of order L, we bound the probability that there
+exists a ∆-shift of B in π. Such a shift may only exist if π(B) ⊆ [k − ∆], so we can assume this.
+Now, if a shift of B exists, it must be the set A := π −1 (π(B) + ∆), consisting of all indices a
+
+7
+
+such that π(a) = π(b) + ∆ for some b ∈ B. Condition on any outcome of the random set A, and
+on an outcome of π|B\A : B \ A → [k].
+Now, conditionally, π|A is uniformly random among the L! bijections from A into π(B) + ∆.
+But, since we have conditioned on an outcome of the function π|B\A , observe that there is only
+one possibility for π|A that results in A being a ∆-shift of B in π. Indeed, note that the graph
+G(A, B) is a disjoint union of paths, and that if A is a ∆-shift of B then π|A∪B is fully determined
+by specifying the value of π(b) for a representative b from each component of G(A, B). Since
+each path of G(A, B) has an endpoint in B \ A, specifying π|B\A determines π|B .
+It follows that
+
+
+ 
+ e2 k L
+k 1
+≤k
+,
+Pr max L∆ (π) ≥ L ≤ k
+∆
+L2
+L L!
+√
+
+since there are k choices of ∆ and Lk choices for B. This probability is o(1) for L = 3 k, which
+completes the proof.
+√
+Now, let Qk ⊆ Sk be the set of π ∈ Sk such that L∆ (π) ≤ 3 k for each ∆ ∈ [k]. By
+Lemma 3.1, we have |Qk | = (1 − o(1))k!. We are ready to prove Theorem 1.3.
+Proof of Theorem 1.3. Let m = 5k, and consider a uniform random (2k) × m zero-one matrix
+M , whose entries are independently zero or one, each with probability 1/2. We will show that
+w.h.p. M contains every pattern π ∈ Qk . By Lemma 2.2, the desired result follows: w.h.p. a
+uniform random permutation of length n = 20k2 contains every pattern in Qk .
+Now, recall that r(y, x) is the length of the longest run of zeros in M starting at (y, x).
+Applying Lemma 2.3 with ℓ = 1, for each (y, x) we have Pr r(y, x) > log2 k = o(1/(km)). Let
+A be the event that r(y, x) ≤ log2 k for all (y, x) ∈ [2k] × [m], so A holds w.h.p., by the union
+bound.
+We wish to run log2 k threads of the scanning procedure described in Section 2, for each
+π ∈ Qk . However, we make a small modiﬁcation to the procedure: if, during some thread, we
+scan along a row for log2 k steps, ﬁnding only zeros, then we pretend that the last of the entries
+checked was actually a one (and continue scanning through some other row to ﬁnd more of π).
+We say that the thread succeeds if it thinks it found a copy of π under these pretensions, and
+otherwise we say it fails. The plan is to show that for each π ∈ Qk , the probability that all of
+2
+our log2 k threads fail is only e−Ω(k log k) = o(1/|Qk |), and then observe that
+Pr(M contains every pattern in Qk ) ≥ Pr(A ∩ {for each π ∈ Qk , some thread succeeds})
+X
+Pr(each thread fails for π) = 1 − o(1).
+≥ Pr(A) −
+π∈Qk
+
+So, it suﬃces to ﬁx π ∈ Qk and show that with probability 1− o(1/|Qk |) at least one of the log2 k
+threads succeeds. Let Tt ⊆ [2k] × [5k] be the set of entries exposed by thread t. For π ∈ Qk and
+t ≤ log2 k, let Et be the event that thread t fails (in which case |Tt | = 5k).
+√
+Now, observe that the intersections of threads always satisfy |Tt ∩ Tt′ | ≤ 3 k log2 k. Indeed,
+if t < t′ and X ⊆ [2k] is the set of rows on which Tt and Tt′ intersect, then π −1
+√(X − t) is a
+(t′ − t)-shift of π −1 (X − t′ ) in π, so Tt ∩ Tt′ can intersect in at most Lt′ −t (π) ≤ 3 k rows, each
+of which can contain at most log2 k entries of Tt ∩ Tt′ .
+It follows that, if Et occurs, then
+√
+|Tt \ (T1 ∪ · · · ∪ Tt−1 )| ≥ 5k − (t − 1)3 k log2 k ≥ 4k
+for suﬃciently large k. That is to say, if thread t fails, then it runs through at least 4k entries
+that were not exposed by previous threads. Also, if a thread ever ﬁnds k ones then it succeeds.
+So, the probability that thread t fails, conditioned on any outcome of the previous threads, is
+
+8
+
+upper-bounded by the probability that a sequence of 4k coin ﬂips results in fewer than k heads,
+which is at most e−k/2 by a Chernoﬀ bound (see for example [9, Theorem 1.1]). That is to say,
+Pr(Et | E1 ∩ · · · ∩ Et−1 ) ≤ e−k/2 ,
+which implies that
+as desired.
+
+4
+
+
+
+2
+Pr E1 ∩ · · · ∩ Elog2 k ≤ e−(k/2) log k = o(1/|Qk |),
+
+Structure vs quasirandomness
+
+In this section we prove Theorem 1.2. We ﬁrst deﬁne a notion of quasirandomness, in a similar
+spirit to the deﬁnition of Qk in the previous section.
+Definition 4.1. For π ∈ Sk and a subset X ⊆ [k], let L∆ (π, X) be the largest L such that there
+are L-sets A ⊆ X and B ⊆ [k] with A being a ∆-shift of B. Say that X is (α, q)-quasirandom
+in π if L∆ (π, X) ≥ αk for fewer than q values of ∆ ∈ [k].
+This quasirandomness condition is designed to ensure that if we choose a sequence of threads
+t1 , . . . , tℓ in such a way that the pairwise diﬀerences tj − ti , for i < j, are not among the small
+number of “exceptional” values of ∆, then the quasirandom part of any thread cannot intersect
+very much with the other threads.
+Sk∗ =
+S Next, for a set X ⊆ [k], let SX,k be the set of injections π : X → [k], and write
+∗
+X⊆[k] SX,k . Our main lemma shows that there is a relatively small family Zk ⊆ Sk of “structured” maps, having the property that every permutation π can be decomposed into a quasirandom part and a structured part. Here and in the rest of the section, we assume that k is
+suﬃciently large.
+Lemma 4.2. There exists a family Zk ⊆ Sk∗ such that:
+(1) |Zk | ≤ e21k log log k , and
+(2) for every π ∈ Sk , there is a partition Q∪Z = [k] such that Q is (log−4 k, log5 k)-quasirandom
+in π, and π|Z ∈ Zk .
+In the proof of Lemma 4.2 we will give a precise deﬁnition of Zk , but the details of this
+deﬁnition are not important for the proof of Theorem 1.2. Thus, before proving Lemma 4.2 we
+deduce Theorem 1.2 from it. As outlined in Section 1.1, the plan is to ﬁrst use Lemma 2.3 to
+show that our random matrix M is likely to have a property that makes multi-threaded scanning
+especially eﬃcient on the structured part of a permutation π. We then proceed in a similar way
+to the proof of Theorem 1.3.
+Proof of Theorem 1.2. For readability, let C = 21, so |Zk | ≤ eCk log log k . Let M be a uniform
+random (2k) × m zero-one matrix, for m = 17Ck log log k. By Lemma 2.2 it suﬃces to show
+that w.h.p. M is k-universal (note that 4km ≤ 2000k2 log log k). We now deﬁne two events that
+will be helpful in controlling the behavior of the multi-threaded scanning procedure described in
+Section 2.
+Let A be the event that r(y, x) < log2 k for every (y, x) ∈ [m] × [2k], and observe that by
+2
+Lemma 2.3, Pr(r(y, x) ≥ log2 k) < e−Ω(log k) . Thus, Pr(A) = 1 − o(1). Recall that if A holds,
+then in our multi-threaded scanning procedure, no thread intersects any row in too many entries.
+We also deﬁne a similar event which controls the amount of time a thread spends on structured
+maps φ ∈ Zk . Let B be the event that for every φ ∈ Zk , every 1 ≤ x1 < · · · < xℓ ≤ m, every
+9
+
+
+P
+1 ≤ y1 < · · · < yℓ ≤ 2k and every t ∈ [k] we have ℓi=1 r xi , yφ(i) + t < 16Ck log log k. By
+Lemma 2.3, for any individual choice of φ ∈ Zk , t ∈ [k] and x1 , y1 , . . . , xℓ , yℓ we have
+!
+ℓ
+X
+r(yi , xi ) ≥ 16Ck log log k < e−2Ck log log k ,
+Pr
+i=1
+
+so by the union bound over all choices of φ, t, and x1 , y1 , . . . , xℓ , yℓ , we have
+   
+2k
+m
+Pr(B) ≥ 1 − |Zk | · k ·
+·
+· e−2Ck log log k = 1 − o(1).
+k
+k
+
+k
+O(k log log log k) .
+Here we used the estimate m
+k ≤ (em/k) = e
+Our proof now follows the multi-threaded scanning procedure described in Section 2, using
+a total of log2 k threads as before. We make a similar modiﬁcation as we did in Section 3, where
+we pretend that A ∩ B holds: if, when scanning along a row, knowing that A ∩ B holds would
+allow us to deduce that the current entry is a one, then we pretend that this next entry is in fact
+a one and move on to a diﬀerent row to ﬁnd the next element of π. As long as A ∩ B holds, this
+agrees with reality.
+Fix a particular π ∈ Sk and let Q ∪ Z = [k] be the decomposition of π given by Lemma 4.2.
+Let F be the set of ∆ ∈ [k] for which L∆ (π, Q) ≥ k log−4 k, so by quasirandomness |F | < log5 k <
+k log−2 k. It is therefore possible to choose threads t1 < · · · < tlog2 k so that no diﬀerence ti − tj
+lies in F .
+For i ≤ log2 k, let Ei be the event that thread ti fails to ﬁnd a copy of π, under our pretensions.
+It suﬃces to show that Pr(E1 ∩ · · · ∩ Elog2 k ) = o(1/k!).
+Let Ti be the set of entries checked by thread ti , and observe that if Ei occurs then |Ti | = m.
+Divide Ti into subsets TiQ and TiZ corresponding to the entries which are checked to ﬁnd π|Q
+and π|Z respectively. Now, crucially, we always have |TiZ | ≤ 16Ck log log k, because we are
+pretending that B holds: for any set of positions to place the structured map π|Z , the total
+length of the runs starting at those positions is at most 16Ck log log k.
+Also, for any 1 ≤ j < i ≤ log2 k, we have Lti −tj (π, Q) < k log−4 k by quasirandomness and
+the choice of the ti , so TiQ and Tj must intersect in fewer than k log−4 k distinct rows. Since we
+are pretending that A holds, TiQ ⊆ Ti contains at most log2 k entries in any given row, so we
+always have |TiQ ∩ Tj | ≤ k log−2 k. Hence, if Ei occurs then
+|Ti \ (T1 ∪ · · · ∪ Ti−1 )| ≥ 17Ck log log k − 16Ck log log k − (i − 1)k log−2 k ≥ 4k.
+As in the proof of Theorem 1.3, if thread i fails, then it runs through at least 4k entries that
+were not exposed by previous threads, and at most k − 1 of these entries have a one in them.
+So, conditioned on any outcome of the entries revealed by the previous threads, the probability
+of Ei is at most e−k/2 by a Chernoﬀ bound, and we deduce
+
+
+2
+Pr E1 ∩ · · · ∩ Elog2 k ≤ e−(k/2) log k = o(1/k!),
+as desired.
+
+4.1
+
+Structured maps
+
+It remains to deﬁne our family of structured maps Zk and prove Lemma 4.2. Basically, if
+quasirandomness fails to hold then there are many pairs of sets A, B which are shifts of each
+other, and where these sets intersect they heavily constrain the structure of π. This motivates
+our deﬁnition of Zk .
+
+10
+
+Definition 4.3. For X ⊆ [k] and L-sets A, B ⊆ X with elements a1 < · · · < aL and b1 <
+· · · < bL , let G(A, B) be the graph on the vertex set X with edge set {ai bi }L
+i=1 . For q, b ≥ 1, a
+(q, b)-shift-system for φ ∈ SX,k is a choice of ∆1 , . . . , ∆q ∈ [k] and sets A1 , B1 , . . . , Aq , Bq ⊆ X
+satisfying the following properties.
+• Each Ai is a ∆i -shift of Bi in φ, and
+S
+• the graph qi=1 G(Ai , Bi ) has at most b connected components.
+
+Then, let ZX,k be the set of maps φ ∈ SX,k which have a (q, b)-shift-system for some q, b satisfying
+(b + q) log k + k(log q + 1) ≤ 10k log log k,
+and let Zk =
+
+S
+
+X⊆[k] ZX,k .
+
+We need to prove the two parts of Lemma 4.2 with this choice of Zk : ﬁrst, that Zk is not
+too large, and second, that all permutations can be decomposed into a structured part and a
+quasirandom part.
+Proof of Lemma 4.2(1). Let φ ∈ ZX,k be a structured map having a (q, b)-shift-system
+(∆1 , . . . , ∆q , A1 , B1 , . . . , Aq , Bq ),
+
+and let Gi = G(Ai , Bi ). Write G = ∪qi=1 Gi . We ﬁrst claim that to specify φ, it suﬃces to specify
+q, b, X and the following data:
+• the diﬀerences ∆1 , . . . , ∆q ,
+• subsetsSA′i ⊆ Ai , Bi′ ⊆ Bi (corresponding to subgraphs G′i := G(A′i , Bi′ ) ⊆ Gi ) for which
+G′ := qi=1 G′i is a spanning forest of G, and
+
+• the value of φ(v), for a single representative vertex v in each connected component of G.
+
+Given the above data, the value of φ(x) can be determined for every x ∈ X. Indeed, consider
+the representative v of the component of x in G′ , so that there is a unique path from v to x in
+G′ . Suppose the edges along this path come from the graphs G′i1 , . . . , G′iℓ . Then the value of
+φ(x) must be φ(x) ± ∆i1 ± ∆i2 ± · · · ± ∆iℓ , where the sign of ∆ij is determined by whether the
+j-th edge is oriented from A′ij to Bi′j in the path from v to x.
+Thus, to bound |Zk | it suﬃces to count the total number of ways to specify the above three
+pieces of data. There are at most k choices of q, kq choices of ∆1 , . . . , ∆q , and kb choices of the
+values of φ(v) for each of the component representatives v. Since a forest on |X| vertices has at
+most |X| − 1 ≤ k edges, the total number of edges among all the G′i is at most k, and so the
+number of choices of the sets A′i , Bi′ is at most
+Y |X|2
+X
+Y  ek 2Li
+X
+.
+≤
+Li
+Li
+i
+L1 ,...,Lq
+L1 +···+Lq ≤k
+
+i
+L1 ,...,Lq
+L1 +···+Lq ≤k
+
+Taking logarithms and applying Jensen’s inequality to the concave function z 7→ 2z log(ek/z),
+we ﬁnd that
+
+ k + q 
+
+
+Y  ek 2Li
+X
+X
+exp 2k log(eq) =
+exp 2k log(eq) .
+≤
+q
+Li
+i
+L1 ,...,Lq
+L1 +···+Lq ≤k
+
+L1 ,...,Lq
+L1 +···+Lq ≤k
+
+We deduce that the number of choices of φ ∈ ZX,k having a (q, b)-shift-system is at most
+
+
+
+
+
+
+k+q
+q
+b
+k ·k ·
+exp 2k log(eq) ≤ exp 2 (q + b) log k + k(log q + 1) ≤ e20k log log k .
+q
+
+There are at most 2k ·k2 ≤ ek log log k ways to choose X, b, q, so we conclude that |Zk | ≤ e21k log log k ,
+as desired.
+11
+
+Next, for Lemma 4.2(2), in which we need to ﬁnd a structure-vs-randomness decomposition of
+every π ∈ Sk , we will iterate the following lemma. Say that φ ∈ SX,k is itself (α, q)-quasirandom
+if L∆ (φ) ≥ αk for fewer than q values of ∆ ∈ [k] (this is analogous but slightly diﬀerent from
+the notion in Deﬁnition 4.1 concerning quasirandomness of a set of indices in a permutation).
+Lemma 4.4. If φ ∈ SX,k is not (α, q)-quasirandom, then there is Y ⊆ X with |Y | ≥ αk/2 such
+that φ|Y has a (q, k/q)-shift-system.
+Proof. If φ is not (α, q)-quasirandom, then there are 1 ≤ ∆1 < · · · < ∆q ≤ k with each
+L∆i (π) ≥ αk. For each i,
+Sqlet Ai and Bi be (αk)-sets for which Ai is a ∆i -shift of Bi , and
+consider the graph G = i=1 G(Ai , Bi ) on the vertex set X. Note that each G(Ai , Bi ) has
+maximum degree at most 2, so G has maximum degree at most 2q. On the other hand, G has
+αkq edges, so has average degree 2αkq/|X|. The sum of the degrees which are at least half this
+average is at least αkq, so there is a set U of at least (αkq)/(2q) = αk/2 vertices with degree at
+least αkq/|X|.
+Every connected component which intersects U has size at least αkq/|X|, so letting b =
+(αk/2)/(αkq/|X|) = |X|/(2q) ≤ k/q, the largest b components of G comprise at least αk/2
+vertices. Let Y be the set of vertices in these components, and observe that φ|Y has a (q, k/q)shift-system.
+We now prove part (2) of Lemma 4.2.
+Proof of Lemma 4.2(2). Fix π ∈ Sk . Our objective is to show that there is a partition Q∪Z = [k]
+such that Q is (log−4 k, log5 k)-quasirandom in π, and π|Z ∈ Zk .
+The plan is to apply Lemma 4.4 repeatedly, continuing to extract structured parts from π
+until this is no longer possible. To be speciﬁc, we will obtain sequences of vertex sets [k] = X0 ⊇
+X1 ⊇ · · · ⊇ Xℓ and Y1 , . . . , Yℓ , such that Q := Xℓ and Z := Y1 ∪ · · · ∪ Yℓ satisfy the desired
+properties. Let α = (1/2) log−4 k and q = log5 k; the sets Xi and Yi are deﬁned recursively as
+follows. For each i ≥ 0:
+(1) If Xi is (log−4 k, q)-quasirandom in π, then we stop (taking ℓ = i).
+(2) If π|Xi is not itself (α, q)-quasirandom, then by Lemma 4.4 there is Yi+1 ⊆ Xi with |Yi+1 | ≥
+αk/2 such that π|Yi+1 has a (q, k/q)-shift-system. Set Xi+1 = Xi \ Yi+1 .
+(3) If neither of the previous cases hold, then Xi is not (log−4 k, q)-quasirandom in π, so there
+exist q values of ∆ for which L∆ (π, Xi ) ≥ k log−4 k = 2αk. Since π|Xi is itself (α, q)quasirandom, for at least one of these values of ∆ we have L∆ (π|Xi ) < αk. This implies
+that there are sets A ⊆ Xi and B ⊆ [k] of size 2αk such that A is a ∆-shift of B, and
+|B ∩ Xi | < αk. Then let Yi+1 be the set of all a ∈ A such that π −1 (π(a) − ∆) ∈
+/ Xi
+(informally speaking, this is the set of all a ∈ A which are “paired” with some b ∈ B \ Xi ).
+Observe that |Yi+1 | > 2αk − αk = αk, and set Xi+1 = Xi \ Yi+1 .
+At the end of this recursive construction, Q = Xℓ is (log−4 k, log5 k)-quasirandom in π. Since
+each |Yi | ≥ αk/2, the set Z = Y1 ∪ · · · ∪ Yℓ has size at least ℓαk/2 (so ℓ ≤ 2/α = 4 log4 k). Also,
+we can see by induction that for Zi := Y1 ∪ · · · ∪ Yi , each π|Zi has an (qi , bi )-shift system, for
+some qi ≤ iq and bi ≤ ik/q. Indeed, suppose that π|Zi−1 has a (qi−1 , bi−1 )-shift-system. If Yi
+was deﬁned via case 2, then π|Yi has a (q, k/q)-shift-system, and we can simply combine the two
+shift-systems to give a (qi , bi )-shift system for π|Zi , with qi = qi−1 + q and bi = bi + k/q. If Yi
+was deﬁned via case 3, then we can take qi = qi−1 + 1 and bi = bi−1 , obtaining a shift-system for
+π|Zi by adding ∆qi = ∆ and the sets Bqi = Yi and Aqi = π −1 (π(Bqi ) + ∆) to our shift-system
+for π|Zi−1 . Note that G(Aqi , Bqi ) consists of edges between Yi and Zi−1 , meaning that enlarging
+the shift-system does not create any new connected components in the associated graph.
+
+12
+
+We have proved that π|Z has a (qℓ , bℓ )-shift system, with qℓ ≤ ℓq and bℓ ≤ ℓk/q. Recalling
+that ℓ ≤ 4 log4 k, and the deﬁnitions α = (1/2) log−4 k and q = log5 k, we observe that
+(bℓ + qℓ ) log k + k(log qℓ + 1) ≤ 10k log log k,
+meaning that π|Z ∈ Zk .
+
+5
+
+Concluding remarks
+
+In this paper we proved that for n = 2000k2 log log k, w.h.p. a random σ ∈ Sn is k-universal.
+While the constant 2000 can clearly be improved, it seems that new ideas are necessary for
+an asymptotic improvement. In particular, the bound |Zk | ≤ eO(k log log k) in Lemma 4.2 is bestpossible: indeed, consider the family Lk of all permutations of length k which can be decomposed
+into log10 k increasing subsequences of length k log−10 k. Then Lk ⊆ Zk but |Lk | = eΘ(k log log k) .
+Also, one may naively hope that with a better structure-vs-randomness lemma it may be
+possible to strengthen the notion of “structuredness” to monotonicity. However, this is not
+possible, because a permutation can be extremely non-quasirandom and have no long monotone
+subsequences. Indeed, if k = ℓ2 and π is the “tilted grid” permutation aℓ + b √
++ 1 7→ bℓ + a + 1,
+for 0 ≤ a, b < ℓ, then the longest increasing subsequence of π has length O( k), but π is not
+even (1/4, k/4)-quasirandom.
+A diﬀerent direction towards Conjecture 1.1 is to directly study the containment probabilities
+Pr(π ∈ σ). Indeed, if one could show that for Pr(π ∈
+/ σ) = o(1/k!) for n = (1 + ε)k 2 /4, random
+σ ∈ Sn , and any π ∈ Sk , then Conjecture 1.1 would follow directly from the union bound. One
+may naively conjecture the very strong bound Pr(π ∈
+/ σ) = e−Ω(n) for all π (indeed, this is true
+for the identity permutation π = 1k ∈ Sk , if say n = 2k2 ), but, perhaps surprisingly, using a
+construction of Fox [12, Theorem 6] it is possible
+to show that when n = k 2+o(1) , for almost all
+
+3/2+o(1)
+π ∈ Sk we have Pr(π ∈
+/ σ) ≥ exp −k
+. We conjecture that this bound is essentially tight.
+
+Conjecture 5.1. If n = 1000k2 , π is a permutation of length k, and σ is a uniform random
+permutation of length n, then
+Pr(π 6∈ σ) ≤ exp(−k3/2+o(1) ).
+
+Note that Conjecture 5.1 would immediately imply that a typical σ ∈ Sn is k-universal
+for n = 1000k2 . As some evidence for Conjecture 5.1, we observe that Theorem 1.3 can be
+strengthened as follows.
+Proposition 5.2. Let Qk ⊆ Sk be the set in Theorem 1.3. If n = 20k2 , and σ is a uniform
+random permutation of length n, then
+Pr(π 6∈ σ) ≤ exp(−Ω(k5/4 )).
+To prove this, one can adapt the proof of Theorem 1.3 in the following way. Instead of the
+event A (that the run lengths in M are at most log2 k), we deﬁne the weaker event A′ that the
+run lengths in M are at most k1/4 , with up to k/2 exceptions. This event holds with probability
+5/4
+1 − e−Ω(k ) . Then, we condition on A′ , and delete the set of at most k/2 rows from M which
+have exceptionally long runs of zeros, yielding a matrix M ′ with at least 3k/2 rows, in which
+no row has a run of length longer than k1/4 . For each π ∈ Qk , we then run Ω(k1/4 ) threads of
+our multi-threaded scanning procedure and show that it fails to ﬁnd π with probability at most
+5/4
+e−Ω(k ) . We remark that this last step is more delicate than the corresponding argument in
+Section 3, since the scanning procedure depends on the event we are conditioning on in a more
+complicated way.
+The above result shows that a bound halfway to Conjecture 5.1 from the trivial bound
+e−Ω(k) holds for “very quasirandom” permutations. It is also easy to check that Pr(1k ∈ σ) ≤
+13
+
+exp(−Ω(k2 )), so Conjecture 5.1 holds for the “most structured” permutation 1k as well. What
+seem most diﬃcult are “hybrid” permutations like the tilted square and the members of the family
+Lk deﬁned earlier in this section, which are neither “very quasirandom” nor “very structured”.
+There are many other facts about containment of a single permutation that appear to be
+unknown. For example, the following weakening of Conjecture 1.1 appears to be open.
+Conjecture 5.3. Fix ε > 0, and let n = (1 + ε)k 2 /4. Consider π ∈ Sk , and let σ ∈ Sn be a
+random permutation of order n. Then w.h.p. σ contains π.
+More generally, for a given permutation π ∈ Sk , it would be interesting to understand the
+“threshold” value of n above which a random σ ∈ Sn typically contains π. It is easy to see that
+such a threshold must always lie somewhere between (1/e2 − o(1))k2 and (1 + o(1))k2 , and it
+seems plausible that the threshold is about k2 /e2 for almost all π ∈ Sk .
+Acknowledgments. We would like to thank Asaf Ferber for suggesting the crucial idea
+of adaptively exposing information multiple times to “amplify” containment probabilities, for
+helpful suggestions on the writing of the paper, and for several other stimulating discussions.
+The ﬁrst author would also like to thank Jacob Fox, Ben Gunby, and Huy Pham for helpful
+conversations.
+
+References
+[1] D. Aldous and P. Diaconis, Hammersley’s interacting particle process and longest increasing
+subsequences, Probab. Theory Related Fields 103 (1995), no. 2, 199–213.
+[2] N. Alon, When are random permutations k-universal?, Combinatorics and probability, Oberwolfach Rep. 13 (2016), no. 2, 1189–1257, Abstracts from the workshop held April 17–23,
+2016, Organized by Béla Bollobás, Michael Krivelevich, Oliver Riordan and Emo Welzl.
+[3] N. Alon, Asymptotically optimal induced universal graphs, Geom. Funct. Anal. 27 (2017),
+no. 1, 1–32.
+[4] S. Alstrup, H. Kaplan, M. Thorup, and U. Zwick, Adjacency labeling schemes and induceduniversal graphs, Proceedings of the forty-seventh annual ACM symposium on Theory of
+computing, ACM, 2015, 625–634.
+[5] R. Arratia, On the Stanley-Wilf conjecture for the number of permutations avoiding a given
+pattern, Electron. J. Combin. 6 (1999), Note, N1, 4.
+[6] M. Bóna, Combinatorics of permutations, Chapman and Hall/CRC, 2016.
+[7] J. Cibulka and J. Kynčl, Better upper bounds on the Füredi-Hajnal limits of permutations,
+Proceedings of the Twenty-Eighth Annual ACM-SIAM Symposium on Discrete Algorithms,
+SIAM, 2017, 2280–2293.
+[8] A. Claesson and S. Kitaev, Classification of bijections between 321-and 132-avoiding permutations, Sém. Lothar. Combin 60 (2008), B60d.
+[9] D. P. Dubhashi and A. Panconesi, Concentration of measure for the analysis of
+randomized algorithms, Cambridge University Press, Cambridge, 2009.
+[10] M. Engen and V. Vatter, Containing all permutations, arXiv preprint arXiv:1810.08252
+(2018).
+[11] H. Eriksson, K. Eriksson, S. Linusson, and J. Wästlund, Dense packing of patterns in a
+permutation, Ann. Comb. 11 (2007), no. 3-4, 459–470.
+[12] J. Fox, Stanley-Wilf limits are typically exponential, arXiv preprint arXiv:1310.8378 (2013).
+[13] B. F. Logan and L. A. Shepp, A variational problem for random Young tableaux, Advances
+in Math. 26 (1977), no. 2, 206–222.
+
+14
+
+[14] A. Marcus and G. Tardos, Excluded permutation matrices and the Stanley–Wilf conjecture,
+Journal of Combinatorial Theory, Series A 107 (2004), no. 1, 153–160.
+[15] A. Miller, Asymptotic bounds for permutations containing many different patterns, J. Combin. Theory Ser. A 116 (2009), no. 1, 92–108.
+[16] J. Moon, On minimal n-universal graphs, Glasgow Mathematical Journal 7 (1965), no. 1,
+32–33.
+[17] R. Rado, Universal graphs and universal functions, Acta Arith. 9 (1964), 331–340.
+[18] D. Romik, The surprising mathematics of longest increasing subsequences, Institute of Mathematical Statistics Textbooks, vol. 4, Cambridge University Press, New York,
+2015.
+[19] T. Tao, Structure and randomness in combinatorics, 48th Annual IEEE Symposium on
+Foundations of Computer Science (FOCS’07), IEEE, 2007, pp. 3–15.
+[20] A. M. Veršik and S. V. Kerov, Asymptotic behavior of the Plancherel measure of the symmetric group and the limit form of Young tableaux, Dokl. Akad. Nauk SSSR 233 (1977),
+no. 6, 1024–1027.
+
+15
+
+

@@ -1,0 +1,5 @@
+n=6 r=14: UNSAT (28.3s, 463779 vars)
+n=6 r=15: UNSAT (145.7s, 550906 vars)
+n=6 r=16: UNSAT (1020.3s, 645233 vars)
+n=6 r=17: SAT (20.7s, 746760 vars)
+  witness: 12345126453215426 verified

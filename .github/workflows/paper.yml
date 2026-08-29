@@ -1,0 +1,26 @@
+name: Paper
+
+on:
+  push:
+    paths: ['output/paper/**', '.github/workflows/paper.yml']
+  pull_request:
+    paths: ['output/paper/**', '.github/workflows/paper.yml']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: pandoc/latex:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build PDF and lint overfull boxes
+        working-directory: output/paper
+        run: |
+          apk add --no-cache make >/dev/null
+          tlmgr install microtype hyphenat 2>/dev/null || true
+          make pdf
+          make check | tee check.out
+          test "$(tail -1 check.out)" = "0"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: superpatterns-notes.pdf
+          path: output/paper/superpatterns-notes.pdf

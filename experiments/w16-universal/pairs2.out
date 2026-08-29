@@ -1,0 +1,7 @@
+identity n=80 s=1.40 t=1.40  level1 kappa=2.28733  level2 kappa=2.24138
+identity n=80 s=1.50 t=1.50  level1 kappa=2.28164  level2 kappa=2.24347
+identity n=80 s=1.40 t=1.50  level1 kappa=2.28521  level2 kappa=2.24329
+identity n=80 s=1.50 t=1.40  level1 kappa=2.28486  level2 kappa=2.24296
+decreasing n=40 s=1.40 t=1.50  level1 kappa=2.29553  level2(B-part) kappa=2.26176
+decreasing n=40 s=1.50 t=1.50  level1 kappa=2.29119  level2(B-part) kappa=2.26165
+decreasing n=40 s=1.40 t=1.40  level1 kappa=2.29731  level2(B-part) kappa=2.26210

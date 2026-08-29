@@ -1,0 +1,3 @@
+n=9 total length 40
+FOUND X=1 2 3 4 5 
+done found=1

@@ -1,0 +1,45 @@
+# Install once: `pre-commit install`  (also `pre-commit install --hook-type pre-push` if you want the pre-push checks)
+# Run on everything: `pre-commit run --all-files`
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+        args: [--maxkb=2000]
+      - id: detect-private-key
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: check-symlinks
+      - id: end-of-file-fixer
+        exclude: ^(experiments/|references/|output/paper/.*\.csl$)
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+        exclude: ^(experiments/|references/)
+      - id: no-commit-to-branch
+        args: [--branch, main, --pattern, '^wip-.*']
+        stages: [manual]
+
+  # Secret scanning (same engine as the GitHub Action in .github/workflows/secrets.yml).
+  # Uses the system binary (`brew install gitleaks`); the upstream golang hook fails to link on recent macOS.
+  - repo: local
+    hooks:
+      - id: gitleaks
+        name: gitleaks (staged changes)
+        entry: gitleaks git --pre-commit --staged --redact --no-banner
+        language: system
+        pass_filenames: false
+      # Lean sources must not carry `sorry` (full `lake build` runs in CI; too slow for a commit hook)
+      - id: lean-no-sorry
+        name: lean sources contain no `sorry`
+        entry: bash -c 'if grep -n "\bsorry\b" "$@"; then echo "sorry found"; exit 1; fi' --
+        language: system
+        files: ^formal-verification/lean/Superpatterns/.*\.lean$
+      - id: paper-overfull-check
+        name: paper builds with 0 overfull boxes (manual stage; needs pandoc + xelatex)
+        entry: bash -c 'cd output/paper && [ "$(make check | tail -1)" = "0" ]'
+        language: system
+        files: ^output/paper/
+        pass_filenames: false
+        stages: [manual]

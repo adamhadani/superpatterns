@@ -1,0 +1,24 @@
+# pandoc defaults file: `pandoc -d defaults.yaml superpatterns-notes.md -o superpatterns-notes.pdf`
+from: markdown+tex_math_dollars+pipe_tables+raw_tex
+pdf-engine: xelatex
+citeproc: true
+bibliography: references.bib
+csl: springer-basic-brackets.csl
+number-sections: true
+variables:
+  documentclass: article
+  fontsize: 11pt
+  geometry: margin=1in
+  linkcolor: blue
+  citecolor: blue
+  urlcolor: blue
+  colorlinks: true
+  link-citations: true
+  header-includes:
+    - \usepackage{microtype}
+    - \usepackage{amsthm}
+    - \setlength{\emergencystretch}{3em}
+    # let inline code break at characters (pandoc emits \texttt); xurl-style breaking via hyphenat's \sloppy is enough in practice
+    - \usepackage[htt]{hyphenat}
+    # long displayed math can use \allowdisplaybreaks
+    - \allowdisplaybreaks

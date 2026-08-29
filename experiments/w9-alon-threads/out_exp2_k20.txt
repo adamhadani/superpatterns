@@ -1,0 +1,6 @@
+(a) violations of deterministic lemmas: 130;  max |H-type cap V-type| = 7, max shared zeros = 3
+(b) k=20 q=m=50 samples=20000
+  identity           P(H fail)=0.0599 P(V fail)=0.0597  H&Hr=0.05985 (prod 0.00358)  H&V=0.00365 (prod 0.00357)  H&Vr=0.00365  all4=0.003650 (prod 0.000013)  H&H+3=0.00875  H&H+k/2=0.00310
+  runs r=2 rand      P(H fail)=0.0609 P(V fail)=0.0604  H&Hr=0.06090 (prod 0.00371)  H&V=0.00380 (prod 0.00368)  H&Vr=0.00380  all4=0.003800 (prod 0.000014)  H&H+3=0.00320  H&H+k/2=0.00530
+  runs r=3 periodic  P(H fail)=0.0597 P(V fail)=0.0583  H&Hr=0.05975 (prod 0.00357)  H&V=0.00335 (prod 0.00349)  H&Vr=0.00335  all4=0.003350 (prod 0.000012)  H&H+3=0.00270  H&H+k/2=0.00350
+  uniform random     P(H fail)=0.0590 P(V fail)=0.0600  H&Hr=0.05905 (prod 0.00349)  H&V=0.00375 (prod 0.00354)  H&Vr=0.00375  all4=0.003750 (prod 0.000013)  H&H+3=0.00520  H&H+k/2=0.00470

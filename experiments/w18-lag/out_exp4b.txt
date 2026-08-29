@@ -1,0 +1,2 @@
+random pi, C=4: -logPfail=56.11; logratio over D=1..k: min 0.000 mean 7.923 max 13.735; max L_D=22
+random pi, C=6: -logPfail=150.08; logratio over D=1..k: min 0.000 mean 59.512 max 69.851; max L_D=20

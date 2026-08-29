@@ -1,0 +1,84 @@
+# OS
+.DS_Store
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+
+# Lean / Lake build artifacts (Mathlib cache is multi-GB; rebuilt via `lake exe cache get`)
+formal-verification/lean/.lake/
+
+# Paper build intermediates (the PDF itself is committed)
+output/paper/build.*
+output/paper/pg-*.png
+
+# Local compatibility symlinks to the pre-reorganisation layout (work/, paper/, lean/, lit/)
+/work
+/paper
+/lean
+/lit
+
+# Third-party papers/books used as references (not redistributable; see references/README.md)
+references/papers/
+references/books/
+
+# Experiment scratch
+*.tmp
+*.o
+*.so
+*.dylib
+*.exe
+experiments/**/*.log
+experiments/**/runs/
+experiments/**/.claude/
+
+# Claude Code local state
+.claude/scheduled_tasks.lock
+.claude/settings.local.json
+
+# Compiled experiment binaries (sources *.c are committed; rebuild with the cc lines in each log.md)
+/experiments/w11-strips/tmo
+/experiments/w11-strips/strips
+/experiments/w11-strips/grid
+/experiments/w11-strips/tg
+/experiments/w12-c21/bern
+/experiments/w12-c21/pat
+/experiments/w2-construction/sa2
+/experiments/w2-construction/rhoB2
+/experiments/w2-construction/sa3
+/experiments/w2-construction/sa3v
+/experiments/w2-construction/rhoB
+/experiments/w2-construction/sa
+/experiments/w2-construction/polish
+/experiments/w2-construction/check
+/experiments/w10-alon-numerics/contain
+/experiments/w10-alon-numerics/chain5
+/experiments/w10-alon-numerics/tchain
+/experiments/w4-alphabet-rosary/structX
+/experiments/w4-alphabet-rosary/roscheck
+/experiments/w4-alphabet-rosary/rossa
+/experiments/w4-alphabet-rosary/rossa2
+/experiments/w4-alphabet-rosary/struct9
+/experiments/w4-alphabet-rosary/structX2
+/experiments/w17-hammersley/rules
+/experiments/w17-hammersley/enum3
+/experiments/w17-hammersley/boxes
+/experiments/w5-random/sp2
+/experiments/w5-random/sp
+/experiments/w5-random/chain
+/experiments/w5-random/bf
+/experiments/w1-search/sp2
+/experiments/w1-search/sp
+/experiments/w8-rows/fibres
+/experiments/w8-rows/sp
+/experiments/w8-rows/sa4
+/experiments/w8-rows/wild
+/experiments/w8-rows/check
+/experiments/w8-rows/swaptest
+/experiments/w16-universal/contain_mrv
+/experiments/w16-universal/contain_gen
+/experiments/w16-universal/exact_all
+experiments/w4-alphabet-rosary/sa7_1.txt

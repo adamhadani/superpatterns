@@ -1,0 +1,7 @@
+# k: permutation   (one witness per line; verify with `python3 check_witness.py --all`)
+# sp(7) <= 23  (Theorem 2; previously <= 25, Engen-Vatter)
+7: 7 20 13 10 2 18 23 4 12 16 8 5 19 15 1 9 22 14 6 17 11 3 21
+# sp(8) <= 30  (Theorem 2; previously <= 33, Engen-Vatter)
+8: 13 4 25 18 8 30 12 22 1 28 19 10 6 14 24 27 3 16 21 11 5 20 29 15 7 23 2 17 26 9
+# structured 7-superpattern of length 24 = decreasing tie-break of the 3-block word 3 7 1 5 2 8 4 6 | 2 4 8 1 5 3 6 7 | 2 4 7 5 1 8 3 6
+7: 9 21 3 15 6 24 12 18 5 11 23 2 14 8 17 20 4 10 19 13 1 22 7 16

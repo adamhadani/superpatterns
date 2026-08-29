@@ -1,0 +1,19 @@
+k=36 m=72 q=72 samples=6000
+  identity           D=1: P(fail)=0.455  P(all 4 fail)=0.24300  ratio to prod=5.65   | H&V: 0.2098 vs prod 0.2053 ratio 1.02
+  identity           D=3: P(fail)=0.449  P(all 4 fail)=0.08217  ratio to prod=2.03
+  identity           D=8: P(fail)=0.459  P(all 4 fail)=0.04683  ratio to prod=1.06
+  runs r=2 rand      D=1: P(fail)=0.448  P(all 4 fail)=0.07233  ratio to prod=1.79   | H&V: 0.2122 vs prod 0.2089 ratio 1.02
+  runs r=2 rand      D=3: P(fail)=0.452  P(all 4 fail)=0.04517  ratio to prod=1.08
+  runs r=2 rand      D=8: P(fail)=0.449  P(all 4 fail)=0.04167  ratio to prod=1.03
+  runs r=5 rand      D=1: P(fail)=0.457  P(all 4 fail)=0.06250  ratio to prod=1.44   | H&V: 0.2133 vs prod 0.2104 ratio 1.01
+  runs r=5 rand      D=3: P(fail)=0.455  P(all 4 fail)=0.04617  ratio to prod=1.08
+  runs r=5 rand      D=8: P(fail)=0.450  P(all 4 fail)=0.04683  ratio to prod=1.15
+  runs r=5 periodic  D=1: P(fail)=0.448  P(all 4 fail)=0.04683  ratio to prod=1.16   | H&V: 0.2057 vs prod 0.2048 ratio 1.00
+  runs r=5 periodic  D=3: P(fail)=0.457  P(all 4 fail)=0.05217  ratio to prod=1.20
+  runs r=5 periodic  D=8: P(fail)=0.450  P(all 4 fail)=0.04617  ratio to prod=1.12
+  tilted grid        D=1: P(fail)=0.458  P(all 4 fail)=0.04733  ratio to prod=1.08   | H&V: 0.2052 vs prod 0.2095 ratio 0.98
+  tilted grid        D=3: P(fail)=0.453  P(all 4 fail)=0.08383  ratio to prod=1.98
+  tilted grid        D=8: P(fail)=0.449  P(all 4 fail)=0.04417  ratio to prod=1.09
+  uniform            D=1: P(fail)=0.454  P(all 4 fail)=0.05000  ratio to prod=1.17   | H&V: 0.1908 vs prod 0.1974 ratio 0.97
+  uniform            D=3: P(fail)=0.456  P(all 4 fail)=0.05033  ratio to prod=1.16
+  uniform            D=8: P(fail)=0.463  P(all 4 fail)=0.05633  ratio to prod=1.22

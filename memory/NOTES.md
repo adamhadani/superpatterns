@@ -1,0 +1,50 @@
+# Superpatterns — state of knowledge (compiled 2026-08-29)
+
+Definition: σ ∈ S_n is a k-superpattern if it contains every π ∈ S_k as a (classical) pattern.
+sp(k) = f(k) = min such n.  (OEIS A342474)
+
+## Exact values
+k:     1  2  3  4  5   6
+sp(k): 1  3  5  9  13  17
+- sp(6)=17: 6 14 10 2 13 17 5 8 3 12 9 16 1 7 11 4 15 (Arnarson; minimality verified by Pantone, no perm of length ≤16 works).
+- sp(3)=5 e.g. 25314 / 41352.  sp(4)=9 e.g. 519472683 (R. Smith) and 1 3 6 10 2 5 9 4 8 7 is 10 (Bóna).
+- ⌈(k²+1)/2⌉ = 1,3,5,9,13,19 — tight for k≤5, beaten at k=6 (17<19).
+- NEW (2026-08-29, this project, independently verified): sp(7) ≤ 23 (witness 7 20 13 10 2 18 23 4 12 16 8 5 19 15 1 9 22 14 6 17 11 3 21), sp(8) ≤ 30 (witness 13 4 25 18 8 30 12 22 1 28 19 10 6 14 24 27 3 16 21 11 5 20 29 15 7 23 2 17 26 9). Lower bound: sp(k) ≥ (1.0003125−o(1))k²/e² (Theorem A, experiments/w3-lowerbound/proof.md). Paper draft: paper/superpatterns-notes.md.
+
+## Asymptotic bounds
+Upper: k² (Arratia 99) → 2k²/3 (Eriksson–Eriksson–Linusson–Wästlund 07, chessboard) → (k²+k)/2 (Miller 09, zigzag word over [k+1]) → ⌈(k²+1)/2⌉ (Engen–Vatter 21, zigzag restricted to [k] + tie-breaking).
+  * Z. Hunter (arXiv 2108.05474, 2021) states "in forthcoming work [9] the author will show f(k) ≤ (15/32)k² + O(k)" — ref [9] "A new upper bound for superpatterns, in preparation". As of 2026-08 NO such paper is on arXiv. So constant<1/2 is *claimed but unpublished*.
+Lower: k²/e² (trivial C(n,k) ≥ k!) → 1.000076·k²/e² (Chroman–Kwan–Singhal 21, encoding: for indices with large "width" t_{i+1}-t_{i-1} ≥ dn/k, store value π(i) instead of index t_i; they note using odd+even widths and exact large deviations would improve constant slightly, "unlikely to get much larger than 1/e² without new ideas").
+
+## Conjectures
+- Arratia: sp(k) ~ k²/e²  — DISPROVED (CKS).
+- EELW: sp(k) ~ k²/2 — Hunter claims refuted (15/32) but unpublished.
+- Alon: random perm of length (1/4+ε)k² is k-superpattern whp; best known He–Kwan 2020: n = 2000 k² log log k suffices. t(n) data (Engen–Vatter): 1,3,7,13,20,28,36,48 for n=1..8.
+  - Our results (2026-08-29, all in paper §Random): c_τ = lim L_τ/√N; 0.7866 ≤ c_21 ≤ 1.140 (W17 renewal sweep / W12 canonical copies); c_τ ≥ 0.535 (S_3), ≥ 0.385 (S_4); universal absence κ=2.279; 72k²/800k² partial results toward n=O(k²) (Thm 8, Thm 5, Thm 9); lag lemma is FALSE (W18: thread framework capped on tilted grids); but every block-grid pattern incl. the family 𝓕 has threshold ≤ (π/8)k² (W11 Thm 10, corner greedy).
+- Hunter Problem 3: is f(k;k+1) = (k²+k)/2 exactly (words over alphabet [k+1])? Hunter proved f(k;(1+o(1))k) = (1/2+o(1))k² (DFA random-walk method).
+- Kleitman–Kwiatkowski: f(k;k) = k² − O(k^{7/4+ε}); exact 1,3,7,12,19,28,39 (k≤7), upper bound ⌈k² − 7k/3 + 19/3⌉ (Radomirović).
+- Gupta rosary (circular, one direction): r(n) ≤ n²/2; proved for even n (Lecouturier–Zmiaikou 2012), odd n: r(n) < n²/2 + n/4 − 1, open. Bidirectional version (3n²/8+1/2) refuted by Hunter.
+- EELW: perm of length (1+o(1))k²/4 containing all but exponentially small fraction of k-patterns exists → any proof that sp(k) ~ k²/2 must distinguish "all" from "almost all".
+
+## Key constructions
+- Arratia: k×k grid read column by column, bottom-up.
+- Miller zigzag: Z_k = (1 3 5 …)(… 6 4 2)(1 3 5 …)… k runs, length k(k+1)/2 over [k+1]. Either π or π+1 embeds (score function s(p)+s(p+1)=1).
+- Engen–Vatter: z_n = first n runs restricted to [n]; break ties so equal letters form a decreasing subsequence → ζ_n. Universal for odd n; for even n misses only n…21, fix by prepending a max. Proof: non-layered perms have a distant inverse-descent → decrement trick; layered handled by parity score walk.
+
+## Files
+lit/1810.08252.txt Engen–Vatter survey; lit/2004.02375.txt CKS lower bound; lit/2108.05474.txt Hunter small alphabets; lit/1710.04240.txt universal layered perms; lit/1308.0403.txt Bannister et al (321/132-avoiding superpatterns); lit/2602.09072.txt circular superpatterns (2026).
+Bóna, Combinatorics of Permutations 3rd ed: Ch.5 Ex.19–23, Problems Plus 14–17, 20.
+- W9 (2026-08-29, experiments/w9-alon-threads/): He–Kwan's thread overlap bound L_Δ·log²k refined to W_Δ(z) = max over Δ-shift chains of the leader's actual zero-runs (proof.md Lemma 3, tested numerically). Theorem 8: n = 72k² suffices w.h.p. for all π with L_Δ(π) ≤ k/(3 ln²k) for all but < k/(3 ln k) shifts Δ (exceptional set k!·e^{−Θ(k/ln k)}, vs k!·e^{−Θ(√k)} for HK's Q_k). log log k NOT removed: remaining gap = unions of r ∈ [C, ln⁴k] increasing runs on value intervals (count e^{Θ(k log log k)}, chains ≈ 1.3k/√r). Per-π chain accounting is capped at e^{−m ln 2} (log.md §4); cross-direction (row/column) threads are rigorously ≈independent but useless asymptotically.
+- W13 (2026-08-29, experiments/w13-global-event/): the (qm)^L union bound of W9's global event replaced by a count of
+  "ρ-staircase sets" (unions of ≤ ρ monotone chains; the leader's start cells along a shift chain form one with
+  ρ = LDS(π|_A)): count (2e²Cρ²(k/L)²)^L, no log k (proof.md Lemma 1–3, Theorem 4). Theorem 5: n = 800k² w.h.p.
+  contains every union of r increasing runs on value intervals (any r ≤ k/(2 ln k)) whose interleaving is
+  "run-quasirandom" (fewer than k/(2ℓ_r) shifts with chains > k/λ_r, ℓ_r = ⌈(ln r+1)/29⌉, λ_r = O(ln² r)); no
+  condition for r ≤ e^{28}; numerically random interleavings have F = ∅ (max_Δ L_Δ ≤ 1.5k/√r). Same for LDS(π) ≤ r
+  with ℓ'_r = ⌈(2 ln r+1)/29⌉, up to r = k (= W9 Thm 8 with threshold 14.5k/ln²k). Exact gap (log.md §4): an entropy
+  lemma (E) bounding #{π ∈ 𝓛_r with ≥ k/(2ℓ_r) long-chain shifts} ≤ e^{(29(ℓ_r−1)−1)k} (near-periodic interleavings),
+  plus HK-structured maps whose chains have large LDS. "Shifts spaced by k/r" idea refuted numerically (Δ = h is the
+  worst shift: thread coalescence for periodic words).
+
+## Manjunath–D'Souza, Circular superpatterns (arXiv 2602.09072, v2 Aug 2026) — reviewed 2026-08-29
+Circular k-superpatterns (patterns up to rotation). Results: L_circ(k) ≤ sp(k−1)+1 (Thm 3.1); zigzag over [k+1] with k−1 runs, length (k−1)(k+1)/2 (Thms 4.12/4.13; circular score S^c(σ)+S^c(σ⁺)=0, S^c≠0 for odd k); tie-broken permutation of length ⌈((k−1)²+1)/2⌉+1 for odd k (Thm 5.6). Closed form of Miller's score: C_xy = δ_xy − ½(p_x p_y+1) sgn(x−y) p_x (equivalent to W2's run-change identity). No new linear bounds, no lower bounds, no post-2021 refs. Our sp(7)≤23, sp(8)≤30 give L_circ(8)≤24, L_circ(9)≤31 (their 25, 34).

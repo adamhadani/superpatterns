@@ -1,0 +1,119 @@
+first core 88 in 98.9s
+core size 88 t=104s
+core size 88 t=114s
+core size 67 t=130s
+core size 67 t=138s
+core size 67 t=145s
+core size 67 t=146s
+core size 62 t=162s
+core size 61 t=175s
+core size 60 t=180s
+core size 60 t=184s
+core size 60 t=188s
+core size 59 t=190s
+core size 59 t=192s
+core size 59 t=201s
+core size 59 t=202s
+core size 59 t=205s
+core size 59 t=207s
+core size 59 t=208s
+core size 58 t=217s
+core size 58 t=218s
+core size 58 t=218s
+core size 57 t=228s
+core size 57 t=228s
+core size 56 t=236s
+core size 56 t=237s
+core size 56 t=237s
+core size 56 t=239s
+core size 56 t=241s
+core size 56 t=243s
+core size 55 t=245s
+core size 55 t=245s
+core size 55 t=246s
+core size 55 t=246s
+core size 55 t=246s
+core size 55 t=247s
+core size 55 t=247s
+core size 55 t=248s
+core size 54 t=249s
+core size 54 t=249s
+core size 54 t=250s
+core size 53 t=250s
+core size 53 t=250s
+core size 53 t=251s
+core size 53 t=253s
+core size 53 t=259s
+core size 53 t=260s
+core size 53 t=263s
+core size 53 t=266s
+core size 53 t=268s
+core size 53 t=268s
+core size 53 t=271s
+core size 53 t=281s
+core size 53 t=281s
+core size 53 t=282s
+core size 53 t=284s
+core size 53 t=285s
+core size 53 t=286s
+core size 53 t=286s
+core size 53 t=289s
+core size 53 t=290s
+core size 53 t=290s
+core size 53 t=291s
+core size 53 t=291s
+core size 53 t=292s
+MINIMAL CORE (no 5-superpattern of length 12 with sigma(1)<sigma(n) contains all of these):
+  12345
+  12354
+  12453
+  12543
+  13245
+  14352
+  14532
+  15432
+  21345
+  21354
+  21453
+  21534
+  21543
+  23154
+  23415
+  23541
+  31254
+  31425
+  32145
+  32154
+  32451
+  34215
+  34251
+  34512
+  34521
+  35412
+  35421
+  41235
+  41325
+  42135
+  42351
+  43152
+  43215
+  43251
+  43512
+  43521
+  45123
+  45132
+  45312
+  45321
+  51234
+  51243
+  51342
+  51432
+  52134
+  52341
+  53124
+  53421
+  54123
+  54132
+  54231
+  54312
+  54321

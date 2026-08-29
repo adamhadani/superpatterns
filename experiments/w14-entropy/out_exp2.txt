@@ -1,0 +1,10 @@
+== periodic closed form ==
+closed form mismatches: 0/576
+== overlap: tall-run family, k=200 ==
+Delta=  1 L_Delta= 48 (thr 8) mean shared cells=  6.85 max=16  (m=1200)
+Delta=  4 L_Delta= 32 (thr 8) mean shared cells=  1.70 max=7  (m=1200)
+Delta= 17 L_Delta= 25 (thr 8) mean shared cells=  2.25 max=10  (m=1200)
+Delta= 34 L_Delta= 34 (thr 8) mean shared cells=  2.15 max=13  (m=1200)
+Delta= 51 L_Delta= 21 (thr 8) mean shared cells=  2.62 max=9  (m=1200)
+Delta= 68 L_Delta= 19 (thr 8) mean shared cells=  2.23 max=11  (m=1200)
+Delta=100 L_Delta= 20 (thr 8) mean shared cells=  1.48 max=12  (m=1200)

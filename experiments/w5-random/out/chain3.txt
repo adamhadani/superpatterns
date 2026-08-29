@@ -1,0 +1,12 @@
+tau=123 n=200 reps=8 meanL=8.12  c=L/sqrt(n)=0.5745  (Alon needs c>=0.6667)  k=|tau|L=24.4 vs 2sqrt(n)=28.3
+tau=321 n=200 reps=8 meanL=7.50  c=L/sqrt(n)=0.5303  (Alon needs c>=0.6667)  k=|tau|L=22.5 vs 2sqrt(n)=28.3
+tau=132 n=200 reps=8 meanL=8.12  c=L/sqrt(n)=0.5745  (Alon needs c>=0.6667)  k=|tau|L=24.4 vs 2sqrt(n)=28.3
+tau=231 n=200 reps=8 meanL=8.25  c=L/sqrt(n)=0.5834  (Alon needs c>=0.6667)  k=|tau|L=24.8 vs 2sqrt(n)=28.3
+tau=312 n=200 reps=8 meanL=8.12  c=L/sqrt(n)=0.5745  (Alon needs c>=0.6667)  k=|tau|L=24.4 vs 2sqrt(n)=28.3
+tau=213 n=200 reps=8 meanL=8.38  c=L/sqrt(n)=0.5922  (Alon needs c>=0.6667)  k=|tau|L=25.1 vs 2sqrt(n)=28.3
+tau=123 n=400 reps=8 meanL=11.50  c=L/sqrt(n)=0.5750  (Alon needs c>=0.6667)  k=|tau|L=34.5 vs 2sqrt(n)=40.0
+tau=321 n=400 reps=8 meanL=11.62  c=L/sqrt(n)=0.5813  (Alon needs c>=0.6667)  k=|tau|L=34.9 vs 2sqrt(n)=40.0
+tau=132 n=400 reps=8 meanL=11.88  c=L/sqrt(n)=0.5938  (Alon needs c>=0.6667)  k=|tau|L=35.6 vs 2sqrt(n)=40.0
+tau=231 n=400 reps=8 meanL=11.62  c=L/sqrt(n)=0.5813  (Alon needs c>=0.6667)  k=|tau|L=34.9 vs 2sqrt(n)=40.0
+tau=312 n=400 reps=8 meanL=11.50  c=L/sqrt(n)=0.5750  (Alon needs c>=0.6667)  k=|tau|L=34.5 vs 2sqrt(n)=40.0
+tau=213 n=400 reps=8 meanL=12.00  c=L/sqrt(n)=0.6000  (Alon needs c>=0.6667)  k=|tau|L=36.0 vs 2sqrt(n)=40.0

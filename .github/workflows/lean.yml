@@ -1,0 +1,24 @@
+name: Lean
+
+on:
+  push:
+    paths: ['formal-verification/lean/**', '.github/workflows/lean.yml']
+  pull_request:
+    paths: ['formal-verification/lean/**', '.github/workflows/lean.yml']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: No sorries
+        run: '! grep -rn "\bsorry\b" formal-verification/lean/Superpatterns'
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formal-verification/lean
+          use-mathlib-cache: true
+          build-args: --wfail
+      - name: Axiom footprint
+        working-directory: formal-verification/lean
+        run: lake env lean Superpatterns/Axioms.lean

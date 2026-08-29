@@ -1,0 +1,16 @@
+k=400 lam=24 thr=16 h=49 unit=65 U=4 marks=(0, 1, 2, 4) disjoint=True r'=4 r=59 tall positions=196 (0.490k)  |F|=314 F covers [1,296]  max good set j=2
+k=400 lam=24 thr=16 h=33 unit=33 U=7 marks=(0, 1, 2, 3, 7) disjoint=True r'=5 r=60 tall positions=165 (0.412k)  |F|=314 F covers [1,302]  max good set j=2
+k=400 lam=40 thr=10 h=21 unit=21 U=10 marks=(0, 1, 2, 3, 6, 10) disjoint=True r'=6 r=59 tall positions=126 (0.315k)  |F|=369 F covers [1,366]  max good set j=2
+k=600 lam=30 thr=20 h=41 unit=41 U=8 marks=(0, 1, 2, 5, 8) disjoint=True r'=5 r=59 tall positions=205 (0.342k)  |F|=485 F covers [1,449]  max good set j=2
+k=400 lam=20 T=20 h=42 g=43 U=5 a=3 r'=5 r=57 tall frac=0.525 F contains [1,k/2]: True  |F|=366  min L on [1,k/2]=27  max good set=2
+k=400 lam=20 T=20 h=42 g=43 U=5 a=3 r'=5 r=57 tall frac=0.525 F contains [1,k/2]: True  |F|=366  min L on [1,k/2]=28  max good set=None
+k=400 lam=20 T=20 h=42 g=43 U=5 a=3 r'=5 r=57 tall frac=0.525 F contains [1,k/2]: True  |F|=366  min L on [1,k/2]=27  max good set=None
+k=600 lam=30 T=20 h=42 g=43 U=7 a=3 r'=5 r=56 tall frac=0.350 F contains [1,k/2]: True  |F|=497  min L on [1,k/2]=32  max good set=2
+k=600 lam=30 T=20 h=42 g=43 U=7 a=3 r'=5 r=56 tall frac=0.350 F contains [1,k/2]: True  |F|=498  min L on [1,k/2]=31  max good set=None
+k=600 lam=30 T=20 h=42 g=43 U=7 a=3 r'=5 r=56 tall frac=0.350 F contains [1,k/2]: True  |F|=501  min L on [1,k/2]=32  max good set=None
+k=800 lam=40 T=20 h=42 g=43 U=9 a=4 r'=7 r=60 tall frac=0.367 F contains [1,k/2]: True  |F|=709  min L on [1,k/2]=36  max good set=2
+k=800 lam=40 T=20 h=42 g=43 U=9 a=4 r'=7 r=60 tall frac=0.367 F contains [1,k/2]: True  |F|=714  min L on [1,k/2]=36  max good set=None
+k=800 lam=40 T=20 h=42 g=43 U=9 a=4 r'=7 r=60 tall frac=0.367 F contains [1,k/2]: True  |F|=715  min L on [1,k/2]=36  max good set=None
+k=1000 lam=50 T=20 h=42 g=43 U=12 a=4 r'=7 r=59 tall frac=0.294 F contains [1,k/2]: True  |F|=937  min L on [1,k/2]=37  max good set=2
+k=1000 lam=50 T=20 h=42 g=43 U=12 a=4 r'=7 r=59 tall frac=0.294 F contains [1,k/2]: True  |F|=951  min L on [1,k/2]=40  max good set=None
+k=1000 lam=50 T=20 h=42 g=43 U=12 a=4 r'=7 r=59 tall frac=0.294 F contains [1,k/2]: True  |F|=927  min L on [1,k/2]=41  max good set=None

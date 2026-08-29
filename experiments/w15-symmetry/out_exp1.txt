@@ -1,0 +1,60 @@
+symmetry checks passed (L_Delta invariant under r, c, rc; LDS<->LIS as claimed)
+tilted grid 20x20                  pi     k=400 maxL/k=0.950 (D=1) L_1/k=0.950 #bad(k/3ln^2k)= 396 #bad(k/3lnk)= 368 LDS(p|A)= 19 LIS(p|A)= 38
+tilted grid 20x20                  pi^-1  k=400 maxL/k=0.950 (D=1) L_1/k=0.950 #bad(k/3ln^2k)= 396 #bad(k/3lnk)= 368 LDS(p|A)= 19 LIS(p|A)= 38
+tilted grid 30x30                  pi     k=900 maxL/k=0.967 (D=1) L_1/k=0.967 #bad(k/3ln^2k)= 893 #bad(k/3lnk)= 840 LDS(p|A)= 29 LIS(p|A)= 58
+tilted grid 30x30                  pi^-1  k=900 maxL/k=0.967 (D=1) L_1/k=0.967 #bad(k/3ln^2k)= 893 #bad(k/3lnk)= 840 LDS(p|A)= 29 LIS(p|A)= 58
+grid rows permuted r=20 h=20       pi     k=400 maxL/k=0.950 (D=1) L_1/k=0.950 #bad(k/3ln^2k)= 396 #bad(k/3lnk)= 365 LDS(p|A)= 20 LIS(p|A)= 29
+grid rows permuted r=20 h=20       pi^-1  k=400 maxL/k=0.950 (D=20) L_1/k=0.398 #bad(k/3ln^2k)= 391 #bad(k/3lnk)= 328 LDS(p|A)= 20 LIS(p|A)= 29
+grid rows permuted r=10 h=40       pi     k=400 maxL/k=0.975 (D=1) L_1/k=0.975 #bad(k/3ln^2k)= 396 #bad(k/3lnk)= 372 LDS(p|A)= 10 LIS(p|A)= 44
+grid rows permuted r=10 h=40       pi^-1  k=400 maxL/k=0.975 (D=10) L_1/k=0.300 #bad(k/3ln^2k)= 391 #bad(k/3lnk)= 344 LDS(p|A)= 10 LIS(p|A)= 44
+grid rows permuted r=40 h=10       pi     k=400 maxL/k=0.900 (D=1) L_1/k=0.900 #bad(k/3ln^2k)= 396 #bad(k/3lnk)= 340 LDS(p|A)= 31 LIS(p|A)= 26
+grid rows permuted r=40 h=10       pi^-1  k=400 maxL/k=0.900 (D=40) L_1/k=0.275 #bad(k/3ln^2k)= 390 #bad(k/3lnk)= 308 LDS(p|A)= 31 LIS(p|A)= 26
+grid rows permuted r=30 h=30       pi     k=900 maxL/k=0.967 (D=1) L_1/k=0.967 #bad(k/3ln^2k)= 893 #bad(k/3lnk)= 796 LDS(p|A)= 30 LIS(p|A)= 44
+grid rows permuted r=30 h=30       pi^-1  k=900 maxL/k=0.967 (D=30) L_1/k=0.266 #bad(k/3ln^2k)= 877 #bad(k/3lnk)= 743 LDS(p|A)= 30 LIS(p|A)= 44
+block-perturbed r=20 h=20 eps=0.2  pi     k=400 maxL/k=0.750 (D=20) L_1/k=0.733 #bad(k/3ln^2k)= 396 #bad(k/3lnk)= 366 LDS(p|A)= 17 LIS(p|A)= 37
+block-perturbed r=20 h=20 eps=0.2  pi^-1  k=400 maxL/k=0.720 (D=1) L_1/k=0.720 #bad(k/3ln^2k)= 395 #bad(k/3lnk)= 364 LDS(p|A)= 17 LIS(p|A)= 36
+block-perturbed r=20 h=20 eps=0.45 pi     k=400 maxL/k=0.458 (D=1) L_1/k=0.458 #bad(k/3ln^2k)= 396 #bad(k/3lnk)= 361 LDS(p|A)= 17 LIS(p|A)= 31
+block-perturbed r=20 h=20 eps=0.45 pi^-1  k=400 maxL/k=0.338 (D=20) L_1/k=0.312 #bad(k/3ln^2k)= 390 #bad(k/3lnk)= 316 LDS(p|A)= 12 LIS(p|A)= 30
+block-perturbed r=30 h=30 eps=0.2  pi     k=900 maxL/k=0.736 (D=30) L_1/k=0.721 #bad(k/3ln^2k)= 893 #bad(k/3lnk)= 832 LDS(p|A)= 26 LIS(p|A)= 58
+block-perturbed r=30 h=30 eps=0.2  pi^-1  k=900 maxL/k=0.703 (D=1) L_1/k=0.703 #bad(k/3ln^2k)= 893 #bad(k/3lnk)= 815 LDS(p|A)= 25 LIS(p|A)= 58
+block-perturbed r=30 h=30 eps=0.45 pi     k=900 maxL/k=0.462 (D=30) L_1/k=0.437 #bad(k/3ln^2k)= 893 #bad(k/3lnk)= 817 LDS(p|A)= 22 LIS(p|A)= 49
+block-perturbed r=30 h=30 eps=0.45 pi^-1  k=900 maxL/k=0.370 (D=1) L_1/k=0.370 #bad(k/3ln^2k)= 888 #bad(k/3lnk)= 743 LDS(p|A)= 18 LIS(p|A)= 47
+block-perturbed r=10 h=60 eps=0.2  pi     k=600 maxL/k=0.835 (D=1) L_1/k=0.835 #bad(k/3ln^2k)= 595 #bad(k/3lnk)= 568 LDS(p|A)= 10 LIS(p|A)= 67
+block-perturbed r=10 h=60 eps=0.2  pi^-1  k=600 maxL/k=0.808 (D=10) L_1/k=0.758 #bad(k/3ln^2k)= 595 #bad(k/3lnk)= 549 LDS(p|A)= 10 LIS(p|A)= 68
+block-perturbed r=10 h=60 eps=0.45 pi     k=600 maxL/k=0.565 (D=2) L_1/k=0.548 #bad(k/3ln^2k)= 595 #bad(k/3lnk)= 568 LDS(p|A)= 10 LIS(p|A)= 59
+block-perturbed r=10 h=60 eps=0.45 pi^-1  k=600 maxL/k=0.453 (D=20) L_1/k=0.407 #bad(k/3ln^2k)= 592 #bad(k/3lnk)= 495 LDS(p|A)= 10 LIS(p|A)= 55
+block-perturbed r=60 h=10 eps=0.2  pi     k=600 maxL/k=0.682 (D=10) L_1/k=0.613 #bad(k/3ln^2k)= 595 #bad(k/3lnk)= 540 LDS(p|A)= 11 LIS(p|A)= 60
+block-perturbed r=60 h=10 eps=0.2  pi^-1  k=600 maxL/k=0.663 (D=1) L_1/k=0.663 #bad(k/3ln^2k)= 593 #bad(k/3lnk)= 553 LDS(p|A)= 10 LIS(p|A)= 60
+block-perturbed r=60 h=10 eps=0.45 pi     k=600 maxL/k=0.380 (D=20) L_1/k=0.355 #bad(k/3ln^2k)= 595 #bad(k/3lnk)= 509 LDS(p|A)= 14 LIS(p|A)= 41
+block-perturbed r=60 h=10 eps=0.45 pi^-1  k=600 maxL/k=0.338 (D=4) L_1/k=0.323 #bad(k/3ln^2k)= 590 #bad(k/3lnk)= 491 LDS(p|A)= 11 LIS(p|A)= 38
+affine k=401 a=7                   pi     k=401 maxL/k=0.983 (D=7) L_1/k=0.571 #bad(k/3ln^2k)= 396 #bad(k/3lnk)= 370 LDS(p|A)=  7 LIS(p|A)= 58
+affine k=401 a=7                   pi^-1  k=401 maxL/k=0.983 (D=1) L_1/k=0.983 #bad(k/3ln^2k)= 397 #bad(k/3lnk)= 378 LDS(p|A)=  7 LIS(p|A)= 58
+affine k=401 a=123                 pi     k=401 maxL/k=0.955 (D=5) L_1/k=0.591 #bad(k/3ln^2k)= 395 #bad(k/3lnk)= 368 LDS(p|A)= 35 LIS(p|A)= 17
+affine k=401 a=123                 pi^-1  k=401 maxL/k=0.955 (D=13) L_1/k=0.693 #bad(k/3ln^2k)= 395 #bad(k/3lnk)= 371 LDS(p|A)= 35 LIS(p|A)= 17
+affine k=907 a=31                  pi     k=907 maxL/k=0.966 (D=31) L_1/k=0.870 #bad(k/3ln^2k)= 897 #bad(k/3lnk)= 844 LDS(p|A)= 31 LIS(p|A)= 36
+affine k=907 a=31                  pi^-1  k=907 maxL/k=0.966 (D=1) L_1/k=0.966 #bad(k/3ln^2k)= 900 #bad(k/3lnk)= 847 LDS(p|A)= 31 LIS(p|A)= 36
+random L_8 (inc runs)              pi     k=400 maxL/k=0.417 (D=1) L_1/k=0.417 #bad(k/3ln^2k)= 396 #bad(k/3lnk)= 377 LDS(p|A)=  8 LIS(p|A)= 39
+random L_8 (inc runs)              pi^-1  k=400 maxL/k=0.163 (D=11) L_1/k=0.150 #bad(k/3ln^2k)= 390 #bad(k/3lnk)= 280 LDS(p|A)=  7 LIS(p|A)= 20
+random L_8^c (dec runs)            pi     k=400 maxL/k=0.417 (D=1) L_1/k=0.417 #bad(k/3ln^2k)= 396 #bad(k/3lnk)= 377 LDS(p|A)= 41 LIS(p|A)=  8
+random L_8^c (dec runs)            pi^-1  k=400 maxL/k=0.163 (D=11) L_1/k=0.150 #bad(k/3ln^2k)= 390 #bad(k/3lnk)= 280 LDS(p|A)= 18 LIS(p|A)=  7
+periodic L_8                       pi     k=400 maxL/k=0.980 (D=1) L_1/k=0.980 #bad(k/3ln^2k)= 396 #bad(k/3lnk)= 377 LDS(p|A)=  8 LIS(p|A)= 56
+periodic L_8                       pi^-1  k=400 maxL/k=0.980 (D=8) L_1/k=0.875 #bad(k/3ln^2k)= 396 #bad(k/3lnk)= 369 LDS(p|A)=  8 LIS(p|A)= 56
+random L_32 (inc runs)             pi     k=400 maxL/k=0.242 (D=1) L_1/k=0.242 #bad(k/3ln^2k)= 396 #bad(k/3lnk)= 281 LDS(p|A)= 14 LIS(p|A)= 19
+random L_32 (inc runs)             pi^-1  k=400 maxL/k=0.105 (D=3) L_1/k=0.092 #bad(k/3ln^2k)= 393 #bad(k/3lnk)= 240 LDS(p|A)=  8 LIS(p|A)= 12
+random L_32^c (dec runs)           pi     k=400 maxL/k=0.242 (D=1) L_1/k=0.242 #bad(k/3ln^2k)= 396 #bad(k/3lnk)= 281 LDS(p|A)= 21 LIS(p|A)= 12
+random L_32^c (dec runs)           pi^-1  k=400 maxL/k=0.105 (D=3) L_1/k=0.092 #bad(k/3ln^2k)= 393 #bad(k/3lnk)= 240 LDS(p|A)= 11 LIS(p|A)=  8
+periodic L_32                      pi     k=400 maxL/k=0.920 (D=1) L_1/k=0.920 #bad(k/3ln^2k)= 396 #bad(k/3lnk)= 210 LDS(p|A)= 12 LIS(p|A)= 42
+periodic L_32                      pi^-1  k=400 maxL/k=0.968 (D=1) L_1/k=0.968 #bad(k/3ln^2k)= 396 #bad(k/3lnk)= 364 LDS(p|A)= 13 LIS(p|A)= 42
+random L_24 (inc runs)             pi     k=600 maxL/k=0.278 (D=1) L_1/k=0.278 #bad(k/3ln^2k)= 595 #bad(k/3lnk)= 486 LDS(p|A)= 16 LIS(p|A)= 31
+random L_24 (inc runs)             pi^-1  k=600 maxL/k=0.093 (D=48) L_1/k=0.083 #bad(k/3ln^2k)= 588 #bad(k/3lnk)= 322 LDS(p|A)=  8 LIS(p|A)= 15
+random L_24^c (dec runs)           pi     k=600 maxL/k=0.278 (D=1) L_1/k=0.278 #bad(k/3ln^2k)= 595 #bad(k/3lnk)= 486 LDS(p|A)= 31 LIS(p|A)= 18
+random L_24^c (dec runs)           pi^-1  k=600 maxL/k=0.093 (D=48) L_1/k=0.083 #bad(k/3ln^2k)= 588 #bad(k/3lnk)= 322 LDS(p|A)= 15 LIS(p|A)=  9
+periodic L_24                      pi     k=600 maxL/k=0.960 (D=1) L_1/k=0.960 #bad(k/3ln^2k)= 595 #bad(k/3lnk)= 558 LDS(p|A)= 24 LIS(p|A)= 47
+periodic L_24                      pi^-1  k=600 maxL/k=0.960 (D=24) L_1/k=0.958 #bad(k/3ln^2k)= 595 #bad(k/3lnk)= 558 LDS(p|A)= 24 LIS(p|A)= 47
+HK-type a=21 b=7 s=20 k=400: not a permutation, skipped
+HK-type a=20 b=1 s=20 k=401: not a permutation, skipped
+HK-type a=31 b=29 s=30 k=900: not a permutation, skipped
+uniform random                     pi     k=400 maxL/k=0.102 (D=97) L_1/k=0.092 #bad(k/3ln^2k)= 393 #bad(k/3lnk)= 228 LDS(p|A)=  8 LIS(p|A)=  9
+uniform random                     pi^-1  k=400 maxL/k=0.102 (D=2) L_1/k=0.085 #bad(k/3ln^2k)= 392 #bad(k/3lnk)= 231 LDS(p|A)= 11 LIS(p|A)= 11
+uniform random                     pi     k=900 maxL/k=0.068 (D=26) L_1/k=0.067 #bad(k/3ln^2k)= 876 #bad(k/3lnk)= 303 LDS(p|A)= 12 LIS(p|A)= 15
+uniform random                     pi^-1  k=900 maxL/k=0.067 (D=84) L_1/k=0.059 #bad(k/3ln^2k)= 879 #bad(k/3lnk)= 287 LDS(p|A)= 13 LIS(p|A)= 11

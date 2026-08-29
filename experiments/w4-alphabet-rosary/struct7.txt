@@ -1,0 +1,2 @@
+n=7 total length 23
+done found=0

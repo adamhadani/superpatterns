@@ -1,0 +1,4 @@
+r=2 m=1: min height over trials = 2 (need >= 1) OK
+r=2 m=2: min height over trials = 4 (need >= 2) OK
+r=3 m=1: min height over trials = 2 (need >= 1) OK
+r=2 m=3: min height over trials = 5 (need >= 3) OK

@@ -1,0 +1,6 @@
+k=10001 lambda=1.004: (1/k)log(bound/k!) = +0.000276   EWgood=3.292e-23 Bad=3.559e-17 binTail=1.9e-91 r_mean=369 n=13590380
+k=10001 lambda=1.0048: (1/k)log(bound/k!) = +0.001073   EWgood=2.839e-23 Bad=3.566e-17 binTail=6.8e-91 r_mean=370 n=13601209
+k=30001 lambda=1.004: (1/k)log(bound/k!) = -0.000399   EWgood=3.322e-68 Bad=9.617e-61 binTail=2.1e-273 r_mean=1106 n=122297114
+k=30001 lambda=1.0048: (1/k)log(bound/k!) = +0.000397   EWgood=2.131e-68 Bad=9.634e-61 binTail=1.0e-271 r_mean=1109 n=122394562
+k=100001 lambda=1.004: (1/k)log(bound/k!) = -0.000677   EWgood=1.085e-225 Bad=1.911e-214 binTail=0.0e+00 r_mean=3685 n=1358793419
+k=100001 lambda=1.0048: (1/k)log(bound/k!) = +0.000120   EWgood=2.468e-226 Bad=1.914e-214 binTail=0.0e+00 r_mean=3695 n=1359876123

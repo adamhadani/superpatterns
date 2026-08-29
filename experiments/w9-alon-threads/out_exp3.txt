@@ -1,0 +1,6 @@
+violations: Lemma W 0  Lemma HV 0  (over 400 random instances)
+kind            n   leader-fail  mean shared  mean W   mean L_D(Z+1)  mean m   | given leader fails: shared, W
+uniform         100   0.14          1.4     13.1        72.5    122.1   |      1.3     12.5   (n=14)
+identity        100   0.12          2.2     30.2       215.4    129.1   |      1.1     15.7   (n=12)
+runs-rand       100   0.15          1.0     18.6       113.1    124.3   |      0.6     21.7   (n=15)
+runs-periodic   100   0.12          1.2     24.1       162.4    128.3   |      1.5     24.9   (n=12)

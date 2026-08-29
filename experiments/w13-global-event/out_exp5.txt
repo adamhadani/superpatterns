@@ -1,0 +1,8 @@
+j=1: rho=1: 1 <= 1  OK | rho=2: 1 <= 4  OK | rho=3: 1 <= 9  OK
+j=2: rho=1: 1 <= 1  OK | rho=2: 2 <= 16  OK | rho=3: 2 <= 81  OK
+j=3: rho=1: 1 <= 1  OK | rho=2: 5 <= 64  OK | rho=3: 6 <= 729  OK
+j=4: rho=1: 1 <= 1  OK | rho=2: 14 <= 256  OK | rho=3: 23 <= 6561  OK
+j=5: rho=1: 1 <= 1  OK | rho=2: 42 <= 1024  OK | rho=3: 103 <= 59049  OK
+j=6: rho=1: 1 <= 1  OK | rho=2: 132 <= 4096  OK | rho=3: 513 <= 531441  OK
+j=7: rho=1: 1 <= 1  OK | rho=2: 429 <= 16384  OK | rho=3: 2761 <= 4782969  OK
+j=8: rho=1: 1 <= 1  OK | rho=2: 1430 <= 65536  OK | rho=3: 15767 <= 43046721  OK

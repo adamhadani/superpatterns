@@ -1,0 +1,66 @@
+== tilted grid 20x20: k=400, m=1600; overlap of threads 0 and Delta (mean/max over 40 trials), chain bound L_Delta, lag=e*r+d
+  Delta=   1 (d= 0,e= 1, lag=  20)  overlap mean=  100.2 max= 605   L_Delta= 380
+  Delta=   2 (d= 0,e= 2, lag=  40)  overlap mean=   11.0 max= 241   L_Delta= 360
+  Delta=   3 (d= 0,e= 3, lag=  60)  overlap mean=    0.0 max=   0   L_Delta= 340
+  Delta=   5 (d= 0,e= 5, lag= 100)  overlap mean=    0.0 max=   0   L_Delta= 300
+  Delta=  10 (d= 0,e=10, lag= 200)  overlap mean=    0.0 max=   0   L_Delta= 200
+  Delta=  19 (d= 0,e=19, lag= 380)  overlap mean=   49.8 max= 435   L_Delta= 361
+  Delta=  20 (d= 1,e= 0, lag=   1)  overlap mean=  409.6 max= 731   L_Delta= 380
+  Delta=  21 (d= 1,e= 1, lag=  21)  overlap mean=   76.8 max= 483   L_Delta= 361
+  Delta=  25 (d= 1,e= 5, lag= 101)  overlap mean=    0.0 max=   0   L_Delta= 285
+  Delta=  40 (d= 2,e= 0, lag=   2)  overlap mean=  235.9 max= 571   L_Delta= 360
+  Delta=  41 (d= 2,e= 1, lag=  22)  overlap mean=   56.0 max= 420   L_Delta= 342
+  Delta=  60 (d= 3,e= 0, lag=   3)  overlap mean=  186.7 max= 486   L_Delta= 340
+  Delta= 100 (d= 5,e= 0, lag=   5)  overlap mean=  113.1 max= 386   L_Delta= 300
+  Delta= 140 (d= 7,e= 0, lag=   7)  overlap mean=   66.2 max= 274   L_Delta= 260
+  Delta= 200 (d=10,e= 0, lag=  10)  overlap mean=   25.5 max= 129   L_Delta= 200
+  Delta= 201 (d=10,e= 1, lag=  30)  overlap mean=    1.4 max=  29   L_Delta= 190
+  Delta= 300 (d=15,e= 0, lag=  15)  overlap mean=    7.1 max=  58   L_Delta= 100
+== block-perturbed eps=0.2: k=400, m=1600; overlap of threads 0 and Delta (mean/max over 40 trials), chain bound L_Delta, lag=e*r+d
+  Delta=   1 (d= 0,e= 1, lag=  20)  overlap mean=   47.0 max= 188   L_Delta= 293
+  Delta=   2 (d= 0,e= 2, lag=  40)  overlap mean=    2.4 max=  95   L_Delta= 278
+  Delta=   3 (d= 0,e= 3, lag=  60)  overlap mean=    0.1 max=   3   L_Delta= 260
+  Delta=   5 (d= 0,e= 5, lag= 100)  overlap mean=    0.0 max=   0   L_Delta= 233
+  Delta=  10 (d= 0,e=10, lag= 200)  overlap mean=    0.0 max=   0   L_Delta= 155
+  Delta=  19 (d= 0,e=19, lag= 380)  overlap mean=   24.0 max= 216   L_Delta= 278
+  Delta=  20 (d= 1,e= 0, lag=   1)  overlap mean=  142.8 max= 312   L_Delta= 292
+  Delta=  21 (d= 1,e= 1, lag=  21)  overlap mean=   16.1 max= 166   L_Delta= 275
+  Delta=  25 (d= 1,e= 5, lag= 101)  overlap mean=    0.0 max=   0   L_Delta= 221
+  Delta=  40 (d= 2,e= 0, lag=   2)  overlap mean=  132.8 max= 281   L_Delta= 275
+  Delta=  41 (d= 2,e= 1, lag=  22)  overlap mean=   23.9 max= 172   L_Delta= 264
+  Delta=  60 (d= 3,e= 0, lag=   3)  overlap mean=   86.8 max= 212   L_Delta= 254
+  Delta= 100 (d= 5,e= 0, lag=   5)  overlap mean=   54.6 max= 161   L_Delta= 234
+  Delta= 140 (d= 7,e= 0, lag=   7)  overlap mean=   40.5 max= 132   L_Delta= 203
+  Delta= 200 (d=10,e= 0, lag=  10)  overlap mean=   18.4 max=  84   L_Delta= 154
+  Delta= 201 (d=10,e= 1, lag=  30)  overlap mean=    1.2 max=  16   L_Delta= 144
+  Delta= 300 (d=15,e= 0, lag=  15)  overlap mean=    7.7 max=  68   L_Delta=  85
+== block-perturbed eps=0.45: k=400, m=1600; overlap of threads 0 and Delta (mean/max over 40 trials), chain bound L_Delta, lag=e*r+d
+  Delta=   1 (d= 0,e= 1, lag=  20)  overlap mean=   14.0 max=  90   L_Delta= 172
+  Delta=   2 (d= 0,e= 2, lag=  40)  overlap mean=    1.1 max=  18   L_Delta= 160
+  Delta=   3 (d= 0,e= 3, lag=  60)  overlap mean=    0.0 max=   0   L_Delta= 157
+  Delta=   5 (d= 0,e= 5, lag= 100)  overlap mean=    0.0 max=   0   L_Delta= 151
+  Delta=  10 (d= 0,e=10, lag= 200)  overlap mean=    0.0 max=   0   L_Delta=  92
+  Delta=  19 (d= 0,e=19, lag= 380)  overlap mean=   11.2 max=  71   L_Delta= 164
+  Delta=  20 (d= 1,e= 0, lag=   1)  overlap mean=   43.5 max= 113   L_Delta= 190
+  Delta=  21 (d= 1,e= 1, lag=  21)  overlap mean=   20.3 max=  97   L_Delta= 164
+  Delta=  25 (d= 1,e= 5, lag= 101)  overlap mean=    0.0 max=   0   L_Delta= 139
+  Delta=  40 (d= 2,e= 0, lag=   2)  overlap mean=   49.1 max= 136   L_Delta= 172
+  Delta=  41 (d= 2,e= 1, lag=  22)  overlap mean=   13.4 max=  89   L_Delta= 167
+  Delta=  60 (d= 3,e= 0, lag=   3)  overlap mean=   34.6 max=  87   L_Delta= 162
+  Delta= 100 (d= 5,e= 0, lag=   5)  overlap mean=   28.6 max=  84   L_Delta= 150
+  Delta= 140 (d= 7,e= 0, lag=   7)  overlap mean=   24.3 max=  73   L_Delta= 132
+  Delta= 200 (d=10,e= 0, lag=  10)  overlap mean=   15.9 max=  46   L_Delta= 103
+  Delta= 201 (d=10,e= 1, lag=  30)  overlap mean=    2.9 max=  40   L_Delta=  96
+  Delta= 300 (d=15,e= 0, lag=  15)  overlap mean=    7.1 max=  19   L_Delta=  59
+
+== joint failure: Pr(all 3 threads fail)/Pr(fail)^3, m=2k, shifts (0,D,2D)
+  tilted grid 20x20          D=  1: P(fail)=1.000 P(all3 fail)=1.000 ratio=1.00
+  tilted grid 20x20          D= 20: P(fail)=1.000 P(all3 fail)=1.000 ratio=1.00
+  tilted grid 20x20          D= 21: P(fail)=1.000 P(all3 fail)=1.000 ratio=1.00
+  tilted grid 20x20          D=100: P(fail)=1.000 P(all3 fail)=1.000 ratio=1.00
+  tilted grid 20x20          D=105: P(fail)=1.000 P(all3 fail)=1.000 ratio=1.00
+  block-perturbed eps=0.2    D=  1: P(fail)=1.000 P(all3 fail)=1.000 ratio=1.00
+  block-perturbed eps=0.2    D= 20: P(fail)=1.000 P(all3 fail)=1.000 ratio=1.00
+  block-perturbed eps=0.2    D= 21: P(fail)=1.000 P(all3 fail)=1.000 ratio=1.00
+  block-perturbed eps=0.2    D=100: P(fail)=1.000 P(all3 fail)=1.000 ratio=1.00
+  block-perturbed eps=0.2    D=105: P(fail)=1.000 P(all3 fail)=1.000 ratio=1.00
