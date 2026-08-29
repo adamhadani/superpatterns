@@ -17,3 +17,4 @@ Date: 2026-08-29. Dir: experiments/w24-union-slack/. Machine shared (load ≈ 35
   Extra large samples at n≈t(k): k=6 n=28 (30000), k=7 n=37 (20000), k=8 n=48 (6000) for pairwise correlations.
 - 16:15 appended k=5 grid (n=15..32) to queue A for a 5th point in the k-fits.
 - 16:25 k=6 done; analyze.py fixed (ln 0 guard). k=6: ln R ≈ 1.9 at t(6), ≈0.4 at n=k², →0 by n≈1.1k².
+- 17:31 appended extra k=9 seeds (n=58,60,62; new n=66) to queue B.

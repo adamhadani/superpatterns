@@ -61,6 +61,10 @@ Negative / dead ends (with the reason; each is a theorem or a brute-force-checke
   greedy has failure speed ≤ min(k, strip height): cannot deliver the e^{−k ln k} per pattern the union bound needs (W19).
 - Numerically (W16/W21): the identity is the HARDEST pattern at finite k (random π contained 3–10% earlier, k ≤ 28);
   whether both limits are 1/4 is undecided.
+- Certificate counting (W23): identity Dilworth bound (N+k)^k (e(k−1)²/(N−k+1))^N (rate ln(C/e), loss 0.60 at C=e);
+  periodic word/block-grids fixed model: speed N/(3r²) at threshold 9r ln(3er) (factor r better than Thm 9).
+  NEGATIVE: any bad-box-tolerance lemma has f ≤ 1/r ⇒ threshold ≥ ln r (Mirsky grids); fixed-model rate ≤ 1/r for all C;
+  canonical covers don't beat e. Residual class still k² polylog k.
 - Alon–Spencer toolbox (W22 review): Janson/extended Janson/Suen exponent ≤ C/2 at N=Ck² for ANY copy-event family
   (Δ ≥ μ²/C, single-point overlaps); Talagrand ≤ C/4; Azuma ≤ C/2; Kim–Vu vacuous; LLL only positivity. NOT capped:
   certificate counting (Dilworth cover ⇒ Pr(LIS<k) ≤ (e/C)^N, speed N) → try antichain-cover certificates for

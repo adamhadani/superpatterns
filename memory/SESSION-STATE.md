@@ -118,3 +118,5 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
 - 17:35: Theorem C′ (λ = 1.00734, W25's Bernoulli tail) VERIFIED (Lemma B.1 checked; limit root reproduced by my own
   code; finite-k log-space certificate negative at k=1e5, 3e5 for λ=1.007) and folded into paper (abstract, table,
   §Thm C, open problems). W25 COMPLETED. Running: W21 (told to add correction-exponent fit and wrap up), W23 (relaunch), W24.
+- 17:45: W23 COMPLETED and VERIFIED (Thm 2.1, Cor 2.1′, Prop 2.3 read; Lemma 2.0 = generalised W11 Mirsky lemma). Folded
+  as a certificate-counting remark after Theorem 9. Running: W21 (finalising), W24 (k=7 runs).
