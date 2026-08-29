@@ -108,3 +108,6 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
 - 16:00: W22 COMPLETED (review verified on the two key claims: Δ ≥ μ²/C; Dilworth certificate (e/C)^N). Folded into
   paper (§Alon, "What the standard concentration tools give") and NOTES ledger. Launching W23 (certificate counting
   for block-grid/periodic patterns) and W24 (union-bound slack numerics) per its recommendations.
+- 16:05: W23 `experiments/w23-certificates/` (agent af0e69e8af1caafcf): certificate counting (Dilworth/Mirsky antichain
+  covers) for block-grid/periodic patterns — aim: speed N/poly(r) with r-independent threshold. W24
+  `experiments/w24-union-slack/` (agent aee98fc61e4771a4f): union-bound slack R = E[M]/Pr(M>0) at k=6–9.
