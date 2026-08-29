@@ -174,3 +174,6 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
   (a03aa95cefdafa091), W34 `experiments/w34-grid-lookahead/` (a174397d02aa988d8), W35 Lean `formal-verification/lean/`
   + `experiments/w35-lean-witness/` (a5790454cda97aa0a). Poll loop restarted (~25 min).
 - 20:55: W35 COMPLETED and VERIFIED (lake build 8719 jobs OK; 12 new theorems on standard axioms; no sorry). Folded into paper §Verification (iv). Running: W32, W33, W34, W24 tail.
+- 21:10: W34 COMPLETED and VERIFIED (proof re-derived; constants re-simulated in scratchpad/w34check.py; 2C typo noted).
+  Folded as Theorem 18 + table row. Running: W32, W33, W24 tail. New queue item W36: prove γ_∞ = 1 (stationary solution
+  of the first-passage recursion) ⇒ tilted grids at exactly 1/4; W37: certify C^mix_2 via Feynman–Kac.

@@ -106,6 +106,11 @@ Negative / dead ends (with the reason; each is a theorem or a brute-force-checke
   ≈0.4623 in the fresh-window model (Bellman optimality). Next: information outside the current gap / 2-D construction.
 - W35 (Lean, verified by my own lake build + axiom audit): Prop 15 (witness reduction), block-splitting core, Erdős–Szekeres
   disjointness formalised sorry-free. Not done: probabilistic block splitting p_π(N) ≤ p_π(M)^{⌊N/M⌋}.
+- W34 (Thm 18, verified; constants re-simulated): CROSS-STRIP x-lookahead (block rule, blocks of b/b+1 visits, stationary
+  renewal partition) gives block-grid/tilted-grid threshold ≤ C^mix_b = 0.345 (b=2) … 0.266 (b=64) < π/8, for min(r,h) ≥ ln³k.
+  Round cost telescopes to a first-passage problem; scaling ⇒ x-part = y-part = E K/2. Full lookahead: γ_∞ = 1.000±0.002
+  ⇒ mean-field fixed model threshold = 1/4 exactly (numerical) — W20 Conj 4.6 false for large h. Open: prove γ_∞ = 1
+  (Burke-type stationarity). y-lookahead alone = W20 Bellman, capped at π/8. Typo caught: "n ≥ 2C k²" should be (1+ε)Ck².
 - Alon–Spencer toolbox (W22 review): Janson/extended Janson/Suen exponent ≤ C/2 at N=Ck² for ANY copy-event family
   (Δ ≥ μ²/C, single-point overlaps); Talagrand ≤ C/4; Azuma ≤ C/2; Kim–Vu vacuous; LLL only positivity. NOT capped:
   certificate counting (Dilworth cover ⇒ Pr(LIS<k) ≤ (e/C)^N, speed N) → try antichain-cover certificates for

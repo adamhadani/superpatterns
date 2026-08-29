@@ -86,3 +86,4 @@ experiments/w24-union-slack/out/
 experiments/w30-empty-rectangle/out/
 experiments/w30-empty-rectangle/erect
 experiments/w31-lookahead/*.out
+experiments/w34-grid-lookahead/*.out
