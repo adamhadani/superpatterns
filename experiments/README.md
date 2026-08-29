@@ -39,3 +39,5 @@ session appears in the paper); tools are C (`cc -O2`) or Python 3; raw outputs a
 | `w31-lookahead` | Value-aware in-gap x-lookahead for random π | Theorem 17: random π contained at 0.465k² (certified Bellman constant); in-gap rules capped at ≈0.462 |
 | `w35-lean-witness` | Lean: Prop. 15, block splitting, Erdős–Szekeres | Sorry-free; standard axioms (Witness.lean, BlockSplit.lean, ErdosSzekeres.lean) |
 | `w34-grid-lookahead` | Cross-strip lookahead for block-grid patterns | Theorem 18: tilted grids at 0.266k² (< π/8); full lookahead numerically 1/4 |
+| `w32-outofgap` | Out-of-gap information for random π | Theorem 19: all sequential fresh-search rules capped at ≈0.4623 (negative, decisive) |
+| `w33-slope` | Slope of ln p_π(n) / ln μ(n) | Exact one-point identities; s_π ≤ ln(n/(k−1)); identity slope closed form; pointwise O(1) open |

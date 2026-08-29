@@ -177,3 +177,13 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
 - 21:10: W34 COMPLETED and VERIFIED (proof re-derived; constants re-simulated in scratchpad/w34check.py; 2C typo noted).
   Folded as Theorem 18 + table row. Running: W32, W33, W24 tail. New queue item W36: prove γ_∞ = 1 (stationary solution
   of the first-passage recursion) ⇒ tilted grids at exactly 1/4; W37: certify C^mix_2 via Feynman–Kac.
+- 21:30: W32 COMPLETED and VERIFIED (Thm 2.1 induction checked) → Theorem 19 (cap 0.4623 for all sequential rules).
+  W33 COMPLETED (k=7 SMC row pending, immaterial) and VERIFIED (H_0 identical to DZ's; slope formula checked
+  numerically) → slope paragraph + Prop 15 proviso sharpened. Remaining: W24 tail only.
+## Next 3–4 directions (queue, updated)
+- W36: prove γ_∞ = 1 for the first-passage recursion (Thm 18(c)) — Burke/stationarity; would give tilted grids at 1/4.
+- W37: NON-sequential construction for random π (Thm 19 says sequential rules are capped at 0.46 vs truth 0.22):
+  e.g. choose the copy as an optimal path in a Hammersley-type last-passage problem over value strips (global LIS
+  analogue); or a two-pass scheme (first pass explores, second commits) — check whether it escapes (F).
+- W38: certify C^mix_2 (Feynman–Kac) and the Thm 18 constants; Lean for Lemma 2.2 scaling.
+- W39: pointwise O(1) slope via Prop 4.1 of W33 (hitting time of the prefix pattern under the avoiding measure).

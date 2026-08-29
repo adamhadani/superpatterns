@@ -111,6 +111,13 @@ Negative / dead ends (with the reason; each is a theorem or a brute-force-checke
   Round cost telescopes to a first-passage problem; scaling ⇒ x-part = y-part = E K/2. Full lookahead: γ_∞ = 1.000±0.002
   ⇒ mean-field fixed model threshold = 1/4 exactly (numerical) — W20 Conj 4.6 false for large h. Open: prove γ_∞ = 1
   (Burke-type stationarity). y-lookahead alone = W20 Bellman, capped at π/8. Typo caught: "n ≥ 2C k²" should be (1+ε)Ck².
+- W32 (Thm 19, verified; NEGATIVE, decisive): EVERY sequential fresh-search rule (positions in order, point inside its
+  value gap, conditionally-Poisson region), whatever it looks at, has E[consumption] ≥ V_k/(Ck) ⇒ cap ≈ 0.4623 for
+  random π; anticipation of π worth 4e-5. Below 0.46 needs non-sequential (global/Hammersley-type) arguments.
+- W33 (verified): exact one-point identities (slots / S_max / J_π); s_π ≤ ln(n/(k−1)); uniform lower bound on slope
+  over a k²-window ⇔ speed-k² tails (as hard as the conjecture; false for μ); window-average of s_μ ≤ H_0(1/√C) = O(1);
+  identity slope closed form ln((4C+1)²/(16C)) from DZ (checked against DZ's H_0); slope at TW-type threshold
+  Θ((ln k/k)^{2/3}) ⇒ Prop 15 window O(a k^{5/3}); pointwise O(1) slope still open.
 - Alon–Spencer toolbox (W22 review): Janson/extended Janson/Suen exponent ≤ C/2 at N=Ck² for ANY copy-event family
   (Δ ≥ μ²/C, single-point overlaps); Talagrand ≤ C/4; Azuma ≤ C/2; Kim–Vu vacuous; LLL only positivity. NOT capped:
   certificate counting (Dilworth cover ⇒ Pr(LIS<k) ≤ (e/C)^N, speed N) → try antichain-cover certificates for

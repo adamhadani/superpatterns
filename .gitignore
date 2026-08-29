@@ -87,3 +87,8 @@ experiments/w30-empty-rectangle/out/
 experiments/w30-empty-rectangle/erect
 experiments/w31-lookahead/*.out
 experiments/w34-grid-lookahead/*.out
+experiments/w32-outofgap/*.out
+experiments/w32-outofgap/stale_*.txt
+experiments/w33-slope/out/
+experiments/w33-slope/avoid2
+experiments/w33-slope/lis_exact
