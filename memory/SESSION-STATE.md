@@ -149,3 +149,4 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
   Thm 4.1 proved only for value-blind rules — caveat recorded). Folded as Theorem 16 + table row. W24 tails and W27
   scans still running unattended. Launching W30 (patterns killed by one empty rectangle). Queue after W30: W31
   x-lookahead / 2-D rule for random π below ½; W32 certified (quadrature) Ω_h.
+- 19:40: W30 `experiments/w30-empty-rectangle/` launched (agent aa269e0cb3c891816): patterns killed by one empty rectangle (e^{O(k)} vs e^{Θ(k ln k)}). Running: W27 scans, W24 tails, W30.
