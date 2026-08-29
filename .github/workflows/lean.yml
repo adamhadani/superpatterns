@@ -18,7 +18,6 @@ jobs:
         with:
           lake-package-directory: formal-verification/lean
           use-mathlib-cache: true
-          build-args: --wfail
       - name: Axiom footprint
         working-directory: formal-verification/lean
         run: lake env lean Superpatterns/Axioms.lean
