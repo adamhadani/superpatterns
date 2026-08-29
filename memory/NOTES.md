@@ -65,8 +65,10 @@ Negative / dead ends (with the reason; each is a theorem or a brute-force-checke
   (Δ ≥ μ²/C, single-point overlaps); Talagrand ≤ C/4; Azuma ≤ C/2; Kim–Vu vacuous; LLL only positivity. NOT capped:
   certificate counting (Dilworth cover ⇒ Pr(LIS<k) ≤ (e/C)^N, speed N) → try antichain-cover certificates for
   block-grid/periodic patterns; and measuring the union-bound slack R = E#missing / Pr(#missing>0).
-- Tilted-grid constant (W20, in progress): lookahead within the quadrant cannot beat the greedy; clock uncertainty Θ(√r)
-  blocks rigorous rules below π/8; 2-strip DP state is a Pareto staircase, no known hydrodynamic limit; numerics → 1/4.
+- Tilted grids (W20, done): Thm 12 mean-field theorem — fixed-strip C^fix(r,h) ≤ C_mf(h) as r→∞, C_mf ↓ π/8; every
+  fresh-quadrant rule capped at π/8 (Prop 3.1). NEGATIVE: no rigorous constant below π/8 for min(r,h)→∞; 2-strip DP is
+  a Pareto front, no Hammersley structure. NUMERICAL: (12)^h fixed threshold 0.254 at k=256 (→≈0.22–0.23 < 1/4), free
+  0.272 vs identity 0.291 at k=64 ⇒ identity is NOT the easiest pattern; diagonal r×r fixed 0.335 at 8×8.
 
 ## Files
 lit/1810.08252.txt Engen–Vatter survey; lit/2004.02375.txt CKS lower bound; lit/2108.05474.txt Hunter small alphabets; lit/1710.04240.txt universal layered perms; lit/1308.0403.txt Bannister et al (321/132-avoiding superpatterns); lit/2602.09072.txt circular superpatterns (2026).

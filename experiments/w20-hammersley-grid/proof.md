@@ -267,8 +267,10 @@ for h large.  So C_mf(h) ≤ C for every C > π/8 and all large h.  ∎
 h → ∞), and shows the mean-field theory is exactly the "fresh-quadrant" theory, whose optimum is the triangle
 rule when h → ∞ and a genuinely better, h-dependent rule for finite h.
 
-**Numerical values (NUMERICAL; mf.py, grid 200–400 in y).**  C_mf(h) = 1 (h=1, exact), 0.752 (h=2), … (table in
-log.md §3; the values decrease towards π/8 = 0.3927).
+**Numerical values (NUMERICAL; mf.py, 400–800 cells).**  C_mf(h) = 1 (h = 1, exact), 0.750, 0.655, 0.603,
+0.570, 0.547, 0.530, 0.517 (h = 2..8), 0.501 (10), 0.472 (16); C_mf(h) − π/8 ≈ 0.50·h^{−2/3} (log.md §3.1).
+The mean-field rule for h = 2 simulated on the real FIXED model has success probability 0.50–0.52 at C = 0.75
+for r = 64 and 256 (log.md §3.2): Theorem 4.2's constant is attained at moderate r.
 
 ### 4.4 What is conjectured, and the obstruction
 
@@ -288,9 +290,9 @@ status; convergence in r is slow, O(r^{−1/2}) already at h = 1).
 **What this means for the 1/4 question.**  If Conjecture 4.6 holds then lim_h lim_r C^{fix}(r,h) = π/8 exactly
 (Proposition 4.5): the FIXED model's constant is π/8, not 1/4, in the iterated limit, and the corner greedy of W11
 is asymptotically optimal there.  The diagonal limit lim_{r=h→∞} C^{fix}(r,r) is a different quantity, sandwiched
-between (numerically) ≤ 0.36 (k = 49, and decreasing) and — if the iterated limit is π/8 and the diagonal is
-approached from below in r — possibly also π/8; the exact diagonal numerics (log.md §3) at 8×8 are the only
-handle we have.  The 1/4 of Alon's conjecture can only come from the FREE model: the freedom the FREE model has and
+(numerically) ≤ 0.335 at k = 64 and still decreasing (log.md §3.2), i.e. already below the iterated limit;
+so either the two limits differ (the clock at r = h is far more predictable than at r ≫ h) or the diagonal
+curve turns around beyond k = 64.  The 1/4 of Alon's conjecture can only come from the FREE model: the freedom the FREE model has and
 the FIXED one lacks is that the copy chooses its own strip boundaries (the y-levels separating its r chains), so
 the "budget h per strip" is replaced by "budget k in total, allocated by the copy".  In the colour model this
 corresponds to colours that are *not* i.i.d. but chosen by the embedding — a fundamentally different (and much
@@ -311,8 +313,10 @@ direction*.  On the diagonal r = h both directions coincide and the question is 
 |---|---|---|---|
 | CELL | any r, h → ∞ | 1 | PROVED (Thm 2.1) |
 | FIXED | h = 1, r → ∞ | 1 | PROVED (Thm 2.2) |
-| FIXED | h fixed, r → ∞ | ≤ C_mf(h) (Thm 4.2); ≥ 1/h (Prop 2.3); C_mf(1)=1, C_mf(2)=0.752, C_mf(h) ↓ π/8 | PROVED bounds; = C_mf(h) is Conj. 4.6 |
+| FIXED | h fixed, r → ∞ | ≤ C_mf(h) (Thm 4.2); ≥ 1/h (Prop 2.3); C_mf(1)=1, C_mf(2)=0.750, C_mf(h) ↓ π/8 | PROVED bounds; = C_mf(h) is Conj. 4.6 |
 | FIXED | min(r,h) → ∞ | ≤ π/8 (W11 Thm 4.4); ≥ π/8 for fresh-quadrant strategies (Prop 3.1) | PROVED; exact value open (iterated limit = π/8 under Conj. 4.6) |
 | FIXED | r = 1 | 1/4 | PROVED (LIS) |
 | FREE | any r, h = 1 or r = 1 | 1/4 | PROVED (LIS) |
-| FREE | r = h → ∞ | ∈ [0.1925 (W-notes universal bound, semi-rigorous) / 1/e² (first moment, rigorous), π/8]; numerically tracks the identity (→ 1/4?) | open |
+| FIXED | r = 2, h → ∞ | ≥ 1/8 (LIS in a half-strip); numerically 0.254 at k = 256, extrapolating to ≈ 0.22–0.23 < 1/4 | open |
+| FREE | r = 2 ((12)^h), h → ∞ | ≤ the FIXED value; 0.272 at k = 64, below the identity's 0.291 | open |
+| FREE | r = h → ∞ | ∈ [0.1925 (W-notes universal bound, semi-rigorous) / 1/e² (first moment, rigorous), π/8]; numerically ≤ 0.335 (FIXED 8×8) | open |

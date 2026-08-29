@@ -29,8 +29,13 @@ other jobs (load 30–110 on 12 cores during this session); all runs here are si
 4. 15:00 Added option -iid to tg.c (i.i.d. colours instead of the balanced colouring induced by N uniform points
    with rigid strips, which has a hypergeometric finite-size effect: at h = 1, r = 32 the balanced model gives
    0.950 and the i.i.d. one 0.985, both → 1).  Launched iid scans at h = 1, 2, 3 (runE.sh).
-5. mf.py bugs fixed (nan from the infinite top cell; one round too many).  Checks: V_1(0) = 1/(Ch) exactly
+5. 15:10 mf.py bugs fixed (nan from the infinite top cell; one round too many).  Checks: V_1(0) = 1/(Ch) exactly
    (h = 1 → C_mf = 1); h = 2 at n = 200/400/800: 0.7519/0.7509/0.7505 (discretisation error ≈ +0.003 at n = 400).
+
+6. 15:15–16:05 8×8 exact runs (first batch mis-targeted at C ≥ 0.5, redone at 0.32/0.35/0.38); mfrule.py
+   (stdlib-shadowing bug from the file name bisect.py fixed by stripping sys.path); i.i.d. check at 2×128.
+   Killed the h = 2, r = 32 and r = 128 DP runs (front explosion, > 1 h per bisection step) and 64×1.
+7. 16:10 Final write-up.
 
 ## 3. Numerics
 
@@ -43,33 +48,53 @@ other jobs (load 30–110 on 12 cores during this session); all runs here are si
     consistent with C_mf(h) = π/8 + (0.50 ± 0.01)·h^{−2/3} — a k^{−2/3}-type (Tracy–Widom-like) finite-h
     correction to the mean-field constant (NUMERICAL).  Discretisation error ≈ +0.002 at n = 400.
 
-### 3.2 Exact DP thresholds C_{1/2} = N_{1/2}/k² (NUMERICAL; results.txt has the bisection traces)
+### 3.2 Exact DP thresholds C_{1/2} = N_{1/2}/k² (NUMERICAL; results.txt has the bisection traces; ±0.01)
 
 FIXED (balanced colouring = rigid strips in N uniform points, tg.c default):
     h = 1:  r = 2: 0.592   4: 0.776   8: 0.860   16: 0.904   32: 0.950            → 1 (Theorem 2.2)
-    h = 2:  r = 2: 0.577   4: 0.594   8: 0.610   16: 0.600   (32, 64 pending)     mean-field prediction 0.751
-    r = 2:  h = 1: 0.592   2: 0.577   8: 0.379   16: 0.322   32: 0.287   64: 0.268   (128, 256 pending)
+    h = 2:  r = 2: 0.577   4: 0.594   8: 0.610   16: 0.600   (r = 32 killed after 1 h at the first bisection
+            step: the r-dimensional Pareto front explodes)                        mean-field value 0.751
+    r = 2:  h = 1: 0.592   2: 0.577   8: 0.379   16: 0.322   32: 0.287   64: 0.268   128: 0.254
 FIXED with i.i.d. colours (-iid):
     h = 1:  r = 4: 0.938   8: 0.973   16: 0.976   32: 0.985                        → 1
-    h = 2:  pending
-FREE, r = 2 (the pattern (12)^h = 1 (h+1) 2 (h+2) ⋯):
-    h = 4: 0.391   8: 0.335   16: 0.293   24: 0.278   (32 pending)
-    identity of the same k (W11 lisref): k=8: 0.404, 16: 0.350, 32: 0.311, 49: 0.298, 64: 0.291.
-    So (12)^h is easier than the identity of the same length at every k tested, by 0.01–0.02.
-FIXED 8×8 (diagonal, k = 64): pending (diag88.txt).
+    r = 2, h = 128: 0.254 (identical to the balanced value: the colouring artefact is negligible at r = 2)
+FREE, r = 2 (the pattern (12)^h = 1 (h+1) 2 (h+2) ⋯ h (2h)):
+    h = 4: 0.391   8: 0.335   16: 0.293   24: 0.278   32: 0.272
+    identity of the same k (W11 lisref): k=8: 0.404, 16: 0.350, 32: 0.311, 49: 0.298, 64: 0.291, 256: 0.266.
+FIXED 8×8 (diagonal, k = 64; 40 samples each, seed 5):  Pr = 0.20 at C = 0.320,  0.825 at C = 0.349,
+    1.00 at C = 0.547  ⇒  C_{1/2}(8×8) ≈ 0.335.  Diagonal sequence r = h = 2..8:
+    0.55, 0.50, 0.44, 0.41, 0.375, 0.36, 0.335 (k = 4 … 64); identity at k = 64: 0.291.
+
+Mean-field rule of proof.md §4 simulated on the real FIXED model (mfrule.py, h = 2, Bellman potential,
+no artificial fill, 200 samples): success probability
+    C:        0.70   0.75   0.80   0.85
+    r = 16:   0.41   0.57   0.65   0.75
+    r = 64:   0.21   0.50   0.81   0.92
+    r = 256:  0.08   0.52   0.92   1.00
+i.e. the rule's threshold is 0.75 = C_mf(2) already at r = 64 and sharpens with r, as Theorem 4.2 predicts;
+the "forgetting" (no artificial point would ever be needed) is visible at r = 16 already.
 
 ### 3.3 Reading
 
-* h = 1 confirms Theorem 2.2 and shows the convergence in r is O(r^{−1/2}) and from below.
-* h = 2 (FIXED, balanced colouring): 0.58–0.61 for r ≤ 16, vs C_mf(2) = 0.751.  Either the convergence is slow
-  (as at h = 1, where r = 16 is 10 % below the limit and the relative correction is O(k^{−1/2}) with a large
-  constant), or the optimal non-causal embedding genuinely beats the mean-field rules (Conjecture 4.6 false).
-  The i.i.d.-colour runs at r = 32, 64 (and the balanced ones) will discriminate: if C_{1/2}(r,2) keeps rising
-  towards 0.75 the conjecture stands.  [To be updated when runE finishes.]
-* r = 2, h → ∞ (FIXED): 0.268 at k = 128, still falling; a fit C(k) = C_∞ + b k^{−2/3} through k = 32, 64, 128
-  gives C_∞ ≈ 0.25 ± 0.01.  So plausibly lim_h C^{fix}(2,h) = 1/4, i.e. rigid strips cost nothing when there
-  are only two of them and they are long.  Contrast with lim_r C^{fix}(r,2) ≥ 1/2 (Prop 2.3).
-* FREE r = 2: 0.278 at k = 48, below the identity's finite-size value; consistent with a limit ≤ 1/4.
+* h = 1 confirms Theorem 2.2; convergence in r is O(r^{−1/2}) from below (balanced: 0.90 at r = 16; i.i.d.: 0.976).
+* h = 2 FIXED: the exact optimum is 0.58–0.61 for r ≤ 16 versus the mean-field rule's 0.75 (which the rule
+  itself attains at r = 64).  So at r ≤ 16 the optimal non-causal embedding beats every mean-field rule by
+  20 %.  Whether this gap closes as r → ∞ (Conjecture 4.6) could not be tested: the exact DP is infeasible at
+  r = 32, h = 2 (front explosion).  At h = 1 the analogous gap at r = 16 is 10 % and closes.  Status of
+  Conjecture 4.6: OPEN, the r ≤ 16 data neither support nor refute it (a 20 % gap at r = 16 is of the
+  size of the h = 1 finite-size effect, but is not visibly shrinking from r = 8 to 16).
+* r = 2, h → ∞ (FIXED): 0.287, 0.268, 0.254 at k = 64, 128, 256; successive differences 0.019, 0.014 (ratio
+  0.74).  A geometric extrapolation gives a limit ≈ 0.254 − 0.014·0.74/0.26 ≈ 0.21–0.23; with a k^{−2/3} law
+  (ratio 0.63) ≈ 0.23.  So the FIXED 2-strip constant is plausibly BELOW 1/4 (NUMERICAL, extrapolated): the
+  pattern (12)^h with two rigid half-strips is easier than the identity of the same length (0.254 vs 0.266 at
+  k = 256), and a fortiori so is (12)^h in the FREE model (0.272 vs 0.291 at k = 64).  This is consistent with
+  the notes' observation that random patterns sit at ≈ 0.23 and says that "1/4 for every pattern" is an upper
+  bound conjecture only; the exact constant of (12)^h is a new open quantity c((12)^∞) ∈ [1/8, 1/4].
+* Diagonal FIXED r = h: still decreasing at k = 64 (0.335), 0.045 above the identity.  Since the FIXED constant
+  in the iterated limit (r → ∞ then h → ∞) is π/8 = 0.393 if Conjecture 4.6 holds, and the diagonal values are
+  already below 0.393 and falling, either the diagonal limit is strictly below the iterated one (limits do not
+  commute — plausible, since at r = h the clock is far more predictable than at r ≫ h) or the diagonal curve
+  turns around at much larger k.  Undecidable with k ≤ 64.
 
 ## 4. Dead ends (with reasons)
 
@@ -97,3 +122,4 @@ FIXED 8×8 (diagonal, k = 64): pending (diag88.txt).
    two-strip system has the *same* constant as the LIS — a statement that should have a comparison proof
    (embed a copy of (12)^h near a maximal chain?), but the joint law of gaps along the maximal chain is not
    available (cf. W17 §5).
+Still running at hand-off (append to results.txt / diag88.txt when done): FIXED 2×256, iid 2×256, FIXED 8×8 at C = 0.381.
