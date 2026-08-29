@@ -31,6 +31,39 @@ Lower: k²/e² (trivial C(n,k) ≥ k!) → 1.000076·k²/e² (Chroman–Kwan–S
 - Miller zigzag: Z_k = (1 3 5 …)(… 6 4 2)(1 3 5 …)… k runs, length k(k+1)/2 over [k+1]. Either π or π+1 embeds (score function s(p)+s(p+1)=1).
 - Engen–Vatter: z_n = first n runs restricted to [n]; break ties so equal letters form a decreasing subsequence → ζ_n. Universal for odd n; for even n misses only n…21, fix by prepending a max. Proof: non-layered perms have a distant inverse-descent → decrement trick; layered handled by parity score walk.
 
+
+## Results ledger of this project (2026-08-29) — positive AND negative; details in experiments/wN/{log,proof}.md and the paper
+
+Positive (all independently verified by the coordinating session before entering the paper):
+- Thm A: sp(k) ≥ (1.0003125−o(1))k²/e² (W3; Lean-verified). Thm C: 1.00483 (W7; first draft's lemma was FALSE, corrected).
+- sp(7) ≤ 23, sp(8) ≤ 30 (W1; three independent checkers incl. Lean). Structured 7-superpattern of length 24 (W2).
+- f(k;k+1) = (k²+k)/2 for k ≤ 5 (W4, SAT); Gupta rosaries: r(n) = ⌊n²/2⌋ for n ≤ 5, ≤ ⌊n²/2⌋ for n ≤ 11 (W4).
+- t(7) = 37, t(9) ≈ 60, t(10) ≈ 70–72 (W5); c_τ = 2/|τ| numerically for |τ| ≤ 5 (W10).
+- 0.7866 ≤ c_21 ≤ 1.140 (W17 renewal sweep / W12 canonical copies); c_τ ≥ 0.535 (S_3), ≥ 0.385 (S_4) (W17).
+- Universal absence: every π ∈ S_k absent w.h.p. if k > 2.279√N (W12).
+- Alon: Thm 8 (72k², all π with L_Δ ≤ k/3ln²k for all but k/3ln k shifts; W9); Thm 5 (800k², unions of ≤ e^28 runs,
+  unconditional range r ≤ e^57; W13/W14); Thm 9 (speed N for fixed r; W11); Thm 10 (every block-grid pattern incl. the
+  family 𝓕 has threshold ≤ (π/8)k²; W11); Thm 11 (EVERY π ∈ S_k has threshold ≤ 0.757k², failure e^{−ηk}; rigid rows
+  give k² and the union bound (1+o(1))k² ln k; W19).
+- Circular corollaries L_circ(8) ≤ 24, L_circ(9) ≤ 31 (from MD26 review).
+
+Negative / dead ends (with the reason; each is a theorem or a brute-force-checked fact unless marked numerical):
+- No (1/2−ε)k² construction from copy models, poly-many collapses, monotone-run/residue zigzags, merged halves, identical
+  blocks (all ≥ k²/2 asymptotically; W2/W8). The 23/30 witnesses are NOT tie-broken words over [k+1] (W2).
+- sp(7) = 22? SAT/CEGAR too slow (70 min–2 h per solve; still running, W6).
+- Entropy statement (E) is FALSE (W14). The family 𝓕 defeats every chain-based hypothesis in all dihedral images (W15).
+- The lag lemma is FALSE: coalescence costs e^{−O(lag)}, not e^{−lag²/k}; polylog threads at m = Ck cannot give
+  n = O(k²) — He–Kwan's k log log k barrier reproduced for the thread framework (W18).
+- κ cannot be pushed below 2.279 uniformly by canonical-copy/transfer methods; mixed leftmost/lowest rules are worse; RSK
+  route inapplicable (W16). Level-2 lex-min gives 2.24 for the identity only (numerical).
+- Renewal/greedy rules for c_21 cap at ≈ 0.84 (W17 Prop 4); the last 20% to c_21 = 1 needs block-to-block correlation.
+- The corner greedy does NOT extend verbatim to arbitrary π (strips must be chains; W19 Prop 3.1). Every greedy or repaired
+  greedy has failure speed ≤ min(k, strip height): cannot deliver the e^{−k ln k} per pattern the union bound needs (W19).
+- Numerically (W16/W21): the identity is the HARDEST pattern at finite k (random π contained 3–10% earlier, k ≤ 28);
+  whether both limits are 1/4 is undecided.
+- Tilted-grid constant (W20, in progress): lookahead within the quadrant cannot beat the greedy; clock uncertainty Θ(√r)
+  blocks rigorous rules below π/8; 2-strip DP state is a Pareto staircase, no known hydrodynamic limit; numerics → 1/4.
+
 ## Files
 lit/1810.08252.txt Engen–Vatter survey; lit/2004.02375.txt CKS lower bound; lit/2108.05474.txt Hunter small alphabets; lit/1710.04240.txt universal layered perms; lit/1308.0403.txt Bannister et al (321/132-avoiding superpatterns); lit/2602.09072.txt circular superpatterns (2026).
 Bóna, Combinatorics of Permutations 3rd ed: Ch.5 Ex.19–23, Problems Plus 14–17, 20.
