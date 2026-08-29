@@ -142,3 +142,15 @@ maps-to uses `replSet_mem`, `hstable` and `offData_eq_iff`; injectivity reads `g
 
 None in the whole project.  The only non-standard axioms left are the per-certificate
 `native_decide` axioms in `Certificates.lean` (σ7, σ8, σ8', σ8''), as before.
+
+## 2026-08-29 (W35): witness reduction, block splitting, Erdős–Szekeres
+
+New modules (in root and in `Axioms.lean`), all sorry-free, standard axioms only:
+
+| file | content |
+|---|---|
+| `Superpatterns/Witness.lean` | `FinProb` (finite weighted probability space), `E`/`Pr`/`Eon`, count `cnt`; Prop. 15 (a) `mean_eq_E_on_pos`, `Pr_pos_le_mean`, `Pr_le_one`; (b) `sq_mean_le` (Cauchy–Schwarz), `E_sq_eq_sum`, `mean_le_max_cond`; (c) `witness_reduction`, `witness_reduction_max`; uniform model `Perms n`, `FinProb.uniform`, `missing`, `cnt_missing_pos_iff`, `witness_reduction_uniform` |
+| `Superpatterns/BlockSplit.lean` | `OrdIso` equivalence, `Contains.of_sublist`, `contains_ranks_iff`, `block`/`blockStd`, `blockStd_avoids`, `ranks_perm_range` (combinatorial core of W27 Lemma 0.2; the independence/probabilistic half is not formalised) |
+| `Superpatterns/ErdosSzekeres.lean` | imports `Archive.Wiedijk100Theorems.AscendingDescendingSequences` (builds from the Mathlib cache in ~5 s); `ofFn_sublist`, `OrdIso_range_of_strictMono`, `OrdIso_range_reverse_of_strictAnti`, `erdos_szekeres_contains`, `not_avoid_both`, `not_avoid_id_rev` |
+
+Full `lake build`: 8719 jobs, 15 s wall (cached). Details: `experiments/w35-lean-witness/`.

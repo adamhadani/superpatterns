@@ -173,3 +173,4 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
 - 20:45 (user: "go ahead"): launched W32 `experiments/w32-outofgap/` (agent ad46e0aa90c52e9fd), W33 `experiments/w33-slope/`
   (a03aa95cefdafa091), W34 `experiments/w34-grid-lookahead/` (a174397d02aa988d8), W35 Lean `formal-verification/lean/`
   + `experiments/w35-lean-witness/` (a5790454cda97aa0a). Poll loop restarted (~25 min).
+- 20:55: W35 COMPLETED and VERIFIED (lake build 8719 jobs OK; 12 new theorems on standard axioms; no sorry). Folded into paper §Verification (iv). Running: W32, W33, W34, W24 tail.
