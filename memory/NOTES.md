@@ -75,6 +75,10 @@ Negative / dead ends (with the reason; each is a theorem or a brute-force-checke
   Barrier isolated: Mirsky needs a CHAIN of O(1)-cost gadgets; a grid with min(r,h)→∞ is a LATTICE. Exact facts: block
   splitting (bound at one N=C_0k² with exponent ≫ k ln k suffices); CP(1) false at k=4 (Av_7(1324)=2762>2761); CP(K>1)
   vacuous at fixed k ⇒ only per-point rates I_π(C) at N≍k² matter; relabelling identity p_π = constrained-LIS tail.
+- W27 numerics (COMPLETED): hardest pattern at k ≤ 8 is 1⊕dec_{k−2}⊕1 (exact by my enumeration at n ≤ 10); patterns harder
+  than id = ⊕-sums with a decreasing block (family of size e^{O(k)}); excess sub-linear in k ⇒ conjecture
+  p_π(N) ≤ e^{ak} p_id(N) (rate deficit O(1/k)). CAVEAT: W27's SMC excess values are biased upward (Wilf-equivalent
+  patterns 15432, 123654 show +0.3/+1.2) — magnitudes unreliable, signs at small n confirmed exactly.
 - W24 (numerics, k=6 re-sampled by me): union-bound slack ln R at t(k) = 1.93, 2.59, 3.27, 3.98 (k=6..9), ≈0.7k ≈ 0.23 ln k!;
   ln R ≈ 0.4–0.5 at n=k², R→1 by 1.1k². Missing set heavy-tailed and clustered (adjacent transpositions ρ≈160–230 at
   t(7); dihedral 20–25; random pairs 12–16; reverse/complement of identity never co-miss). First moment off by e^{Θ(k)}

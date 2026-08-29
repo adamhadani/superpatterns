@@ -154,3 +154,6 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
   after Prop 15. Launching W31 (x-lookahead / 2-D rule for random π below ½). Queue: W32 certified Ω_h; W33 uniform
   O(1) slope of ln μ (would give e^{O(k√ln k)} in W30 Prop 3.2). Running: W27 scans, W24 tails, W31.
 - 20:05: W31 `experiments/w31-lookahead/` launched (agent af0ae5e29dfcb740d): x-lookahead / 2-D rule for random π below ½. Note: commits now stage explicit paths and use --no-verify (hooks run manually: gitleaks staged) while W27 writes to smc7/deep concurrently.
+- 20:15: W27 COMPLETED. Numerics checked by exact enumeration (av9.c/av10.c): qualitative claim right, SMC magnitudes
+  biased (noted in w27 proof.md). One sentence added to paper. Running: W31, W24 tails (unattended; two W27 k=8 deep
+  runs may still be on 1 core).

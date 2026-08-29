@@ -244,3 +244,50 @@ is what the k = 7, 8 deep runs are for (§3.4 below).
 **3.3 Crossovers.** n_×(π)/k² (first n from which the excess stays > 0.02): 0.81 (1324, k=4); 0.52–0.64 (k=5);
 0.39–0.58 (k=6). The crossover sits INSIDE the window [k²/2, 3k²/2] and, if anything, moves to smaller n/k² with k —
 CP(1) cannot be rescued by "above threshold only" at fixed K = 1. CP(K) with K > 1 is untouched (Fact 1.2).
+
+**3.4 Deep tail (results.md, deep/).** The hardest pattern is 1 ⊕ dec_{k−2} ⊕ 1 at every k ≤ 8; its excess at
+n ≈ 1.33k² is 1.33, 2.96, 3.17 for k = 6, 7, 8 (4.0, 3.9 at 1.5k² for k = 7, 8): growing sub-linearly with k in this
+range, hence consistent with an e^{O(k)} error factor and inconsistent with e^{Θ(k²)}. Its local per-point rate is
+8–15% below the identity's (ratio 0.85–0.92 across k = 6–8, not deteriorating): CP(1) with e^{O(k)} error is
+plausible but the rates genuinely differ, so at fixed K = 1 the error factor is the whole story; CP(K) with any
+K > 1 has margin. Layered (21)^{k/2} is as hard as the identity (rate ratio 0.96); the 2-strip tilted grids are
+easier at every n and have a slightly LARGER rate than the identity; random-like patterns are far easier (median
+excess −1.4 at k = 6, n = 48; −3.1 minimum at k = 7, n = 45).
+
+## 5. Conclusion: the precise conjecture, what is proved, the obstruction
+
+**Conjecture (CP, sharpest form supported by the data).** There is an absolute a such that for all k, π ∈ S_k, N:
+      p_π(N) ≤ e^{a k} · p_id(N)      (K = 1, error e^{O(k)}),
+with the maximum over π attained (for k ≤ 8 exactly, conjecturally always) by 1 ⊕ dec_{k−2} ⊕ 1, whose excess is
+Θ(k)·(N/k²)-ish at fixed N/k². Equivalently in rate form: I_π(C) ≥ I_id(C) − O(1/k) for all π and C — a per-point rate
+deficit of O(1/k), which is exactly what a "shortening by O(1)" mechanism produces (a copy of 1 ⊕ dec ⊕ 1 needs a
+decreasing (k−2)-run inside the rectangle spanned by an increasing pair; avoiding it is comparable to avoiding a
+monotone pattern of length k − O(1)). Weaker forms that still suffice for Alon (Lemma 0.2(a)/0.3): CP(K) for any
+fixed K > 1, or merely CP* (a uniform positive rate at one C_0). What the data exclude: identity-hardest at every N
+(false from k = 4: 1324, and from n_× ≈ 0.4–0.6k² at k = 5–7), and any hope that the extremal family is
+"random-like" — the exceptions are the ⊕-sums with decreasing blocks, a family of size e^{O(k)} that is trivially
+covered by the union bound anyway.
+
+**Proved here.** Lemmas 0.1–0.3 (reformulation: uniform speed-N/exponent-k² tail ⇒ Alon; block splitting; CP above
+threshold suffices); Fact 1.1–1.2; Theorem 2.1 (speed-N tails, threshold O(k²), for all ⊕/⊖-sums of blocks of
+bounded size, including (21)^{k/2} and every layered pattern with bounded layers — new); Theorem 2.5 (speed N for
+the rigid grid family 𝒢(r,h) with rate 1/(r² ln r) and threshold O(k² ln r) — a modest improvement of W23's
+periodic-word bound, same r² loss); Lemma 2.3 (⊕-closure); Proposition 2.4 (relabelling identity).
+
+**Obstruction.** Every proof of a speed-N tail here is a chain-of-local-gadgets argument (Mirsky on a 2-D poset +
+a count of good cells). It gives exponent Θ(N) exactly when a copy is a chain of O(1)-cost gadgets; for grids with
+min(r,h) → ∞ the gadget costs r cells and wastes a factor r of area (rate 1/r²: exponent Θ(k) for r = √k, no
+better than the greedy), and for random π there is no chain structure at all. The greedy's speed min(r,h) is
+therefore not an accident of the greedy: rigid coarse-graining of any kind pays 1/r², and a speed-N proof for grids
+needs Θ(1)-precision coordination across strips (W20). Passing from exponent k to exponent ω(k ln k) at N = O(k²)
+for grids with r, h → ∞ — or for random π — is the open problem, unchanged in nature but now sharply stated as a
+lower-tail large-deviation problem with the numerically supported answer "rate ≥ identity's rate − O(1/k)".
+
+## Coordinator's verification note (main session, 2026-08-29 20:15)
+Theory (§0–2, §4) verified earlier and folded as Theorem 14. Numerics (§3): the qualitative claim is confirmed by exact
+enumeration — Av_9(14325) = 261863 > 261808 = Av_9(12345); Av_10(154326) = 3291662, Av_10(132546) = 3291715,
+Av_10(143256) = 3291666 > 3291590 = Av_10(123456) (scratchpad/av9.c, av10.c). BUT the SMC excess magnitudes are
+biased upward at k ≥ 5 and deep n: 15432 (k=5) and 123654 (k=6) are Wilf-equivalent to the identity
+(Backelin–West–Xin: 1_j ⊕ τ ~ J_j ⊕ τ; exact Av_n equal for n ≤ 10 here), yet results.md lists excess +0.34 (n=38)
+and +1.24 (n=48) for them. So the tables' "excess" values carry a systematic error of that order; only the
+exact facts and the sign pattern at small n are taken into the paper.

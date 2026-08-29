@@ -34,3 +34,7 @@
   (orbit-weighted 2/24, 18/120, 110/720 of all patterns at n≈1.3k²). Max excess at n=k²: 0.07, 0.32, 0.76 (k=4,5,6);
   at n=1.33k²: 0.19, 0.92, 1.61. Crossovers n_× ≈ 0.4–0.65 k² (inside the window, not moving out). Random-like
   patterns are far easier (median excess −1.4 at k=6, n=48; bottom −4.2).
+- k=7 scan (694 classes, n≤45) done: hardest 1654327 (=1⊕4321⊕1), 1543276, 2176543; 98/5040 patterns harder than id
+  at n=45; crossovers 0.61–0.80 k². Deep runs k=6,7,8: excess of 1⊕dec⊕1 at 1.33k² = 1.33, 2.96, 3.17 (sub-linear
+  growth), local rate ratio 0.85–0.92; layered ≈ identity; grids easier. proof.md §3.4, §5 written. k=8 grid runs
+  (15263748, 13572468) left running in deep/ (partial).
