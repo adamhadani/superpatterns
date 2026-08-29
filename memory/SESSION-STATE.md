@@ -170,3 +170,6 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
 - W34: apply the W31 lookahead idea to the IDENTITY / monotone strips (corner rule + cost-to-go) to push π/8 for
   block-grid patterns toward 1/4 (Thm 10/12 fresh-quadrant barrier is for rules without lookahead).
 - W35: Lean-formalise the W28 witness reduction (Prop 15) and the block-splitting lemma (cheap, exact).
+- 20:45 (user: "go ahead"): launched W32 `experiments/w32-outofgap/` (agent ad46e0aa90c52e9fd), W33 `experiments/w33-slope/`
+  (a03aa95cefdafa091), W34 `experiments/w34-grid-lookahead/` (a174397d02aa988d8), W35 Lean `formal-verification/lean/`
+  + `experiments/w35-lean-witness/` (a5790454cda97aa0a). Poll loop restarted (~25 min).
