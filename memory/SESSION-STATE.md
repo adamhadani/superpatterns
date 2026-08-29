@@ -144,3 +144,4 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
   sampler). Folded as Proposition 15 + table row. Launching W29 (rigorous sub-1/4 threshold for random π). New queue
   item W30: count patterns killed by one empty rectangle (the combinatorial step Prop 15 needs). Running: W27 (scans),
   W24 tails (unattended), W29.
+- 19:15: W29 `experiments/w29-random-threshold/` launched (agent a436ab1b1319f3263): rigorous threshold < 1/4 (or < 0.757) for random π. Queue: W30 (patterns killed by one empty rectangle).
