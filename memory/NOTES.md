@@ -104,6 +104,23 @@ Negative / dead ends (with the reason; each is a theorem or a brute-force-checke
   cost-to-go Φ = V_{m_b}/(y−y_L)+V_{m_a}/(y_R−y), safe clock for freshness ⇒ random π contained at 0.465k² (certified
   Bellman constant; 0.4765 at h=64). ½ barrier FALSE for value-aware rules (h ≥ 20); all in-gap rules capped at
   ≈0.4623 in the fresh-window model (Bellman optimality). Next: information outside the current gap / 2-D construction.
+- W36 (Thm 20, verified line by line; Burke law, E K_n and certified constants recomputed by my own DP/simulator):
+  BURKE PROPERTY of the cross-strip recursion G_s(a)=min_{x_p>a}[y_p+G_{s+1}(x_p)]. The compound-Poisson boundaries
+  G^ρ (jump rate ρ, i.i.d. Exp(1/ρ) jumps, slope ρ²) are exactly stationary under one strip step, with per-strip cost
+  Exp(1/ρ) (mean ρ) — proved by: D(a)=G'(a)−G^ρ(a) ~ Exp(1/ρ) (renewal equation + Grönwall; forces rate ρ ↔ mean ρ),
+  D read leftward is a Markov jump process (rate ρ+x, up Exp(1/ρ), down uniform (0,x)) satisfying detailed balance
+  against π(x)=ρ^{-1}e^{-x/ρ} iff ρθ=1, hence reversible; reversal swaps input and output jumps. Sandwiching the true
+  boundary B_0(x)=x between G^ρ, ρ≷1, with Lundberg exponent |ρ−1/ρ| gives n−√(2n) ≤ E K_n ≤ n+√(2n)+1/2, so
+  γ_∞ = 1 EXACTLY (W34 Conj 5.1 proved, both directions); subadditivity+Fekete sharpen this to E K_n ≥ n for every n,
+  so C_b, C^mix_b ≥ 1/4 always (block lookahead of any depth is capped at 1/4 — a second barrier alongside Thm 19).
+  Certified C^mix_b ≤ (1/2+(√(2b)+√(2b+2)+1)/(2(2b+1)))² ↓ 1/4 (0.3504 at b=64, 0.2507 at 10⁶) replaces W34's MC values.
+  CONSEQUENCE: every tilted grid (12⋯r)^h and every 𝒢(r,h)-pattern with bounded strip revisits, min(r,h) ≥ (ln k)³, is
+  contained at (1/4+ε)k² for every ε>0 — first non-monotone family at Alon's constant; closes the π/8 → 1/4 gap of
+  Thms 10/12/18. CAVEAT (agent flagged it itself): no matching LOWER bound — grid LIS is only r+h−1 ≈ 2√k, so LIS-type
+  lower bounds do not apply and the best valid one is the universal 0.1925k²; "exactly 1/4" holds for the mean-field
+  fixed-strip full-lookahead model only. My checks: E K_n = 10.96/51.50/203.0 at n=10/50/200 (inside the bounds,
+  E K_n−n ≈ 0.21√n); D(0) ~ Exp(ρ) for ρ=0.5,1,2 (KS p = 0.47/0.72/0.20); jumps of T_Ψ G^ρ: rate ρ ±0.5%, sizes
+  Exp(mean ρ) (KS ≤ 0.010 on 10⁴–3.6·10⁴ jumps), gaps Exp(1/ρ), lag-1 correlations ≤ 0.027; E G^ρ_1(0) = nρ within 1.2 s.e.
 - W35 (Lean, verified by my own lake build + axiom audit): Prop 15 (witness reduction), block-splitting core, Erdős–Szekeres
   disjointness formalised sorry-free. Not done: probabilistic block splitting p_π(N) ≤ p_π(M)^{⌊N/M⌋}.
 - W34 (Thm 18, verified; constants re-simulated): CROSS-STRIP x-lookahead (block rule, blocks of b/b+1 visits, stationary

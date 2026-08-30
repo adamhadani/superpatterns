@@ -207,3 +207,8 @@ Ranked queue:
 - 2026-08-30 launched (user "go ahead"): W36 experiments/w36-gamma-limit/ (prove γ_∞=1), W37 experiments/w37-comparison/
   (rearrangement comparison principle), W38 experiments/w38-second-moment/ (pattern-averaged/balanced second moment on
   copies; R_avg numerics first). Poll by files every ~20 min; verify before folding (norm).
+- 2026-08-30 09:40: W36 COMPLETED and VERIFIED line by line (Lemmas 1.1–1.3, 2.1–2.4, 3.1–3.4 read; Burke jump law,
+  D~Exp(1/ρ), E G^ρ_1(0)=nρ, E K_n at n=10/50/200 and the certified C^mix_b table all recomputed with my own
+  DP/simulator: scratchpad w36check.py, w36burke.py). Folded as Theorem 20 + table row; Thm 18(c) upgraded to proved.
+  make check = 0. Caveat kept in the paper: no matching lower bound for grids (grid LIS = r+h−1), so "exactly 1/4"
+  applies to the mean-field fixed-strip model, not to containment. Running: W37 (comparison), W38 (second moment).

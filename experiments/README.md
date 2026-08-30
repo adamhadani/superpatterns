@@ -37,6 +37,7 @@ session appears in the paper); tools are C (`cc -O2`) or Python 3; raw outputs a
 | `w29-random-threshold` | Gap-reserve greedy for typical patterns | Theorem 16: random π contained at 0.527k²; ½ barrier for value-blind gap rules |
 | `w30-empty-rectangle` | Patterns killed by one empty rectangle | Not defect-specific (revival ≈ 0.75 M for any large Q); strip-deletion bound; deterministic version false |
 | `w31-lookahead` | Value-aware in-gap x-lookahead for random π | Theorem 17: random π contained at 0.465k² (certified Bellman constant); in-gap rules capped at ≈0.462 |
+| `w36-gamma-limit` | Burke property; γ_∞ = 1 | Theorem 20: E K_n ≥ n and ≤ n+√(2n)+½; tilted grids at (1/4+ε)k²; block rules capped at 1/4 |
 | `w35-lean-witness` | Lean: Prop. 15, block splitting, Erdős–Szekeres | Sorry-free; standard axioms (Witness.lean, BlockSplit.lean, ErdosSzekeres.lean) |
 | `w34-grid-lookahead` | Cross-strip lookahead for block-grid patterns | Theorem 18: tilted grids at 0.266k² (< π/8); full lookahead numerically 1/4 |
 | `w32-outofgap` | Out-of-gap information for random π | Theorem 19: all sequential fresh-search rules capped at ≈0.4623 (negative, decisive) |
