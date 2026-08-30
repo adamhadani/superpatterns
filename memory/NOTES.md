@@ -104,6 +104,31 @@ Negative / dead ends (with the reason; each is a theorem or a brute-force-checke
   cost-to-go Φ = V_{m_b}/(y−y_L)+V_{m_a}/(y_R−y), safe clock for freshness ⇒ random π contained at 0.465k² (certified
   Bellman constant; 0.4765 at h=64). ½ barrier FALSE for value-aware rules (h ≥ 20); all in-gap rules capped at
   ≈0.4623 in the fresh-window model (Bellman optimality). Next: information outside the current gap / 2-D construction.
+- W37 (Thm 21, verified; exact Av_n tables and bubble-edge counts recomputed by my own brute force w37check.c).
+  AGENT DIED MID-RUN (API credits) — proof.md is complete, results.md was never written (tables live in data/ +
+  analyze.py). STRIP-REARRANGEMENT REFORMULATION (Lemma 1): π ⊆ Π_N ⇔ ∪_c E_c where E_c is a transversal increasing
+  chain of the strip-restacked process; each T_{c,π} is measure preserving so Pr(E_c) = Pr(Σ γ_j/w_j < N) is
+  π-INDEPENDENT — all the π-dependence is in the joint law of {E_c}; identity = perfectly correlated member.
+  Lemma 5 (elementary): Av_n(id_a) ≤ (a−1)^{2n} by RSK column words ⇒ p_{id_a}(M) ≤ e^{−M+2(a−1)√M}, speed k² for
+  every C > 4 with no LDP input. Thm 6/Cor 7 (box comparison): π = τ_1⊕ρ⊕τ_2 ⇒ p_π(N) ≤ p_ρ(N(1−2ε)²)+p_{τ_1}(Nε²)
+  +p_{τ_2}(Nε²); so the empirically hardest π* = 1⊕dec_{k−2}⊕1 obeys the rate form vs the identity. THM 9 (folded as
+  Thm 21(d)): for the class 𝒞_k of ⊕/⊖-sums of runs ≥ √k ln k with defects ≤ ln k/(8 ln ln k), total ≤ δk/3, count
+  ≤ k^{1/4}: Pr(π ⊄ Π_N) ≤ e^{−c(δ)k ln²k} at N ≥ (1/4+δ)k² (conditional on Deuschel–Zeitouni; unconditional at
+  (16+δ)k² via Lemma 5) — first class at Alon's constant where the union bound over k! CLOSES.
+  Prop 10 (verified by my brute force): complementation is an involution on bubble-step edges reversing every strict
+  comparison ⇒ #violations = #confirmations exactly at every k, n (I recomputed 12 = 12 at k=4 and 108 = 108 at k=5,
+  n = 8, 9) — no inversion-monotone difficulty measure can exist; "towards id" = "away from dec" and dec ≡ id.
+  DEAD ENDS recorded: FKG gives the wrong direction; no Slepian for indicator families (must saturate on Wilf
+  classes); pathwise bubble merging FALSE (1324→1234 strict reverse for n ≥ 7); middle defects blocked by the
+  window-area problem (thinning forces area Ω(1) ⇒ constant-factor N loss).
+- W38 (negative, verified independently; agent DIED MID-RUN on API credits with §2 table "TBD"): the pattern-averaged
+  PLAIN second moment on copies fails at Alon's constant. E_π E M_π²/μ² = k!·Pr(two random k-subsets collide) =: R_avg;
+  my own MC reproduces their table (ln R_avg = 3.454/3.763/3.840/4.123/4.263 at k = 6..10, C = 0.25 vs their
+  3.45/3.76/3.85/4.13/4.32), slope 0.167 per unit k ⇒ R_avg = e^{Θ(k)}, dominated by overlaps j/k ≈ 0.6–0.7.
+  Heuristic rate function ⇒ C₂(plain) ≈ 1/2 (my check at C = 0.5 is noisy: slope 0.08 ± 0.04 over k = 6..10, so
+  "marginal at 1/2" is NOT established). My earlier 1/(e²−1) ≈ 0.157 clustering heuristic was WRONG. Promising and
+  UNFINISHED: leftmost-canonical copies Y_π give E[Y²]/(EY)² ≈ 20.6–24.2 for random π and 21.4 for the identity at
+  k = 8, C = 0.25 (nearly pattern-uniform, mostly diagonal 1/EY), and the j = k−1 overlap term vanishes identically.
 - W36 (Thm 20, verified line by line; Burke law, E K_n and certified constants recomputed by my own DP/simulator):
   BURKE PROPERTY of the cross-strip recursion G_s(a)=min_{x_p>a}[y_p+G_{s+1}(x_p)]. The compound-Poisson boundaries
   G^ρ (jump rate ρ, i.i.d. Exp(1/ρ) jumps, slope ρ²) are exactly stationary under one strip step, with per-strip cost

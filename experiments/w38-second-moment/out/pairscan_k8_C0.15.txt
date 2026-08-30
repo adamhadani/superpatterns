@@ -1,0 +1,14 @@
+k=8 N=10 C=0.1562 samples/j=1000000
+  j= 0 P(J=j)=0
+  j= 1 P(J=j)=0
+  j= 2 P(J=j)=0
+  j= 3 P(J=j)=0
+  j= 4 P(J=j)=0
+  j= 5 P(J=j)=0
+  j= 6 P(J=j)=6.2222e-01  plain k!p_j=251.8 +- 3.18  can k!p_j=6.8544 +- 0.526
+  j= 7 P(J=j)=3.5556e-01  plain k!p_j=2230.8 +- 9.22  can k!p_j=0 +- 0
+  j= 8 P(J=j)=2.2222e-02  plain k!p_j=40320 +- 0  can k!p_j=26047 +- 19.3
+  plain R_avg=1845.84243 +- 3.82725 lnR=7.5207 | q=0.64615  R_can=1396.59256 +- 1.29109 lnRcan=7.2418
+    canonical term j=6: 10.215
+    canonical term j=7: 0
+    canonical term j=8: 1386.4

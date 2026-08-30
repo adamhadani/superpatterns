@@ -1,0 +1,11 @@
+k=7 N=7 C=0.1429 samples/j=1000000
+  j= 0 P(J=j)=0
+  j= 1 P(J=j)=0
+  j= 2 P(J=j)=0
+  j= 3 P(J=j)=0
+  j= 4 P(J=j)=0
+  j= 5 P(J=j)=0
+  j= 6 P(J=j)=0
+  j= 7 P(J=j)=1.0000e+00  plain k!p_j=5040 +- 0  can k!p_j=5040 +- 0
+  plain R_avg=5040.00000 +- 0.00000 lnR=8.5252 | q=1  R_can=5040.00000 +- 0.00000 lnRcan=8.5252
+    canonical term j=7: 5040

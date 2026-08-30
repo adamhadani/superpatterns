@@ -1,0 +1,9 @@
+k=7 N=7 C=0.1429 samples=4000 mu=0.0001984 | plain R_avg=5040.00000 +- 0.00000 lnR=8.5252 | canonical: q=E[Y_tot]/binom=1 EY_pi=0.00019841 R_can=5040.00000 +- 0.00000 lnRcan=8.5252 | Edistinct_can/k!=0.0002
+  quenched identity code=5039: plain E[M^2]/mu^2=6350.4000  canonical EY=0.00025 EY^2/(EY)^2=4000.0000  Pr(contained)=0.0003
+  quenched random   code=2181: plain E[M^2]/mu^2=6350.4000  canonical EY=0.00025 EY^2/(EY)^2=4000.0000  Pr(contained)=0.0003
+  quenched random   code=2699: plain E[M^2]/mu^2=0.0000  canonical EY=0 EY^2/(EY)^2=nan  Pr(contained)=0.0000
+  quenched random   code=4162: plain E[M^2]/mu^2=6350.4000  canonical EY=0.00025 EY^2/(EY)^2=4000.0000  Pr(contained)=0.0003
+  quenched random   code=1497: plain E[M^2]/mu^2=6350.4000  canonical EY=0.00025 EY^2/(EY)^2=4000.0000  Pr(contained)=0.0003
+  quenched random   code=4741: plain E[M^2]/mu^2=0.0000  canonical EY=0 EY^2/(EY)^2=nan  Pr(contained)=0.0000
+  canonical overlap decomposition: term_j = k! E[W_j]/(E Y_tot)^2 (sum = R_can)
+    j= 7  E[W_j]=1  term=5040

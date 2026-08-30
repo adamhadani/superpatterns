@@ -1,0 +1,8 @@
+k=4 N=4 C=0.2500 samples/j=1000000
+  j= 0 P(J=j)=0
+  j= 1 P(J=j)=0
+  j= 2 P(J=j)=0
+  j= 3 P(J=j)=0
+  j= 4 P(J=j)=1.0000e+00  plain k!p_j=24 +- 0  can k!p_j=24 +- 0
+  plain R_avg=24.00000 +- 0.00000 lnR=3.1781 | q=1  R_can=24.00000 +- 0.00000 lnRcan=3.1781
+    canonical term j=4: 24

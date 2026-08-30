@@ -212,3 +212,12 @@ Ranked queue:
   DP/simulator: scratchpad w36check.py, w36burke.py). Folded as Theorem 20 + table row; Thm 18(c) upgraded to proved.
   make check = 0. Caveat kept in the paper: no matching lower bound for grids (grid LIS = r+h−1), so "exactly 1/4"
   applies to the mean-field fixed-strip model, not to containment. Running: W37 (comparison), W38 (second moment).
+- 2026-08-30 09:55: W37 and W38 BOTH KILLED MID-RUN by "out of usage credits" (API 429, model claude-fable-5).
+  Their on-disk work was verified by me and folded as Theorem 21 (+ table row): W37's strip-rearrangement
+  reformulation, elementary Av_n(id_a) ≤ (a−1)^{2n} tail, box comparison, and the class 𝒞_k at (1/4+δ)k² with a
+  CLOSING union bound (conditional on Deuschel–Zeitouni; unconditional at 16k²); W38's negative result (plain
+  pattern-averaged second moment is e^{Θ(k)} at C=1/4 — my own MC reproduces their whole table, slope 0.167/k).
+  make check = 0. UNFINISHED and worth resuming when credits allow: W38 §2 canonical-copy table (leftmost-canonical
+  ratio looks bounded and pattern-uniform — the live route to a global existence proof for random π); W37's
+  results.md was never written (tables are in experiments/w37-comparison/data/ + analyze.py) and its n=13 run
+  (n13.log) never finished.

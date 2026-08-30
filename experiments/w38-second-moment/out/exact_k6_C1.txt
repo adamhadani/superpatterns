@@ -1,0 +1,7 @@
+k=6 N=36 C=1.0000 samples=2053 mu=2705  R_avg=1.54813 +- 0.00706  lnR=0.4370  Edistinct/k!=1.0000 +- 0.0000  bound1/R=0.6459
+  quenched identity code=719: E[M^2]/mu^2=2.4702 +- 0.1705  Pr(contained)=1.0000
+  quenched random   code=507: E[M^2]/mu^2=1.3398 +- 0.0366  Pr(contained)=1.0000
+  quenched random   code=323: E[M^2]/mu^2=1.7268 +- 0.0803  Pr(contained)=1.0000
+  quenched random   code=241: E[M^2]/mu^2=1.6097 +- 0.0805  Pr(contained)=1.0000
+  quenched random   code=541: E[M^2]/mu^2=1.5325 +- 0.0552  Pr(contained)=1.0000
+  quenched random   code=330: E[M^2]/mu^2=1.6560 +- 0.0772  Pr(contained)=1.0000

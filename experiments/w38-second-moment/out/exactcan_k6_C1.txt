@@ -1,0 +1,14 @@
+k=6 N=36 C=1.0000 samples=1026 mu=2705 | plain R_avg=1.54977 +- 0.01022 lnR=0.4381 | canonical: q=E[Y_tot]/binom=0.0025409 EY_pi=6.8739 R_can=1.13560 +- 0.01132 lnRcan=0.1272 | Edistinct_can/k!=1.0000
+  quenched identity code=719: plain E[M^2]/mu^2=2.4344  canonical EY=6.878 EY^2/(EY)^2=1.1674  Pr(contained)=1.0000
+  quenched random   code=507: plain E[M^2]/mu^2=1.3534  canonical EY=6.823 EY^2/(EY)^2=1.1245  Pr(contained)=1.0000
+  quenched random   code=323: plain E[M^2]/mu^2=1.6561  canonical EY=6.814 EY^2/(EY)^2=1.1324  Pr(contained)=1.0000
+  quenched random   code=241: plain E[M^2]/mu^2=1.6518  canonical EY=6.97 EY^2/(EY)^2=1.1577  Pr(contained)=1.0000
+  quenched random   code=541: plain E[M^2]/mu^2=1.5798  canonical EY=6.957 EY^2/(EY)^2=1.1434  Pr(contained)=1.0000
+  quenched random   code=330: plain E[M^2]/mu^2=1.6690  canonical EY=6.972 EY^2/(EY)^2=1.1267  Pr(contained)=1.0000
+  canonical overlap decomposition: term_j = k! E[W_j]/(E Y_tot)^2 (sum = R_can)
+    j= 0  E[W_j]=8330.9  term=0.24488
+    j= 1  E[W_j]=10452  term=0.30724
+    j= 2  E[W_j]=7666.8  term=0.22536
+    j= 3  E[W_j]=4375.1  term=0.1286
+    j= 4  E[W_j]=2858.8  term=0.084032
+    j= 6  E[W_j]=4949.2  term=0.14548

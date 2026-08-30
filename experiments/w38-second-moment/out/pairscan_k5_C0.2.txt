@@ -1,0 +1,9 @@
+k=5 N=5 C=0.2000 samples/j=1000000
+  j= 0 P(J=j)=0
+  j= 1 P(J=j)=0
+  j= 2 P(J=j)=0
+  j= 3 P(J=j)=0
+  j= 4 P(J=j)=0
+  j= 5 P(J=j)=1.0000e+00  plain k!p_j=120 +- 0  can k!p_j=120 +- 0
+  plain R_avg=120.00000 +- 0.00000 lnR=4.7875 | q=1  R_can=120.00000 +- 0.00000 lnRcan=4.7875
+    canonical term j=5: 120

@@ -1,0 +1,7 @@
+k=4 N=8 C=0.5000 samples=4000 mu=2.917  R_avg=2.72602 +- 0.01692  lnR=1.0028  Edistinct/k!=0.6124 +- 0.0024  bound1/R=0.3668
+  quenched identity code=23: E[M^2]/mu^2=3.5396 +- 0.2080  Pr(contained)=0.6065
+  quenched random   code=7: E[M^2]/mu^2=2.6955 +- 0.0876  Pr(contained)=0.6258
+  quenched random   code=15: E[M^2]/mu^2=2.5666 +- 0.0813  Pr(contained)=0.6135
+  quenched random   code=22: E[M^2]/mu^2=2.9187 +- 0.1216  Pr(contained)=0.6048
+  quenched random   code=13: E[M^2]/mu^2=2.7095 +- 0.1034  Pr(contained)=0.6170
+  quenched random   code=17: E[M^2]/mu^2=2.7197 +- 0.1109  Pr(contained)=0.6040
