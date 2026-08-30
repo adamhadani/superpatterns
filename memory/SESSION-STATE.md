@@ -188,3 +188,22 @@ kill `sa3|sa4|wild|polish` leftovers if any reappear.
 - W38: certify C^mix_2 (Feynman–Kac) and the Thm 18 constants; Lean for Lemma 2.2 scaling.
 - W39: pointwise O(1) slope via Prop 4.1 of W33 (hitting time of the prefix pattern under the avoiding measure).
 - 21:40: W24 COMPLETED (results.md final: ln R at t(k) = 1.34,1.93,2.59,3.26,3.87 for k=5..9); paper numbers updated. ALL AGENTS DONE; loop stopped.
+
+## 2026-08-30 — next-round plan (ranked; not yet launched)
+Key reformulation: π ⊆ Π_N ⇔ ∃ y-cuts c s.t. the strip-rearranged process Π_c (strips permuted by π⁻¹; still Poisson(N)
+by measure preservation) has an increasing chain hitting each strip once. So Pr(π⊄Π_N) = Pr(sup_c L(Π_c) < k) where each
+L(Π_c) has a π-independent law; only the joint law of {Π_c} depends on π (identity: all Π_c equal ⇒ sup = LIS).
+Alon ⇔ "less correlated family has larger sup" (Slepian-type comparison). Alon needs per-π tails e^{−ω(k ln k)} at
+(1/4+ε)k², not speed N; sequential rules are capped at e^{−Θ(k)} (extensive LDP) — global mechanism required.
+Ranked queue:
+1. W-next A: comparison principle via rearrangement — rate form Pr(π⊄Π_N) ≤ e^{o(k ln k)} Pr(id⊄Π_{N(1−o(1))});
+   test on W27 exact Av_n tables (k≤8); proof shapes: monotonicity under adjacent-transposition "sorting", strip-wise FKG.
+2. W-next B: weighted/balanced second moment on copies (Achlioptas–Peres style). Averaged over π:
+   E_π E M_π²/μ² = k!·Pr(two random k-subsets of random σ_N share a pattern) = Σ_j Pr(J=j) k! p_j.
+   Crude clustering heuristic: OK iff 1+C < e²C ⇔ C > 1/(e²−1) ≈ 0.157. First step: brute-force R_avg(N,k), k≤10,
+   C ∈ {0.2,0.25,0.3,0.5}; then boost via Prop 15 / superposition Π_{mN} ⊇ ∪ Π_N.
+3. W36 as before: prove γ_∞ = 1 (free model for tilted grids = sup over cuts; hydrodynamic/stationary argument) —
+   proving ground for 1.
+- 2026-08-30 launched (user "go ahead"): W36 experiments/w36-gamma-limit/ (prove γ_∞=1), W37 experiments/w37-comparison/
+  (rearrangement comparison principle), W38 experiments/w38-second-moment/ (pattern-averaged/balanced second moment on
+  copies; R_avg numerics first). Poll by files every ~20 min; verify before folding (norm).
