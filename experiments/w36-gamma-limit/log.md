@@ -31,3 +31,8 @@ model (W34 Conj 5.1), and the containment threshold statement is one-sided: ≤ 
 Dead ends: none serious; first attempt at Burke via abstract time-reversal theory replaced by the
 elementary path-density argument (avoids semigroup/self-adjointness machinery for the unbounded rate ρ+d).
 DONE.  Files: proof.md, results.md, verify.py (+outs), check_small.py (+out), constants.py (+out).
+
+
+## Review follow-up, 2026-09-10
+
+Separated independent-strip stationarity from the repaired application; added simultaneous containment of all admissible tilted-grid shapes and their dihedral images.

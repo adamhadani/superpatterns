@@ -1,0 +1,1 @@
+PASS: 6113 hosts; exhaustive S_n for n<=7 plus 200 random hosts through n=14

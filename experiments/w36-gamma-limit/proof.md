@@ -21,13 +21,15 @@ boundaries with ρ² ≷ 1 up to a sup of a Lévy process with negative drift (�
 Aldous–Diaconis's sources/sinks stationarity for Hammersley's process (source density ρ ↔ sink density
 1/ρ; here jump rate ρ ↔ jump mean ρ).
 
-Consequences (§4): the constants of paper Theorem 18 satisfy C_b, C^{mix}_b → 1/4 (with certified
-finite-b bounds), so every tilted grid / block-grid pattern π_τ ∈ 𝒢(r,h) satisfying Theorem 18's
-no-revisit hypothesis (H_b), with min(r,h) ≥ (ln k)³, is contained in Π_{(1/4+ε)k²} — and hence in a
-uniform random permutation of length (1/4+ε)k² — w.h.p., for every ε > 0 (Theorem 4.1, PROVED).  This is
-the first non-monotone family with threshold constant ≤ 1/4 = Alon's constant; the matching *lower*
-bound ≥ 1/4 is NOT available (the paper's only lower bound valid for these patterns is the universal
-0.1925k²), see §5.  What is exact is the mean-field fixed-strip full-lookahead constant: γ_∞²/4 = 1/4.
+Consequences (§4), corrected 2026-09-10: C_b,C_b^mix→1/4. By the
+[repaired W34 reduction](../w34-grid-lookahead/reduction.md), individual
+grid patterns with successive strip visits separated by ηr, fixed η>0,
+and min(r,h)≥log³k have failure ≤k^(−A) at (1/4+ε)k² for each fixed A,ε>0.
+All such tilted-grid shapes and their dihedral images are simultaneously
+contained w.h.p. The older H_b application is withdrawn. No matching
+containment lower bound or priority claim is asserted. Stationarity here
+always refers to centered boundary increments; the intercept gains a
+random amount at each strip step.
 
 ## 0. Setting, conventions
 
@@ -237,11 +239,10 @@ restriction; the whole-line construction is what makes D stationary.
 
 ## 4. Consequences for block-grid patterns
 
-Recall (W34 §3–4, paper Theorem 18): C_b := (E K_b/(2b))², γ^{mix}_b := (E K_b + E K_{b+1})/(2b+1),
-C^{mix}_b := (γ^{mix}_b/2)², and Theorem 18(a): for every b ≥ 1 and C > C^{mix}_b, every π_τ ∈ 𝒢(r,h)
-satisfying (H_b) (no strip revisited within b+1 consecutive visits; all tilted grids (12⋯r)^h) with
-min(r,h) ≥ (ln k)³ is contained in Π_{Ck²} in the fixed-strip model, hence contained, w.h.p. as k = rh → ∞,
-uniformly in τ.
+Recall C_b=(E K_b/(2b))² and C_b^mix=((E K_b+E K_(b+1))/(2(2b+1)))².
+The current W34 Theorem 3.4 assumes H_η: successive visits to any strip have
+index difference ≥ηr for a fixed η>0. For min(r,h)≥log³k and C>C_b^mix,
+it gives failure ≤k^(−A), for any prescribed fixed A>0 and large k.
 
 **Corollary 4.0 (certified constants; PROVED).**  For all b ≥ 1,
     C_b ≤ ( 1/2 + 1/√(2b) + 1/(4b) )²,      C^{mix}_b ≤ ( 1/2 + (√(2b) + √(2b+2) + 1)/(2(2b+1)) )²,
@@ -251,29 +252,33 @@ certified bound only needs to reach 1/4 in the limit.)
 
 *Proof.*  Insert (3.2) into the definitions.  ∎
 
-**Theorem 4.1 (tilted grids at Alon's constant; PROVED).**  For every ε > 0 there is b = b(ε) such that:
-for every sequence of block-grid patterns π_τ ∈ 𝒢(r,h) satisfying (H_b) — in particular every tilted grid
-(12⋯r)^h — with min(r,h) ≥ (ln k)³, k = rh → ∞,
-    Pr( π_τ ⊆ Π_{(1/4+ε)k²} ) → 1,
-and a uniformly random permutation of length n ≥ (1/4 + 2ε)k² contains π_τ w.h.p.  The convergence is
-uniform in τ.  In the fixed-strip model (rigid value strips) with full lookahead, the mean-field
-threshold constant is exactly γ_∞²/4 = 1/4 (Theorem 3.3), settling W34 Conjecture 5.1.
+**Theorem 4.1 (corrected application).** For any fixed ε,η,A>0, a uniform
+permutation of length ceil((1/4+ε)k²) contains each π_τ∈G(r,h) satisfying
+H_η and min(r,h)≥log³k with failure ≤k^(−A)+exp(−Ω_ε(k²)), uniformly in τ.
 
-*Proof.*  By Corollary 4.0 choose b with C^{mix}_b < 1/4 + ε; apply Theorem 18(a) (W34 Theorem 3.4) with
-C = 1/4 + ε, and the Poisson-to-uniform coupling of the paper (W19 Cor. 2.2 / W11 Remark 0.3) for the
-permutation statement.  ∎
+*Proof.* Choose b with C_b^mix<1/4+ε/2 by Corollary 4.0, use W34's repaired
+reduction at Poisson intensity (1/4+ε/2)k², and couple to the fixed host.
+The Poisson excess has probability exp(−Ω_ε(k²)). ∎
 
-**Corollary 4.2 (FREE model; PROVED).**  The same holds for the FREE model (copy chooses its own strip
-boundaries), since fixed-strip containment implies containment; and by W20 Remark 4.7 the FREE constant is
-≤ min over both strip directions, so C^{free}(r,h) ≤ 1/4 + o(1) on the diagonal r = h → ∞ from both sides.
+**Corollary 4.2 (simultaneous tilted grids).** The same host contains every
+tilted grid with rh=k and min(r,h)≥log³k, and every dihedral image of each,
+with failure O(k^(−2))+exp(−Ω_ε(k²)).
+
+*Proof.* Tilted grids have spacing r (η=1). There are at most k admissible
+factor pairs and eight images each. Take A=3 and union bound; polynomial
+factors are absorbed in the exponential coupling error. ∎
+
+The theorem also implies free containment because every fixed-strip copy
+is a copy. It does not give simultaneous containment of the much larger
+family of all row-permutation sequences satisfying H_η.
 
 ## 5. What is and is not proved about "exactly 1/4"
 
 PROVED: (α) γ_∞ = 1 with explicit error (3.2), in both directions; (β) threshold of tilted grids and all
-(H_b)-patterns ≤ (1/4 + o(1))k² (Theorem 4.1).
+(H_η)-patterns ≤ (1/4 + o(1))k² (Theorem 4.1).
 NOT PROVED (and not claimed): a lower bound (1/4 − o(1))k² for the containment threshold of tilted grids.
-The paper's lower bounds valid for these patterns are the universal ones (every π ∈ S_k has threshold
-≥ 0.1925k², §"Rigorous bounds on c_21"); LIS-type lower bounds do not apply because the tilted grid has
+The elementary universal lower threshold is 1/e²; the stronger W12 value
+0.1925 is based on an uncertified numerical transfer-operator calculation; LIS-type lower bounds do not apply because the tilted grid has
 LIS = r + h − 1 ≈ 2√k only.  What (α) makes exact is the *mean-field fixed-strip model with full
 lookahead*: its constant is 1/4, so rigid strips lose nothing at first order, but the FREE model (non-rigid
 strip geometry) could in principle be lower; W20's numerics for (12)^h at bounded r (fixed model ≈ 0.22)

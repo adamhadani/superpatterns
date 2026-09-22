@@ -35,9 +35,10 @@ experiments/**/*.log
 experiments/**/runs/
 experiments/**/.claude/
 
-# Claude Code local state
+# Claude Code and agent swarms local state
 .claude/scheduled_tasks.lock
 .claude/settings.local.json
+.agents/
 
 # Compiled experiment binaries (sources *.c are committed; rebuild with the cc lines in each log.md)
 /experiments/w11-strips/tmo
@@ -92,3 +93,5 @@ experiments/w32-outofgap/stale_*.txt
 experiments/w33-slope/out/
 experiments/w33-slope/avoid2
 experiments/w33-slope/lis_exact
+
+/experiments/w38-second-moment/out/review-20260910/diagnose_can

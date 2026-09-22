@@ -1,0 +1,2 @@
+PASS: full-shift family for every k=2,...,100
+PASS: 77 exact canonical cluster overlap counts for r<=6

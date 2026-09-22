@@ -1,0 +1,7 @@
+k=3 n=6 hosts=720: Y1 sums 672..672, Y2 sums 594..598
+k=3 n=7 hosts=5040: Y1 sums 5818..5818, Y2 sums 4744..4842
+k=4 n=6 hosts=720: Y1 sums 213..213, Y2 sums 207..208
+k=4 n=7 hosts=5040: Y1 sums 2473..2473, Y2 sums 2292..2326
+k=4 n=8 hosts=40320: Y1 sums 28669..28669, Y2 sums 25036..25784
+k=5 n=7 hosts=5040: Y1 sums 466..466, Y2 sums 458..462
+k=5 n=8 hosts=40320: Y1 sums 7360..7360, Y2 sums 7017..7186

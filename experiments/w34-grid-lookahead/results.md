@@ -1,3 +1,5 @@
+> **Status update, 2026-09-10.** The original H_b reduction is superseded by [reduction.md](reduction.md), requiring successive strip visits at least ηr apart and giving polynomially small failure. W36 proves γ_∞=1; Monte Carlo finite-block constants below remain estimates.
+
 # W34 — results (all numbers reproducible from the listed files; ≤ 3 cores, scipy venv of w12)
 
 ## 1. Infinite-lookahead round constant γ_∞ (fpp.py; exact DP, validated by check_dp.py, 0 mismatches / 300)
@@ -27,23 +29,17 @@ blocks_b{2,3,4}_hp.out, blocks_pairs_{a,b}.out.
 Theorem 3.4 constants C^{mix}_b = ((E K_b + E K_{b+1})/(2(2b+1)))² (proof.md §4 table):
 **b=2: 0.3452, b=4: 0.3208, b=8: 0.3005, b=16: 0.2839, b=32: 0.2733, b=64: 0.2656** (+2se: 0.2666).
 
-## 3. Headline
+## 3. Current theorem and remaining work
 
-| statement | regime | constant | status |
-|---|---|---|---|
-| y-lookahead (Bellman in remaining visits × level) | any | ≥ π/8 (= W20 C_mf(h) ↓ π/8) | PROVED (by W20) — negative |
-| Prop 2.1: only cross-strip x-lookahead escapes Prop 3.1 in the mean-field regime | r → ∞ | — | PROVED |
-| Thm 3.4: block rule, tilted grid (12⋯r)^h and all τ with (H_b), FIXED model | min(r,h) ≥ (ln k)³ | ≤ C^{mix}_b; 0.2656 at b = 64 | PROVED reduction; constant Monte Carlo |
-| Conj 5.1: full lookahead | r ≫ h ≫ 1 (mean field) | γ_∞ = 1 ⇒ 1/4 exactly | NUMERICAL (±0.001) |
-| FREE model | — | ≤ min(C^fix(r,h), C^fix(h,r)); no first-order gain from budget reallocation | PROVED inequality; HEURISTIC |
+The repaired W34 reduction assumes H_η: successive visits to a strip have
+index difference at least ηr for fixed η>0. If min(r,h)≥log³k and C>C_b^mix,
+it gives individual failure ≤k^(−A) for any fixed A>0. See `reduction.md`.
+The Monte Carlo block constants above are estimates; W36 instead proves
+analytically that C_b^mix→1/4. The γ∞=1 conjecture is therefore settled
+for the independent-strip mean cost. The simultaneous tilted-grid corollary
+is stated in the current proof.
 
-Prior best for these patterns (ledger): π/8 = 0.3927 (W11 Thm 10 / Thm 4.4), with the π/8 barrier for
-all fresh-quadrant rules (W20 Prop 3.1).  Improvement: 0.3927 → 0.2656 (rigorous reduction, MC constant),
-→ 0.250 (numerical limit).  Consequence for W20 Conjecture 4.6 (mean-field rules optimal at fixed h,
-r → ∞): FALSE for large h (proof.md §5).
-
-## 4. Open / not done
-* Certified (non-Monte-Carlo) value of E K_2 (Feynman–Kac for the running minimum; log.md §4).
-* Proof that γ_∞ = 1 (Burke-type stationary solution of the recursion (2.2)?).
-* General τ ∈ 𝒢(r,h) without (H_b) (strips revisited within b+1 visits every row): needs per-strip weights.
-* FREE-model rule with adaptive strip boundaries (goal 3): not designed; see proof.md §6.
+Open: a valid reduction for visiting sequences without Ω(r) separation;
+sharper certified finite-block estimates if needed; and a shared event
+covering many interleavings. An exact free containment threshold is not
+established by the mean-cost calculation.

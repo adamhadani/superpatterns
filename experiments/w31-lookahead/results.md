@@ -1,14 +1,18 @@
+> **Status update, 2026-09-10.** The directed MPFR certificate now proves the 0.4649 upper threshold for the ε=1/64 rule. The old ε=0.02/0.05 tables below are candidate numerical values, not interval certificates. See [certification.md](certification.md) and the corrected proof for nonanticipation and padding.
+
 # W31 — numerics
 
 All constants are C-independent (intensity-1 normalisation, proof.md Lemma 2.2) and reproducible with the
 commands in README.md.  Machine: ≤ 3 cores used; total CPU ≈ 15 min.
 
-## 1. Bellman values V_n (dp.py, ε = 0, Gauss–Legendre; uncertified) and certified upper bounds (dp_cert.py)
+## 1. Bellman values V_n (dp.py, ε = 0, Gauss–Legendre; uncertified) and historical upper-sum estimates (dp_cert.py)
 
-Ω*_n = V_n/n² is the optimum over all fresh-window gap rules (proof.md Thm 4.1); V̄_n/n² (ε) is the certified
-upper bound for the margin rule R(n, ε, V̄) (proof.md Lemma 3.2), valid as a threshold constant by Thm 2.1.
+Ω*_n=V_n/n² is the optimum for nonanticipating fresh-window gap rules.
+The V̄ entries below are historical floating estimates, not certificates
+for the stated margins. The new MPFR output independently validates the
+ε=.02 candidate potentials for the exact margin ε=1/64.
 
-| n | V_n/n² (ε=0, dp.py) | V̄_n/n² certified, ε=0 | ε=0.02 | ε=0.05 | blind barrier (n+1)/(2n) |
+| n | V_n/n² (ε=0, dp.py) | V̄_n/n² estimate, ε=0 | ε=0.02 | ε=0.05 | blind barrier (n+1)/(2n) |
 |---|---|---|---|---|---|
 | 1 | 1 (exact) | 1.000000 | 1.000000 | 1.000000 | 1 |
 | 2 | 0.75 (exact, V_2 = 3) | 0.750000 | 0.750000 | 0.750000 | 0.75 |
@@ -27,8 +31,8 @@ upper bound for the margin rule R(n, ε, V̄) (proof.md Lemma 3.2), valid as a t
 | 2000 | 0.462745 | | | | 0.50025 |
 
 Files: dp_V.txt (n ≤ 2000), dp_cert_eps0.txt, dp_cert_eps0.05.txt (n ≤ 160), dp_cert_eps0.02.txt (n ≤ 512).
-The certified bounds exceed the Gauss–Legendre values by 3·10^{−4} relative at ε = 0 (rectangle rule with
-40 000 panels; the 1 + 10^{−9} rounding slack is negligible).  Differences V_{2n}/(2n)² − V_n/n²:
+The historical upper sums exceed the Gauss–Legendre values by 3·10^{−4} relative at ε = 0 (rectangle rule with
+40 000 panels; the 1 + 10^{−9} multiplier did not rigorously control roundoff).  Differences V_{2n}/(2n)² − V_n/n²:
 −0.0074 (50→100), −0.0039 (100→200), −0.0020 (200→400), −0.00104 (400→800), −0.00052 (800→1600): ∝ 1/n, so
 lim Ω*_n ≈ 0.462745 − 0.84/2000 ≈ 0.4623 (HEURISTIC).  Crossing of ½: n = 20 (0.49848; n = 19: 0.50023).
 Margin cost: ε = 0.02 adds ≤ 0.0002 at n = 64, ≤ 0.0010 at n = 512; ε = 0.05 adds 0.0016 at n = 64.
@@ -39,7 +43,7 @@ Sanity checks: W(0,0) = 1 and W(1,0) = 3 reproduced to 10^{−9} by both codes (
 
 LB_h = (1/h²) Σ_t E[(Σ_j √p_{t,j})²]: 0.18895 (h = 16), 0.15983 (64), 0.15321 (256), 0.15110 (1024, 200
 patterns).  Far below ¼: the counting argument of [W29] Thm 4.1 cannot cap value-aware gap rules at ¼; the
-true cap of the class is the Bellman value ≈ 0.4623 (Thm 4.1).
+limiting nonanticipating Bellman value is numerically estimated at ≈0.4623; this is not a certified asymptotic barrier.
 
 ## 3. End-to-end validation on a real Poisson process and a real random π (validate2d.py; Monte Carlo)
 

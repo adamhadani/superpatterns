@@ -16,3 +16,15 @@
 - Quenched (k=8, C=0.25, 4000 sigma): plain E[M^2]/mu^2 = 23–82 over 5 random pi + id (id worst, 82);
   canonical EY^2/(EY)^2 = 20.6–24.2 (id 21.4): the canonical ratio is nearly pattern-uniform.
 - pairs 8 320 (C=5) launched: continuum-limit check of k!p_1 → pi/4 (§3 small-j analytics).
+
+
+## Review follow-up, 2026-09-10
+
+Completed a bounded exact-within-host diagnostic, covariance-aware bootstrap, full overlaps and four fixed targets. Independent Python enumeration matches 35 hosts. Off-diagonal growth prevents concluding boundedness from a flat total; stop sweeping and analyze overlap k−2.
+# 10 September 2026 — overlap continuation
+
+The bounded joint-emptiness task is complete in W41. Exact all-overlap
+formulas, integer evaluation and independent exhaustive checks are recorded
+there. Full-shift families and binomial canonical clusters show why merely
+excluding overlap k−1 does not localize the remaining clusters. No new
+asymptotic second-moment bound or further parameter sweep was produced.

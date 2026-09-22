@@ -25,23 +25,20 @@ Hence for λ < λ_A every σ ∈ S_n with n ≤ λk²/e² contains only e^{−Ω
 
 improving CKS's 1.000076 by a factor ≈ 4.1 in the excess over 1/e².
 
-## Theorem B (rigorous modulo a routine discrete→continuum limit)
+## Theorem B withdrawn (2026-09-10)
 
-Using both parities with the stable rule below and a Hölder split, the same conclusion holds with
+The both-parity rule is not stable. For k=5, take
 
-    λ_B = 1.000384…  (Hölder exponents p = 1.6, q = 8/3; see holder_opt.py).
+    T=(1,2,6,9,10), I(T)={3}; T′=(1,2,3,9,10), I(T′)={4}.
 
-## Numerically exact value of this method
-
-The exact exponential rate of the both-parity encoding (transfer-operator / Monte-Carlo, mc_both.py,
-agreeing to 5·10⁻⁷ with the first-order formula (½)[log(1−e^{−θ}) + log E f_o]) gives
-
-    λ_exact ≈ 1.000437.
-
-This is the ceiling of the "value-instead-of-index, one index at a time" mechanism; the remaining gap
-λ_B → λ_exact is only the Hölder loss (rigorous certified numerics for a 2-D transfer operator would close it).
-
----
+The tuples agree outside I(T), but the selected set changes. Thus the
+encoding lemma cannot justify either 1.000384 or 1.000437. The transfer
+operator calculations remain numerical investigations of an invalid
+encoding rule; certifying their arithmetic would not repair the argument.
+Theorem A's even rule is unaffected. Its finite inequality is Lean-verified;
+the Lean numerical certificate is at λ=1.0003, not the optimized λ_A.
+The stronger certified coefficient 1.0073 is proved in
+[corrected C′](../w25-asymptopia-review/proof.md).
 
 ## Proof of Theorem A
 
@@ -118,31 +115,9 @@ Remark (where the number comes from). Per even index the factor is E min(1, θ/B
 CKS instead select only ck = 0.00075k indices above a threshold d = 8.18 and pay a Chernoff "Case 1"; the
 exact treatment recovers *all* the mass e^{−θ} = Σ_{B>θ} E[(1−θ/B)] instead of c·log(d/e²).
 
-## Proof of Theorem B (sketch, all inequalities exact; only the continuum limit is left informal)
+## Verification scope
 
-Rule: I_even = {i even : b_i−1 > k}; I_odd = {i odd : b_i−1 > k and i±1 ∉ I_even}; I = I_even ∪ I_odd.
-It is non-adjacent, and stable: I_even depends only on odd t_j; I_odd depends on odd t_j and on t_{i±1} with
-i±1 ∉ I_even; so all inputs are outside I. Lemma 1 gives pat(σ) ≤ Σ_T W_e W_o with
-W_e = Π_{even} f(b_i), W_o = Π_{odd} f_o(i), f_o(i) = f(b_i)·1[b_{i±1}−1 ≤ k] + 1[otherwise].
-Tilt as in Step 3 (W_e W_o is a product of local factors). Under the product geometric measure apply Hölder
-(1/p+1/q = 1): E[W_eW_o] ≤ (E W_e^p)^{1/p}(E W_o^q)^{1/q}; E W_e^p = (E f^p)^{(k−1)/2} by independence;
-the factors f_o(i), i ≡ 1 (mod 4), depend on disjoint gap blocks (a_{i−2},…,a_{i+1}), likewise i ≡ 3 (mod 4),
-so by Cauchy–Schwarz E W_o^q ≤ (E f_o^{2q})^{(k−1)/4}. Hence per k
-
-    (1/k) log(pat/k!) ≤ τ − 1 − log τ + log λ + (1/2p) log E f^p + (1/4q) log E f_o^{2q} + o(1),
-
-with, in the limit (gaps = (m/τ)·Exp(1), θ = τe²/λ), E f^p = 1 − e^{−θ}(1+θ) + θ^p ∫_θ^∞ b^{1−p}e^{−b}db and
-E f_o^{r} = 1 − ∬_{a,a'<θ, a+a'>θ} (1−(θ/(a+a'))^r)(1−e^{−(θ−a)})(1−e^{−(θ−a')})e^{−a−a'} da da'
-(the factor (1−e^{−(θ−a)}) is P(neighbouring even width ≤ θ | shared gap a)). Optimising p gives
-λ_B = 1.000384 at p = 1.6 (holder_opt.py). ∎
-
-## What is rigorous vs heuristic
-
-- Theorem A: rigorous, finite k, explicit (A). Asymptotic constant λ_A = 1.0003125 (numerics: root finding of
-  an explicit one-variable function; error < 10⁻⁹).
-- Theorem B: all inequalities are exact; the discrete→continuum replacement of geometric by exponential gaps
-  in E f^p, E f_o^{2q} is a standard limit (errors O(1/k)), not written out.
-- λ_exact = 1.000437: the true rate of this encoding, obtained from the first-order (1-dependence-ignoring)
-  formula and confirmed by Monte-Carlo (rate −4.309e−4 ± 5e−7 vs −4.314e−4). Making it rigorous needs a
-  certified top eigenvalue of a 2-D positive transfer operator (Collatz–Wielandt with a numerically found test
-  function would do).
+Theorem A's finite inequality and a rational-parameter negativity certificate
+at λ=1.0003 are formalized in Lean. The optimized root λ_A≈1.00031251 is a
+numerical evaluation of the displayed analytic minimization. For even k,
+apply the odd result to k−1 and use sp(k)≥sp(k−1).

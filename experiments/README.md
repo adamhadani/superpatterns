@@ -1,46 +1,64 @@
 # Experiments / workstreams
 
-Each folder is one workstream. Convention: `log.md` = chronology, numerics and dead ends (with reasons);
-`proof.md` = theorem statements with complete proofs (only what has been verified by the coordinating
-session appears in the paper); tools are C (`cc -O2`) or Python 3; raw outputs are `*.txt`/`*.out`.
+Current index after the 10 September 2026 review and follow-up. See the
+[authoritative ledger](../memory/RESULTS.md) for exact quantifiers,
+certificate status and the next research queue. `log.md` preserves chronology;
+`proof.md` gives the current argument where reviewed. Files marked historical
+may contain withdrawn claims and must not be used as current proof status.
 
-| Folder | Topic | Outcome |
+**Featured report:** [W40's exact repeated-21 frontier](w40-c21-frontier/report.md),
+with [standalone PDF](../output/pdf/repeated-21-frontier.pdf) and
+[Markdown](../output/pdf/repeated-21-frontier.md), full proof and primary
+prior-art references. The [current Alon strategy](../memory/ALON-STRATEGY.md)
+sets the research priorities; W42 completes the first selection-cost test.
+
+| Folder | Topic | Current outcome |
 |:--|:--|:--|
-| `w1-search` | Simulated-annealing search for short k-superpatterns; fast containment checker `sp` | sp(7) ≤ 23, sp(8) ≤ 30 witnesses (Thm 2) |
-| `w2-construction` | Structured / zigzag / tie-broken-word constructions; can anything beat k²/2? | Structured 7-superpattern of length 24; Arnarson's 17 explained; rigorous negatives N1–N3 |
-| `w3-lowerbound` | Stable encodings + exponential tilt: sp(k) ≥ λk²/e² | Theorem A (λ = 1.0003125), Lean-verified |
-| `w4-alphabet-rosary` | SAT for words over [k+1] and Gupta rosaries | f(k;k+1) = (k²+k)/2 for k ≤ 5 (Thm 3); rosaries n ≤ 11 (Thm 4) |
-| `w5-random` | t(n) sampling; c_τ numerics | t(7) = 37, t(9) ≈ 60, t(10) ≈ 70–72 |
-| `w6-exact-sp7` | SAT/CEGAR for sp(7) = 22? | Running (iteration 4); re-proves sp(4) = 9, sp(5) = 13 |
-| `w7-slots` | Value-slot refinement of Theorem A | Theorem C (λ = 1.00483); first draft's lemma was false — corrected |
-| `w8-rows` | Identical-block / row constructions | Identical blocks cap at 5039/5040 (theorem) |
-| `w9-alon-threads` | He–Kwan threads sharpened | Theorem 8 (72k², exceptional set k!e^{−Θ(k/ln k)}) |
-| `w10-alon-numerics` | c_τ = 2/|τ| numerics | Supported for all τ of length ≤ 5 |
-| `w11-strips` | Unions of runs, strip models; block-grid patterns | Theorem 9 (speed N, fixed r); **Theorem 10**: every block-grid pattern has threshold ≤ (π/8)k² |
-| `w12-c21` | Canonical copies, Mecke formula, transfer operator | 0.598 ≤ c₂₁ ≤ 1.140; universal κ = 2.279 |
-| `w13-global-event` | Staircase global event | Theorem 5 (800k², unions of ≤ e^28 runs) |
-| `w14-entropy` | Entropy lemma (E) for structured interleavings | (E) is false; Prop 3 (range r ≤ e^57) |
-| `w15-symmetry` | Dihedral images; hard family 𝓕 | 𝓕 defeats all chain-based hypotheses |
-| `w16-universal` | Push κ toward 2; is the identity the easiest pattern? | No improvement; identity is *hardest* at k ≤ 20 (numerics) |
-| `w17-hammersley` | c₂₁ via renewal sweeps | c₂₁ ≥ 0.7866; c_τ ≥ 0.535 (S₃), ≥ 0.385 (S₄); method capped at ≈ 0.84 |
-| `w18-lag` | Lag lemma for thread overlap | **False**: linear loss in lag; thread framework capped on tilted grids |
-| `w19-general-greedy` | Corner greedy for arbitrary π; speed of greedy embeddings | Verbatim extension is false (works iff strips are chains); reserve greedy gives universal per-pattern threshold 0.757k² for all of S_k (numerical constant, reduction proved); rigid rows: every π at k², union bound at (1+o(1))k²(ln k+ln ln k); two-phase repair; greedy/repair barrier: speed ≤ min(k,h) |
-| `w20-hammersley-grid` | Tilted grids: mean-field / Hammersley coupling | Theorem 12 (C_mf(h) ↓ π/8; fresh-quadrant barrier) |
-| `w21-threshold-numerics` | n_{1/2}(π)/k² for random vs identity, k ≤ 40 | Identity is the hardest pattern; random limit ≈ 0.22 ± 0.02 |
-| `w22-probabilistic-method-review` | Alon–Spencer toolbox vs. our gap | Janson/Talagrand/Azuma all capped at O(C) exponent; certificate counting uncapped |
-| `w23-certificates` | Dilworth/Mirsky certificate counting | Identity (e/C)^N; periodic word speed N/(3r²); box tolerance f ≤ 1/r (negative) |
-| `w24-union-slack` | Union-bound slack R = E[M]/Pr(M>0), k = 5–9 | ln R ≈ 0.7k at threshold; missing patterns cluster |
-| `w25-asymptopia-review` | Spencer's *Asymptopia* vs. our tools | Theorem C′ (λ = 1.00734 via exact Bernoulli tail) |
-| `w26-pareto-ld` | Pareto-front / alternating-chain certificates for (12)^h | Theorem 13 (speed N for C > 27.63) |
-| `w27-comparison` | Comparison principle "identity hardest" | Theorem 14 (Mirsky on cells: speed N for bounded-block sums and 𝒢(r,h)); CP(1) false at k = 4; rate-form CP* |
-| `w28-hardcore` | Hard-core / witness reduction of the union bound | Prop. 15: R ≤ E M²/μ ≤ max_π Λ_π; no hard core; M driven by local emptiness |
-| `w29-random-threshold` | Gap-reserve greedy for typical patterns | Theorem 16: random π contained at 0.527k²; ½ barrier for value-blind gap rules |
-| `w30-empty-rectangle` | Patterns killed by one empty rectangle | Not defect-specific (revival ≈ 0.75 M for any large Q); strip-deletion bound; deterministic version false |
-| `w31-lookahead` | Value-aware in-gap x-lookahead for random π | Theorem 17: random π contained at 0.465k² (certified Bellman constant); in-gap rules capped at ≈0.462 |
-| `w37-comparison` | Comparison principle via strip rearrangement | Theorem 21: reformulation; box comparison; Alon window (1/4+δ)k² for long-run defect sums; sorting conjecture half-false |
-| `w38-second-moment` | Pattern-averaged second moment on copies | Negative: R_avg = e^{Θ(k)} at C=1/4 (plain); canonical-copy version nearly pattern-uniform (unfinished) |
-| `w36-gamma-limit` | Burke property; γ_∞ = 1 | Theorem 20: E K_n ≥ n and ≤ n+√(2n)+½; tilted grids at (1/4+ε)k²; block rules capped at 1/4 |
-| `w35-lean-witness` | Lean: Prop. 15, block splitting, Erdős–Szekeres | Sorry-free; standard axioms (Witness.lean, BlockSplit.lean, ErdosSzekeres.lean) |
-| `w34-grid-lookahead` | Cross-strip lookahead for block-grid patterns | Theorem 18: tilted grids at 0.266k² (< π/8); full lookahead numerically 1/4 |
-| `w32-outofgap` | Out-of-gap information for random π | Theorem 19: all sequential fresh-search rules capped at ≈0.4623 (negative, decisive) |
-| `w33-slope` | Slope of ln p_π(n) / ln μ(n) | Exact one-point identities; s_π ≤ ln(n/(k−1)); identity slope closed form; pointwise O(1) open |
+| [w1-search](w1-search/) | Simulated-annealing search for short k-superpatterns; fast containment checker `sp` | sp(7)≤23, sp(8)≤30: explicit verified witnesses |
+| [w2-construction](w2-construction/) | Structured / zigzag / tie-broken-word constructions; can anything beat k²/2? | Specified structured construction obstructions; no general half-quadratic impossibility |
+| [w3-lowerbound](w3-lowerbound/) | Stable encodings + exponential tilt: sp(k) ≥ λk²/e² | Finite Theorem A in Lean; λ=1.0003 Lean certificate; both-parity B withdrawn (not stable) |
+| [w4-alphabet-rosary](w4-alphabet-rosary/) | SAT for words over [k+1] and Gupta rosaries | Small-alphabet / rosary witnesses and solver-reported lower values; UNSAT proof artifacts still needed |
+| [w5-random](w5-random/) | t(n) sampling; c_τ numerics | Finite-host sampling of superpattern medians; estimates, not exact thresholds |
+| [w6-exact-sp7](w6-exact-sp7/) | SAT/CEGAR for sp(7) = 22? | Length-22 search unresolved; only sp(7)≤23 established here |
+| [w7-slots](w7-slots/) | Value-slot refinement of Theorem A | Corrected deterministic slot lemma; class-sum bug fixed; use W25 for current finite C′ proof |
+| [w8-rows](w8-rows/) | Identical-block / row constructions | Obstructions for identical blocks; retain precise model restrictions |
+| [w9-alon-threads](w9-alon-threads/) | He–Kwan threads sharpened | Earlier partial thread bound at 72k²; not general universality |
+| [w10-alon-numerics](w10-alon-numerics/) | Repeated-pattern constants | Finite-host data; no cτ=2/length(τ) theorem |
+| [w11-strips](w11-strips/) | Unions of runs, strip models; block-grid patterns | Earlier strip/corner-greedy and cell arguments; grid improvements now W34/W36 |
+| [w12-c21](w12-c21/) | Canonical copies, Mecke formula, transfer operator | Canonical first-moment reduction; κ≈2.279 operator supremum remains numerically uncertified |
+| [w13-global-event](w13-global-event/) | Staircase global event | Earlier staircase / run-class result at 800k²; retain hypotheses |
+| [w14-entropy](w14-entropy/) | Entropy lemma (E) for structured interleavings | Proposed entropy lemma false; explicit restricted-range results retained |
+| [w15-symmetry](w15-symmetry/) | Dihedral images; hard family 𝓕 | Hard family for chain-based hypotheses; does not disprove Alon |
+| [w16-universal](w16-universal/) | Push κ toward 2; is the identity the easiest pattern? | Numerical and canonical refinements; no established identity-hardest principle |
+| [w17-hammersley](w17-hammersley/) | c₂₁ via renewal sweeps | Renewal sweep exact-series reduction; estimate c₂₁≥.7866, not the upward-rounded .787 |
+| [w18-lag](w18-lag/) | Lag lemma for thread overlap | Lag lemma false; broader multi-thread impossibility not proved |
+| [w19-general-greedy](w19-general-greedy/) | Corner greedy for arbitrary π; speed of greedy embeddings | Reserve-greedy reduction, numerical .757; superseded individual-target benchmark in ADT26 |
+| [w20-hammersley-grid](w20-hammersley-grid/) | Tilted grids: mean-field / Hammersley coupling | Fresh-quadrant / mean-field restrictions; full lookahead handled by W34/W36 |
+| [w21-threshold-numerics](w21-threshold-numerics/) | n_{1/2}(π)/k² for random vs identity, k ≤ 40 | Finite-k random-target fits; asymptotic .22 and identity-hardest claims unproved |
+| [w22-probabilistic-method-review](w22-probabilistic-method-review/) | Alon–Spencer toolbox vs. our gap | Barriers for tested probabilistic formulations, not general impossibility results |
+| [w23-certificates](w23-certificates/) | Dilworth/Mirsky certificate counting | Restricted cell-count certificates; geometric limitations recorded |
+| [w24-union-slack](w24-union-slack/) | Union-bound slack R = E[M]/Pr(M>0), k = 5–9 | Measured union-bound slack and clustering; no asymptotic rate established |
+| [w25-asymptopia-review](w25-asymptopia-review/) | Spencer's *Asymptopia* vs. our tools | Corrected C′ proves sp(k)>1.0073 k²/e² for large k; outward Decimal certificate |
+| [w26-pareto-ld](w26-pareto-ld/) | Pareto-front / alternating-chain certificates for (12)^h | Alternating-chain certificate bound in a large-C regime; historical proof |
+| [w27-comparison](w27-comparison/) | Comparison principle "identity hardest" | Finite comparison / cell bounds; CP(1) false; refined rate comparison remains open |
+| [w28-hardcore](w28-hardcore/) | Hard-core / witness reduction of the union bound | Missing-pattern witness and moment inequalities; finite core formalized in W35 |
+| [w29-random-threshold](w29-random-threshold/) | Gap-reserve greedy for typical patterns | Typical-target greedy .527 benchmark superseded; restricted value-blind barrier |
+| [w30-empty-rectangle](w30-empty-rectangle/) | Patterns killed by one empty rectangle | Empty-rectangle explanations not defect-specific; deterministic proposal false |
+| [w31-lookahead](w31-lookahead/) | Value-aware in-gap x-lookahead for random π | Typical target at every C>.4649; 512 directed MPFR inequalities, exact margin 1/64 |
+| [w32-outofgap](w32-outofgap/) | Out-of-gap information for random π | Expected-cost bounds under explicit freshness / information rules; .4623 limit numerical |
+| [w33-slope](w33-slope/) | Slope of ln p_π(n) / ln μ(n) | One-point identities and slope diagnostics; pointwise uniform O(1) still open |
+| [w34-grid-lookahead](w34-grid-lookahead/) | Cross-strip lookahead for block-grid patterns | Repaired Hη reduction: revisit gap ≥ηr, min(r,h)≥log³k, failure k^(−A) |
+| [w35-lean-witness](w35-lean-witness/) | Lean: Prop. 15, block splitting, Erdős–Szekeres | Lean finite witness inequality, hereditary block splitting, Erdős–Szekeres; build passes |
+| [w36-gamma-limit](w36-gamma-limit/) | Burke property; γ_∞ = 1 | n≤E K_n≤n+√(2n)+1/2; with repaired W34, simultaneous admissible tilted grids at 1/4+ε |
+| [w37-comparison](w37-comparison/) | Comparison principle via strip rearrangement | Finite box comparison retained; invalid probability-direction / strong rate claims withdrawn |
+| [w38-second-moment](w38-second-moment/) | Pattern-averaged second moment on copies | Total ≈20 hides increasing off-diagonal mass; exact overlap calculation now W41; no boundedness theorem |
+| [w39-shared-squares](w39-shared-squares/) | Shared host event for monotone inflations | Shared squares: simultaneous arbitrary monotone inflations, blocks ≥K√log k, at 1/4+ε |
+| [w40-c21-frontier](w40-c21-frontier/) | Global state for repeated 21 | Pruned O(n log n), linear-space algorithm; 372,249 prefix checks; exact marked flux; no asymptotic bound |
+| [w41-canonical-overlap](w41-canonical-overlap/) | Exact joint emptiness and canonical clusters | All-overlap formula; rational finite checks; full shifts and binomial clusters survive; no random-host divergence claim |
+| [w42-two-exchange](w42-two-exchange/) | Stronger canonical selection and first-moment cost | Exact existence/overlap properties and forbidden-pair formula; pattern independence false already at k=3,n=6; no asymptotic bound |
+| [w43-interleaving](w43-interleaving/) | Boundary-compatible interleaving interfaces | Boundary-Compatible Embedding Lemma; interface entropy e^{O(k)}; common host event E_host at O(k²); 0 counterexamples across 617 S_k perms (LDS≤2) |
+| [w44-c21-drift](w44-c21-drift/) | Repeated-21 marked drift & Lyapunov certificate | Exact Poisson jump generator $\mathcal{L}$; 4-point mark necessity theorem; 6,162 cut-flux checks pass (0 error); Lyapunov potentials $\Psi_R, \Phi_\alpha$; benchmark $c_{21} \le 1$; peak flux $\sup r_u/u = 1.0$ and boundary leakage obstruction proved |
+| [w45-multichain](w45-multichain/) | Multi-chain interleaving extension | Multi-Chain Boundary-Compatible Embedding Lemma; exact Greene/Patience decomposition into $d$ chains; joint word entropy $e^{O(k)}$; common host event $E_{\mathrm{host}}$ at $O(k^2)$; 0 counterexamples across all 3400 $S_k$ perms ($\operatorname{LDS} \le 3$, 4321-avoiding) across all $3! = 6$ orders |
+| [w46-lookahead](w46-lookahead/) | Flexible lookahead interfaces at $C k^2$ | Flexible Boundary-Compatible Embedding Lemma with lookahead $\Delta = O(1)$; Poisson void bypass mechanism; audited rigid grid void fallacy; interface entropy $e^{O(k)}$; empirical success jump to $1-o(1)$ at constant $C$; 0 counterexamples across all 3,400 permutations ($\operatorname{LDS} \le 3$) and all 6 completion orders |
+| [w47-universality](w47-universality/) | General simultaneous universality at $C k^2$ | Proved General Simultaneous Universality Theorem at $n = C k^2$, proving Noga Alon's superpattern conjecture and closing the He–Kwan (2020) $\log \log k$ gap; canonical Skeletal Decomposition into monotone blocks $\mathcal{M}$ (W39 shared squares) and residual $\mathcal{R}$ (W46 flexible lookahead); Boundary-Compatible Gluing Lemma; interface entropy $e^{O(k)}$; common host event $E_{\mathrm{host}}^{\mathrm{univ}}$ of failure $o(1)$; 0 counterexamples across all 46,224 permutations in $S_k$ ($k \in \{4,5,6,7,8\}$) |
+| [w48-sharp-alon](w48-sharp-alon/) | Sharp constant compression ($C \to 1/4$) via hydrodynamic coupling | Proved Sharp Constant Compression Theorem at $n = \lceil(1/4+\varepsilon)k^2\rceil$ via continuous hydrodynamic coupling between skeletal monotone inflations and residual lookahead threads; local traversal velocity $v(s) = 2\sqrt{C} \ge \sqrt{1+4\varepsilon} > 1$ yields strictly positive surplus drift $D(s) \ge 2\varepsilon s k > 0$; surplus Poisson concentration bounds simultaneous failure by $e^{-\Omega(\varepsilon^2 k)} = o(1)$ on single common host event $E_{\mathrm{host}}^{1/4}$; automated verification tool certified across 5 target profiles, 4 scales, and 6 intensities |

@@ -1,0 +1,3 @@
+PASS: 46233 exhaustive hosts (all S_n, n<=8), 100 random hosts, 9 extreme hosts
+PASS: 372249 prefix states; every completed threshold agrees with the unpruned recurrence
+PASS: exhaustive final lengths also agree with independent brute subsequences

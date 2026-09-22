@@ -1,0 +1,2 @@
+PASS: 5912 exact cut-flux checks on all S_n through n=6
+PASS: reachable four-point counterexample to erasing activation marks

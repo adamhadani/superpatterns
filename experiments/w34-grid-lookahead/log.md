@@ -77,3 +77,8 @@ loses exactly the factor π/2 that Hammersley's √(8/π)-greedy loses on the LI
 ## 6. Not done
 Goal (3) (FREE model with adaptive boundaries): only the inequality C^free ≤ min(C^fix(r,h), C^fix(h,r)) and
 the heuristic that budget reallocation gains O(h^{−1/2}) relative (proof.md §6).  Time ran out.
+
+
+## Review follow-up, 2026-09-10
+
+Replaced the invalid H_b application with a full H_η reduction, explicit boundary and failure continuation, centered conditional-mean concentration, and failure k^(−A). See reduction.md.

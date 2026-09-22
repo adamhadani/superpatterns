@@ -38,8 +38,11 @@ def check(sig,k,beta):
         if N>old:
             viol_old+=1
             if worst is None or N-old>worst[0]: worst=(N-old,I,off,V,Ms,bs,N,old)
-        sum_new+=new/prodb; sum_old+=old/prodb; sum_cks+=min(cks,prodb)/prodb
+        # This loop already aggregates by extension class. Division by the
+        # extension count belongs only to a sum over individual occurrences.
+        sum_new+=new; sum_old+=old; sum_cks+=min(cks,prodb)
     P=len(set().union(*C.values()))
+    assert P <= sum_new, "The sum of valid class bounds must cover all patterns"
     return dict(pat=P,classes=len(C),viol_new=viol_new,viol_old=viol_old,sum_new=sum_new,sum_old=sum_old,sum_cks=sum_cks,worst=worst)
 sp6=[6,14,10,2,13,17,5,8,3,12,9,16,1,7,11,4,15]
 sp7=[7,20,13,10,2,18,23,4,12,16,8,5,19,15,1,9,22,14,6,17,11,3,21]

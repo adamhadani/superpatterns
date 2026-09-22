@@ -1,0 +1,2 @@
+MPFR 4.2.2; 128-bit directed transcendentals; W(1,0) upper 3.0000017221752824
+PASS: every recurrence inequality through n=512; epsilon=1/64

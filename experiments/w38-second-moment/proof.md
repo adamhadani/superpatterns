@@ -5,9 +5,10 @@ standardisation of σ|_A. M_π = #{A : pat(A) = π}; Σ_π M_π = C(N,k); μ := 
 (symmetry). J = |A∩B| for two independent uniform k-subsets A, B; P(J=j) = C(k,j)C(N−k,k−j)/C(N,k)
 (hypergeometric). p_j := Pr(pat(A) = pat(B) | J = j), p_coll := Pr(pat(A)=pat(B)) = Σ_j P(J=j) p_j.
 
-Everything in §1–§2 is a THEOREM (complete proofs). §3 is the derivation of a HEURISTIC rate function
-(clearly marked). §4 records the negative result for hard balancing and the canonical fix with its
-rigorous rigidity lemma. §5: boosting. Numerics: results.md.
+Sections 1–2 give exact identities and a rigidity lemma. Section 3 is a
+heuristic calculation, not an asymptotic theorem. Sections 4–5 record the
+reviewed diagnostic and correctly normalized boosting statement. An averaged
+positive containment bound alone does not imply typical-pattern high probability.
 
 ## 1. The averaged second moment identity and its consequences
 
@@ -88,11 +89,12 @@ of those neighbours is a itself: y_b ≠ y_a and the interval is open). Position
 x_{A_{r'−1}} = x_{B_{r'−1}} < x_b < x_{B_{r'+1}} = x_{A_{r'}} = x_c. Hence b ∈ S_{r'}(A), contradicting
 A canonical. ∎
 
-Interpretation: canonical copies are exactly the copies with no single-point left-move (Claim A's
-argument is local), and Lemma 3 says distinct canonical copies of one π differ in ≥ 2 points — the
-"local freedom" of a copy (each point free within a cell of ≈ 4C points, see §3), which is what makes
-E M_π²/μ² = e^{Θ(k)}, is completely removed at overlap k−1. Numerics (results.md): the removal is
-effective at ALL overlaps — R_can stays bounded where R_avg grows.
+Interpretation, corrected 2026-09-10: the restriction eliminates overlap
+k−1 exactly, but does not remove all multiple-point rearrangements. The
+bounded diagnostic in `diagnostic-20260910.md` finds increasing off-diagonal
+mass at C=1/4. Boundedness of the canonical ratio and exponential growth of
+the plain ratio remain asymptotic questions, not proven consequences of the
+finite-host experiments.
 
 ## 3. HEURISTIC: the rate of R_avg (relaxed cell-counting) — where the plain second moment fails
 
@@ -123,7 +125,7 @@ S-value-gap, both size-biased, mean 2N/k each) holding ≈ 4N/k² = 4C other poi
 its cell preserves the pattern. For m = O(1): T_{k−m} ≈ C(k,m)(4C)^m — the "independent local moves"
 regime, Σ_m C(k,m)(4C)^m = (1+4C)^k against μ ≈ (e²C)^k e^{−1/(2C)}/(2πk): already this forces
   R_avg ≥ e^{(ln(1+4C) − ln(e²C) − o(1))k},  positive exponent iff C < 1/(e²−4) ≈ 0.2953.
-So the PLAIN averaged second moment provably-in-the-heuristic fails for all C < 0.295 (in particular at
+Thus the heuristic predicts failure of the PLAIN averaged second moment for all C < 0.295 (in particular at
 C = 1/4), and the k→∞ rate function of ln T_{(1−θ)k}/k is (Stirling; θ = m/k, l = 1−θ)
   r(θ) = −1 + l(ln C − ln l + 1) + 2θ ln C + 2φ(θ) − θ ln θ + θ − 2 ln C − 2,
   φ(θ) = θ ln 4 + θ + l ln l + (l/2+θ)ln(l/2+θ) − (l+2θ)ln(l+2θ) − (l/2)ln(l/2),
@@ -139,37 +141,54 @@ near-critical maximiser θ* → 1: for C slightly below 1/2 the second moment fa
 hypergeometric cost). C₂ bisection: 0.49999(1). At C = 1/4 the failure exponent is ρ = 0.141
 (θ* = 0.62), at C = 0.2: 0.237 (θ* = 0.52), at C = 0.15: 0.389.
 
-## 4. Why hard balancing fails, and why the canonical restriction is the right fix
+## 4. What the diagnostic supports, and what remains open
 
-Hard balancing (gap profile within (1±δ)/k of uniform) FAILS STRUCTURALLY: balanced copies of π are
-geometrically pinned (point i near (i/k, π(i)/k)·N, up to δN/k), so M_π^bal ≈ Π_{i=1}^k P_i with P_i
-independent ≈ Poisson(λ), λ = 4δ²C — a product of k independent counts, whence
-E (M^bal)²/(E M^bal)² ≈ ((1+λ)/λ)^k = e^{Θ(k)} for every fixed δ; equivalently μ_bal ≈ (4δ²C)^k and the
-independent-move count (1+4δ²C)^k always beats it: 1 + 4δ²C > 4δ²C. (The loss in the first moment,
-Pr(balanced) = e^{−2k(1+ln(1/2δ)+o(1))}, exactly cancels the gain in cell size.) The problem is not the
-profile: it is the per-point Poisson freedom, and no profile constraint removes it.
+The earlier hard-balancing argument is a product-cell heuristic, not a
+proof for every possible gap-profile restriction. Canonical copies have
+one useful exact property (Lemma 3), but joint emptiness constraints at
+all smaller overlaps still need analysis.
 
-The leftmost-canonical restriction removes it: within any cell the canonical point is forced to be the
-leftmost compatible one (Lemma 3: overlap-(k−1) pairs vanish EXACTLY), while the first moment only drops
-from ≈ (e²C)^k to ≈ (κ²C)^k, κ = 2.2795 (W12: E Y_tot/C(N,k) — Poissonized — has threshold C = 1/κ² =
-0.19246 < 1/4). The heuristic analogue of §3 for canonical pairs would need joint emptiness of the 2k
-strips; we do not derive it — the decisive evidence is numerical (results.md §2): ln R_can is DECREASING
-in k at C ≥ 0.25 (k = 4…10), consistent with R_can = e^{o(k)} (plausibly O(1)) for all C > C₂ with
-  C₂ ≤ 0.25 < 1/4 (numerically C₂ ≈ 0.2, close to the canonical first-moment point 0.1925),
-while at C = 0.15 < 0.1925 it must and does grow (μ_can → 0 exponentially there: R_can ≥ 1/E Y_π).
+Write μ_can=E_π E Y_π and D=E_π E[Y_π(Y_π−1)]/μ_can². Then
+R_can=1/μ_can+D. At C=1/4 the new host-bootstrap estimates of D are
+0.98 [0.89,1.08], 3.79 [3.53,4.07], and 6.94 [6.25,7.71] at k=6,8,10.
+The total ratio stays near 20 because its diagonal decreases. This is
+not evidence that D is bounded, nor enough to rule out eventual boundedness.
+The full overlapping-pair decomposition is retained in the JSON output.
 
-**Conjecture 4 (what the numerics support).** For every C > 0.1925…, R_can(k, Ck²) = e^{o(k)}; hence
-E_π Pr(π ⊆ σ_{Ck²}) ≥ e^{−o(k)} and E#distinct patterns ≥ k! e^{−o(k)} for all C > 0.1925. For C > C₂'
-(some C₂' ≤ 1/4) R_can = O(1): E_π Pr(π ⊆ σ) ≥ c > 0.
+W12 bounds a first moment from above. Its numerical upper bound ceasing to
+decay above C≈0.1925 does not imply that μ_can grows there. The numerical
+operator constant itself still needs an enclosure. No canonical second
+moment threshold at 0.1925, 0.2 or 1/4 is established here.
+
+The next bounded task is an exact description of canonical pairs differing
+in two points (overlap k−2), followed by a joint-emptiness integral or a
+rigorous bound for that term. A full second-moment theorem would also need
+a usable lower bound on μ_can and control of every overlap regime. There
+is no basis yet for a large parameter sweep or a claimed O(1) ratio.
+
+**Continuation:** [W41](../w41-canonical-overlap/proof.md) now gives the exact
+joint-emptiness integral, a nonnegative integer finite-host evaluation and
+independent exhaustive checks. It also proves that two-point changes can
+shift every shared position, and that deterministic descending-block hosts
+retain binomial canonical clusters. The integral task is complete; the
+asymptotic estimates above remain missing. No fixed-common-core reduction
+is justified by compatibility alone.
 
 ## 5. Boosting the averaged bound
 
-**Proposition 5 (superposition).** In the Poisson model (Π_λ = rate-1 Poisson process on [0,λ]×[0,λ];
-containment thresholds agree with σ_N, N = λ, up to o(k²) by monotonicity and de-Poissonization), for all
-m ≥ 1: Pr(π ⊄ Π_{mN}) ≤ Pr(π ⊄ Π_N)^m.
-*Proof.* The m diagonal N×N blocks of [0,mN]² carry independent copies of Π_N, any block containing π
-gives π ⊆ Π_{mN} (a copy inside one diagonal block is a copy in the whole square, and containment is
-monotone in the point set). ∎  Equivalently f(N) := −ln Pr(π ⊄ Π_N) is superadditive: f(mN) ≥ m f(N).
+**Proposition 5 (superposition; corrected normalization).** Let Π_N be a
+Poisson process of intensity N on the unit square, so its expected number
+of points is N. For integers m≥1,
+
+    P(π not contained in Π_(mN)) ≤ P(π not contained in Π_N)^m.
+
+*Proof.* Superpose m independent processes of intensity N on the SAME unit
+square. The sum has intensity mN, and any component containing π supplies
+a copy in the sum. Independence gives the inequality. ∎
+
+In particular f(mN)≥m f(N) for f(N)=−log P(avoidance). The same coupling
+with unequal intensities proves f(N+M)≥f(N)+f(M). Area and side length are
+not interchangeable in this statement.
 
 **Corollary 5.1 (positive fraction of patterns, w.h.p., at a log-factor area).** Suppose
 R_can(k, C₂k²) ≤ R̄ (Theorem 2 gives E_π p_π ≥ 1/R̄, p_π := Pr(π ⊆ Π_{C₂k²})). Then:

@@ -27,7 +27,10 @@ All patterns (SMC, mean over seeds; SMC vs exact agreement ±0.01 at k=4, n ≤ 
 | 6 | 215436 (min, layered) | 0.246 | 0.440 | 0.626 | 0.799 | 0.929 | 0.263 |
 | 6 | 246135 (max, generic) | 0.279 | 0.574 | 0.823 | 1.023 | – | 0.330 |
 | 6 | 16 patterns: range | 0.24–0.28 | 0.44–0.57 | 0.63–0.82 | 0.76–1.02 | 0.91–1.05 | 0.26–0.33 |
-| 7 | see out/analysis.txt (filled in as the runs finish) | | | | | | |
+| 7 | 1234567 | 0.245 | 0.424 | 0.607 | 0.768 | 1.017 | 0.257 |
+| 7 | 2135476 (min, layered) | 0.219 | 0.445 | 0.635 | 0.833 | 0.997 | 0.257 |
+| 7 | 4162735 (max, generic) | 0.264 | 0.566 | 0.826 | 1.036 | 1.173 | 0.322 |
+| 7 | 8 patterns: range | 0.22–0.27 | 0.42–0.57 | 0.61–0.83 | 0.77–1.04 | 0.99–1.22 | 0.26–0.32 |
 
 Findings (NUMERICAL): (i) at fixed (k, C) the slope varies by ≤ ±15 % over S_k — the identity is typical, slightly
 below the median; layered patterns have the smallest slope, generic ones the largest; (ii) s_π(n) is increasing in n

@@ -8,47 +8,35 @@ V_0 = 0, V_n = (1/n) Σ_{m<n} W(V_m, V_{n−1−m}) is the Bellman sequence of [
 Poisson(1) process on (0,∞)×(0,1) of x + A/y + B/(1−y)); values in ../w31-lookahead/dp_V.txt: V_n/n² decreases
 from 1 (n = 1) to 0.46275 (n = 2000), differences halving per doubling of n, limit ≈ 0.4623 (NUMERICAL).
 
-**Summary.**  The brief asked for a threshold below 0.46·k² for a random π using information outside the current
-gap (other gaps of the strip, neighbouring strips, other processing orders), or a proof that sequential rules
-cannot get there.  Answer: they cannot.  Theorem 2.1 (PROVED) shows that *every* rule that places the points
-one position at a time, each inside the gap of its value, choosing from a region on which the process is
-conditionally Poisson (the hypothesis of the fresh-search lemma [W19] Lemma 1.2 — the tool behind every threshold
-of this programme), has expected x-consumption ≥ V_k/(Ck) whatever it looks at, whatever partition into strips it
-uses, and however far it looks ahead.  Hence no such rule proves a constant below inf_n V_n/n² ≈ 0.4623.  The
-reason is not that out-of-gap information is unavailable but that it is worthless: the Bellman cost-to-go of the
-future is a deterministic function of the current gaps, because the future searches are fresh (§4 quantifies:
-what one sees now in another gap is left of the clock when that gap is next visited unless the lookahead is a
-constant fraction of the whole width).  Knowing the whole of π in advance changes the cap by a factor
-1 − 4·10^{−5} (Theorem 2.2, NUMERICAL).  Rules with several candidates per step (two-sided position scan,
-r lanes) escape the theorem's hypotheses but not its conclusion in practice: two-sided and lanes ≈ 0.46 (NUMERICAL: no gain
-over one-sided within ± 0.01), lanes fail beyond r = 4 (results.md).  Conclusion
-for the programme: below ≈ 0.46 for a random pattern requires abandoning sequential commitment, i.e. a
-Hammersley/LIS-type global argument (§5).
+**Current scope.** Theorems 2.1–2.2 give expected-cost bounds for the
+explicit fresh-search commitment model below. The variance hypothesis is
+separate, the constant approximately 0.4623 is numerical, and the model
+does not cover retained candidates or general sequential algorithms.
+The filtration was corrected on 2026-09-10 so the next value is averaged
+before it is revealed.
 
-## 1. Sequential fresh-search rules (definition)
+## 1. Sequential fresh-search rules (corrected filtration, 2026-09-10)
 
-A *sequential rule* processes the positions p = 0, 1, …, k−1 in this order.  Its state after p steps is the
-clock a (the x'-coordinate of the last chosen point; a = 0 initially), the placed values with the
-y'-coordinates of their points, and an information σ-field 𝓕_p (everything the rule has looked at).  The
-placed points cut [0,k] into *gaps*: for the step of value v = π(p), let (y_L, y_R) be the y'-coordinates of
-the placed points with the nearest values below and above v (0 resp. k if none), let n_i and G_i be the
-number of unplaced values and the height of the i-th gap.  The step chooses a point q_p of Π in a region
-   A_p ⊆ (a, ∞) × (y_L, y_R),
-any measurable function of 𝓕_p, and updates a := x'(q_p).  Hypotheses:
- (F) *freshness*: conditionally on 𝓕_p, Π ∩ A_p is a Poisson process of intensity C on A_p, and the choice
-     q_p is measurable with respect to 𝓕_p ∨ σ(Π ∩ A_p); then 𝓕_{p+1} ⊇ 𝓕_p ∨ σ(Π ∩ A_p) ∨ σ(q_p) may contain
-     any further information satisfying (F) at the next step;
- (N) *non-anticipation in π*: 𝓕_p is independent of (π(p+1), …, π(k−1)) conditionally on (π(0), …, π(p)) — the
-     rule knows the values already processed and the current one, not the future ones.
-Copy property (as [W31] Thm 2.1): on {a_k < k} the points q_0, …, q_{k−1} form a copy of π (x-order = position
-order since a increases; y-order = value order since every point lies in the gap of its value).
-Examples: all rules of [W19], [W29], [W31] (regions inside a value strip's gap, beyond a safe clock; (F) by
-[W19] Lemma 1.2), the same rules with the whole fresh half-strip visible (W31 log §5, "lookahead outside the
-gap"), rules whose windows cross strip boundaries (the gap is then the overall gap, as here), rules using several
-strips' processes at once, and rules with unbounded x-lookahead as long as the looked-at region is excised from
-later regions ([W19] Lemma 1.2 hypothesis A_t ∩ Δ_{t'} = ∅).  Not covered: rules that re-use points seen but not
-excised (then (F) fails), rules that process positions in another order or keep several candidate copies (§3),
-and rules that use the future of π (§2, Theorem 2.2).
+After p placements and BEFORE revealing π(p), let F_p contain the processed
+prefix π(0),...,π(p−1), the current clock a, placed coordinates, and past
+explorations. Let G_p=F_p∨σ(π(p)). The rule selects a point in a G_p-measurable
+region A_p⊆(a,∞)×(y_L,y_R), where the y gap is that of the newly revealed
+value. It then includes G_p, the exploration and the chosen point in F_(p+1).
+
+(N) Conditional on F_p, the remaining target values are uniformly ordered.
+Equivalently, F_p adds no information about future ranks to the processed
+prefix. In particular F_p does not already contain π(p).
+
+(F) Conditional on G_p, the points in A_p form a Poisson process of intensity
+C on A_p; the chosen point is measurable from G_p and those points. Later
+searches must satisfy the same condition. Information already exposed
+cannot be treated as fresh.
+
+On a_k<k the points form a copy. Safe-clock margin rules satisfy these
+hypotheses. Reusing seen candidates, processing positions in another order,
+retaining several candidate embeddings, and looking at future target ranks
+are outside Theorem 2.1. Theorem 2.2 treats the last possibility with a
+different, pattern-dependent expected-cost recurrence.
 
 ## 2. The cap (PROVED)
 
@@ -62,10 +50,9 @@ so given (π(0..p−1)), and 𝓕_p adds only information independent of it).  �
 **Theorem 2.1 (cap for sequential fresh-search rules).**  For every sequential rule satisfying (F) and (N),
    E[a_k] ≥ V_k/(Ck),   and more precisely   E[a_k − a_p | 𝓕_p] ≥ Ψ_p := Σ_i V_{n_i}/(C G_i)
 (sum over the gaps of the state after p steps).  Consequently, with N = Ck²: (a) E[a_k] ≥ (V_k/k²)·k/C ≥ k for
-C ≤ V_k/k²; (b) if the rule's consumption satisfies a weak law (Var(a_k) = o(k²), e.g. rules with windows of
-height ≥ β > 0 as in [W29] Thm 4.1, or the margin rules of [W31]), it fails with probability → 1 for every
-C < lim inf_k V_k/k², which is ≈ 0.4623 (NUMERICAL value of the limit; PROVED: ≥ V_k/k² for every k, the
-sequence V_n/n² being decreasing on n ≤ 2000 by dp_V.txt).
+C ≤ V_k/k²; (b) if the rule's consumption satisfies a weak law (Var(a_k) = o(k²), to be established separately for the rule in question), it fails with probability → 1 for every
+C < lim inf_k V_k/k², whose value near 0.4623 is only a numerical extrapolation; no certified
+asymptotic numerical lower bound is supplied here.
 
 *Proof.*  Backward induction on r = k − p (remaining values).  r = 0: both sides vanish (V_0 = 0).  Step: let
 v = π(p) lie in gap i with rank m (Lemma 2.1 gives their conditional law given 𝓕_p; the rule may know them —
@@ -76,7 +63,7 @@ every information field satisfying (F), (N) at the later steps),
    E[a_k − a_p | 𝓕_p, v, Π ∩ A_p] ≥ u + Σ_{i'≠i} V_{n_{i'}}/(C G_{i'}) + V_m/(C(y − y_L)) + V_{n_i−1−m}/(C(y_R − y)).
 The right-hand side is Σ_{i'≠i} V_{n_{i'}}/(C G_{i'}) + φ(q_p) with φ(x,y) := (x − a) + [V_m/(y − y_L) +
 V_{n_i−1−m}/(y_R − y)]/C, and q_p ∈ Π ∩ A_p, so φ(q_p) ≥ min_{Π ∩ A_p} φ.  By (F), Π ∩ A_p is Poisson of
-intensity C on A_p given 𝓕_p; let Π' := (Π ∩ A_p) ∪ Π'' with Π'' an independent Poisson process of intensity C
+intensity C on A_p given 𝓖_p; let Π' := (Π ∩ A_p) ∪ Π'' with Π'' an independent Poisson process of intensity C
 on ((a,∞) × (y_L, y_R)) ∖ A_p, so that Π' is a Poisson process of intensity C on the whole half-gap and
 min_{Π ∩ A_p} φ ≥ min_{Π'} φ.  Scaling y by 1/G_i and x by G_i (Poisson(C·G_i·(1/G_i)) = Poisson(C) preserved) and
 then x by C ([W31] Lemma 2.2) gives E[min_{Π'} φ | 𝓕_p, v] = W(V_m, V_{n_i−1−m})/(C G_i).  Averaging over m (uniform
@@ -91,8 +78,8 @@ clock, the window margins, the x-lookahead and every piece of information outsid
 neighbouring strips, the whole fresh strip) are irrelevant — the cost-to-go Ψ of the future is a deterministic
 function of the gaps because the future searches are fresh.  This extends [W31] Thm 4.1 from the fresh-window
 model to the real process and to rules that look anywhere.  (ii) The value strips of height h of [W29]/[W31] are
-the special case A_p ⊆ half-gap ∩ strip; their cap m·V_h/(Ch) = (V_h/h²)k/C ≥ V_k/(Ck) is weaker (V_n/n² is
-decreasing), so removing the partition (h = k, one strip, windows crossing strip boundaries) can only gain
+the special case A_p ⊆ half-gap ∩ strip; their stripwise lower bound is m·V_h/(Ch) = (V_h/h²)k/C;
+the following comparison of normalized values is numerical, so removing the partition (h = k, one strip, windows crossing strip boundaries) can only gain
 V_h/h² − V_k/k² (0.0141 at h = 64, 0.0026 at h = 512; results.md §1 confirms numerically: a single strip with
 h = k = 2000 gives 0.456–0.465).  (iii) Non-anticipation (N) is used only in Lemma 2.1.
 
@@ -100,8 +87,8 @@ h = k = 2000 gives 0.456–0.465).  (iii) Non-anticipation (N) is used only in L
 For a gap with n values arriving in a known order σ, define V(σ) := W(V(σ_b), V(σ_a)) where σ_b, σ_a are the
 sub-orders of the values below/above the first value (so V(σ) depends on σ only through its binary search tree
 T(σ)); V(∅) = 0.  Then E[a_k] ≥ E_σ V(σ)/(Ck) =: V_k^{ant}/(Ck) for every rule satisfying (F), and
-V_n^{ant} ≤ V_n with V_n^{ant}/V_n = 1 for n ≤ 3 and = 0.999994 (n = 4), 0.999971 (8), 0.999961 (11) exactly (all
-Catalan(n) tree shapes, bst.py), ≈ 0.99995 for n ≤ 60 (quantised distributions, NUMERICAL).
+V_n^{ant} ≤ V_n with V_n^{ant}/V_n = 1 for n ≤ 3 and = 0.999994 (n = 4), 0.999971 (8), 0.999961 (11) numerically (all
+Catalan(n) tree shapes enumerated, but quadrature is floating point; bst.py), ≈ 0.99995 for n ≤ 60 (quantised distributions, NUMERICAL).
 
 *Proof.*  Same induction with the arrival order known: the cost-to-go of a gap with known sub-order σ is V(σ)/(CG)
 (scaling), the next value's gap and rank are known, and pointwise minimisation of φ with potentials V(σ_b), V(σ_a)
@@ -111,12 +98,11 @@ root rank m, σ_b and σ_a are independent uniform, so by Jensen and induction E
 W(E V(σ_b), E V(σ_a)) ≤ W(V_m, V_{n−1−m}); average over m.  Numbers: bst.py (exact for n ≤ 11: the distribution of V(T) over the
 Catalan(n) shapes with random-BST probabilities; for n > 11 the distribution is quantised to 40 atoms by merging
 neighbouring values, which by concavity of W can only *increase* the computed value, so for n > 11 the printed
-ratios are upper bounds on V^{ant}_n/V_n and the true gain may be slightly larger; the exact values for n ≤ 11 and
-the smooth trend of the ratio (decreasing by ≈ 10^{−6} per unit of n) leave no room for a gain beyond 10^{−4}).  ∎
+ratios are upper bounds on V^{ant}_n/V_n and the true gain may be slightly larger; finite-n numerical values do not bound the limiting anticipation gain).  ∎
 
-*Comment.*  The anticipation gain is 4·10^{−5}: knowing which values arrive when is worthless because the
-cost-to-go of a gap is almost linear in the potentials of its sub-gaps.  Hence the cap ≈ 0.4623 holds for
-anticipating sequential fresh-search rules as well, up to a NUMERICAL factor 1 − 4·10^{−5}.
+*Comment, corrected.* Small-n computations suggest a small anticipation
+gain. They do not prove the gain stays small as n→∞. Neither theorem is an
+impossibility result for all sequential or all global embedding algorithms.
 
 ## 3. Several candidates per step: two-sided scans and lanes (PROVED comparison, NUMERICAL constant)
 
@@ -164,17 +150,9 @@ about staleness — the revisit times have a heavy lower tail — but the conclu
 
 ## 5. What is left
 
-| statement | class | consequence | status |
-|---|---|---|---|
-| Thm 2.1 | every sequential rule with (F) + (N): any partition, any lookahead, any information | E a_k ≥ V_k/(Ck): no threshold below inf V_n/n² ≈ 0.4623 | PROVED (limit value NUMERICAL) |
-| Thm 2.2 | the same with π known in advance | cap V^{ant}_k/(Ck), V^{ant}_n/V_n = 1 − 4·10^{−5} | PROVED formula; NUMERICAL ratio |
-| Obs 3.1 | two-sided / lane rules (2 or 2r candidates) | optimum ≤ one-sided (trivial); greedy version numerically ≈ 0.46, no gain | NUMERICAL constant |
-| §4 | staleness | out-of-gap information needs lookahead Θ(k) | HEURISTIC + NUMERICAL |
-
-The random-pattern truth (≈ 0.22, W21) is a factor 2 below the sequential cap; the identity's truth ¼ is below
-its sequential cap π/8 by π/2 — Hammersley's ratio.  For the identity the gap is closed by a global argument
-(LIS = longest path; patience sorting keeps *all* candidate chains).  For a random π there is no path structure
-(W20 §4.4: the exact DP state is a Pareto front of dimension growing with k), and Theorem 2.1 says that no
-amount of local cleverness substitutes for it.  Open: a global argument for random π, e.g. a second-moment /
-Talagrand bound on the number of copies restricted to a structured subclass, or a branching (multi-copy)
-scheme whose state stays polynomial.
+The exact claims are the expected-cost inequalities for the explicit fresh
+commitment models in Theorems 2.1 and 2.2. High-probability failure additionally
+needs a weak law. The numerical limit near .4623, the limiting anticipation
+gain, lane performance and the proposed .22 random-target limit are not
+proved here. A global process retaining alternatives lies outside the
+hypotheses; W40 now supplies an exact such state for repeated 21.

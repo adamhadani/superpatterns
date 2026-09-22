@@ -1,0 +1,10 @@
+{
+  "k": 6,
+  "n": 9,
+  "requested_C": 0.25,
+  "actual_C": 0.25,
+  "hosts": 1000,
+  "seed": 2026091609,
+  "subsets_per_host": 84,
+  "seconds": 0.008635124991997145
+}

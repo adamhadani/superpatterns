@@ -1,0 +1,15 @@
+PASS k=2, n=4: ordered-pair sum=8 over 24 hosts
+PASS k=2, n=5: ordered-pair sum=88 over 120 hosts
+PASS k=2, n=6: ordered-pair sum=784 over 720 hosts
+PASS k=2, n=7: ordered-pair sum=6944 over 5040 hosts
+PASS k=2: overlap k-1 has zero compatible union types
+PASS k=3, n=5: ordered-pair sum=48 over 120 hosts
+PASS k=3, n=6: ordered-pair sum=840 over 720 hosts
+PASS k=3, n=7: ordered-pair sum=10696 over 5040 hosts
+PASS k=3: overlap k-1 has zero compatible union types
+PASS k=4, n=6: ordered-pair sum=276 over 720 hosts
+PASS k=4, n=7: ordered-pair sum=7484 over 5040 hosts
+PASS k=4: overlap k-1 has zero compatible union types
+PASS k=5, n=7: ordered-pair sum=1648 over 5040 hosts
+PASS k=5: overlap k-1 has zero compatible union types
+PASS: every formula numerator equals independent exhaustive enumeration

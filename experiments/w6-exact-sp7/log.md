@@ -1,10 +1,10 @@
 # W6: exact question "does a 7-superpattern of length 22 exist?" — log (2026-08-29)
 
 ## Status in one line
-NOT settled. sp(7) ∈ {22, 23} remains open after this time-box. The exact SAT/CEGAR method built here is
-validated on k=4,5 (reproduces sp(4)=9, sp(5)=13 with UNSAT certificates for n=8, n=12) but is far too slow
+NOT settled. sp(7) ≤ 23; existence at length 22 remains unsettled. The exact SAT/CEGAR method built here is
+validated on k=4,5 (reproduces sp(4)=9, sp(5)=13 with solver-reported UNSAT at n=8, n=12) but is far too slow
 at (k,n)=(6,16) — a single CEGAR iteration takes minutes — so (7,22) is out of reach with this encoding.
-Runs left going in the background (see "Still running").
+The dated background-run notes below are historical, not a current process inventory.
 
 ## Method evaluation
 ### (B) DFS with per-pattern prefix pruning — rejected before coding

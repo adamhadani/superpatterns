@@ -1,0 +1,2 @@
+PASS: 2684 host/target-length cases, 93416 local selection decisions
+PASS: one-exchange selection equals direct leftmost-canonical selection

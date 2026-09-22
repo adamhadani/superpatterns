@@ -1,0 +1,226 @@
+[
+  {
+    "k": 2,
+    "overlap": 0,
+    "union_size": 4,
+    "types": 8,
+    "fixed_common": 8,
+    "distinct_matrices": 4,
+    "numerators": [
+      8,
+      88,
+      784,
+      6944
+    ],
+    "denominators": [
+      24,
+      120,
+      720,
+      5040
+    ],
+    "examples": {
+      "fixed_common": {
+        "rho": [
+          2,
+          1,
+          4,
+          3
+        ],
+        "a": [
+          1,
+          2
+        ],
+        "b": [
+          3,
+          4
+        ]
+      }
+    }
+  },
+  {
+    "k": 3,
+    "overlap": 1,
+    "union_size": 5,
+    "types": 48,
+    "fixed_common": 28,
+    "distinct_matrices": 24,
+    "numerators": [
+      48,
+      840,
+      10696
+    ],
+    "denominators": [
+      120,
+      720,
+      5040
+    ],
+    "examples": {
+      "fixed_common": {
+        "rho": [
+          1,
+          3,
+          2,
+          5,
+          4
+        ],
+        "a": [
+          1,
+          2,
+          3
+        ],
+        "b": [
+          1,
+          4,
+          5
+        ]
+      },
+      "shifted_common": {
+        "rho": [
+          2,
+          1,
+          4,
+          3,
+          5
+        ],
+        "a": [
+          1,
+          2,
+          3
+        ],
+        "b": [
+          3,
+          4,
+          5
+        ]
+      }
+    }
+  },
+  {
+    "k": 4,
+    "overlap": 2,
+    "union_size": 6,
+    "types": 276,
+    "fixed_common": 156,
+    "distinct_matrices": 136,
+    "numerators": [
+      276,
+      7484
+    ],
+    "denominators": [
+      720,
+      5040
+    ],
+    "examples": {
+      "fixed_common": {
+        "rho": [
+          1,
+          2,
+          4,
+          3,
+          6,
+          5
+        ],
+        "a": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "b": [
+          1,
+          2,
+          5,
+          6
+        ]
+      },
+      "shifted_common": {
+        "rho": [
+          1,
+          3,
+          2,
+          5,
+          4,
+          6
+        ],
+        "a": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "b": [
+          1,
+          4,
+          5,
+          6
+        ]
+      }
+    }
+  },
+  {
+    "k": 5,
+    "overlap": 3,
+    "union_size": 7,
+    "types": 1648,
+    "fixed_common": 1008,
+    "distinct_matrices": 822,
+    "numerators": [
+      1648
+    ],
+    "denominators": [
+      5040
+    ],
+    "examples": {
+      "fixed_common": {
+        "rho": [
+          1,
+          2,
+          3,
+          5,
+          4,
+          7,
+          6
+        ],
+        "a": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "b": [
+          1,
+          2,
+          3,
+          6,
+          7
+        ]
+      },
+      "shifted_common": {
+        "rho": [
+          1,
+          2,
+          4,
+          3,
+          6,
+          5,
+          7
+        ],
+        "a": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "b": [
+          1,
+          2,
+          5,
+          6,
+          7
+        ]
+      }
+    }
+  }
+]

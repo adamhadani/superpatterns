@@ -4,6 +4,7 @@ import Superpatterns.Numeric
 import Superpatterns.Witness
 import Superpatterns.BlockSplit
 import Superpatterns.ErdosSzekeres
+import Superpatterns.Interleaving
 
 /-!
 # Axiom audit
@@ -51,5 +52,17 @@ namespace Superpatterns
 #print axioms ranks_perm_range
 #print axioms erdos_szekeres_contains
 #print axioms not_avoid_both
+-- W43/W45/W46/W47
+#print axioms strictly_increasing_avoids_21
+#print axioms strictly_increasing_avoids_321
+#print axioms two_chain_word_entropy_bound
+#print axioms multichain_word_entropy_pow
+#print axioms lookahead_entropy_pow
+#print axioms disjoint_blocks_no_pos_overlap
+#print axioms disjoint_blocks_no_val_overlap
+#print axioms window_separation
+#print axioms lookahead_bypass_order
+#print axioms supercritical_velocity_quad
+#print axioms two_blocks_len_le
 
 end Superpatterns

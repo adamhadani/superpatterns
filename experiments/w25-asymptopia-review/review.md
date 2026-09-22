@@ -1,3 +1,5 @@
+> **Superseded numerical conclusion, 2026-09-10.** The current [proof](proof.md) repairs the finite width domain and minimum argument, and certifies coefficient 1.0073. The approximate optimization 1.0073384 below does not justify rounding up to 1.00734. This literature review is retained as history.
+
 # W25 — Joel Spencer (with Laura Florescu), *Asymptopia* (AMS Student Mathematical Library 71, 2014): what it offers for the lower-bound constant, the containment threshold, and speed-N tails
 
 Source: `~/Library/CloudStorage/Dropbox/Books/Mathematics/[Spencer] Asymptopia.pdf` (202 PDF pages; book page =

@@ -8,4 +8,5 @@ import Superpatterns.Numeric
 import Superpatterns.Witness
 import Superpatterns.BlockSplit
 import Superpatterns.ErdosSzekeres
+import Superpatterns.Interleaving
 import Superpatterns.Axioms

@@ -154,3 +154,25 @@ New modules (in root and in `Axioms.lean`), all sorry-free, standard axioms only
 | `Superpatterns/ErdosSzekeres.lean` | imports `Archive.Wiedijk100Theorems.AscendingDescendingSequences` (builds from the Mathlib cache in ~5 s); `ofFn_sublist`, `OrdIso_range_of_strictMono`, `OrdIso_range_reverse_of_strictAnti`, `erdos_szekeres_contains`, `not_avoid_both`, `not_avoid_id_rev` |
 
 Full `lake build`: 8719 jobs, 15 s wall (cached). Details: `experiments/w35-lean-witness/`.
+
+## 2026-09-22 (W43–W48): Interleaving, multi-chain word entropy, and block geometry
+
+New module `Superpatterns/Interleaving.lean` (imported in `Superpatterns.lean` and audited in `Superpatterns/Axioms.lean`), all sorry-free, standard axioms only (`propext`, `Quot.sound`, `Classical.choice`), 0 compiler trust:
+
+| theorem / definition | content and role |
+|---|---|
+| `Avoids21`, `strictly_increasing_avoids_21` | Strictly increasing sequence avoids decreasing pattern 21 |
+| `Avoids321`, `strictly_increasing_avoids_321` | Strictly increasing sequence avoids decreasing pattern 321 |
+| `two_chain_word_entropy_bound` | Word entropy bound: $\binom{2k}{k} \le 4^k$ |
+| `multichain_word_entropy_pow` | Multi-chain power identity: $d^{2k} = (d^2)^k$ |
+| `lookahead_entropy_pow` | Lookahead profile power identity: $(d \cdot \Delta)^{2k} = ((d \cdot \Delta)^2)^k$ |
+| `MonotoneBlock`, `BlockValid` | Definition and validity of monotone interval blocks |
+| `BlocksPosDisjoint`, `BlocksValDisjoint` | Disjointness predicates in position and value coordinates |
+| `disjoint_blocks_no_pos_overlap` | Disjoint blocks have no position coordinate collisions |
+| `disjoint_blocks_no_val_overlap` | Disjoint blocks have no value coordinate collisions |
+| `window_separation` | Buffer spacing guarantee: $x_1^{\mathrm{out}} < x_2^{\mathrm{in}} \implies p_1 < p_2$ |
+| `lookahead_bypass_order` | Dynamic lookahead bypass preserves strict coordinate order |
+| `supercritical_velocity_quad` | Rational algebraic certificate that $2\sqrt{1/4 + p/q} > 1$: $(q+2p)^2 > q^2 + 4pq$ |
+| `two_blocks_len_le` | Two disjoint valid blocks satisfy $b_1.\mathrm{len} + b_2.\mathrm{len} \le k$ |
+
+Full `lake build`: 8,720 jobs, 0 errors, 0 `sorry`s.

@@ -8,19 +8,18 @@ extended processes Π^{(j)} ([W19] §0) are independent Poisson processes of int
 (sequential fresh searches) is used verbatim.  Scaled strip coordinates x' = kx, y' = ky − jh: in these
 coordinates Π^{(j)} is a Poisson process of intensity C.
 
-**Summary.**  [W29] Theorem 4.1 shows that every *value-blind* gap-window rule pays ≥ (h+1)/(2C) per strip,
-so its threshold constant is ≥ ½.  Here the rule is value-aware and looks ahead in x inside the current gap:
-it takes the point minimising  (x-increment) + (estimated cost of the future of the strip given where the
-remaining values must go).  In the fresh-window (mean-field) model the estimated cost is *exact* and the
-optimal rule is given by a one-dimensional Bellman recursion (Theorem 4.1), whose value V_h/h² is 0.75 at h = 2
-(= the blind barrier), 0.4985 at h = 20, 0.4745 at h = 64, 0.4627 at h = 2000 (extrapolating to ≈ 0.4623).
-The reduction to a real Poisson process and a real random π is rigorous (Theorem 2.1; the mean-field structure
-is *proved* as in W20 Theorem 4.2 because between two visits of a strip the clock moves by Θ(m) while a visit
-explores O_h(1)); the constant is a certified upper bound produced by a monotone quadrature (Lemma 3.2,
-dp_cert.py).  Result (Theorem 2.1 + Table in §3): **for a uniformly random π ∈ S_k, Pr(π ⊆ Π_{Ck²}) → 1 for
-every C > 0.4765 (h = 64), C > 0.4680 (h = 160), C > 0.4649 (h = 512)** — the first threshold below ½ for a
-typical pattern; the identity's ¼ is not reached and Theorem 4.1 shows that no gap rule, however far it looks
-ahead inside the current gap, gets below ≈ 0.4623 in the fresh-window model.
+**Reviewed result (2026-09-10).** For uniform independent π∈S_k and a
+host of length ceil(Ck²), containment holds with probability 1−o(1) for
+every C>0.4649. The finite-strip reduction below, with the minor corrections
+recorded here, combines with the directed MPFR supersolution certificate in
+[certification.md](certification.md). The certificate uses h=512 and the
+exact margin ε=1/64; it verifies V̄_512/512²<0.4649. The older `dp_cert.py`
+roundoff multiplier was not an interval proof. The Bellman optimality claim
+in §4 is restricted to nonanticipating future target ranks. Its limiting
+constant near 0.4623 is numerical, not a certified universal barrier.
+Altschuler–Dubroff–Tikhomirov (arXiv:2608.19050) already obtain a typical
+target constant below 1/2; the quantitative comparison is recorded in the
+current result ledger.
 
 ## 1. The rule R(h, ε, V̄) (definition)
 
@@ -104,7 +103,7 @@ intermediate steps is deterministic.  Each X_τ ≥ u_τ ≥ u_left,τ, and cond
 Exp(C|W_τ|) ≥_st Exp(Ch) (|W_τ| ≤ h); so, by the tower property with E[e^{−θu} | past] ≤ Ch/θ (as in W20 Thm 4.2,
 proof of F2), Pr(Σ X_τ < D_h | π) ≤ e^{θD_h}(Ch/θ)^{n_t} = (eChD_h/n_t)^{n_t} ≤ e^{−n_t} ≤ k^{−3} for n_t ≥ J.  Hence
 E[#collisions | π] ≤ #{t : n_t < J} + k·k^{−3}, and each collision contributes ≤ D_h to E_coll.  For uniform π
-and each position p and each 1 ≤ n < J, Pr(π(p − n) ∈ I_{strip of π(p)}) = (h−1)/(k−1) ≤ h/k, so
+and each position p and each 1 ≤ n ≤ J, Pr(π(p − n) ∈ I_{strip of π(p)}) = (h−1)/(k−1) ≤ h/k, so
 E #{t : n_t < J} ≤ k · J · h/k = Jh.  ∎
 
 **Theorem 2.1 (random pattern, lookahead rule).**  Let π be uniform in S_k, Π_{Ck²} independent of π, k = mh.
@@ -123,6 +122,12 @@ n ≥ (1+ε')Ck² contains a uniformly random π ∈ S_k with probability 1 − 
 with mean 𝒱_h/(hC) = (1−δ)h and finite MGF (Lemma 2.3), so Chernoff gives Pr(Σ_j T_j ≥ (1−δ/2)mh) ≤ e^{−ηk}
 with η = (1/h) sup_θ [θ(1−δ/2)h − ln E e^{θT}] > 0.  Markov and Lemma 2.4 give Pr(E_coll ≥ δk/2) ≤
 2D_h(Jh + k^{−2})/(δk).  (a), (b) exactly as in [W29] Thm 3.2.  ∎
+
+**Padding to all k.** Fix h and set k′=h ceil(k/h). Sample a uniform
+π′∈S_(k′); the standardization of its first k positions is uniform in S_k.
+Containment of π′ implies containment of this prefix. For C>C₀>Ω_h,
+C₀(k′)²<Ck² for all large k, so the constant margin absorbs padding and
+Poisson-to-fixed-size coupling. Thus the headline is not restricted to h|k.
 
 *Remarks.*  (i) The failure probability is only O(ln k/k) because of the crude Markov bound on the collision
 cost; the Chernoff part has speed k.  (ii) D_h = 2V̄_{h−1}/(ε^h h C) is astronomically large for the h used
@@ -159,33 +164,33 @@ A/y + B/(1−y) < s} is an interval because the function is convex.  Monotonicit
 function is larger.  Induction on n: 𝒱_n = (1/n)Σ_m E[u'' + 𝒱_m/y + 𝒱_{n−1−m}/(1−y)] ≤ (1/n)Σ_m E[u'' + V̄_m/y +
 V̄_{n−1−m}/(1−y)] = (1/n)Σ_m W_ε(V̄_m, V̄_{n−1−m}) ≤ V̄_n, since (u'', y) minimises exactly x + V̄_m/y + V̄_{n−1−m}/(1−y).  ∎
 
-**Numerical certification (dp_cert.py).**  W̄_ε is computed as s_min + (left-endpoint rectangle sum of
-e^{−area(s)} on [s_min, s_T] with 40 000 panels, an upper bound because area is nondecreasing in s) + tail
-bound e^{−area(s_T)}/w(s_T) (w(s) := |{y ∈ W : A/y + B/(1−y) < s}| = d area/ds is nondecreasing, so area(s) ≥
-area(s_T) + (s − s_T)w(s_T)), times (1 + 10^{−9}) for rounding.  The closed forms were checked against the exact
-values W(0,0) = 1 (leftmost point in a unit strip) and W(1,0) = 3 (by hand: area(s) = s − 1 − ln s for s ≥ 1,
-∫_1^∞ s e^{1−s} ds = 2), and dp.py (Gauss–Legendre, no certification) agrees with dp_cert.py to 3·10^{−4}
-relative (results.md §1).  Certified values (dp_cert_eps0.05.txt, dp_cert_eps0.02.txt):
+**Numerical certification, corrected.** `dp_cert.py` used monotone
+quadrature and an assumed relative roundoff allowance; its tables are
+candidate potentials, not interval certificates. The independent checker
+`certify_mpfr.c` reads the ε=0.02 table as exact binary64 candidate numbers
+and checks every recurrence inequality for the rule with ε=1/64. See
+[certification.md](certification.md) for the interval proof and reproduction.
+All 512 inequalities pass; the last one gives
 
-| h | V̄_h/h², ε = 0.05 | V̄_h/h², ε = 0.02 | blind barrier (h+1)/(2h) |
-|---|---|---|---|
-| 16 | 0.50715 | 0.50698 | 0.53125 |
-| 32 | 0.48677 | 0.48601 | 0.51563 |
-| 64 | 0.47646 | 0.47492 | 0.50781 |
-| 128 | 0.47159 | 0.46917 | 0.50391 |
-| 160 | 0.47072 | 0.46801 | 0.50313 |
-| 256 | — | 0.46628 | 0.50195 |
-| 512 | — | 0.46488 | 0.50098 |
+    W̄-recurrence upper = 121845.56860063219,
+    V̄_512 = 121864.01799138699,
+    V̄_512/512² ≤ 0.46487433620981994 < 0.4649.
 
-**Corollary 3.3 (the headline; PROVED reduction + certified constant).**  For a uniformly random π ∈ S_k,
-Pr(π ⊆ Π_{Ck²}) → 1 for every C > 0.4649 (rule R(512, 0.02, V̄)); e.g. C = 0.48 with h = 64.  Every entry of the
-table is a valid threshold constant (Theorem 2.1 with that h).
+The output records every candidate in hexadecimal, the upper recurrence,
+and its nonnegative gap. The enclosure proves an upper bound on this rule's
+cost; it does not certify an optimality constant or the large-h limit.
+
+**Corollary 3.3.** For a uniformly random target and independent uniform
+host of length ceil(Ck²), containment has probability 1−o(1) whenever
+C>0.4649, by Theorem 2.1, padding, and the MPFR certificate for
+R(512,1/64,V̄).
 
 ## 4. Optimality in the fresh-window model, and what the barrier now says (PROVED)
 
 **Definition (fresh-window gap rule).**  A rule on one strip that, at each step, chooses a point of a *fresh*
 Poisson process of intensity 1 on (0,∞) × (y_L, y_R) (the current gap; scaled x'' = Cx), by any measurable
-function of the past, of σ and of the process in that half-strip, and pays its x''-coordinate.  This is the
+function of the past, the current target value, and the process in that half-strip,
+with no information about future target ranks beyond the processed prefix, and pays its x''-coordinate.  This is the
 mean-field version of [W29] §4's gap-window rules with value-awareness and unlimited x-lookahead inside the gap.
 
 **Theorem 4.1 (Bellman optimum).**  Let V_0 = 0, V_n := (1/n) Σ_{m=0}^{n−1} W_0(V_m, V_{n−1−m}) (ε = 0, the full
@@ -204,20 +209,17 @@ minimising x + V_m/(y − y_L) + V_{n_i−1−m}/(y_R − y) (any other measurab
 realisation), and the expectation of that minimum is W_0(V_m, V_{n_i−1−m})/G_i by scaling.  Averaging over m
 gives V_{n_i}/G_i, which proves the claim.  The initial state (one gap of height 1, n values) gives V_n.  ∎
 
-**Values (dp.py; NUMERICAL, uncertified Gauss–Legendre, but Lemma 3.2's certified bounds at ε = 0 agree to
+**Values (dp.py; NUMERICAL, uncertified Gauss–Legendre, but the old monotone-quadrature estimates at ε = 0 agree to
 3·10^{−4}).**  V_1 = 1, V_2 = 3 (exact), V_h/h² = 0.6628 (3), 0.6175 (4), 0.5455 (8), 0.5067 (16), 0.4985 (20),
 0.4857 (32), 0.4745 (64), 0.4686 (128), 0.4662 (256), 0.4632 (1000), 0.4627 (2000); the successive differences
 halve with each doubling of h (V_h/h² ≈ Ω*_∞ + 0.84/h), so Ω*_∞ = lim V_h/h² ≈ 0.4623 (HEURISTIC extrapolation).
 The dip below ½ starts at h = 20.
 
-**Corollary 4.2 (the ½ barrier for value-aware rules — resolved in the negative).**  [W29] Theorem 4.1's barrier
-Ω_h ≥ (h+1)/(2h) holds for value-blind rules (proved there) and is attained by value-aware rules at h = 2
-(V_2/4 = 0.75), but fails for value-aware rules from h = 3 on (V_3/9 = 0.6628 < 2/3) and fails below ½ from
-h = 20 on.  The exact optimum over value-aware fresh-window gap rules is V_h/h² → ≈ 0.4623: value-awareness with
-in-gap lookahead buys ≈ 0.04 of the 0.25 between ½ and the identity's ¼, and nothing more can be had from any
-rule that commits the t-th point of a strip inside the gap of its value using only the fresh half-strip of that
-gap.  (Routes beyond it: information outside the current gap — the other gaps' half-strips, which the DP treats
-as irrelevant because they are searched later by the same rule — or non-sequential/2-D constructions; log.md.)
+**Corollary 4.2 (value-awareness can beat one half).** The certified
+h=512 margin rule has cost below .4649, so the value-blind one-half barrier
+does not extend to value-aware rules. The smaller-h crossings and the limit
+near .4623 in the preceding table are numerical. Bellman optimality applies
+to the nonanticipating fresh-window model of §4 only.
 
 **Remark 4.3 (the free-shaping bound is not ¼).**  The argument of log.md §1 — at time t the value lands in gap
 j with probability p_j = n_j/(h−t+1), and Σ_j p_j/G_j ≥ (Σ_j √p_j)²/h — gives a lower bound on E Σ_t 1/G_t
@@ -225,15 +227,12 @@ for *any* gap rule, value-aware or not; numerically (freeshape_lb.py) it is 0.18
 (256), 0.151 (1024): far below ¼, so this counting argument cannot show that gap rules are capped at ¼.  The
 real obstruction is the cost of shaping the gaps, which Theorem 4.1 accounts for exactly.
 
-## 5. Summary
+## 5. Current summary
 
-| statement | class | threshold N/k² | failure | status |
-|---|---|---|---|---|
-| Thm 2.1 + Cor 3.3 | uniformly random π (annealed; quenched for all but o(1) of S_k) | ≤ 0.4765 (h=64), 0.4680 (160), 0.4649 (512) | e^{−ηk} + O(ln k/k) | PROVED reduction; constant certified by monotone quadrature (dp_cert.py) |
-| Thm 4.1 | all fresh-window gap rules (value-aware, in-gap lookahead) | ≥ V_h/h² = 0.75 (h=2), 0.4985 (20), 0.4627 (2000) → ≈ 0.4623 | — | PROVED optimality; values NUMERICAL |
-| Cor 4.2 | ½ barrier for value-aware rules | FALSE for h ≥ 20 (true for h = 2) | — | PROVED |
-
-Novelty relative to the ledger: first rigorous threshold below ½·k² for a typical pattern (previous: 0.527,
-W29 Thm 16; universal 0.757, W19 Thm 11); the constant is certified rather than Monte-Carlo; the question left
-open in W29 (does the ½ barrier bind value-aware rules?) is answered: no, but the gain is limited to ≈ 0.038,
-and the whole class of gap rules is capped at ≈ 0.4623 in the mean-field model.
+The positive result is typical-target containment at every C>.4649, from
+the corrected reduction and the directed MPFR certificate at ε=1/64.
+The mean-cost Bellman optimum for nonanticipating fresh-window rules is
+characterized analytically; its limiting numerical value is unproved.
+The result improves the .49967+ε typical-target benchmark deduced from
+Altschuler–Dubroff–Tikhomirov, but is not the first result below one half.
+See the current ledger for precise quantifiers and priority limitations.

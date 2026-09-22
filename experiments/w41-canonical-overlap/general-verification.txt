@@ -1,0 +1,1 @@
+PASS: 22 exact moment numerators across every overlap for k=2,3 and n<=6

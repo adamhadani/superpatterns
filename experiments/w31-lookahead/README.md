@@ -1,23 +1,20 @@
-# W31 — value-aware x-lookahead for a random pattern: threshold < ½·k²
+# W31 — certified typical-target lookahead bound
 
-Result: for a uniformly random π ∈ S_k, Pr(π ⊆ Π_{Ck²}) → 1 for every C > 0.4649 (certified; 0.4765 with
-strips of 64 values).  Reduction PROVED (proof.md Thm 2.1), constant certified by a monotone quadrature
-(proof.md Lemma 3.2, dp_cert.py).  The class of gap rules is capped at ≈ 0.4623 (proof.md Thm 4.1).
+For a uniform target independent of a uniform host of length ceil(Ck²),
+containment holds with probability 1−o(1) for every C>.4649.
 
-Files
-- proof.md     — theorems with complete proofs (rule definition, reduction, certified constants, Bellman optimality).
-- results.md   — all numbers (Bellman values, certified bounds, end-to-end simulation).
-- log.md       — chronology, ideas, dead ends.
-- dp.py        — Bellman recursion V_n (ε = 0), Gauss–Legendre; writes dp_V.txt; `python3 dp.py 2000` (≈ 4 min).
-- dp_cert.py   — certified upper bounds V̄_n for the margin rule; `python3 dp_cert.py NMAX EPS 40000`
-                 (writes dp_cert_eps{EPS}.txt; n ≤ 512 at ε = 0.02 ≈ 6 min).  Outputs: cert_eps*.out.
-- validate2d.py — end-to-end run on a real Poisson process and a real random π:
-                 `python3 validate2d.py h m C trials eps [seed]` (reads dp_cert_eps{eps}.txt).  Outputs: val_h*.out.
-- freeshape_lb.py — Monte-Carlo of the free-shaping lower bound (heuristic), `python3 freeshape_lb.py h samples`.
+- [proof.md](proof.md): rule, fresh-search reduction, padding, and the
+  nonanticipating Bellman model.
+- [certification.md](certification.md): directed MPFR verification of all
+  512 supersolution inequalities, with exact margin ε=1/64.
+- `mpfr_certificate.tsv`: exact dyadic candidates, upper recurrences,
+  margins and ratios. `mpfr_certificate.txt`: successful run status.
+- `dp.py`, `dp_cert.py` and their tables: historical numerical computations.
+  The latter's rounding multiplier was not an interval proof. Its ε=.02
+  table now supplies candidates checked independently for ε=1/64.
+- `validate2d.py`, `freeshape_lb.py`, `results.md`, `log.md`: earlier simulations
+  and chronology. The optimum near .4623 remains an extrapolation.
 
-Rerun everything (≤ 3 cores, ≈ 15 min):
-    python3 dp.py 2000
-    python3 dp_cert.py 160 0 40000; python3 dp_cert.py 160 0.05 40000; python3 dp_cert.py 512 0.02 40000
-    for C in 0.46 0.48 0.50 0.52 0.55; do python3 validate2d.py 64 32 $C 10 0.05 7; done
-    for h in 16 64 256; do python3 freeshape_lb.py $h 2000; done
-Dependencies: python3 + numpy only.
+The theorem is asymptotic with large finite-k constants; it is neither
+simultaneous universality nor a general impossibility bound for embedding
+algorithms. Reproduce the certificate with the commands in certification.md.

@@ -80,3 +80,8 @@ n = 3 on; BELOW ½ from n = 20.  Running n ≤ 2000 to see the limit (heuristic 
   L = Θ(ln m) as in W20 Thm 4.2 would restore e^{−ηk} (not written out).
 
 Total: reduction PROVED, constant 0.4649 certified (h = 512, ε = 0.02); the class cap 0.4623 is the new barrier.
+
+
+## Review follow-up, 2026-09-10
+
+Completed all 512 supersolution inequalities using directed MPFR and exact ε=1/64. Corrected future-rank nonanticipation, collision off-by-one, and padding to all k. See certification.md.

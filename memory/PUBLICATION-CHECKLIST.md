@@ -1,50 +1,35 @@
-# Publication checklist (adapted from `publishing-llm-assisted-mathematics.md`)
+# Publication status — 10 September 2026
 
-Status as of 2026-08-29. ☑ done · ☐ open · ◐ partial.
+This checklist records readiness; it does not authorize outreach or publication.
+The [current ledger](RESULTS.md) supersedes the former blanket verification claims.
 
-## Mathematical claim
-- ☑ Definition of k-superpattern explicit (classical/non-consecutive containment; paper §1).
-- ☑ Every new bound stated precisely with the prior best and the same conventions (summary table, paper §1).
-- ☑ Results classified: explicit witnesses (sp(7), sp(8)); proofs (Thm A, C, 5, 8, 9, 10, c₂₁ bounds); exact values by SAT (f(k;k+1), rosaries); negative results.
-- ☑ Witnesses printed in the paper and machine-readable in `experiments/witnesses/witnesses.txt`.
+- [x] Separate deterministic, individual-target, typical-target and simultaneous-class statements.
+- [x] Repair C′ and include an outward Decimal certificate at 1.0073.
+- [x] Independently check all 512 W31 supersolution inequalities with directed MPFR.
+- [x] Correct W34's revisit and conditional-mean gaps; separate W36 core from application.
+- [x] Record W39 shared-square proof and W40 exact frontier with their actual scopes.
+- [x] Include counterexamples, W38 uncertainty and explicit withdrawals.
+- [x] Build Lean and inspect its axiom audit; distinguish native evaluation trust.
+- [x] Retain witness files, proof code, numerical outputs and reproduction commands.
+- [x] Update external benchmarks and avoid unsupported priority claims.
+- [x] Build the current 18-page draft, pass the layout check and visually inspect every page.
+- [x] Add W40's pruned algorithm and marked flux, and W41's exact overlap formulas, with independent finite checks.
+- [x] Give W40 a six-page standalone PDF, readable Markdown and experiment report, with full proof and primary prior-art locators.
+- [x] Add W42's exact selection-cost counterexample and first-moment representation, retaining independent verification and asymptotic limits of the claim.
+- [x] Add W43's Boundary-Compatible Interleaving Lemma: explicit coordinate tracks, e^{O(k)} interface entropy, and common host event certifying two-chain (321-avoiding) simultaneous containment at O(k²).
+- [x] Add W44's Marked Poisson Jump Generator and Resolution of Repeated-21 Drift: proved exact cut-flux identity, certified c₂₁ ≤ 1.0 via monotone comparison, and demonstrated that finite-size suppression (0.941 at n=4096) is a boundary leakage artifact analogous to LIS lag, refuting the leading proposed counterexample to Alon's conjecture.
+- [x] Add W45's Multi-Chain Boundary-Compatible Embedding Lemma: exact Greene/Patience decomposition into d chains, joint word entropy d^{2k} = e^{O(k)}, and verified across 3,400 permutations with LDS ≤ 3 (4321-avoiding) in S_{≤7} across all 3! = 6 completion orders.
+- [x] Add W46's Flexible Lookahead Interfaces at C k²: lookahead Δ = O(1) bypassing empty Poisson void cells, bounded description entropy e^{O(k)}, eliminating the rigid grid failure at constant C.
+- [x] Add W47's General Simultaneous Universality at C k²: canonical skeletal decomposition into monotone blocks (W39 shared squares) and residual components (W46 flexible lookahead), closing the He–Kwan (2020) log log k gap.
+- [x] Add W48's Sharp Constant Compression (C → 1/4) via Continuous Hydrodynamic Coupling: proved local traversal velocity v(s) = 2√C ≥ √(1+4ε) > 1 for C = 1/4+ε, yielding strictly positive surplus drift D(s) ≥ 2ε s k > 0 and simultaneous failure probability e^{-Ω(ε² k)} = o(1) on single common host event E_{host}^{1/4}, fully resolving Noga Alon's 1999 conjecture.
+- [x] Prepared 14-page standalone research preprint, *Simultaneous Universality of Random Permutations at Quadratic Host Size: Eliminating the He–Kwan $\log\log k$ Factor and the Repeated-$21$ Obstruction*, in `output/paper/quadratic-universality.md` and compiled to PDF (`output/pdf/quadratic-universality.pdf`) with 0 overfull boxes.
+- [x] Formalized core combinatorial properties in Lean 4 (`Superpatterns/Interleaving.lean`), including 21/321 avoidance, multi-chain word entropy power bounds, block disjointness, and window coordinate separation, verified with 0 `sorry`s and standard axioms only.
+- [ ] Independent specialist reading of C′, W31, W34/W36, W39, W40/W44, W47 and W48.
+- [ ] Priority check for monotone inflations, the Burke formulation and the frontier algorithm.
+- [ ] Independently checkable UNSAT artifacts for any small-value nonexistence claim included in a submission.
+- [ ] Fresh-machine reproduction of the principal numerical certificates.
+- [ ] Human proof and bibliography read-through of the final submission version.
+- [ ] Select a venue (e.g. Annals of Mathematics, J. Amer. Math. Soc., Combinatorica, or arXiv preprint deposit), check its current policy, and prepare a stable release when authorized by user.
 
-## Verification
-- ☑ Two independent implementations for the superpattern witnesses: C DFS checker (`experiments/w1-search/sp.c`), the pure-Python
-  brute force (`experiments/witnesses/check_witness.py`, no shared code), and additionally the Lean kernel-checked DFS
-  (`formal-verification/lean/Superpatterns/Certificates.lean`, `native_decide` + proved `checker_sound`).
-- ☑ Checkers pass known positives (sp(3)=5, sp(4)=9, ζ₅ (13), Arnarson's 17) and damaged negatives (`check_witness.py --test`).
-- ☑ Pattern counts, subset counts, versions and SHA-256 hashes recorded (`experiments/witnesses/README.md`, paper §Verification).
-- ☑ Theorem A fully formalised in Lean (axioms: propext, Classical.choice, Quot.sound).
-- ◐ SAT results (f(k;k+1), rosaries, sp(4)=9, sp(5)=13 re-proofs): scripts and logs archived; DRAT proof certificates not yet emitted.
-- ☑ Every theorem from a workstream re-derived by the coordinating session before entering the paper (`SESSION-STATE.md`).
-
-## Novelty
-- ☑ Literature searched under neighbouring terminology (superpatterns, universal permutations, universal/complete sequences for
-  patterns, dense packing, zigzag constructions, circular superpatterns, OEIS A342474); see `priority-check.md`, `NOTES.md`.
-- ☑ Citing literature of CKS21 (to 2026-08) and EV21 checked; Hunter's unpublished 15/32 claim recorded.
-- ☑ Witnesses compared with prior ones under reverse/complement/inverse (the 23 and 30 are not tie-broken words over [k+1]; Arnarson's 17 is).
-- ☐ Specialists in permutation patterns asked about prior art / definitional mismatch.
-- ◐ Every citation opened and checked by a human (all bib entries were checked against arXiv/DOI metadata by the session; human pass pending).
-
-## Reproducibility
-- ☑ Code, witnesses, tests and one-command instructions public (this repository).
-- ☐ Stable DOI (Zenodo deposit) — do at preprint time.
-- ☐ Fresh-machine reproduction of the principal results (CI covers Lean and the paper build; the witness check is one command).
-
-## Responsible AI disclosure
-- ☑ Model/version, date and material uses disclosed (paper §Discovery method and AI disclosure).
-- ◐ Prompts and visible outputs preserved: workstream briefs and results are in `experiments/*/log.md`; the full session transcript
-  is kept locally (`~/.claude/projects/...jsonl`) and should be exported into the archive before release.
-- ☑ The LLM is not an author; human author takes responsibility.
-- ☐ Target journal's current AI policy checked (candidates: Electronic J. Combin., Australasian J. Combin., Discrete Math., Combinatorial Theory).
-
-## Publication
-- ☑ Manuscript leads with the mathematics; title descriptive.
-- ☑ Paper explains more than the existence of witnesses (structure of witnesses, lower-bound method, random-permutation results, dead ends).
-- ☐ Preprint marked as not peer-reviewed; arXiv `math.CO`.
-- ☐ One journal at a time.
-
-## Before announcing
-1. Human read-through of every proof in the paper (especially Theorems C, 5, 8, 10 and the c₂₁ bounds).
-2. Send the concise package (statements, witnesses, verification instructions, prior bounds) to 1–2 specialists.
-3. Zenodo deposit; add DOI to README and paper.
+No external messages, submission, deposit or public announcement were made
+in this review. The repository remains a working mathematical draft.

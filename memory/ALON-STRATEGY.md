@@ -1,0 +1,159 @@
+# Research strategy: prove or disprove Alon's random-superpattern conjecture
+
+Updated 10 September 2026. This queue supersedes the publication-first ordering
+in earlier session notes. The user prioritizes progress on the conjecture.
+The [current ledger](RESULTS.md) separates established results from candidates.
+
+## The target and the first milestone
+
+For every fixed ε>0, with n=⌈(1/4+ε)k²⌉, prove
+
+    Pr(σ_n contains every π∈S_k) → 1,
+
+or disprove this for at least one fixed ε. A target witnessing failure may
+depend on the host. A deterministic target sequence absent with nonvanishing
+probability is sufficient for a disproof, but is not necessary.
+
+The checked general benchmark is 2000k² log log k. He–Kwan's proof separates
+structured and quasirandom parts, conditions on common host events, and
+handles their arbitrary interleaving. The structured-map count and its
+zero-run cost carry the log log k loss. They also obtain simultaneous
+containment of a deterministic (1−o(1)) fraction of targets at 20k².
+See [Theorems 1.2–1.3 and §1.1](https://arxiv.org/html/1911.12878).
+
+**Primary intermediate objective: general simultaneous universality at Ck²
+for some absolute C.** Removing the remaining growing factor would be major
+progress even before reaching 1/4. W31's typical-target constant and W39's
+structured-family coefficient answer different questions.
+
+## 1. Common host events that support interleaving — main proof route
+
+W39 succeeds because a single high-probability event certifies a polynomial
+family of squares. Every eligible inflation can then choose its own embedding
+on that event. W34/W36 provide stronger strip traversal tools under explicit
+revisit hypotheses. Neither currently handles general interleavings.
+
+**Next mathematical task:** formulate a boundary-compatible embedding lemma
+for a structured part and a residual part. It must specify which entrance,
+exit and reserved value intervals remain available after either part is
+embedded, and show that a permitted choice always completes the other part.
+Containing both parts somewhere in the host is insufficient.
+
+Begin with two interleaved monotone chains, then controlled interleavings
+of the strip patterns already understood. These are tests of the gluing
+mechanism, not a claim that every permutation has a bounded-chain decomposition.
+For a candidate interface, exhaustively search small patterns and small
+occupancy matrices for failures of the deterministic implication before
+investing in a concentration proof.
+
+For the general extension, seek a decomposition certificate whose description
+and probability cost can be paid once per host, or let the embedding choose
+among many compatible placements. A useful target is O(k) structured traversal
+cost on the chosen placement, with a residual embedding guarantee that survives
+the choice. Quantify both the number of interfaces and the failure probability;
+write the final simultaneous union bound before optimizing constants.
+
+**Stop criterion:** reject a proposed lemma if it hides a union over k! targets,
+requires all placements to have constant average cost without proof, loses
+boundary compatibility, or reuses exposed randomness as fresh. The false W14
+entropy and W18 lag lemmas, and the withdrawn W34 H_b inference, are explicit
+counterexample tests. Do not silently restore those hypotheses.
+
+**Bridge to Alon:** a common host event with probability 1−o(1) that implies
+containment of every target establishes the general Ck² milestone. Only then
+does reducing C toward 1/4 address the sharp conjecture along this route.
+
+## 2. A rigorous repeated-pattern obstruction — main disproof route
+
+For a fixed length-d pattern τ, let Lτ count direct-summed copies. If
+Lτ(σ_n)/√n→cτ in probability, then **cτ<2/d disproves Alon**. Conversely
+cτ≥2/d gives containment of this individual repeated family above 1/4.
+The proof is [Proposition 5 of the frontier note](../output/pdf/repeated-21-frontier.md).
+Alon requires this lower inequality, not equality of every constant.
+
+W40 makes τ=21 the most tractable current case: the exact update is O(log n),
+and its marked Poisson generator and interval-union flux are available.
+
+**Next mathematical task:** construct a boundary process or potential on the
+full marked state, prove its drift or invariance, and prove the comparison
+with the empty finite box. Test every proposed law first against the exact
+cut-flux identity. A law describing thresholds and unmarked apices alone
+fails the recorded four-point counterexample.
+
+For an upper bound, a finite-volume certificate must include an explicit
+boundary correction controlling arbitrarily large boxes, or a rigorous
+supermartingale/comparison argument. A small finite mean, a fitted intercept,
+or finite-box superadditivity supplies no such upper bound. For a lower bound,
+the direction of comparison must be proved separately. Passing local flux
+tests is necessary for a proposed law, not sufficient for stationarity.
+
+**Stop criterion:** abandon a candidate closure as soon as reachable marked
+states contradict its next-step transition. Expand numerical sampling only
+to distinguish specific laws or certify finite pieces of a proved inequality.
+W10 already sampled many repeated short patterns; repeating that survey
+without a bound-conversion mechanism has low priority.
+
+**Bridge to Alon:** a rigorous c21<1 gives a counterexample; c21≥1 removes
+this particular obstruction. Neither an exact scan nor c21=1 alone proves
+universality over all targets.
+
+## 3. Stronger selection and avoidance — targeted analytic route
+
+W41's exact canonical overlap formula is complete, but no asymptotic bound
+controls all overlap ranges. W42 now removes overlaps k−1 and k−2 by retaining
+local lexicographic minima under one- and two-point exchanges. Existence is
+preserved exactly.
+
+The new [finite counterexample](../experiments/w42-two-exchange/proof.md)
+shows target-dependent first moments already at k=3,n=6. Therefore importing
+W12's pattern-independent factorization is ruled out. W42 Proposition 2
+replaces it with an exact formula: background points avoid the one-point
+forbidden region and contain no pair in a target-dependent exclusion kernel.
+
+**Next mathematical task:** describe this kernel for τ^(⊕m), starting with
+τ=21 and using monotone targets as controls. Classify pair constraints that
+remain dependent through shared points; derive rigorous upper and lower
+bounds for their joint exclusion probability. Keep changes of rank among
+the common points: W41 gives examples where every shared rank shifts.
+
+Use an upper bound on E Yπ^(2) to seek an obstruction, and a lower first
+moment plus all-overlap second-moment control for a containment attempt.
+These are different inequalities. E Yπ^(2)→0 for one sequence at C>1/4
+would disprove Alon by Markov. A bounded moment ratio gives only positive
+success probability; the simultaneous conclusion still needs an additional
+argument. Pattern-averaged estimates have weaker quantifiers again.
+
+**Stop criterion:** pause this route if the selector's first-moment loss or
+pair dependence cannot be bounded in the quadratic regime. The seven exact
+small-host moment improvements justify the question, not a larger blind sweep.
+
+## 4. Host-dependent missing targets — alternative disproof route
+
+Search only with a genuine containment oracle: a failed greedy embedding
+is not proof that a target is absent. Use the existing exact small-host
+machinery to find missing targets at C>1/4 and ask whether their witnesses
+compress into an explicit geometric certificate that scales with k.
+
+**Next mathematical task:** define a certificate family C_k and a deterministic
+map from each valid host certificate to an absent k-pattern. Then estimate
+the probability that a random host has at least one such certificate. A
+nonvanishing lower bound at a fixed C>1/4 would disprove Alon, even if every
+preselected target individually succeeds with high probability.
+
+**Stop criterion:** do not treat isolated finite missing targets, optimization
+failures, or a large expected number of heavily clustered certificates as
+an asymptotic probability bound. W24's union-bound slack and W28's witness
+inequalities should guide how certificate dependence is measured.
+
+## Work deliberately secondary to this queue
+
+The frontier result is now prominently documented with primary citations;
+independent specialist and priority review remain appropriate before a
+submission. Further C′ coefficient optimization, faster small witness search,
+and improving the typical-target .4649 constant are secondary unless their
+mechanism directly supplies one of the missing lemmas above.
+
+No general asymptotic improvement or disproof is claimed by this strategy.
+The next deliverable should be a proved interface/kernel/drift lemma, or a
+precise counterexample eliminating a candidate lemma, with a stated route
+from that deliverable to the conjecture.

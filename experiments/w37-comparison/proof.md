@@ -1,4 +1,4 @@
-# W37 — Comparison principle in rate form: the strip-rearrangement reformulation, and box comparisons
+# W37 — Comparison questions: the strip-rearrangement reformulation, and box comparisons
 
 Notation. Π_N = Poisson point process on the open unit square Q = (0,1)² with intensity measure N·Leb.
 Almost surely all points of Π_N have pairwise distinct x-coordinates and pairwise distinct y-coordinates; we work
@@ -73,10 +73,9 @@ identically distributed) γ's by j = π(a) gives Pr(E_c) = Pr( Σ_j γ_j / w_j <
 
 **Discussion (what Lemmas 1–2 say).** p_π(N) = Pr(no E_c occurs), where the *marginal* law of each E_c is
 π-independent (Lemma 2) and, for π = id, all rearranged processes Π_c coincide with Π_N; only the *joint* law of
-the family {E_c}_c depends on π. Alon's conjecture in rate form is exactly the assertion that the identity's
-family — the most strongly coupled one — has the *smallest* union, up to e^{o(k ln k)} and an N(1−o(1)) shift.
-This is a Slepian-type comparison statement for a family of {0,1}-valued fields with fixed marginals; no
-off-the-shelf comparison inequality applies (see §5).
+the family {E_c}_c depends on π. A comparison of their unions is a
+possible sufficient route to Alon, not an equivalent formulation of the
+conjecture. Equal marginal laws alone give no ordering of these unions.
 
 **Corollary 2.1 (uniform fixed-cut bound; known, for calibration). (PROVED)** Taking w_j = 1/k:
 p_π(N) ≤ Pr( Γ ≥ N/k ), Γ ~ Gamma(k,1); with N = Ck², Cramér gives p_π(Ck²) ≤ e^{−k(C − 1 − ln C)} for C > 1,
@@ -153,23 +152,14 @@ More generally, for every π = τ_1 ⊕ mono_m ⊕ τ_2 or τ_1 ⊖ mono_m ⊖ �
 ≥ 1:
       p_π(N) ≤ p_{id_k}( N(1−2ε)² ) + 2 exp( − q_t ⌊Nε²/t⌋ ),  q_t as in Lemma 4.   ∎
 
-**Interpretation.** Corollary 7 is a *comparison of π with the identity, losing only an additive term of speed
-Nε² and a shortening k → k − t.* The shortening is genuinely necessary: π* ⊇ dec_{k−2} forces
-p_{π*}(N) ≥ p_{dec_{k−2}}(N) = p_{id_{k−2}}(N), which by Deuschel–Zeitouni exceeds p_{id_k}(N) by
-e^{Θ(k)} at N = Θ(k²) — this is exactly the excess the W27 deep-tail numerics measure (≈ 3–4 nats at k = 7–8,
-n = 1.4–1.5 k², growing roughly linearly in k). So CP(1) with error e^{Θ(k)} is *forced* for π*, and Corollary 7
-shows e^{Θ(k)}-with-shortening is also *sufficient* — for this pattern the comparison principle is settled at
-the rate level, modulo the ε-loss discussed next.
-
-**Where the rate form holds, quantitatively.** In Corollary 7 the corner term 2e^{−Nε²} must be dominated by the
-main term. By DZ, −ln p_{id_k}(M) = M·H(k/√M)(1+o(1)) with H > 0 continuous decreasing on (0,2), H(2−u) = Θ(u³)
-as u ↓ 0 (Tracy–Widom left-tail matching). Choosing ε = ε(C) as the solution of ε² = (1−2ε)² H(x_C), x_C = 1/√C:
-      p_π(Ck²) ≤ 3 p_{id_k}( Ck²(1−2ε(C))² ) e^{o(k²)},
-and ε(C) ≈ √H(x_C) → 0 as C ↓ 1/4. **Hence the exact rate form of the task — Pr(π ⊄ Π_N) ≤ e^{o(k ln k)}
-Pr(id ⊄ Π_{N(1−o(1))}) — is PROVED for the corner-defect class (bounded t) in the Alon window N/k² → 1/4,**
-and holds with a fixed (C-dependent, not o(1)) shrinkage factor for each fixed C > 1/4. For fixed k and
-N → ∞ no shrinkage factor 1−o(1) can work for π* (Stanley–Wilf: L(1324) > 9 = L(1234) at k = 4), so the
-restriction to the window is not an artifact.
+**Interpretation, corrected 2026-09-10.** Since π* contains dec_(k−2),
+p_(π*)(N)≥p_(id_(k−2))(N), whereas p_(id_(k−2))(N)≤p_(id_k)(N).
+These inequalities do not force π* to be harder than id_k or an exponential
+ratio between their avoidance probabilities. The displayed finite box
+comparison remains valid. The former claimed e^{o(k log k)} rate comparison
+is withdrawn: a fixed-ratio large-deviation theorem gives an o(k²) error,
+which cannot be promoted to o(k log k), and it gives no uniform control as
+N/k² approaches 1/4. Quantitative, uniform monotone tails would be needed.
 
 **Theorem 8 (defect-sum patterns: additive box bound). (PROVED)** Let
       π = B_1 ⊕ B_2 ⊕ ⋯ ⊕ B_s ∈ S_k,
@@ -202,24 +192,23 @@ Consequently Pr( Π_N ⊇ every π ∈ 𝒞_k ) ≥ 1 − k! e^{−c(δ)k ln²k}
 all layered patterns with every layer of size in [√k ln k, k], and the direct sums of such runs with sparse
 small defects; the identity and dec are the trivial cases.
 
-*Proof.* Apply Theorem 8 with θ = δ/4.
-*Monotone terms.* For i ∈ R, the box mass is M_i = N u_i² = N(1−θ)² a_i²/A². The LIS-shortfall parameter is
-      x_i := a_i/√(M_i) = A / ( (1−θ)√N ) ≤ k / ( (1−δ/4)·k√(1/4+δ) ) = 2 / ( (1−δ/4)√(1+4δ) ) ≤ 2/√(1+δ) =: x_δ < 2,
-using A ≤ k, √N ≥ k√(1/4+δ), θ = δ/4, and (1−δ/4)²(1+4δ) ≥ 1+δ for 0 < δ ≤ 1 (for δ > 1 use θ = 1/4 and the
-value x_1 < 2 of the δ = 1 case). Since a_i ≤ x_δ √M_i, monotonicity of the lower tail in the target gives
-      Pr( LIS(Π_{M_i}) < a_i ) ≤ Pr( LIS(Π_{M_i}) < x_δ √M_i ) ≤ exp( − M_i H(x_δ)/2 )
-for M_i ≥ M_0(δ), by the DZ lower-tail LDP (Poissonized via Lemma 3; H(x_δ) > 0). Here
-M_i ≥ N(1−θ)² a_i²/k² ≥ (1/4)(a_i²) ≥ (1/4)k ln²k by (a), so M_i → ∞ uniformly and
-      monotone term_i ≤ exp( − (H(x_δ)/8) a_i² ) ≤ exp( − (H(x_δ)/8) k ln²k ).
-*Defect terms.* For i ∈ D, v_i = θ/|D| ≥ (δ/4) k^{−1/4} by (d), so N v_i² ≥ (δ²/64) k^{3/2}. By (b),
-t_i ln t_i ≤ (ln k)/(8 ln ln k) · ln ln k = (ln k)/8 for large k (since ln t_i ≤ ln ln k), so by Lemma 4
-q_{t_i} ≥ e^{−t_i ln t_i − 2}/t_i ≥ e^{−2} k^{−1/8}/t_i. Hence
-      defect term_i ≤ exp( − e^{−2} k^{−1/8} (δ²/64) k^{3/2} / t_i² ) ≤ exp( − c'(δ) k^{11/8} / ln²k )
-                    ≤ exp( − k^{5/4} )   for k ≥ k_1(δ).
-*Assembly.* Each of the s ≤ k terms is ≤ exp(−min( (H(x_δ)/8) k ln²k, k^{5/4} )), so the sum is at most
-k·exp(−(H(x_δ)/8) k ln²k ∧ k^{5/4}) ≤ exp(−c(δ) k ln²k) with c(δ) := H(x_δ)/16 and k ≥ k_0(δ) large enough to
-absorb the factor k and the min. This is e^{−ω(k ln k)}. The final union bound over π ∈ 𝒞_k costs
-|𝒞_k| ≤ k! = e^{k ln k(1+o(1))} ≪ e^{c(δ) k ln²k}. ∎
+*Proof, clarified 2026-09-10.* Put δ₀=min(δ,1) and θ=δ₀/4. Give run i
+side (1−θ)a_i/A and defect i side θ/|D| as in Theorem 8. If there are no
+defects, give the runs total side one. Since A≤k and N≥(1/4+δ₀)k²,
+
+    M_i/a_i² ≥ (1/4+δ₀)(1−δ₀/4)² ≥ (1+δ₀)/4 > 1/4.
+
+The fixed-ratio Poisson monotone-tail lemma proved explicitly in W39 from
+Deuschel–Zeitouni Theorem 1 therefore bounds each run's failure by
+exp(−c_δ a_i²)≤exp(−c_δ k log²k). Only a positive constant is needed;
+no equality between fixed-size and Poisson rate functions is asserted.
+
+Each defect box has mean λ_i≥δ₀² k^(3/2)/64. For large k,
+t_i log t_i≤(log k)/8, q_(t_i)≥e^(−2)k^(−1/8)/t_i, and
+floor(λ_i/t_i)≥λ_i/(2t_i). Lemma 4 thus bounds its failure by
+exp(−c'_δ k^(11/8)/log²k)≤exp(−k^(5/4)). The floor's factor two is
+included in c'_δ. Union over at most k blocks and decrease c_δ to obtain
+exp(−c_δ k log²k); union over at most k! targets proves the statement. ∎
 
   *(Honest scope. (i) The DZ input is the standard lower-tail LDP for LIS of i.i.d./Poisson samples with speed
   = sample size; only positivity and monotonicity of H on (0,2) are used, not its formula. An unconditional
@@ -309,39 +298,30 @@ general interior step (the natural "cut-and-exchange the two strips" coupling ch
 two strips with the rest, and there is no measure-preserving surgery that repairs it without resampling the
 whole strip pair — resampling destroys the conditioning on the other strips' chains).
 
-**(c) Couplings with loss e^{O(k)}.** Theorem 6/8 IS a (degenerate, product) coupling achieving the rate form
-for corner-defect and defect-sum patterns; its loss is the ε-corner/θ-defect area — e^{O(k)}-equivalent only
-near the threshold. For patterns whose defects sit in the bulk of the monotone run in *both* coordinates
-(e.g. id_a ⊕ τ ⊕ id_b with a ≍ b ≍ k/2), the same boxes give exponent min(a,b)²/k² · N H — a constant-factor
-loss in the rate, NOT the (1−o(1)) rate form; the obstruction to doing better is the *window-area problem*: a
-τ-copy usable by a chain that spends only o(k) of its points "around" the defect must sit in a rectangle spanned
-by two chain points o(k) apart, whose area is then o(1), and the event "some such rectangle contains τ" is not
-measurable-with-respect-to-cheap-certificates: conditioning on the chain biases the rectangle's contents, and
-making the rectangle independent (thinning) forces it to have area Ω(1) for a speed-k² bound, i.e. Θ(k) skipped
-points, i.e. a constant-factor N-loss. Recorded: for middle defects we prove only the constant-factor rate
-comparison (Theorem 8 with two long runs), which still yields exp(−ω(k ln k)) at N = (1/4+δ)k² whenever
-min(a,b) ≥ √(k ln k)·ω(1) — hence Theorem 9's class; the truly open cases need a *non-product* certificate.
+**(c) Product boxes and the remaining comparison problem.** Theorems 6
+and 8 give finite additive box bounds. They do not establish a relative
+error e^{o(k log k)} against the identity tail. The earlier argument
+confused an o(k²) large-deviation error with that stronger error scale.
+For sufficiently long runs, Theorem 9 gives simultaneous containment
+without requiring such a comparison. W39 strengthens its defect-free
+subclass by using a common host event for all skeletons and block sizes.
 
-**(d) What a full proof must handle (sharpened by Lemma 1).** By Lemma 2 every single-cut event has the
-π-independent probability Pr(Σ γ_j/w_j < N) — speed k. The identity reaches speed k² only through the union
-over Θ(N^{k−1}) essentially-different cut vectors; a comparison proof must show the π-family's union is at
-least e^{−o(k ln k)} times as large *without access to more than the exchangeable marginal structure* — i.e. it
-must use quantitative joint-law information. The only joint-law handles we found are (i) product structure
-across disjoint boxes (Theorems 6, 8) and (ii) exact Wilf equalities (BWX) — both are used above; nothing else
-in the toolbox (FKG, negative association, Slepian, second-moment on cut-measure) survives the k vs k² gap.
+**(d) Joint-law information.** Fixed-cut marginals do not determine the
+probability of their union. The current arguments provide no general
+comparison of these unions. Failed uses of FKG, Slepian or second moments
+in this workstream do not rule out other formulations of those methods.
 
 ## 6. Summary of what is PROVED in this file
 
 - Lemma 1: exact reformulation π ⊆ Π_N ⟺ ∃ cuts c with a full increasing strip-chain in the rearranged
   process; measurable union; identity ⇒ LIS.
 - Lemma 2: for fixed cuts, the rearranged process is Poisson(N) and Pr(E_c) = Pr(Σ γ_j/w_j < N) — independent
-  of π. Corollary 2.1: uniform trivial bound e^{−k(C−1−ln C)}.
+  of π. Corollary 2.1: avoidance bound e^{−k(C−1−ln C)} for C>1.
 - Lemma 3: de-Poissonization; p̄ monotone.
-- Lemma 4: p_τ(λ) ≤ e^{−c_t λ}, c_t > e^{−2t}/t (elementary, no Stanley–Wilf).
+- Lemma 4: elementary positive-rate avoidance bound for each fixed small pattern; use its stated q_t and floor factor.
 - Lemma 5: p_{id_a}(M) ≤ e^{−M + 2(a−1)√M} (RSK column words; self-contained).
 - Theorem 6 + Corollary 7: corner-defect comparison; the hardest observed pattern 1 ⊕ dec_{k−2} ⊕ 1 satisfies
-  p ≤ p_{id_k}(N(1−2ε)²) + 2e^{−Nε²}; the task's rate form holds for this class as N/k² ↓ 1/4 (with DZ), and
-  with a fixed shrinkage for each fixed N/k².
+  p ≤ p_{id_k}(N(1−2ε)²) + 2e^{−Nε²}; the stronger relative rate-form inference is withdrawn.
 - Theorem 8: additive box bound for ⊕/⊖-sums of monotone runs and defects.
 - Theorem 9 (conditional on the DZ lower-tail LDP): Alon's conjecture at N = (1/4+δ)k² restricted to the class
   𝒞_k (long monotone runs, sparse small defects; includes all layered patterns with layers ≥ √k ln k).

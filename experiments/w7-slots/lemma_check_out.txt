@@ -1,43 +1,43 @@
-sp6=17        k=6 n=17 beta= 2 pat=720 classes=  1365 VIOL(corrected)=0 viol(old)= 171  sums: corrected=1111 old=987 Lemma1=1306
-sp6=17        k=6 n=17 beta= 3 pat=720 classes=  1365 VIOL(corrected)=0 viol(old)=  97  sums: corrected=1011 old=969 Lemma1=1306
-sp6=17        k=6 n=17 beta= 5 pat=720 classes=  3196 VIOL(corrected)=0 viol(old)=  10  sums: corrected=2681 old=2680 Lemma1=3103
+sp6=17        k=6 n=17 beta= 2 pat=720 classes=  1365 VIOL(corrected)=0 viol(old)= 171  sums: corrected=8656 old=7737 Lemma1=11452
+sp6=17        k=6 n=17 beta= 3 pat=720 classes=  1365 VIOL(corrected)=0 viol(old)=  97  sums: corrected=8166 old=7676 Lemma1=11452
+sp6=17        k=6 n=17 beta= 5 pat=720 classes=  3196 VIOL(corrected)=0 viol(old)=  10  sums: corrected=8162 old=8125 Lemma1=11452
    worst old violation (excess,I,off,V,M,b,N,oldbound): (2, (1, 3), (1, 10, 15, 16), [4, 9, 14, 15], [4, 4], [9, 5], 18, 16)
-sp6=17        k=6 n=17 beta= 6 pat=720 classes=  4927 VIOL(corrected)=0 viol(old)=   0  sums: corrected=4460 old=4460 Lemma1=4822
-sp6=17        k=6 n=17 beta= 8 pat=720 classes=  8932 VIOL(corrected)=0 viol(old)=   0  sums: corrected=8706 old=8706 Lemma1=8820
-sp6 k=5       k=5 n=17 beta= 2 pat=120 classes=   455 VIOL(corrected)=0 viol(old)=  69  sums: corrected=291 old=254 Lemma1=377
-sp6 k=5       k=5 n=17 beta= 3 pat=120 classes=   455 VIOL(corrected)=0 viol(old)=  35  sums: corrected=263 old=252 Lemma1=377
-sp6 k=5       k=5 n=17 beta= 4 pat=120 classes=   622 VIOL(corrected)=0 viol(old)=  13  sums: corrected=386 old=383 Lemma1=525
+sp6=17        k=6 n=17 beta= 6 pat=720 classes=  4927 VIOL(corrected)=0 viol(old)=   0  sums: corrected=8856 old=8856 Lemma1=11452
+sp6=17        k=6 n=17 beta= 8 pat=720 classes=  8932 VIOL(corrected)=0 viol(old)=   0  sums: corrected=10583 old=10583 Lemma1=11452
+sp6 k=5       k=5 n=17 beta= 2 pat=120 classes=   455 VIOL(corrected)=0 viol(old)=  69  sums: corrected=3062 old=2767 Lemma1=4625
+sp6 k=5       k=5 n=17 beta= 3 pat=120 classes=   455 VIOL(corrected)=0 viol(old)=  35  sums: corrected=2909 old=2769 Lemma1=4625
+sp6 k=5       k=5 n=17 beta= 4 pat=120 classes=   622 VIOL(corrected)=0 viol(old)=  13  sums: corrected=2910 old=2862 Lemma1=4625
    worst old violation (excess,I,off,V,M,b,N,oldbound): (2, (1, 3), (0, 9, 13), [6, 7, 12], [3, 3], [9, 4], 11, 9)
-sp6 k=5       k=5 n=17 beta= 5 pat=120 classes=   962 VIOL(corrected)=0 viol(old)=   2  sums: corrected=685 old=684 Lemma1=837
-sp6 k=5       k=5 n=17 beta= 7 pat=120 classes=  2265 VIOL(corrected)=0 viol(old)=   0  sums: corrected=1990 old=1990 Lemma1=2092
-sp7=23        k=7 n=23 beta= 2 pat=5040 classes=  4845 VIOL(corrected)=0 viol(old)=1273  sums: corrected=3747 old=2637 Lemma1=4281
-sp7=23        k=7 n=23 beta= 3 pat=5040 classes=  4845 VIOL(corrected)=0 viol(old)= 852  sums: corrected=3089 old=2626 Lemma1=4281
-sp7=23        k=7 n=23 beta= 6 pat=5040 classes= 27513 VIOL(corrected)=0 viol(old)=  36  sums: corrected=20585 old=20578 Lemma1=25450
+sp6 k=5       k=5 n=17 beta= 5 pat=120 classes=   962 VIOL(corrected)=0 viol(old)=   2  sums: corrected=3044 old=3036 Lemma1=4625
+sp6 k=5       k=5 n=17 beta= 7 pat=120 classes=  2265 VIOL(corrected)=0 viol(old)=   0  sums: corrected=3800 old=3800 Lemma1=4625
+sp7=23        k=7 n=23 beta= 2 pat=5040 classes=  4845 VIOL(corrected)=0 viol(old)=1273  sums: corrected=152657 old=110732 Lemma1=210945
+sp7=23        k=7 n=23 beta= 3 pat=5040 classes=  4845 VIOL(corrected)=0 viol(old)= 852  sums: corrected=135469 old=110862 Lemma1=210945
+sp7=23        k=7 n=23 beta= 6 pat=5040 classes= 27513 VIOL(corrected)=0 viol(old)=  36  sums: corrected=129358 old=128997 Lemma1=210945
    worst old violation (excess,I,off,V,M,b,N,oldbound): (3, (1, 5), (0, 11, 12, 13, 20), [5, 7, 11, 15, 19], [5, 6], [11, 7], 33, 30)
-sp7=23        k=7 n=23 beta= 7 pat=5040 classes= 49973 VIOL(corrected)=0 viol(old)=   8  sums: corrected=41542 old=41541 Lemma1=47311
-sp7=23        k=7 n=23 beta= 9 pat=5040 classes=124131 VIOL(corrected)=0 viol(old)=   0  sums: corrected=117555 old=117555 Lemma1=120832
-random17 k=6  k=6 n=17 beta= 2 pat=570 classes=  1365 VIOL(corrected)=0 viol(old)= 139  sums: corrected=1045 old=919 Lemma1=1306
-random17 k=6  k=6 n=17 beta= 3 pat=570 classes=  1365 VIOL(corrected)=0 viol(old)=  82  sums: corrected=937 old=895 Lemma1=1306
-random17 k=6  k=6 n=17 beta= 5 pat=570 classes=  3196 VIOL(corrected)=0 viol(old)=   2  sums: corrected=2605 old=2604 Lemma1=3103
+sp7=23        k=7 n=23 beta= 7 pat=5040 classes= 49973 VIOL(corrected)=0 viol(old)=   8  sums: corrected=142581 old=142535 Lemma1=210945
+sp7=23        k=7 n=23 beta= 9 pat=5040 classes=124131 VIOL(corrected)=0 viol(old)=   0  sums: corrected=180341 old=180341 Lemma1=210945
+random17 k=6  k=6 n=17 beta= 2 pat=570 classes=  1365 VIOL(corrected)=0 viol(old)= 139  sums: corrected=7644 old=6763 Lemma1=11452
+random17 k=6  k=6 n=17 beta= 3 pat=570 classes=  1365 VIOL(corrected)=0 viol(old)=  82  sums: corrected=7113 old=6664 Lemma1=11452
+random17 k=6  k=6 n=17 beta= 5 pat=570 classes=  3196 VIOL(corrected)=0 viol(old)=   2  sums: corrected=7401 old=7374 Lemma1=11452
    worst old violation (excess,I,off,V,M,b,N,oldbound): (1, (1, 3), (2, 10, 15, 16), [3, 5, 12, 16], [4, 4], [8, 5], 17, 16)
-random17 k=6  k=6 n=17 beta= 6 pat=570 classes=  4927 VIOL(corrected)=0 viol(old)=   0  sums: corrected=4369 old=4369 Lemma1=4822
-random17 k=6  k=6 n=17 beta= 8 pat=570 classes=  8932 VIOL(corrected)=0 viol(old)=   0  sums: corrected=8674 old=8674 Lemma1=8820
-random14 k=5  k=5 n=14 beta= 2 pat=102 classes=   220 VIOL(corrected)=0 viol(old)=  12  sums: corrected=148 old=129 Lemma1=201
-random14 k=5  k=5 n=14 beta= 3 pat=102 classes=   220 VIOL(corrected)=0 viol(old)=   5  sums: corrected=127 old=123 Lemma1=201
-random14 k=5  k=5 n=14 beta= 4 pat=102 classes=   318 VIOL(corrected)=0 viol(old)=   1  sums: corrected=203 old=202 Lemma1=294
+random17 k=6  k=6 n=17 beta= 6 pat=570 classes=  4927 VIOL(corrected)=0 viol(old)=   0  sums: corrected=8173 old=8173 Lemma1=11452
+random17 k=6  k=6 n=17 beta= 8 pat=570 classes=  8932 VIOL(corrected)=0 viol(old)=   0  sums: corrected=10339 old=10339 Lemma1=11452
+random14 k=5  k=5 n=14 beta= 2 pat=102 classes=   220 VIOL(corrected)=0 viol(old)=  12  sums: corrected=1044 old=932 Lemma1=1750
+random14 k=5  k=5 n=14 beta= 3 pat=102 classes=   220 VIOL(corrected)=0 viol(old)=   5  sums: corrected=945 old=910 Lemma1=1750
+random14 k=5  k=5 n=14 beta= 4 pat=102 classes=   318 VIOL(corrected)=0 viol(old)=   1  sums: corrected=953 old=949 Lemma1=1750
    worst old violation (excess,I,off,V,M,b,N,oldbound): (1, (1, 3), (0, 7, 11), [3, 5, 6], [2, 3], [7, 4], 7, 6)
-random14 k=5  k=5 n=14 beta= 5 pat=102 classes=   514 VIOL(corrected)=0 viol(old)=   0  sums: corrected=385 old=385 Lemma1=484
-random14 k=5  k=5 n=14 beta= 7 pat=102 classes=  1190 VIOL(corrected)=0 viol(old)=   0  sums: corrected=1113 old=1113 Lemma1=1155
-zeta5         k=5 n=13 beta= 2 pat=120 classes=   165 VIOL(corrected)=0 viol(old)=  26  sums: corrected=125 old=109 Lemma1=155
-zeta5         k=5 n=13 beta= 3 pat=120 classes=   165 VIOL(corrected)=0 viol(old)=  11  sums: corrected=112 old=108 Lemma1=155
-zeta5         k=5 n=13 beta= 4 pat=120 classes=   244 VIOL(corrected)=0 viol(old)=   2  sums: corrected=181 old=181 Lemma1=231
+random14 k=5  k=5 n=14 beta= 5 pat=102 classes=   514 VIOL(corrected)=0 viol(old)=   0  sums: corrected=1037 old=1037 Lemma1=1750
+random14 k=5  k=5 n=14 beta= 7 pat=102 classes=  1190 VIOL(corrected)=0 viol(old)=   0  sums: corrected=1473 old=1473 Lemma1=1750
+zeta5         k=5 n=13 beta= 2 pat=120 classes=   165 VIOL(corrected)=0 viol(old)=  26  sums: corrected=822 old=729 Lemma1=1175
+zeta5         k=5 n=13 beta= 3 pat=120 classes=   165 VIOL(corrected)=0 viol(old)=  11  sums: corrected=767 old=729 Lemma1=1175
+zeta5         k=5 n=13 beta= 4 pat=120 classes=   244 VIOL(corrected)=0 viol(old)=   2  sums: corrected=773 old=767 Lemma1=1175
    worst old violation (excess,I,off,V,M,b,N,oldbound): (1, (1, 3), (0, 4, 8), [3, 5, 9], [2, 3], [4, 4], 7, 6)
-zeta5         k=5 n=13 beta= 5 pat=120 classes=   400 VIOL(corrected)=0 viol(old)=   0  sums: corrected=339 old=339 Lemma1=385
-zeta5         k=5 n=13 beta= 7 pat=120 classes=   895 VIOL(corrected)=0 viol(old)=   0  sums: corrected=865 old=865 Lemma1=879
-zeta6         k=6 n=18 beta= 2 pat=719 classes=  1820 VIOL(corrected)=0 viol(old)= 277  sums: corrected=1394 old=1227 Lemma1=1715
-zeta6         k=6 n=18 beta= 3 pat=719 classes=  1820 VIOL(corrected)=0 viol(old)= 141  sums: corrected=1265 old=1214 Lemma1=1715
-zeta6         k=6 n=18 beta= 5 pat=719 classes=  4158 VIOL(corrected)=0 viol(old)=  10  sums: corrected=3431 old=3430 Lemma1=3991
+zeta5         k=5 n=13 beta= 5 pat=120 classes=   400 VIOL(corrected)=0 viol(old)=   0  sums: corrected=868 old=868 Lemma1=1175
+zeta5         k=5 n=13 beta= 7 pat=120 classes=   895 VIOL(corrected)=0 viol(old)=   0  sums: corrected=1085 old=1085 Lemma1=1175
+zeta6         k=6 n=18 beta= 2 pat=719 classes=  1820 VIOL(corrected)=0 viol(old)= 277  sums: corrected=11692 old=10520 Lemma1=16717
+zeta6         k=6 n=18 beta= 3 pat=719 classes=  1820 VIOL(corrected)=0 viol(old)= 141  sums: corrected=11057 old=10481 Lemma1=16717
+zeta6         k=6 n=18 beta= 5 pat=719 classes=  4158 VIOL(corrected)=0 viol(old)=  10  sums: corrected=11628 old=11589 Lemma1=16717
    worst old violation (excess,I,off,V,M,b,N,oldbound): (2, (1, 3), (0, 8, 13, 14), [3, 7, 13, 14], [4, 4], [8, 5], 18, 16)
-zeta6         k=6 n=18 beta= 6 pat=719 classes=  6432 VIOL(corrected)=0 viol(old)=   0  sums: corrected=5750 old=5750 Lemma1=6239
-zeta6         k=6 n=18 beta= 8 pat=719 classes= 12132 VIOL(corrected)=0 viol(old)=   0  sums: corrected=11727 old=11727 Lemma1=11916
+zeta6         k=6 n=18 beta= 6 pat=719 classes=  6432 VIOL(corrected)=0 viol(old)=   0  sums: corrected=12762 old=12762 Lemma1=16717
+zeta6         k=6 n=18 beta= 8 pat=719 classes= 12132 VIOL(corrected)=0 viol(old)=   0  sums: corrected=15215 old=15215 Lemma1=16717
 TOTAL violations of corrected bound: 0

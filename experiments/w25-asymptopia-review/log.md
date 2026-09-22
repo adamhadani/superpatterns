@@ -37,3 +37,8 @@
 - `rate_bernoulli.py`, `rate_bernoulli.out` — fixed-ε comparison (Poisson reproduction; invalid Bernoulli value).
 - `rate_bernoulli2.py`, `rate_bernoulli2.out` — width-dependent ε; the `1.007338` figure.
 - Book text extraction: scratchpad only (not in repo).
+
+
+## Review follow-up, 2026-09-10
+
+Completed corrected C′ proof and outward Decimal certificate at coefficient 1.0073. See proof.md and cprime_certificate.json.
