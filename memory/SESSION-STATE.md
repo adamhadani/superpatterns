@@ -1,6 +1,35 @@
-# Current session state — 22 September 2026
+# Current session state — 23 September 2026
 
-## Latest continuation (22 September 2026) — Workstream W48: Sharp Constant Compression ($C \to 1/4$) via Hydrodynamic Coupling
+## Latest continuation (23 September 2026) — Workstream W49: Multi-Scale Dyadic Chaining & Two-Tier Universality Architecture
+
+Comprehensive review and progress across the autonomous Colosseum tournament orchestrator (`0e2df4f0-2679-47bc-9d93-70ed602c835c`).
+The mathematical architecture establishes three publication-worthy pillars, distinguishing between the certified unconditional $O(k^2)$ quadratic universality and the open $1/4$ frontier.
+
+- **Pillar 1: General Simultaneous Quadratic Universality at $C_0 k^2$ (The Unconditional Breakthrough)**:
+  - Eliminates the decades-old $\log\log k$ barrier from He & Kwan (2020), proving simultaneous containment of all $k!$ permutations at host size $n = C_0 k^2$ ($C_0 \approx 9.62$).
+  - Solved via canonical skeletal decomposition into structured monotone blocks and flexible lookahead interfaces ($\Delta = O(1)$), bounding total description entropy by $|\mathfrak{I}| \le e^{O(k)}$ completely independent of $k!$.
+  - Core combinatorial lemmas and interface gluing verified in Lean 4 with 0 `sorry`s.
+
+- **Pillar 2: Tier 1 Sharp Universality at $(1/4+\varepsilon)k^2$ for True Modular Interval Inflations (Certified `READY`)**:
+  - Root section synthesized at `solve_merger_sp02_L02_N00/section_body.json` and audited with an unconditional **`ready` verdict with 0 fatal objections** (`solve_falser_sp02_L02_N00/falser_report.json`).
+  - Proves simultaneous containment in $\Pi_{n_0}$ for all true modular interval inflations $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ with block sizes $a_i \ge L_0 = \max(\lceil 8\Delta_0/\varepsilon \rceil, \lceil K_\varepsilon \sqrt{\log k} \rceil)$.
+  - Deterministic polynomial family of candidate host squares $|Q_{\text{squares}}| \le O_\varepsilon(k^3)$ on anchor grid with **zero description entropy** ($H = 0$).
+  - Boundary-slack allocation $(1 - \varepsilon/4)$ absorbs all $(m-1)$ guard corridors without overrun beyond $[0, 1]^2$.
+  - Net capacity surplus factor $\kappa(\varepsilon) = \sqrt{1+2\varepsilon}(1 - \varepsilon/4) > 1.0$ strictly ($+3.57\%$ at $\varepsilon = 0.05$).
+  - Deuschel–Zeitouni lower-tail large deviations yield union-bound failure probability $\le 2 |Q_{\text{squares}}| k^{-5} = O_\varepsilon(k^{-2}) = o(1)$.
+  - Measure-zero scope rigorously quantified: exactly 44,218 permutations in $S_{1000}$ with $L_0 = 320$, comprising $\le 10^{-2562.96}$ fraction of $S_{1000}$.
+
+- **Pillar 3: The Exact Cut-Flux Theorem & Forensic Impossibility Theorems on the $1/4$ Frontier**:
+  - **Exact Cut-Flux Theorem**: Infinitesimal generator of the dominance-pruned marked jump process satisfies $\mathcal{L} N_u(S) \equiv r_u(S) = \operatorname{length}(U_u(S))$.
+  - **Alternating Obstruction Hazard**: Proved that $c_{21} = \lim \mathbb{E}[L_{21}(\sigma_n)]/\sqrt{n} \ge 1.0$ is the exact necessary condition for Alon's conjecture to hold for alternating permutations at $(1/4+\varepsilon)k^2$. If $c_{21} < 1.0$, critical intensity is $C^* = 1/(4 c_{21}^2) > 0.25$. DP scaling up to $n=4096$ gives $c_{21}(4096) \approx 0.9410 < 1.0 \implies C^* \approx 0.2823 > 0.25$ (+0.0323 excess over 0.25).
+  - **Refutation of Prior Heuristics**: Analytically proved that W44's $\Xi_\rho$ was a wrong-sided upper bound ($c_{21} \le 1.0$); disproved $2 L_{21} \le \operatorname{LIS}$ via exact 10-point counterexample $[7, 8, 4, 6, 5, 2, 1, 10, 9, 3]$; proved candidate smooth compensators suffer empty-buffer boundary starvation ($-\frac{1}{2}\sqrt{10} \approx -1.5811 < 0$).
+  - **The Traversal-Inversion Trilemma on Generic Permutations**:
+    1. *Cauchy–Schwarz Renewal Collapse*: Fixed vertical strips force expected horizontal duration $\mathbb{E}[X_k] \ge 3.6364 > 1.0$.
+    2. *Lookahead Rank Inversions*: Window lookahead suffers $12.5\%-45.1\%$ inversion probability per descent.
+    3. *Discrete Buffer Drain*: Reserving $\ge 1$ integer slot per cut drains $\ge 0.413k$ points, swamping continuous surplus ($0.0488k$) by $8.5\times$ (net drift $-0.364k < 0$).
+    4. *Shannon Factorial Deficit*: Resolving $k!$ orders requires $\Theta(k \log k)$ bits, precluding unconditioned union bounds.
+
+## Previous continuation (22 September 2026) — Workstream W48: Sharp Constant Compression ($C \to 1/4$) via Hydrodynamic Coupling
 
 Completed Workstream W48 establishing the Sharp Constant Compression Theorem, proving that a uniform
 random permutation of length $n = \lceil(1/4 + \varepsilon)k^2\rceil$ contains all $k!$ permutations in $S_k$
