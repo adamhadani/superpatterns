@@ -6,7 +6,7 @@ In 1999, Noga Alon conjectured that a uniform random permutation of length $n = 
 
 In this paper, we resolve the asymptotic scaling order of random superpatterns and characterize the geometry of the sharp $1/4$ threshold. First, we establish simultaneous universality of random permutations at quadratic host size $n = C_0 k^2$ for an absolute constant $C_0 > 0$, thereby eliminating the He–Kwan $\log \log k$ factor for all $k!$ permutations simultaneously. The proof combines canonical skeletal decompositions with flexible lookahead interfaces of bounded depth $\Delta = O(1)$ that bypass Poisson void cells without relative order violations; crucially, the description entropy of these interfaces is bounded by $e^{O(k)} \ll k!$, enabling simultaneous embedding across all target permutations on a single common host event. The core algebraic and combinatorial lemmas are formally certified in Lean 4.
 
-Second, toward the sharp threshold, we prove that for the class $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ of modular interval inflations with blocks of size $\Omega(\sqrt{\log k})$, containment holds at host length $\lceil(1/4+\varepsilon)k^2\rceil$ with probability $1 - o(1)$ via a deterministic family of shared host squares. Third, we resolve the asymptotic pair-growth rate of the repeated-$21$ alternating process, proving $c_{21} = 1.0$ identically via a superadditive ergodic squeeze that conclusively eliminates the leading candidate counterexample family $21^{\oplus (k/2)}$. We establish the exact cut-flux identity $\mathcal{L} N_u(S) \equiv r_u(S)$ with universal supremum $\sup_S r_u(S)/u = 1.0$, explain the empirical finite-host deficit $0.941$ as a non-asymptotic Tracy–Widom $O(n^{-1/3})$ boundary lag, construct an explicit 10-point counterexample refuting the heuristic $2 L_{21} \le \mathrm{LIS}$, and formulate the Traversal-Inversion Trilemma governing the open generic frontier at $1/4$.
+Second, toward the sharp threshold, we prove that for the class $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ of modular interval inflations with blocks of size $\Omega(\sqrt{\log k})$, containment holds at host length $\lceil(1/4+\varepsilon)k^2\rceil$ with probability $1 - o(1)$ via a deterministic family of shared host squares. Third, we resolve the asymptotic pair-growth rate of the repeated-$21$ alternating process, proving $c_{21} = 1.0$ identically via a superadditive ergodic squeeze that conclusively eliminates the leading candidate counterexample family $21^{\oplus (k/2)}$. We establish the exact cut-flux identity $\mathcal{L} N_u(S) \equiv r_u(S)$ with universal supremum $\sup_S r_u(S)/u = 1.0$, explain the empirical finite-host deficit $0.941$ as a non-asymptotic Tracy–Widom $O(n^{-1/3})$ boundary lag, construct an explicit 10-point counterexample refuting the heuristic $2 L_{21} \le \mathrm{LIS}$, and characterize the structural geometric and information-theoretic obstructions governing the open generic frontier at $1/4$.
 
 # Introduction
 
@@ -84,13 +84,13 @@ $$
 
 $$
 
-v(s) = 2\sqrt{\frac{1}{4} + \varepsilon} = \sqrt{1 + 4\varepsilon} > 1 \quad \text{for all } \varepsilon > 0,
+r(s) = 2\sqrt{\frac{1}{4} + \varepsilon} = \sqrt{1 + 4\varepsilon} > 1 \quad \text{for all } \varepsilon > 0,
 
 $$
 
 *generating strictly positive surplus Poisson drift $\mathbb{E}[D(s)] \ge 2\varepsilon s k > 0$.*
 
-**Theorem 1.6 (The Traversal-Inversion Trilemma on the Generic Bulk).** *For unstructured generic permutations in the bulk $\mathcal{Q}_k(\varepsilon) = S_k \setminus \mathcal{M}_{\mathrm{int}}(\varepsilon)$, extending the sharp constant $1/4$ is obstructed by four interrelated geometric and information-theoretic barriers:* 1. *Cauchy–Schwarz Renewal Collapse: One-dimensional renewal strips force expected horizontal duration $\mathbb{E}[X_k] \ge 1/C = 3.6364 > 1.0$ at $C = 0.275$, overrunning the unit square.* 2. *Lookahead Window Inversions: Uncoordinated window lookahead across descending steps encounters an inversion probability $p_{\mathrm{inv}} = 1/(2\Delta^2)$ ($12.5\%$ at $\Delta = 2$), decaying zero-inversion path survival as $\le (0.875)^{k/2} \to 0$.* 3. *Discrete Buffer Drain: Reserving discrete rank slots requires at least $0.413k$ points, swamping the continuous surplus ($+0.0488k$) by an $8.5\times$ deficit.* 4. *Shannon Factorial Deficit: Resolving $k!$ distinct orders requires $\Theta(k \log k)$ bits of host entropy, precluding independent single-target certificate union bounds.*
+**Theorem 1.6 (Structural Obstructions to Online Selection on the Generic Bulk).** *For unstructured generic permutations in the bulk $\mathcal{Q}_k(\varepsilon) = S_k \setminus \mathcal{M}_{\mathrm{int}}(\varepsilon)$, extending the sharp constant $1/4$ is obstructed by four interrelated geometric and information-theoretic barriers:* 1. *Cauchy–Schwarz Renewal Collapse: One-dimensional renewal strips force expected horizontal duration $\mathbb{E}[X_k] \ge 1/C = 3.6364 > 1.0$ at $C = 0.275$, overrunning the unit square.* 2. *Lookahead Window Inversions: Uncoordinated window lookahead across descending steps encounters an inversion probability $p_{\mathrm{inv}} = 1/(2\Delta^2)$ ($12.5\%$ at $\Delta = 2$), decaying zero-inversion path survival as $\le (0.875)^{k/2} \to 0$.* 3. *Discrete Buffer Drain: Reserving discrete rank slots requires at least $0.413k$ points, swamping the continuous surplus ($+0.0488k$) by an $8.5\times$ deficit.* 4. *Shannon Factorial Deficit: Resolving $k!$ distinct orders requires $\Theta(k \log k)$ bits of host entropy, precluding independent single-target certificate union bounds.*
 
 ## Key Innovations and Methodological Breakthroughs
 
@@ -102,7 +102,7 @@ The proofs in this paper bring together techniques from continuous-time Markov j
 
 3.  **Boundary-Slack Spatial Allocation & Zero-Entropy Shared Squares:** For structured monotone inflations, target blocks are mapped into a polynomial family of $(k+1)^3$ shared host squares on an anchor grid. We allocate boundary-slack slab widths $w_i = (a_i/k)(1 - \varepsilon/4)$ with guard corridors $\Delta_0 = 2/k$, which completely absorbs all corridor shifts and ensures that the total horizontal span satisfies $\sum w_i + (m-1)\Delta_0/k \le 1 - \varepsilon/8 < 1.0$. This yields a net capacity surplus factor $\kappa(\varepsilon) = \sqrt{1+2\varepsilon}(1 - \varepsilon/4) > 1.0$ ($+3.57\%$ surplus at $\varepsilon=0.05$), enabling Deuschel–Zeitouni large deviations to guarantee simultaneous containment at $(1/4+\varepsilon)k^2$.
 
-4.  **Continuous Scaling Limit vs. Discrete Chaining Obstructions:** We analyze the continuous scaling limit under Hammersley’s planar Poisson process, proving that the limiting point accumulation rate is supercritical ($v(s) = 2\sqrt{C} \ge \sqrt{1+4\varepsilon} > 1$) for any $C = 1/4+\varepsilon$. We then contrast this continuous capacity with the discrete obstructions forming the Traversal-Inversion Trilemma on the generic bulk, pinpointing exactly where multi-scale metric entropy chaining must operate to achieve the full sharp threshold $1/4$ on general unstructured permutations.
+4.  **Continuous Scaling Limit vs. Discrete Chaining Obstructions:** We analyze the continuous scaling limit under Hammersley’s planar Poisson process, proving that the limiting point accumulation rate is supercritical ($r(s) = 2\sqrt{C} \ge \sqrt{1+4\varepsilon} > 1$) for any $C = 1/4+\varepsilon$. We then contrast this continuous capacity with the discrete structural obstructions to online point selection on the generic bulk, pinpointing exactly where multi-scale metric entropy chaining must operate to achieve the full sharp threshold $1/4$ on general unstructured permutations.
 
 ## Outline of the Paper
 
@@ -113,7 +113,7 @@ The paper is organized into nine subsequent sections:
 - **Section : Flexible Lookahead Interfaces.** We resolve the Poisson void obstruction by introducing coordinate windows of lookahead depth $\Delta = O(1)$ that bypass empty cells without ordering violations, bounding total interface entropy by $e^{O(k)}$.
 - **Section : General Simultaneous Universality at $C_0 k^2$.** We choose host constant $C_0 \approx 9.62$ to dominate the interface description entropy $\kappa$, proving Theorem 1.2 on a single common host event and de-Poissonizing to uniform random permutations.
 - **Section : Sharp Universality for Modular Interval Inflations.** We establish Theorem 1.3: zero-entropy shared host squares, boundary-slack spatial slab allocation, strict capacity surplus ($+3.57\%$), Deuschel–Zeitouni large deviations, and the measure-zero scope proof.
-- **Section : The Extremal & Chaining Frontier at $1/4$.** We prove the supercritical Hammersley velocity (Theorem 1.5), analyze the Traversal-Inversion Trilemma on the generic bulk (Theorem 1.6), and outline the metric entropy requirements for dyadic chaining.
+- **Section : The Extremal & Chaining Frontier at $1/4$.** We prove the supercritical Hammersley point accumulation rate (Theorem 1.5), analyze the structural obstructions to online selection on the generic bulk (Theorem 1.6), and outline the metric entropy requirements for dyadic chaining.
 - **Section : Computational Verification & Formal Certification in Lean 4.** We document the regression verification suites and machine-checked Lean 4 formalization.
 - **Section : Conclusion & Open Horizons.** We summarize our findings and discuss open directions toward the complete resolution of Alon’s conjecture.
 - **Section : Acknowledgments & AI Assistance Disclosure.** We report authorship and AI assistance disclosures per COPE and AMS guidelines.
@@ -156,7 +156,7 @@ $$
 
 Earlier investigations suggested either that $c_{21} \ge 1.0$ was already established, or that $2 L_{21}(\sigma) \le \mathrm{LIS}(\sigma)$ bounded the pair capacity by the LIS limit. We rigorously examine and refute these claims:
 
-**Theorem 2.2 (Refutation of Prior Heuristics and 10-Point Counterexample).** 1. **Wrong-Sided Bound Fallacy:** Prior comparison functionals of the form $\Xi_\rho(S_t, t) = \rho u - N_u(S_t) + \frac{t}{4\rho} + B(S_t)$ contain a negative counting term $-N_u$. The submartingale inequality $\mathbb{E}[\Xi_\rho(t)] \ge \mathbb{E}[\Xi_\rho(0)] = \rho u$ implies $\mathbb{E}[N_u(S_t)] \le \rho u + \frac{t}{4\rho}$. Minimizing over $\rho > 0$ yields $\mathbb{E}[N_u(S_t)] \le \sqrt{tu}$, proving strictly an **upper bound** $c_{21} \le 1.0$. Inverting this inequality to claim $c_{21} \ge 1.0$ is an invalid wrong-sided sign error. 2. **Negative Generator Drift of Smooth Compensators:** Any smooth candidate compensator $V(t, t) = t - \frac{c_{\mathrm{TW}}}{2} t^{1/3} - \alpha\varepsilon t^{1/2}$ along the diagonal $t=u$ has continuous derivative $\frac{dV}{dt} = 1 - O(t^{-1/2}) \to 1.0$. In horizontal scanning with fixed vertical cut $u$, the expected traversal profile $\sqrt{tu}$ has partial time derivative $\partial_t \sqrt{tu} = \frac{1}{2}\sqrt{u/t} \to 1/2$ at $u=t$. At empty-buffer states $U_u = \emptyset$ (where cut-flux $r_u = 0$), continuous generator drift opposing the jump process is strictly negative: $-\frac{dV}{dt} \to -1.0 < 0$ or $-\partial_t V \to -1/2 < 0$. In particular, at $u=1, t=0.1$, the net continuous drift is $-\frac{1}{2}\sqrt{10} \approx -1.5811 < 0$, disproving that $N_u - V$ is subharmonic. 3. **Refutation of $2 L_{21} \le \mathrm{LIS}$:** The heuristic bound $2 L_{21}(\sigma) \le \mathrm{LIS}(\sigma)$ is mathematically false, refuted by the explicit counterexample
+**Theorem 2.2 (Refutation of Prior Heuristics and 10-Point Counterexample).** 1. **Wrong-Sided Bound Fallacy:** Prior comparison functionals of the form $\Xi_\rho(S_t, t) = \rho u - N_u(S_t) + \frac{t}{4\rho} + B(S_t)$ contain a negative counting term $-N_u$. The submartingale inequality $\mathbb{E}[\Xi_\rho(t)] \ge \mathbb{E}[\Xi_\rho(0)] = \rho u$ implies $\mathbb{E}[N_u(S_t)] \le \rho u + \frac{t}{4\rho}$. Minimizing over $\rho > 0$ yields $\mathbb{E}[N_u(S_t)] \le \sqrt{tu}$, proving strictly an **upper bound** $c_{21} \le 1.0$. Inverting this inequality to claim $c_{21} \ge 1.0$ is an invalid wrong-sided sign error. 2. **Negative Generator Drift of Smooth Compensators:** Any smooth candidate compensator $V(t, t) = t - \frac{c_{\mathrm{TW}}}{2} t^{1/3} - \alpha\varepsilon t^{1/2}$ along the diagonal $t=u$ has continuous derivative $\frac{dV}{dt} = 1 - O(t^{-1/2}) \to 1.0$. In horizontal scanning with fixed vertical cut $u$, the expected point accumulation profile $\sqrt{tu}$ has partial derivative $\partial_t \sqrt{tu} = \frac{1}{2}\sqrt{u/t} \to 1/2$ with respect to horizontal position $t$ at $u=t$. At empty-buffer states $U_u = \emptyset$ (where cut-flux $r_u = 0$), continuous generator drift opposing the jump process is strictly negative: $-\frac{dV}{dt} \to -1.0 < 0$ or $-\partial_t V \to -1/2 < 0$. In particular, at $u=1, t=0.1$, the net continuous drift is $-\frac{1}{2}\sqrt{10} \approx -1.5811 < 0$, disproving that $N_u - V$ is subharmonic. 3. **Refutation of $2 L_{21} \le \mathrm{LIS}$:** The heuristic bound $2 L_{21}(\sigma) \le \mathrm{LIS}(\sigma)$ is mathematically false, refuted by the explicit counterexample
 
 $$
 
@@ -226,7 +226,7 @@ $$
 
 ## Affirmative Jump Subharmonicity and the Boundary Starvation Barrier
 
-**Theorem 2.5 (Affirmative Jump Subharmonicity and Space-Time Obstruction).** *Fix cut height $u \in (0, R)$.* 1. *The spatial functional $\Psi_+(S) := N_u(S) + \frac{r_u(S)}{u}$ satisfies*
+**Theorem 2.5 (Affirmative Jump Subharmonicity and Continuous Drift Obstruction).** *Fix cut height $u \in (0, R)$.* 1. *The spatial functional $\Psi_+(S) := N_u(S) + \frac{r_u(S)}{u}$ satisfies*
 
 $$
 
@@ -234,7 +234,7 @@ $$
 
 $$
 
-2. *However, $\Psi_+(S)$ contains no continuous time compensator, yielding only $\mathbb{E}[N_u(S_t)] \ge -1$ ($c_{21} \ge 0$). Introducing the required space-time compensator $-\sqrt{tu}$ incurs negative continuous time drift $-\partial_t \sqrt{tu} = -\frac{1}{2}\sqrt{u/t} < 0$. At full-buffer states $r_u = u$, jump drift vanishes ($\mathcal{L}_S \Psi_+ = 0$), forcing net generator drift negative; and at empty-buffer states $U_u = \emptyset$ (where $r_u = 0$), jump flux vanishes, leaving net continuous drift $-\frac{1}{2}\sqrt{u/t} = -\frac{1}{2}\sqrt{10} \approx -1.5811 < 0$ at $u=1, t=0.1$.* 3. *Talagrand’s concentration inequality for configuration functionals on Poisson point processes with certificate size at most $k$ bounds containment failure probability in $\Pi_{n_0}$ conditioned on $c_{21} \ge 1.0$ by*
+2. *However, $\Psi_+(S)$ contains no continuous coordinate compensator, yielding only $\mathbb{E}[N_u(S_t)] \ge -1$ ($c_{21} \ge 0$). Introducing the required bivariate compensator $-\sqrt{tu}$ incurs negative continuous coordinate drift $-\partial_t \sqrt{tu} = -\frac{1}{2}\sqrt{u/t} < 0$. At full-buffer states $r_u = u$, jump drift vanishes ($\mathcal{L}_S \Psi_+ = 0$), forcing net generator drift negative; and at empty-buffer states $U_u = \emptyset$ (where $r_u = 0$), jump flux vanishes, leaving net continuous drift $-\frac{1}{2}\sqrt{u/t} = -\frac{1}{2}\sqrt{10} \approx -1.5811 < 0$ at $u=1, t=0.1$.* 3. *Talagrand’s concentration inequality for configuration functionals on Poisson point processes with certificate size at most $k$ bounds containment failure probability in $\Pi_{n_0}$ conditioned on $c_{21} \ge 1.0$ by*
 
 $$
 
@@ -244,7 +244,7 @@ $$
 
 ## Unconditional Resolution of the Repeated-$21$ Frontier via Superadditive Squeeze
 
-While constructing an affirmative pointwise space-time barrier functional with $(\partial_t + \mathcal{L})\Psi_+ \ge 0$ remains constrained by empty-buffer continuous drift, the asymptotic limit $c_{21}$ is settled unconditionally by exploiting the global superadditive geometry of direct sums:
+While constructing an affirmative pointwise bivariate barrier functional with $(\partial_t + \mathcal{L})\Psi_+ \ge 0$ remains constrained by empty-buffer continuous drift, the asymptotic limit $c_{21}$ is settled unconditionally by exploiting the global superadditive geometry of direct sums:
 
 **Theorem 2.6 (Unconditional Proof of $c_{21} = 1.0$ and Elimination of the $21^{\oplus m}$ Obstruction).** *The asymptotic pair-growth rate satisfies $c_{21} = 1.0000\dots$ identically, and $21^{\oplus \lfloor k/2 \rfloor}$ is contained with high probability for every $C > 1/4$.*
 
@@ -576,7 +576,7 @@ $$
 
 $$
 
-v(s) = 2\sqrt{\frac{1}{4} + \varepsilon} = \sqrt{1 + 4\varepsilon} = 1 + 2\varepsilon - 2\varepsilon^2 + O(\varepsilon^3) > 1.
+r(s) = 2\sqrt{\frac{1}{4} + \varepsilon} = \sqrt{1 + 4\varepsilon} = 1 + 2\varepsilon - 2\varepsilon^2 + O(\varepsilon^3) > 1.
 
 $$
 
@@ -590,13 +590,13 @@ $$
 
 $$
 
-*At the critical threshold $C = 1/4$, $v_c = 2\sqrt{1/4} = 1.0$ and $\mathbb{E}[D(s)] = 0$, confirming that $C = 1/4$ is the exact boundary of feasibility.*
+*At the critical threshold $C = 1/4$, $r_c = 2\sqrt{1/4} = 1.0$ and $\mathbb{E}[D(s)] = 0$, confirming that $C = 1/4$ is the exact boundary of feasibility.*
 
-## The Traversal-Inversion Trilemma on the Generic Bulk
+## Structural Obstructions to Online Point Selection on the Generic Bulk
 
 While continuous paths generate positive surplus drift, embedding discrete unstructured permutations in $\mathcal{Q}_k(\varepsilon) = S_k \setminus \mathcal{M}_{\mathrm{int}}(\varepsilon)$ faces formidable combinatorial and geometric obstructions:
 
-**Theorem 7.3 (The Traversal-Inversion Trilemma for Causal Traversal).** *Let $\Pi_{n_0}$ be a planar Poisson point process on $[0, 1]^2$ with intensity $n_0 = (1/4+\varepsilon/2)k^2$. For any target permutation $\pi \in \mathcal{Q}_k(\varepsilon)$ possessing $(1/2 \pm o(1))k$ descents, any causal sequential point-selection policy is subject to a trilemma among three mutually incompatible operational requirements, alongside an overarching information-theoretic constraint:* 1. **Cauchy–Schwarz Renewal Collapse in Disjoint Strips:** *Confining selections to $k$ disjoint horizontal rank strips $\{S_r\}_{r=1}^k$ ($S_r = [0, 1] \times [y_{r-1}, y_r]$ with $\sum h_r \le 1$) forces horizontal increments $\Delta X_i \sim \operatorname{Exp}(C k^2 h_{\pi(i)})$ to have expected horizontal traversal span*
+**Theorem 7.3 (Structural Obstructions to Online Point Selection).** *Let $\Pi_{n_0}$ be a planar Poisson point process on $[0, 1]^2$ with intensity $n_0 = (1/4+\varepsilon/2)k^2$. For any target permutation $\pi \in \mathcal{Q}_k(\varepsilon)$ possessing $(1/2 \pm o(1))k$ descents, any online (non-anticipative) sequential point-selection policy is subject to fundamental trade-offs among three mutually incompatible operational requirements, alongside an overarching information-theoretic constraint:* 1. **Cauchy–Schwarz Renewal Collapse in Disjoint Strips:** *Confining selections to $k$ disjoint horizontal rank strips $\{S_r\}_{r=1}^k$ ($S_r = [0, 1] \times [y_{r-1}, y_r]$ with $\sum h_r \le 1$) forces horizontal increments $\Delta X_i \sim \operatorname{Exp}(C k^2 h_{\pi(i)})$ to have expected horizontal span*
 
 $$
 
@@ -626,11 +626,11 @@ $$
 
 ## Multi-Scale Dyadic Chaining Reduction
 
-To overcome the Traversal-Inversion Trilemma, we introduce a *non-crossing variational wavefront architecture* with multi-scale dyadic chaining:
+To address these obstructions, we analyze a *multi-scale coordinate coupling architecture* with dyadic chaining:
 
-**Definition 7.4 (Non-Crossing Variational Wavefront Architecture).** Point selection in $\Pi_{n_0}$ is governed by an advancing space-time variational wavefront foliation $\{\mathcal{W}(s)\}_{s \in [0, 1]} \subset [0, 1]^2$ with non-crossing characteristics: 1. **Monotone Horizontal Advance:** The wavefront advances strictly along the horizontal coordinate, guaranteeing an increasing sequence of host horizontal arrival coordinates $0 < X_1 < X_2 < \dots < X_k \le 1$. 2. **Global Order-Isomorphic Level Coupling:** Vertical coordinate assignments $(Y_i)_{i=1}^k$ are coupled variationally across the advancing wavefront such that $Y_a < Y_b \iff \pi(a) < \pi(b)$ for all $1 \le a < b \le k$, deterministically guaranteeing zero coordinate rank inversions across all descents ($p_{\mathrm{inv}} = 0$).
+**Definition 7.4 (Continuous Variational Trajectory and Multi-Scale Coordinate Coupling).** Point selection in $\Pi_{n_0}$ is formulated along a continuous parameterized embedding path with non-crossing coordinate coupling: 1. **Monotone Horizontal Coordinates:** Point selection proceeds in increasing horizontal coordinate, guaranteeing an increasing sequence of host horizontal arrival coordinates $0 < X_1 < X_2 < \dots < X_k \le 1$. 2. **Order-Preserving Vertical Coupling:** Vertical coordinate assignments $(Y_i)_{i=1}^k$ are coupled across the continuous trajectory such that $Y_a < Y_b \iff \pi(a) < \pi(b)$ for all $1 \le a < b \le k$, deterministically guaranteeing zero coordinate rank inversions across all descents ($p_{\mathrm{inv}} = 0$).
 
-**Lemma 7.5 (Multi-Scale Dyadic Chaining & Discretization Penalty Bounds).** *Decomposing target progress $s \in [0, 1]$ across dyadic scales $j \in \{1, \dots, \lceil\log_2 k\rceil\}$:* 1. **Continuous Coarse Hydrodynamic Coupling:** *At coarse scales, continuous hydrodynamic flow delivers macroscopic surplus drift $D_{\mathrm{coarse}}(s) \ge 2\varepsilon s k > 0$.* 2. **Geometric Convergence of Fine Discretization Penalties:** *At fine dyadic scales $j$, interface discretization penalties scale as $P_j = \mathcal{O}(2^{-j/2} k)$. The cumulative penalty sum across all scales converges geometrically:*
+**Lemma 7.5 (Multi-Scale Dyadic Chaining & Discretization Penalty Bounds).** *Decomposing target progress $s \in [0, 1]$ across dyadic scales $j \in \{1, \dots, \lceil\log_2 k\rceil\}$:* 1. **Continuous Coarse-Scale Growth:** *At coarse scales, continuous Hammersley point accumulation yields macroscopic surplus drift $D_{\mathrm{coarse}}(s) \ge 2\varepsilon s k > 0$.* 2. **Geometric Convergence of Fine Discretization Penalties:** *At fine dyadic scales $j$, interface discretization penalties scale as $P_j = \mathcal{O}(2^{-j/2} k)$. The cumulative penalty sum across all scales converges geometrically:*
 
 $$
 
@@ -640,7 +640,7 @@ $$
 
 *bounding the cumulative fine penalty by $P_{\mathrm{fine}}(s) \le 0.24142 \varepsilon s k < \varepsilon s k$.*
 
-**Theorem 7.6 (Multi-Scale Surplus Domination & Traversal Velocity).** *Along the multi-scale chained non-crossing variational wavefront trajectory:* 1. **Surplus Domination:** *For every progress $s \in (0, 1]$ and all $C \ge 0.26$ ($\varepsilon \ge 0.01$), net forward traversal drift satisfies*
+**Theorem 7.6 (Multi-Scale Surplus Domination and Point Accumulation Rate).** *Along the multi-scale chained continuous embedding trajectory:* 1. **Surplus Domination:** *For every progress $s \in (0, 1]$ and all $C \ge 0.26$ ($\varepsilon \ge 0.01$), net forward accumulation drift satisfies*
 
 $$
 
@@ -648,11 +648,11 @@ $$
 
 $$
 
-2. **Supercritical Traversal Velocity:** *The effective forward traversal velocity satisfies $v_{\mathrm{eff}} := 1 + D_{\mathrm{net}}(1)/k \ge 1 + 1.758\varepsilon > 1.0$, ensuring compressed expected horizontal span $\mathbb{E}[X_k] \le 1/v_{\mathrm{eff}} < 1.0$ (with ideal baseline $\mathbb{E}[X_k] \le 1/\sqrt{1+4\varepsilon} < 1.0$).* 3. **Trajectory Confinement:** *By Azuma–Hoeffding concentration, horizontal domain overrun occurs with probability bounded by $\Pr(X_k > 1.0) \le \exp(-\Omega(\varepsilon^2 k)) = o(1)$.*
+2. **Supercritical Point Accumulation Rate:** *The effective forward accumulation rate satisfies $\mu_{\mathrm{eff}} := 1 + D_{\mathrm{net}}(1)/k \ge 1 + 1.758\varepsilon > 1.0$, ensuring compressed expected horizontal span $\mathbb{E}[X_k] \le 1/\mu_{\mathrm{eff}} < 1.0$ (with ideal baseline $\mathbb{E}[X_k] \le 1/\sqrt{1+4\varepsilon} < 1.0$).* 3. **Trajectory Confinement:** *By Azuma–Hoeffding concentration, horizontal domain overrun occurs with probability bounded by $\Pr(X_k > 1.0) \le \exp(-\Omega(\varepsilon^2 k)) = o(1)$.*
 
 ### The Open Analytical Frontier
 
-Full unconditional resolution of Alon’s conjecture for generic unstructured permutations requires completing two open analytical objectives: 1. Realizing the non-crossing variational wavefront via an affirmative continuum hydrodynamic limit theorem for non-monotone paths; 2. Constructing a deterministic low-entropy common host certificate family $\mathcal{H}$ on $\Pi_{n_0}$ of cardinality $|\mathcal{H}| \le \exp(O(\varepsilon^2 k))$ that simultaneously certifies containment for all $k!$ generic permutations, bypassing the $\Theta(k \log k)$ Shannon factorial deficit.
+Full unconditional resolution of Alon’s conjecture for generic unstructured permutations requires completing two open analytical objectives: 1. Establishing an affirmative continuous scaling limit theorem for non-monotone point paths; 2. Constructing a deterministic low-entropy common host certificate family $\mathcal{H}$ on $\Pi_{n_0}$ of cardinality $|\mathcal{H}| \le \exp(O(\varepsilon^2 k))$ that simultaneously certifies containment for all $k!$ generic permutations, bypassing the $\Theta(k \log k)$ Shannon factorial deficit.
 
 ------------------------------------------------------------------------
 
@@ -679,18 +679,24 @@ The repository maintains an automated regression harness covering the core compo
 
 ## Formal Verification in Lean 4
 
-The repository includes formal proofs in Lean 4 located in `formal-verification/lean/`:
+The core combinatorial and algebraic foundations of the proof are formalized in Lean 4. The complete formalization is hosted in the public GitHub repository at:
 
-- `Superpatterns/Patterns.lean`: Standardisation, pattern containment, and order isomorphism.
-- `Superpatterns/ErdosSzekeres.lean`: Formal proof connecting Mathlib’s Erdős–Szekeres theorem to pattern containment.
-- `Superpatterns/Interleaving.lean`: Formal proofs that strictly increasing lists avoid 21 (`strictly_increasing_avoids_21`) and 321 (`strictly_increasing_avoids_321`), multi-chain word entropy power identities $d^{2k} = (d^2)^k$, lookahead profile power bounds, non-overlapping coordinate intervals for disjoint blocks, window coordinate separation under positive buffer spacing, dynamic bypass order preservation (`lookahead_bypass_order`), and supercritical accumulation rate rational algebraic inequalities (`supercritical_velocity_quad`).
-- `Superpatterns/Axioms.lean`: Automated axiom audit confirming that all formal proofs build cleanly using standard foundational axioms only (`propext`, `Quot.sound`, `Classical.choice`), with zero `sorry`s and zero compiler trust axioms on analytic proofs.
+$$
+\text{\url{https://github.com/adamhadani/superpatterns/tree/main/formal-verification/lean}}
+$$
+
+The individual Lean 4 source modules are located under `formal-verification/lean/` and can be inspected directly at the following URLs:
+
+- [`Superpatterns/Patterns.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Patterns.lean): Standardisation, pattern containment, and order isomorphism.
+- [`Superpatterns/ErdosSzekeres.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/ErdosSzekeres.lean): Formal proof connecting Mathlib’s Erdős–Szekeres theorem to pattern containment.
+- [`Superpatterns/Interleaving.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Interleaving.lean): Formal proofs that strictly increasing lists avoid 21 (`strictly_increasing_avoids_21`) and 321 (`strictly_increasing_avoids_321`), multi-chain word entropy power identities $d^{2k} = (d^2)^k$, lookahead profile power bounds, non-overlapping coordinate intervals for disjoint blocks, window coordinate separation under positive buffer spacing, dynamic bypass order preservation (`lookahead_bypass_order`), and supercritical accumulation rate rational algebraic inequalities (`supercritical_velocity_quad`).
+- [`Superpatterns/Axioms.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Axioms.lean): Automated axiom audit confirming that all formal proofs build cleanly using standard foundational axioms only (`propext`, `Quot.sound`, `Classical.choice`), with zero `sorry`s and zero compiler trust axioms on analytic proofs.
 
 ------------------------------------------------------------------------
 
 # Conclusion
 
-By developing canonical skeletal decompositions and flexible lookahead interfaces with bounded description entropy, we have established the simultaneous universality of random permutations at quadratic host size $n = C_0 k^2$, fully eliminating the $\log\log k$ factor from He and Kwan \[6\]. Furthermore, we have proved the sharp threshold $(1/4+\varepsilon)k^2$ for the class of modular interval inflations, and characterized the infinitesimal jump generator of the repeated-$21$ process, providing an exact cut-flux identity that explains finite-size deficits and refutes prior heuristics. Finally, our analysis of the Traversal-Inversion Trilemma identifies the precise geometric and information-theoretic mechanisms required to resolve the full conjecture at $(1/4+\varepsilon)k^2$ for generic permutations.
+By developing canonical skeletal decompositions and flexible lookahead interfaces with bounded description entropy, we have established the simultaneous universality of random permutations at quadratic host size $n = C_0 k^2$, fully eliminating the $\log\log k$ factor from He and Kwan \[6\]. Furthermore, we have proved the sharp threshold $(1/4+\varepsilon)k^2$ for the class of modular interval inflations, and characterized the infinitesimal jump generator of the repeated-$21$ process, providing an exact cut-flux identity that explains finite-size deficits and refutes prior heuristics. Finally, our analysis of the structural obstructions on the generic bulk identifies the precise geometric and information-theoretic mechanisms required to resolve the full conjecture at $(1/4+\varepsilon)k^2$ for generic permutations.
 
 ------------------------------------------------------------------------
 
@@ -706,10 +712,17 @@ In accordance with COPE (Committee on Publication Ethics), arXiv, and American M
 
 # Appendix: Lean 4 Formal Verification Directory
 
-The formal verification project is located in `formal-verification/lean/`. To build and verify all formal proofs:
+The formal verification project is located in `formal-verification/lean/` and hosted publicly at:
+
+$$
+\text{\url{https://github.com/adamhadani/superpatterns/tree/main/formal-verification/lean}}
+$$
+
+To clone the repository and build all formal proofs locally:
 
 ~~~ sh
-cd formal-verification/lean
+git clone https://github.com/adamhadani/superpatterns.git
+cd superpatterns/formal-verification/lean
 lake build
 ~~~
 
