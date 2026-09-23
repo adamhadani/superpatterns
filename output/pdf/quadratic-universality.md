@@ -2,13 +2,11 @@
 
 Adam Ever-Hadani · September 2026
 
-In 1999, Noga Alon conjectured that a uniform random permutation of length $n = \lceil(1/4 + \varepsilon)k^2\rceil$ contains every permutation of length $k$ simultaneously with probability tending to 1 as $k \to \infty$, for every fixed $\varepsilon > 0$. In a major advance, He and Kwan (2020) established simultaneous universality at host length $O(k^2 \log \log k)$, leaving open the elimination of the $\log \log k$ factor. Furthermore, the leading candidate counterexample in the literature—the family of direct-summed decreasing pairs $21^{\oplus (k/2)}$—exhibited empirical finite-host deficits ($0.941 < 1.0$) that appeared to challenge the conjecture.
+In 1999, Noga Alon conjectured that a uniform random permutation of length $n = \lceil(1/4 + \varepsilon)k^2\rceil$ contains every permutation of length $k$ simultaneously with high probability as $k \to \infty$, for every fixed $\varepsilon > 0$. The longest increasing subsequence (LIS) barrier forces $n \ge \frac{1}{4}k^2$, but the best general upper bound remained $n = O(k^2 \log \log k)$, established by He and Kwan (2020). Moreover, the direct-sum alternating family $21^{\oplus (k/2)}$ has stood as the primary candidate counterexample to Alon’s conjecture due to persistent empirical finite-host deficits ($c_{21} \approx 0.941 < 1.0$).
 
-In this paper, we resolve the asymptotic scaling of random superpatterns and characterize the geometry of the sharp $1/4$ threshold across three primary contributions:
+In this paper, we resolve the asymptotic scaling order of random superpatterns and characterize the geometry of the sharp $1/4$ threshold. First, we establish simultaneous universality of random permutations at quadratic host size $n = C_0 k^2$ for an absolute constant $C_0 > 0$, thereby eliminating the He–Kwan $\log \log k$ factor for all $k!$ permutations simultaneously. The proof combines canonical skeletal decompositions with flexible lookahead interfaces of bounded depth $\Delta = O(1)$ that bypass Poisson void cells without relative order violations; crucially, the description entropy of these interfaces is bounded by $e^{O(k)} \ll k!$, enabling simultaneous embedding across all target permutations on a single common host event. The core algebraic and combinatorial lemmas are formally certified in Lean 4.
 
-1.  **Unconditional Quadratic Universality (Pillar 1):** We establish simultaneous universality of random permutations at quadratic host size $n = C_0 k^2$ for an absolute constant $C_0 > 0$ ($C_0 \approx 9.62$), fully eliminating the He–Kwan $\log\log k$ factor for all $k!$ permutations simultaneously. Our proof combines canonical skeletal decompositions with flexible lookahead interfaces ($\Delta = O(1)$) whose description entropy is bounded by $e^{O(k)} \ll k!$, certified by a machine-checked formalization in Lean 4 with 8,720 compiled jobs and zero `sorry`s.
-2.  **Tier 1 Sharp Universality for Modular Interval Inflations (Pillar 2):** For the class $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ of true modular interval inflations with blocks of size $a_i \ge L_0 = \lceil K\sqrt{\log k}\rceil$, we prove the exact sharp threshold $n = \lceil(1/4+\varepsilon)k^2\rceil$ with high probability $1 - o(1)$ on a single common host event. This is achieved via a zero-entropy family of $O(k^3)$ shared host squares, boundary-slack spatial allocation $(1 - \varepsilon/4)$ absorbing all guard corridors, and a strictly positive net capacity surplus $\kappa(\varepsilon) = \sqrt{1+2\varepsilon}(1-\varepsilon/4) > 1.0$ ($+3.57\%$ at $\varepsilon=0.05$). We also prove that $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ occupies a measure-zero fraction of $S_k$ ($\le 10^{-2562.96}$ in $S_{1000}$).
-3.  **The Extremal and Chaining Frontier at $1/4$ (Pillar 3):** We analyze the continuous Poisson jump generator of the repeated-$21$ frontier and prove the Exact Cut-Flux Theorem $\mathcal{L} N_u(S) \equiv r_u(S)$ with $\sup_S r_u(S)/u = 1.0$. We refute prior heuristics by constructing an explicit 10-point counterexample disproving the conjecture $2 L_{21} \le \mathrm{LIS}$, showing prior comparison bounds were wrong-sided ($c_{21} \le 1.0$), and proving boundary starvation on smooth compensators. We establish that $c_{21} \ge 1.0$ is the exact necessary condition for Alon’s conjecture at $1/4$ alongside the empirical hazard $c_{21} \approx 0.9410 < 1.0 \implies C^* \approx 0.2823 > 0.25$, and formulate the Traversal-Inversion Trilemma (renewal collapse, lookahead window inversions, discrete buffer drain, and the Shannon factorial deficit) that characterizes the open generic frontier at $1/4$.
+Second, toward the sharp threshold, we prove that for the class $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ of modular interval inflations with blocks of size $\Omega(\sqrt{\log k})$, containment holds at host length $\lceil(1/4+\varepsilon)k^2\rceil$ with probability $1 - o(1)$ via a deterministic family of shared host squares. Third, we analyze the continuous Poisson jump generator of the repeated-$21$ process, proving an exact cut-flux identity $\mathcal{L} N_u(S) \equiv r_u(S)$ with universal supremum $\sup_S r_u(S)/u = 1.0$, which explains finite-size deficits as boundary starvation artifacts. We construct an explicit 10-point counterexample refuting the heuristic $2 L_{21} \le \mathrm{LIS}$, and formulate the Traversal-Inversion Trilemma governing the open generic frontier at $1/4$.
 
 # Introduction
 
@@ -48,11 +46,11 @@ For two decades, the gap between known upper bounds and Alon’s conjecture rema
 
 Subsequent work on offline and online pattern embedding by Altschuler, Dubroff, and Tikhomirov \[7\] established containment of a *single* typical target at coefficient $0.49967 + \varepsilon$, and a single arbitrary target at $0.50568 + \varepsilon$. But because their failure bounds do not decay faster than $1/k!$, taking a union bound over all $k!$ targets was impossible.
 
-## Main Contributions: The Three Pillars
+## Main Contributions
 
-This paper organizes its contributions along three structured pillars, bridging unconditional universality, sharp thresholds for structured classes, and the exact mathematical obstructions governing the open frontier:
+The contributions of this paper address the problem at three natural levels: unconditional universality at quadratic host size, sharp universality for structured modular inflations, and an exact analysis of the extremal and chaining frontier at the sharp constant $1/4$:
 
-### Pillar 1: Unconditional Quadratic Universality at $C_0 k^2$
+### Unconditional Quadratic Universality at $O(k^2)$
 
 **Theorem 1.2 (Simultaneous Universality at Quadratic Host Size).** *There exists an absolute constant $C_0 > 0$ such that a uniform random permutation $\sigma_n \in S_n$ of length $n = C_0 k^2$ simultaneously contains every permutation $\pi \in S_k$ with probability tending to $1$ as $k \to \infty$:*
 
@@ -64,13 +62,13 @@ $$
 
 *This eliminates the $\log\log k$ factor from He and Kwan \[6\] and establishes that the threshold length satisfies $s_{1/2}(k) = \Theta(k^2)$ for an absolute constant $C_0 \approx 9.62$. All core combinatorial lemmas and algebraic inequalities are formally verified in Lean 4.*
 
-### Pillar 2: Tier 1 Sharp Universality for Modular Interval Inflations
+### Sharp Universality for Modular Interval Inflations
 
 **Theorem 1.3 (Sharp Threshold for Modular Interval Inflations).** *Let $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ be the class of all true modular interval inflations in $S_k$ whose constituent monotone blocks have length at least $L_0 = \lceil K \sqrt{\log k} \rceil$. For every fixed $\varepsilon > 0$, a uniform random permutation of length $n = \lceil(1/4 + \varepsilon)k^2\rceil$ simultaneously contains all of $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ with probability $1 - o(1)$ on a single common host event.*
 
 *Furthermore, $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ is asymptotically of measure zero: at $k = 1000$ and $\varepsilon = 0.05$, the number of qualifying permutations in $S_{1000}$ is at most $44,218$, representing a fraction $\le 10^{-2562.96}$ of $S_{1000}$.*
 
-### Pillar 3: The Extremal and Chaining Frontier at $1/4$
+### The Extremal and Chaining Frontier at $1/4$
 
 **Theorem 1.4 (The Exact Cut-Flux Theorem and Refutation of Prior Heuristics).** *Let $21^{\oplus m} \in S_{2m}$ be the direct-sum alternating family, and let $\mathcal{L}$ be the infinitesimal jump generator of the dominance-pruned Poisson process on $[0, \infty) \times [0, R]$. Then:* 1. *Exact Cut-Flux Identity: For every reachable marked state $S$ and every cut height $u$,*
 
@@ -80,7 +78,7 @@ $$
 
 $$
 
-2. *Supremum Flux: The instantaneous flux satisfies $\sup_S r_u(S)/u = 1.0$.* 3. *Refutation of $2 L_{21} \le \mathrm{LIS}$: There exist permutations where $2 L_{21}(\sigma) > \mathrm{LIS}(\sigma)$; an explicit counterexample of length $10$ is $\sigma = [7, 8, 4, 6, 5, 2, 1, 10, 9, 3]$ with $L_{21}(\sigma) = 3$ and $\mathrm{LIS}(\sigma) = 4 < 6$.* 4. *Starvation on Compensators: Any continuous smooth drift compensator $\Phi_0$ suffers negative boundary drift ($-\frac{1}{2}\sqrt{10} \approx -1.5811 < 0$) when the buffer of pending apices empties.* 5. *Necessary Condition & Empirical Hazard: The asymptotic rate $c_{21} = \lim L_{21}(\sigma_n)/\sqrt{n} \ge 1.0$ is strictly necessary for Alon’s conjecture at $1/4$ ($C^* = 1/(4 c_{21}^2)$). High-precision dynamic programming yields $c_{21}(4096) \approx 0.9410 \pm 0.0008 < 1.0$, which implies a finite-scale critical constant $C^* \approx 0.2823 > 0.25$ unless boundary starvation is fully compensated.*
+2. *Supremum Flux: The instantaneous flux satisfies $\sup_S r_u(S)/u = 1.0$.* 3. *Refutation of $2 L_{21} \le \mathrm{LIS}$: There exist permutations where $2 L_{21}(\sigma) > \mathrm{LIS}(\sigma)$; an explicit counterexample of length $10$ is $\sigma = [7, 8, 4, 6, 5, 2, 1, 10, 9, 3]$ with $L_{21}(\sigma) = 2$ and $\mathrm{LIS}(\sigma) = 3 < 4$.* 4. *Starvation on Compensators: Any continuous smooth drift compensator $\Phi_0$ suffers negative boundary drift ($-\frac{1}{2}\sqrt{10} \approx -1.5811 < 0$) when the buffer of pending apices empties.* 5. *Necessary Condition & Empirical Hazard: The asymptotic rate $c_{21} = \lim L_{21}(\sigma_n)/\sqrt{n} \ge 1.0$ is strictly necessary for Alon’s conjecture at $1/4$ ($C^* = 1/(4 c_{21}^2)$). High-precision dynamic programming yields $c_{21}(4096) \approx 0.9410 \pm 0.0008 < 1.0$, which implies a finite-scale critical constant $C^* \approx 0.2823 > 0.25$ unless boundary starvation is fully compensated.*
 
 **Theorem 1.5 (Supercritical Hammersley Point Accumulation Rate).** *In a planar Poisson process of intensity $n = (1/4+\varepsilon)k^2$ on $[0, 1]^2$, the limiting point accumulation rate along any monotone trajectory profile satisfies*
 
@@ -98,7 +96,7 @@ $$
 
 The proofs in this paper bring together techniques from continuous-time Markov jump processes, planar Poisson point processes, and extremal permutation combinatorics. Four key innovations make these breakthroughs possible:
 
-1.  **The Infinitesimal Cut-Flux Generator (Continuous Markov Processes $\leftrightarrow$ Pattern Containment):** The direct-sum family $21^{\oplus m}$ was long regarded as the primary candidate counterexample to Alon’s conjecture because discrete finite-size Monte Carlo simulations (e.g. at $n = 4096$) yielded an empirical growth rate of $\approx 0.941\sqrt{n} < 1.0\sqrt{n}$. Instead of relying on heuristic sample limits, we cast the prefix growth of completed pairs as a continuous planar jump process on $[0, \infty) \times [0, R]$ and prove the exact infinitesimal generator identity $\mathcal{L} N_u(S) \equiv r_u(S)$. Because the cut-flux is bounded by the Lebesgue measure $r_u(S) \le u$, we prove $\sup_S r_u(S)/u = 1.0$. This reveals that the empirical $0.941$ figure is a finite-size $O(n^{-1/6})$ Tracy–Widom boundary starvation artifact, directly parallel to the classical LIS lag ($1.83 < 2.0$), definitively refuting the proposed obstruction.
+1.  **The Infinitesimal Cut-Flux Generator: Connecting Markov Processes with Pattern Containment:** The direct-sum family $21^{\oplus m}$ was long regarded as the primary candidate counterexample to Alon’s conjecture because discrete finite-size Monte Carlo simulations (e.g. at $n = 4096$) yielded an empirical growth rate of $\approx 0.941\sqrt{n} < 1.0\sqrt{n}$. Instead of relying on heuristic sample limits, we cast the prefix growth of completed pairs as a continuous planar jump process on $[0, \infty) \times [0, R]$ and prove the exact infinitesimal generator identity $\mathcal{L} N_u(S) \equiv r_u(S)$. Because the cut-flux is bounded by the Lebesgue measure $r_u(S) \le u$, we prove $\sup_S r_u(S)/u = 1.0$. This demonstrates that the instantaneous pair-growth flux is not bounded away from $1.0$, suggesting that the empirical $0.941$ figure is a finite-size $O(n^{-1/6})$ boundary starvation effect parallel to the classical LIS lag ($1.83 < 2.0$), and providing an exact framework to evaluate why earlier attempts to bound $c_{21}$ stalled.
 
 2.  **Flexible Lookahead Interfaces: Decoupling Poisson Void Bypass from $k!$:** In earlier work (He and Kwan \[6\]), host permutations were partitioned into rigid coordinate grid cells. Because a Poisson host has empty cells with constant probability $e^{-C}$, rigid grid embeddings inevitably fail unless buffered across multi-scale hierarchies, which introduced the $\log\log k$ factor. We replace rigid cell occupancy with flexible coordinate lookahead windows of depth $\Delta = O(1)$. Targets dynamically bypass empty cells without violating relative coordinate order. Crucially, we prove that the total description entropy of these interface choices is bounded by $e^{O(k)}$—strictly linear in $k$ in the exponent, and completely independent of the $k!$ permutation count. By choosing host intensity $C$ large enough to dominate this interface entropy, a single common host event of probability $1 - o(1)$ simultaneously embeds all $k!$ permutations.
 
@@ -113,9 +111,9 @@ The paper is organized into nine subsequent sections:
 - **Section : The Extremal Frontier, The Exact Cut-Flux Theorem, & Refutation of Prior Heuristics.** We analyze the continuous Poisson jump generator of the repeated-$21$ frontier, establish the exact cut-flux identity $\mathcal{L} N_u(S) \equiv r_u(S)$, present the 10-point counterexample to $2 L_{21} \le \mathrm{LIS}$, and prove boundary starvation on smooth compensators.
 - **Section : Canonical Skeletal Decomposition.** We partition any target permutation $\pi \in S_k$ into structured monotone interval blocks and residual components, bounding partition entropy by $\exp(o(k))$.
 - **Section : Flexible Lookahead Interfaces.** We resolve the Poisson void obstruction by introducing coordinate windows of lookahead depth $\Delta = O(1)$ that bypass empty cells without ordering violations, bounding total interface entropy by $e^{O(k)}$.
-- **Section : General Simultaneous Universality at $C_0 k^2$ (Pillar 1).** We choose host constant $C_0 \approx 9.62$ to dominate the interface description entropy $\kappa$, proving Theorem 1.2 on a single common host event and de-Poissonizing to uniform random permutations.
-- **Section : Tier 1 Sharp Universality for Modular Interval Inflations (Pillar 2).** We establish Theorem 1.3: zero-entropy shared host squares, boundary-slack spatial slab allocation, strict capacity surplus ($+3.57\%$), Deuschel–Zeitouni large deviations, and the measure-zero scope proof.
-- **Section : The Extremal & Chaining Frontier at $1/4$ (Pillar 3).** We prove the supercritical Hammersley velocity (Theorem 1.5), analyze the Traversal-Inversion Trilemma on the generic bulk (Theorem 1.6), and outline the metric entropy requirements for dyadic chaining.
+- **Section : General Simultaneous Universality at $C_0 k^2$.** We choose host constant $C_0 \approx 9.62$ to dominate the interface description entropy $\kappa$, proving Theorem 1.2 on a single common host event and de-Poissonizing to uniform random permutations.
+- **Section : Sharp Universality for Modular Interval Inflations.** We establish Theorem 1.3: zero-entropy shared host squares, boundary-slack spatial slab allocation, strict capacity surplus ($+3.57\%$), Deuschel–Zeitouni large deviations, and the measure-zero scope proof.
+- **Section : The Extremal & Chaining Frontier at $1/4$.** We prove the supercritical Hammersley velocity (Theorem 1.5), analyze the Traversal-Inversion Trilemma on the generic bulk (Theorem 1.6), and outline the metric entropy requirements for dyadic chaining.
 - **Section : Computational Verification & Formal Certification in Lean 4.** We document the regression verification suites and machine-checked Lean 4 formalization.
 - **Section : Conclusion & Open Horizons.** We summarize our findings and discuss open directions toward the complete resolution of Alon’s conjecture.
 - **Section : Acknowledgments & AI Assistance Disclosure.** We report authorship and AI assistance disclosures per COPE and AMS guidelines.
@@ -154,9 +152,9 @@ $$
 
 *Proof.* Set $m = \lfloor k/2 \rfloor$ and $n = \lceil C k^2 \rceil = \lceil 4 C m^2 \rceil (1+o(1))$. As $m \to \infty$, $\sqrt{n} = 2\sqrt{C} m (1+o(1))$. By Kingman’s subadditive ergodic theorem, $L_{21}(\sigma_n)/\sqrt{n} \to c_{21}$ in probability, so $L_{21}(\sigma_n)/m \to 2\sqrt{C} c_{21}$. Containment requires $L_{21}(\sigma_n) \ge m$, forcing $2\sqrt{C} c_{21} \ge 1 \iff C \ge 1/(4 c_{21}^2) = C^*$. If $c_{21} < 1.0$, choosing $C \in (1/4, C^*)$ gives $2\sqrt{C} c_{21} < 1$. Because $L_{21}$ is a configuration functional with certificate size at most $2 L_{21} \le k$, Talagrand’s concentration inequality yields $\Pr(L_{21}(\sigma_n) \ge m) \le \exp(-\Omega(k)) \to 0$. Claims (2) and (3) follow from exact DAG dynamic programming and least-squares regressions. $\square$
 
-## Forensic Audit of Prior Heuristics & Refutation of $2 L_{21} \le \mathrm{LIS}$
+## Evaluation of Prior Heuristics and Refutation of $2 L_{21} \le \mathrm{LIS}$
 
-Earlier investigations advanced heuristic arguments suggesting either that $c_{21} \ge 1.0$ was already established, or that $2 L_{21}(\sigma) \le \mathrm{LIS}(\sigma)$ bounded the pair capacity by the LIS limit. We formally audit and refute these claims:
+Earlier investigations suggested either that $c_{21} \ge 1.0$ was already established, or that $2 L_{21}(\sigma) \le \mathrm{LIS}(\sigma)$ bounded the pair capacity by the LIS limit. We rigorously examine and refute these claims:
 
 **Theorem 2.2 (Refutation of Prior Heuristics and 10-Point Counterexample).** 1. **Wrong-Sided Bound Fallacy:** Prior comparison functionals of the form $\Xi_\rho(S_t, t) = \rho u - N_u(S_t) + \frac{t}{4\rho} + B(S_t)$ contain a negative counting term $-N_u$. The submartingale inequality $\mathbb{E}[\Xi_\rho(t)] \ge \mathbb{E}[\Xi_\rho(0)] = \rho u$ implies $\mathbb{E}[N_u(S_t)] \le \rho u + \frac{t}{4\rho}$. Minimizing over $\rho > 0$ yields $\mathbb{E}[N_u(S_t)] \le \sqrt{tu}$, proving strictly an **upper bound** $c_{21} \le 1.0$. Inverting this inequality to claim $c_{21} \ge 1.0$ is an invalid wrong-sided sign error. 2. **Negative Generator Drift of Smooth Compensators:** Any smooth candidate compensator $V(t, t) = t - \frac{c_{\mathrm{TW}}}{2} t^{1/3} - \alpha\varepsilon t^{1/2}$ along the diagonal $t=u$ has continuous derivative $\frac{dV}{dt} = 1 - O(t^{-1/2}) \to 1.0$. In horizontal scanning with fixed vertical cut $u$, the expected traversal profile $\sqrt{tu}$ has partial time derivative $\partial_t \sqrt{tu} = \frac{1}{2}\sqrt{u/t} \to 1/2$ at $u=t$. At empty-buffer states $U_u = \emptyset$ (where cut-flux $r_u = 0$), continuous generator drift opposing the jump process is strictly negative: $-\frac{dV}{dt} \to -1.0 < 0$ or $-\partial_t V \to -1/2 < 0$. In particular, at $u=1, t=0.1$, the net continuous drift is $-\frac{1}{2}\sqrt{10} \approx -1.5811 < 0$, disproving that $N_u - V$ is subharmonic. 3. **Refutation of $2 L_{21} \le \mathrm{LIS}$:** The heuristic bound $2 L_{21}(\sigma) \le \mathrm{LIS}(\sigma)$ is mathematically false, refuted by the explicit counterexample
 
@@ -428,9 +426,9 @@ This completes the proof of Theorem 1.2. $\blacksquare$
 
 ------------------------------------------------------------------------
 
-# Tier 1 Sharp Universality for Modular Interval Inflations
+# Sharp Universality for Modular Interval Inflations
 
-We now establish Tier 1 of our universality architecture: proving Alon’s sharp threshold $(1/4+\varepsilon)k^2$ for the class of true modular interval inflations with zero description entropy.
+We now establish Alon’s sharp threshold $(1/4+\varepsilon)k^2$ for the class of true modular interval inflations, achieving simultaneous containment with zero description entropy.
 
 ## The Class of True Modular Interval Inflations
 
@@ -508,13 +506,13 @@ $$
 
 *Proof.* Expanding $(1 + 2\varepsilon)(1 - \varepsilon/4)^2 = 1 + \frac{3}{2}\varepsilon - \frac{15}{16}\varepsilon^2 + \frac{1}{8}\varepsilon^3 > 1$ for all $\varepsilon \in (0, 1/2]$ proves $\eta_\varepsilon > 0$. At $\varepsilon = 0.05$, $\sqrt{1.10} \times 0.9875 - 1 \approx 0.0356987 > +3.569\%$. Since $a = (1 - \delta_\varepsilon) 2\sqrt{\mu(a)}$, Theorem 1 of Deuschel and Zeitouni \[8\] ensures lower-tail decay $\exp(-c_{\mathrm{DZ}} a^2)$. Reflection preserves intensity and maps LDS to LIS. Since $c_{\mathrm{DZ}} a^2 \ge 6\log k$, each failure probability is at most $k^{-6} \le k^{-5}$. $\square$
 
-## Tier 1 Universality Theorem
+## Sharp Universality for the Class $\mathcal{M}_{\mathrm{int}}(\varepsilon)$
 
-**Theorem 6.5 (Tier 1 Universality: Simultaneous Containment with Zero Description Entropy).** *Let $\varepsilon > 0$ and $n_0 = (1/4+\varepsilon/2)k^2$. In $\Pi_{n_0}$, define the deterministic common host event*
+**Theorem 6.5 (Sharp Universality: Simultaneous Containment with Zero Description Entropy).** *Let $\varepsilon > 0$ and $n_0 = (1/4+\varepsilon/2)k^2$. In $\Pi_{n_0}$, define the deterministic common host event*
 
 $$
 
-E_{\mathrm{Tier1}} := \bigcap_{Q \in \mathcal{Q}_{\mathrm{squares}}} \left\{ \operatorname{LIS}(Q \cap \Pi_{n_0}) \ge a(Q) \quad \text{and} \quad \operatorname{LDS}(Q \cap \Pi_{n_0}) \ge a(Q) \right\},
+E_{\mathrm{int}} := \bigcap_{Q \in \mathcal{Q}_{\mathrm{squares}}} \left\{ \operatorname{LIS}(Q \cap \Pi_{n_0}) \ge a(Q) \quad \text{and} \quad \operatorname{LDS}(Q \cap \Pi_{n_0}) \ge a(Q) \right\},
 
 $$
 
@@ -522,11 +520,11 @@ $$
 
 $$
 
-   \Pr\left(E_{\mathrm{Tier1}}^c\right) \le 2 |\mathcal{Q}_{\mathrm{squares}}| k^{-5} \le 2\left(\frac{16k}{\varepsilon} + 1\right)^2 k \cdot k^{-5} = \mathcal{O}_\varepsilon\left(\frac{1}{k^2}\right) = o(1) \quad \text{as } k \to \infty.
+   \Pr\left(E_{\mathrm{int}}^c\right) \le 2 |\mathcal{Q}_{\mathrm{squares}}| k^{-5} \le 2\left(\frac{16k}{\varepsilon} + 1\right)^2 k \cdot k^{-5} = \mathcal{O}_\varepsilon\left(\frac{1}{k^2}\right) = o(1) \quad \text{as } k \to \infty.
 
 $$
 
-2. **Simultaneous Containment:** *On $E_{\mathrm{Tier1}}$, every true modular interval inflation $\pi \in \mathcal{M}_{\mathrm{int}}(\varepsilon)$ embeds into $\Pi_{n_0}$ simultaneously:*
+2. **Simultaneous Containment:** *On $E_{\mathrm{int}}$, every true modular interval inflation $\pi \in \mathcal{M}_{\mathrm{int}}(\varepsilon)$ embeds into $\Pi_{n_0}$ simultaneously:*
 
 $$
 
@@ -538,7 +536,7 @@ $$
 
 *Proof.* Follows directly from Lemma 6.3 and Lemma 6.4. Pairwise disjointness and guard corridors guarantee that combining the local monotone witnesses yields a global subsequence order-isomorphic to $\pi$. $\square$
 
-## Scope and Measure-Zero Status of Tier 1
+## Scope and Measure-Zero Status of $\mathcal{M}_{\mathrm{int}}(\varepsilon)$
 
 **Proposition 6.6 (Algebraic Symmetry, Measure-Zero Scope, and Simple Permutation Density).** *The class $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ satisfies:* 1. **Transposition and $D_4$ Invariance:** *Transposition $\pi \mapsto \pi^{-1}$ reflects permutation graphs across $y = x$, swapping domain intervals $I_i$ with value intervals $J_i = \pi(I_i)$. Since the $J_i$ are pairwise disjoint contiguous intervals of sizes $a_i \ge L_0$ and $(\pi|_{I_i})^{-1} = \pi^{-1}|_{J_i}$ is strictly monotone, $\pi^{-1} \in \mathcal{M}_{\mathrm{int}}(\varepsilon)$. The class is also invariant under reversal and complementation, generating the full dihedral symmetry group $D_4$.* 2. **Asymptotically Measure-Zero Scope:** *Each $\pi \in \mathcal{M}_{\mathrm{int}}(\varepsilon)$ is determined by $m \le \lfloor k/L_0 \rfloor$, a composition of $k$ into $m$ parts $\ge L_0$ ($\le 2^{k-1}$ choices), a quotient $\tau \in S_m$ ($m!$ choices), and $m$ signs ($2^m$ choices). Summing over $m$ gives $|\mathcal{M}_{\mathrm{int}}(\varepsilon)| \le 4^k (\lfloor k/L_0 \rfloor)!$, so $|\mathcal{M}_{\mathrm{int}}(\varepsilon)|/k! \le \exp(-\Omega(k \log L_0)) \to 0$. In particular, at $L_0 = 320$ for $k = 1000$ and $\varepsilon = 0.05$, the number of qualifying permutations in $S_{1000}$ is at most $44,218$, representing a fraction $\le 10^{-2562.96}$ of $S_{1000}$.* 3. **Absence in Generic Permutations:** *By Albert, Atkinson, and Klazar \[9\], simple permutations have asymptotic density $\lim_{k \to \infty} s_k/k! = 1/e^2 \approx 13.53\%$, containing no non-trivial interval blocks of any size. Furthermore, a first-moment union bound shows that the probability of containing any interval block of size $\ge L_0$ in $\operatorname{Uniform}(S_k)$ is bounded by $\sum_{a=L_0}^{k-1} (k-a+1)^2 / \binom{k}{a} = \frac{4}{k} + \mathcal{O}(1/k^2) = o(1)$.*
 
@@ -546,7 +544,7 @@ $$
 
 # The Extremal & Chaining Frontier at $1/4$
 
-We now turn to Pillar 3: the mathematical structure of the sharp $1/4$ threshold on unstructured generic permutations.
+We now turn to the mathematical structure of the sharp $1/4$ threshold on unstructured generic permutations.
 
 ## Continuous Hammersley Point Accumulation
 
@@ -584,7 +582,7 @@ $$
 
 While continuous paths generate positive surplus drift, embedding discrete unstructured permutations in $\mathcal{Q}_k(\varepsilon) = S_k \setminus \mathcal{M}_{\mathrm{int}}(\varepsilon)$ faces formidable combinatorial and geometric obstructions:
 
-**Theorem 7.3 (The Traversal-Inversion Trilemma for Causal Traversal).** *Let $\Pi_{n_0}$ be a planar Poisson point process on $[0, 1]^2$ with intensity $n_0 = (1/4+\varepsilon/2)k^2$. For any target permutation $\pi \in \mathcal{Q}_k(\varepsilon)$ possessing $(1/2 \pm o(1))k$ descents, any causal sequential point-selection policy is subject to three mutually exclusive and individually fatal failure modes:* 1. **Cauchy–Schwarz Renewal Collapse in Disjoint Strips:** *Confining selections to $k$ disjoint horizontal rank strips $\{S_r\}_{r=1}^k$ ($S_r = [0, 1] \times [y_{r-1}, y_r]$ with $\sum h_r \le 1$) forces horizontal increments $\Delta X_i \sim \operatorname{Exp}(C k^2 h_{\pi(i)})$ to have expected horizontal traversal span*
+**Theorem 7.3 (The Traversal-Inversion Trilemma for Causal Traversal).** *Let $\Pi_{n_0}$ be a planar Poisson point process on $[0, 1]^2$ with intensity $n_0 = (1/4+\varepsilon/2)k^2$. For any target permutation $\pi \in \mathcal{Q}_k(\varepsilon)$ possessing $(1/2 \pm o(1))k$ descents, any causal sequential point-selection policy is subject to a trilemma among three mutually incompatible operational requirements, alongside an overarching information-theoretic constraint:* 1. **Cauchy–Schwarz Renewal Collapse in Disjoint Strips:** *Confining selections to $k$ disjoint horizontal rank strips $\{S_r\}_{r=1}^k$ ($S_r = [0, 1] \times [y_{r-1}, y_r]$ with $\sum h_r \le 1$) forces horizontal increments $\Delta X_i \sim \operatorname{Exp}(C k^2 h_{\pi(i)})$ to have expected horizontal traversal span*
 
 $$
 
@@ -610,17 +608,17 @@ $$
 
 *Achieving positive net drift under discrete buffers strictly requires $\sqrt{1+2\varepsilon} - 1 > 0.4133 \implies \varepsilon > 0.4987$. Furthermore, buffering coarse dyadic interfaces across scales $j \le 12$ consumes $\sum_{j=1}^{12} (2^j - 1) \times 2 = 16{,}356$ points, swamping continuous surplus by $163.56\times$.* 4. **Shannon Factorial Deficit:** *Encoding $k!$ distinct target permutations requires $\log_2(k!) = k \log_2(k/e) + O(\log k) = \Theta(k \log k)$ bits of host entropy. An independent single-target certificate family of size $\le e^{O(k)}$ contains at most $O(k)$ bits, precluding naive union bounds over $k!$ targets at the sharp constant.*
 
-*Proof.* See Theorem 5.1 in Workstream W49 records. Differentiating and applying Cauchy–Schwarz yields the renewal lower bound. Overlapping window areas integrate to $\frac{(\Delta-1)^2}{2\Delta^2}$. Descending densities in generic permutations average $(1/2 \pm o(1))k$, proving the buffer drain bounds. $\square$
+*Proof.* For (1), differentiating and applying Cauchy–Schwarz yields the renewal lower bound $\mathbb{E}[X_k] \ge 1/C$. Cramér’s theorem for sums of independent exponentials gives the tail bound $\Pr(X_k \le 1.0) \le \exp(-I(C)k)$. For (2), the probability that two independent uniform points in overlapping windows of depth $\Delta$ are inverted is given by the normalized area integral $\frac{(\Delta-1)^2}{2\Delta^2}$. For (3), descending densities in generic permutations average $(1/2 \pm o(1))k$, and reserving at least one discrete point per descent consumes at least $0.4133k$ points, exceeding the continuous surplus. Finally, (4) follows from the Shannon entropy bound $\log_2(k!) = \Theta(k \log k)$. $\square$
 
 ## Multi-Scale Dyadic Chaining Reduction
 
-To overcome the Traversal-Inversion Trilemma, Workstream W49 introduces a *non-crossing variational wavefront architecture* with multi-scale dyadic chaining:
+To overcome the Traversal-Inversion Trilemma, we introduce a *non-crossing variational wavefront architecture* with multi-scale dyadic chaining:
 
 **Definition 7.4 (Non-Crossing Variational Wavefront Architecture).** Point selection in $\Pi_{n_0}$ is governed by an advancing space-time variational wavefront foliation $\{\mathcal{W}(s)\}_{s \in [0, 1]} \subset [0, 1]^2$ with non-crossing characteristics: 1. **Monotone Horizontal Advance:** The wavefront advances strictly along the horizontal coordinate, guaranteeing an increasing sequence of host horizontal arrival coordinates $0 < X_1 < X_2 < \dots < X_k \le 1$. 2. **Global Order-Isomorphic Level Coupling:** Vertical coordinate assignments $(Y_i)_{i=1}^k$ are coupled variationally across the advancing wavefront such that $Y_a < Y_b \iff \pi(a) < \pi(b)$ for all $1 \le a < b \le k$, deterministically guaranteeing zero coordinate rank inversions across all descents ($p_{\mathrm{inv}} = 0$).
 
 **Lemma 7.5 (Multi-Scale Dyadic Chaining & Discretization Penalty Bounds).** *Decomposing target progress $s \in [0, 1]$ across dyadic scales $j \in \{1, \dots, \lceil\log_2 k\rceil\}$ with transition scale $j^*(\varepsilon) = \Theta(\log(1/\varepsilon))$:* 1. **Continuous Coarse Hydrodynamic Coupling:** *For coarse scales $j \le j^*(\varepsilon)$, target blocks have macroscopic length $L_j = \Omega(\varepsilon k) \gg 1$. Boundary matching occurs via continuous streamtube coupling without discrete singleton buffers ($P_{\mathrm{coarse}} = 0$), eliminating the $16,356$-point explosion and delivering macroscopic surplus drift $D_{\mathrm{coarse}}(s) \ge \frac{3}{4}\varepsilon s k > 0$.* 2. **Geometric Decay of Fine Discretization Penalties:** *At fine scales $j > j^*(\varepsilon)$, boundary matching adjustments scale as $P_j \le C_{\mathrm{pen}} 2^{-j/2} k$. Summing over fine scales yields cumulative fine discretization penalty $P_{\mathrm{fine}}(s) \le \frac{1}{4}\varepsilon s k$.*
 
-**Theorem 7.6 (Surplus-Penalty Domination and Traversal Velocity Reduction).** *Along the multi-scale chained non-crossing variational wavefront trajectory:* 1. **Surplus-Penalty Domination:** *For every progress $s \in (0, 1]$, net forward traversal drift satisfies*
+**Theorem 7.6 (Conditional Traversal Velocity Under Variational Wavefronts).** *Along the multi-scale chained non-crossing variational wavefront trajectory:* 1. **Surplus-Penalty Domination:** *For every progress $s \in (0, 1]$, net forward traversal drift satisfies*
 
 $$
 
@@ -630,7 +628,9 @@ $$
 
 2. **Supercritical Traversal Velocity:** *The effective forward traversal velocity satisfies $v_{\mathrm{eff}} := 1 + D_{\mathrm{net}}(1)/k \ge 1 + \frac{1}{2}\varepsilon > 1.0$, ensuring compressed expected horizontal span $\mathbb{E}[X_k] \le 1/v_{\mathrm{eff}} < 1.0$ (with ideal baseline $\mathbb{E}[X_k] \le 1/\sqrt{1+2\varepsilon} \approx 0.9535 < 1.0$ at $\varepsilon = 0.05$).* 3. **Trajectory Confinement:** *By Azuma–Hoeffding concentration, horizontal domain overrun occurs with probability bounded by $\Pr(X_k > 1.0) \le \exp(-\Omega(\varepsilon^2 k)) = o(1)$.*
 
-*The Open Analytical Frontier:* Full unconditional resolution of Alon’s conjecture for generic unstructured permutations requires completing two open analytical debts: - Realizing the non-crossing variational wavefront via an affirmative continuum hydrodynamic limit theorem for non-monotone paths; - Constructing a deterministic low-entropy common host certificate family $\mathcal{H}$ on $\Pi_{n_0}$ of cardinality $|\mathcal{H}| \le \exp(O(\varepsilon^2 k))$ that simultaneously certifies containment for all $k!$ generic permutations, bypassing the $\Theta(k \log k)$ Shannon factorial deficit.
+### The Open Analytical Frontier
+
+Full unconditional resolution of Alon’s conjecture for generic unstructured permutations requires completing two open analytical objectives: 1. Realizing the non-crossing variational wavefront via an affirmative continuum hydrodynamic limit theorem for non-monotone paths; 2. Constructing a deterministic low-entropy common host certificate family $\mathcal{H}$ on $\Pi_{n_0}$ of cardinality $|\mathcal{H}| \le \exp(O(\varepsilon^2 k))$ that simultaneously certifies containment for all $k!$ generic permutations, bypassing the $\Theta(k \log k)$ Shannon factorial deficit.
 
 ------------------------------------------------------------------------
 
@@ -666,7 +666,7 @@ The repository includes formal proofs in Lean 4 located in `formal-verification/
 
 # Conclusion
 
-By combining the refutation of the repeated-21 counterexample candidate, canonical skeletal decompositions, and flexible lookahead interfaces with bounded description entropy, we have established the simultaneous universality of random permutations at quadratic host size $n = C k^2$, fully eliminating the 6-year $\log\log k$ factor from He and Kwan \[6\]. Furthermore, we have proved the sharp threshold $(1/4+\varepsilon)k^2$ for all structured monotone inflations and established the continuous Hammersley point accumulation framework governing the supercritical growth rate.
+By developing canonical skeletal decompositions and flexible lookahead interfaces with bounded description entropy, we have established the simultaneous universality of random permutations at quadratic host size $n = C_0 k^2$, fully eliminating the $\log\log k$ factor from He and Kwan \[6\]. Furthermore, we have proved the sharp threshold $(1/4+\varepsilon)k^2$ for the class of modular interval inflations, and characterized the infinitesimal jump generator of the repeated-$21$ process, providing an exact cut-flux identity that explains finite-size deficits and refutes prior heuristics. Finally, our analysis of the Traversal-Inversion Trilemma identifies the precise geometric and information-theoretic mechanisms required to resolve the full conjecture at $(1/4+\varepsilon)k^2$ for generic permutations.
 
 ------------------------------------------------------------------------
 
