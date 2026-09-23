@@ -5,6 +5,7 @@ import Superpatterns.Witness
 import Superpatterns.BlockSplit
 import Superpatterns.ErdosSzekeres
 import Superpatterns.Interleaving
+import Superpatterns.Lattice
 
 /-!
 # Axiom audit
@@ -64,5 +65,12 @@ namespace Superpatterns
 #print axioms lookahead_bypass_order
 #print axioms supercritical_velocity_quad
 #print axioms two_blocks_len_le
+-- W58/W61 (Lattice)
+#print axioms coord_diff_le
+#print axioms monotone_path_cells_le
+#print axioms single_chain_traversal_le
+#print axioms total_chain_steps_bound
+#print axioms coarse_trajectory_entropy_bound
+#print axioms coarse_spatial_entropy_bits
 
 end Superpatterns

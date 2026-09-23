@@ -9,4 +9,5 @@ import Superpatterns.Witness
 import Superpatterns.BlockSplit
 import Superpatterns.ErdosSzekeres
 import Superpatterns.Interleaving
+import Superpatterns.Lattice
 import Superpatterns.Axioms
