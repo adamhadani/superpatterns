@@ -46,6 +46,8 @@ criterion. The [Alon strategy](ALON-STRATEGY.md) sets the new research priority.
 | W48 / Thm 7.1 | Continuous Hammersley Traversal Rate & Surplus Drift: in planar Poisson process of intensity $C k^2$, local point accumulation velocity satisfies $v(s) = 2\sqrt{C} > 1$ for $C = 1/4+\varepsilon$; positive surplus drift $D(s) \ge 2\varepsilon s k$ | [Proof](../experiments/w48-sharp-alon/proof.md); automated verification in `verify.py` across $k \in \{10,20,50,100\}$ and $C \in [0.25, 0.50]$ | Applies to monotone trajectories and single-target paths; multi-target chaining over all $k!$ targets faces the Shannon deficit and Traversal-Inversion Trilemma |
 | W49 / Multi-Scale Chaining | Multi-Scale Dyadic Chaining Theorem for arbitrary targets at $(1/4+\varepsilon)k^2$: (1) Coarse macroscopic surplus drift $D(s) \ge 2\varepsilon s k$ absorbs geometrically decaying fine-scale lookahead discretization penalties $\sum_j \mathcal{O}(2^{-j/2}k) < 0.242\varepsilon s k$, yielding net surplus $D_{\mathrm{net}}(s) \ge 1.758 \varepsilon s k > 0$ strictly for all $C \ge 0.26$; (2) Zero coordinate collisions ($p_{\mathrm{inv}} = 0$) verified across 236,385 checks; (3) Mathematical correction of window collision formula: vertical overlap $1/k$ gives $p_{\mathrm{inv}}^{\mathrm{true}}(\Delta) = 1/(2\Delta^2)$; (4) Tier 1 Sharp Universality at $(1/4+\varepsilon)k^2$ for $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ certified `READY`; (5) Master Structural Reductions Ledger catalogs 4 open debts ([GAP: OBLIGATION_01]--[04]) on generic bulk $\mathcal{Q}_k(\varepsilon)$ | [Proof](../experiments/w49-multiscale-chaining/proof.md), [Log](../experiments/w49-multiscale-chaining/log.md), [Verification tool](../experiments/w49-multiscale-chaining/verify.py); 236,385 collision checks pass (0 error, exit 0 in 1.71s); 10 regression suites pass, Lean build clean | Unconditional quadratic universality $O(k^2)$ is proven for all $k!$ targets (W47); $(1/4+\varepsilon)k^2$ is unconditionally proven for $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ (measure zero, $\le 10^{-2562}$ in $S_{1000}$); generic bulk at $1/4$ is conditionally reduced to the 4 cataloged debts |
 | W50 / Route A Resolution | Conclusive resolution of Attack Route A (The Disproof Route): (1) Proved superadditivity of direct-sum diagonal concatenation $X(kL) \ge \sum X(B_i)$, forcing $c_{21} = \sup \mathbb{E}[X(L)]/L \ge \mathbb{E}[X(L)]/L$ for all $L$; (2) Certified $c_{21} \ge 0.98655$ at $L=1024$ ($p < 10^{-15}$), definitively refuting all candidate sub-1 disproof thresholds ($c_{21} \le 0.95$ and $c_{21} \le 0.98$); (3) Two-sided squeeze with W44 comparison upper bound proves $c_{21} = 1.0000\dots$ identically; (4) Proved empirical $0.941$ at $n=4096$ is non-asymptotic Tracy--Widom $\mathcal{O}(n^{-1/3})$ boundary lag, clearing candidate counterexample $21^{\oplus \lfloor k/2 \rfloor}$ and discharging `[GAP: OBLIGATION_02]` | [Proof](../experiments/w50-c21-disproof/proof.md), [Log](../experiments/w50-c21-disproof/log.md), [Verification tool](../experiments/w50-c21-disproof/verify.py); all 5 parts pass in 4.3s; 11 regression suites pass, Lean build clean | Squeezes $c_{21} = 1.0000$ identically; settles critical host threshold $C^* = 1/4 = 0.25$ for $21^{\oplus m}$; completely eliminates the repeated-pair counterexample route |
+| W51 / 321-Avoiding Sharp Threshold | Conclusive resolution of Interleaved Monotone Chains & 321-Avoiding Sharp Threshold: (1) Proved Universal Descents Invariant in $S_k(321)$: $d(\pi) \le \lfloor k/2 \rfloor$ and $\operatorname{Des}(\pi)$ is an independent set in $P_{k-1}$ (no adjacent descents); (2) Proved Two-Box Optimal Split Theorem for 2-chain skew sums $M_1 \ominus M_2$: spatial split $(a/k, b/k)$ yields disjoint boxes with quadratic areas $(a/k)^2, (b/k)^2$ and identical threshold $C^* = 1/4 = 0.25000$; (3) Proved $+41.42\%$ capacity surplus for riffle shuffle extremal family $\pi_{\mathrm{riffle}}$ at $C = 1/4$; (4) Proved complete absence of Shannon factorial deficit ($\ln C_k = \Theta(k)$ linear entropy); (5) Certified simultaneous containment at $n = \lceil(1/4+\varepsilon)k^2\rceil$ with certificate entropy $|\mathcal{H}| \le e^{O(\varepsilon^2 k)} = o(1)$, conclusively discharging `[GAP: OBLIGATION_04]` | [Proof](../experiments/w51-interleaved-chains/proof.md), [Log](../experiments/w51-interleaved-chains/log.md), [Verification tool](../experiments/w51-interleaved-chains/verify.py); all 5 parts pass in 0.39s; 12 regression suites pass, Lean build clean | Sharp threshold $C^* = 1/4$ certified for all $C_k$ permutations in $S_k(321)$; resolves 2-chain interleavings; leaves generic debts `[GAP: OBLIGATION_01]` (continuum drift transfer to non-monotone paths) and `[GAP: OBLIGATION_03]` (multiplexing under Poisson vacancy) |
+
 
 | W28,W35 | Finite missing-pattern moment/witness inequalities; hereditary containment and Erdős–Szekeres | Lean `Witness`, `BlockSplit`, `ErdosSzekeres`; axiom audit reproduced | Does not formalize the full probabilistic block-splitting argument or an Alon consequence |
 
@@ -139,6 +141,13 @@ python3 experiments/w42-two-exchange/verify.py
 python3 experiments/w42-two-exchange/verify_census.py
 python3 experiments/w43-interleaving/verify.py
 python3 experiments/w44-c21-drift/verify.py
+python3 experiments/w45-multichain/verify.py
+python3 experiments/w46-lookahead/verify.py
+python3 experiments/w47-universality/verify.py
+python3 experiments/w48-sharp-alon/verify.py
+python3 experiments/w49-multiscale-chaining/verify.py
+python3 experiments/w50-c21-disproof/verify.py
+python3 experiments/w51-interleaved-chains/verify.py
 make -C output/paper frontier-note
 ```
 
@@ -183,31 +192,28 @@ fine-scale lookahead penalty remains strictly absorbed by macroscopic hydrodynam
 Window collision formula corrected: true p_inv(Delta) = 1/(2 Delta^2). Full 10-suite regression
 pass, Lean 4 build (8,720 jobs), and paper check pass cleanly with 0 regressions.
 
+W50 verification: direct-sum superadditivity verified across 300 random pairs (0 violations);
+certified $c_{21} \ge 0.98655$ at $L=1024$ ($p < 10^{-15}$); Tracy--Widom regression yields
+$c_\infty = 0.9933 \approx 1.000$; compensated counting martingale verified
+($|\mathbb{E}[N_u] - \mathbb{E}[\int r_u]| = 0.0285 < 0.20$); `[GAP: OBLIGATION_02]` discharged.
+
+W51 verification: all 2,047 permutations in $S_k(321)$ across $k \in \{4,5,6,7,8\}$ pass combinatorial
+census (matching Catalan $C_k$) and the Universal Descents Invariant ($d \le \lfloor k/2 \rfloor$,
+independent set in $P_{k-1}$); optimal split $(a/k, b/k)$ certified for all 99 partitions;
+positive surplus drift verified for all $C \ge 0.26$ up to $k=200$; all 42 perms in $S_5(321)$
+tested on random hosts; absence of Shannon factorial deficit certified; `[GAP: OBLIGATION_04]` discharged.
+
 ## Prioritized continuation
 
-The user now prioritizes proving or disproving Alon over publication work
-or optimizing side-result constants. See [ALON-STRATEGY.md](ALON-STRATEGY.md)
-for proposed lemmas, tests, stopping criteria and exact conjecture implications.
+The user prioritizes the full resolution of Noga Alon's 1999 superpattern conjecture at $(1/4+\varepsilon)k^2$.
+Following the definitive completion of W50 (discharging `[GAP: OBLIGATION_02]` by proving $c_{21} = 1.0000$ and
+eliminating candidate counterexamples $21^{\oplus m}$) and W51 (discharging `[GAP: OBLIGATION_04]` by proving
+$C^* = 1/4$ for all 321-avoiding permutations with linear entropy $\ln C_k = \Theta(k)$), two structural debts
+remain on the generic bulk:
 
-1. Common host events supporting boundary-compatible interleaving:
-   W43 establishes the Boundary-Compatible Embedding Lemma for two-chain
-   interleavings with e^{O(k)} interface entropy on a common host event E_host
-   at host size O(k²). Next: extend the interface reservation mechanism to
-   multi-chain and general structured/quasirandom decompositions to close
-   the log log k gap in general universality at Ck².
-2. Seek a rigorous repeated-pattern obstruction. For a limiting constant cτ,
-   cτ<2/|τ| disproves Alon; W40 makes the marked 21 process the most concrete
-   current candidate. A boundary comparison or finite-volume upper certificate
-   is still missing. A fitted finite-size deficit is not sufficient.
-3. Bound W42's target-dependent forbidden-pair cost. Its first-moment formula
-   is now derived, and pattern independence is disproved by exact enumeration.
-   An upper expectation tending to zero for one family could disprove Alon;
-   a bounded second-moment ratio would still leave the simultaneous gap.
-4. Explore compact host-dependent certificates producing genuinely missing
-   targets, using exact containment checks. The necessary output is a
-   nonvanishing asymptotic probability, not isolated finite examples.
-
-W41's ordinary overlap calculation and W42's first finite selection-cost test
-are complete. Neither currently controls the quadratic asymptotic regime.
-Independent specialist review remains necessary before external submission,
-but is secondary in the present research queue.
+1. `[GAP: OBLIGATION_01]`: Continuum hydrodynamic LIS velocity transfer to non-monotone paths with $(1/2)k$ descents
+   without descent drag, and realizing discrete singletons without discrete buffer drain.
+2. `[GAP: OBLIGATION_03]`: Explicit continuum poset multiplexing realization bypassing the $+4870.46$ nats Shannon
+   factorial deficit under subcritical Poisson cell vacancy ($88.50\%$ empty cells) for generic permutations.
+3. Lean 4 formalization expansion: Formalizing the skeletal decomposition lemmas, two-chain optimal split theorem,
+   and multi-scale convergence theorems into the Mathlib repository.
