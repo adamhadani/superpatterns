@@ -2,7 +2,7 @@
 
 Type: failed_approach_category
 Pattern: Treating the Logan-Shepp / Vershik-Kerov LIS traversal velocity $v(s) = 2\sqrt{C} > 1$ as fungible point-acquisition capacity for arbitrary non-monotone permutations is a fatal category error and violates point conservation.
-Count: 25
+Count: 42
 
 ## Entries
 | # | Original File | One-line Summary |
@@ -32,3 +32,20 @@ Count: 25
 | 23 | explorer_L00_N29 | Logan-Shepp / Vershik-Kerov LIS limit velocity applied to non-monotone permutations with microscopic oscillations. |
 | 24 | explorer_L00_N30 | Hydrodynamic LIS velocity conflated with non-monotone permutation embedding, ignoring that monotone chains cannot traverse reversals. |
 | 25 | explorer_L00_N31 | Directed LIS traversal velocity applied to non-monotone permutations with $\Theta(k)$ descents, where monotone paths capture only $2\sqrt{k} \ll k$ points. |
+| 26 | explore_merger_L01_N04 | Assumed directed increasing path capacity $(1+\varepsilon/2)2^{-j}k$ in coarse dyadic boxes embeds arbitrary permutations; non-monotone target blocks have LIS length $O(\sqrt{M}) \ll M$, losing 50% to 99.9% of target elements in coarse boxes. |
+| 27 | strategy_L02_N01 | Uniform LIS velocity $2\sqrt{C} > 1$ applied to arbitrary non-monotone permutations violates point conservation and order preservation. |
+| 28 | strategy_L02_N05 | Applying LIS velocity $2\sqrt{c} > 1$ across transverse coordinate directions violates monotone path directionality and point conservation. |
+| 29 | strategy_L02_N07 | Uniform LIS embedding mechanics applied along non-monotone paths violate permutation order constraints. |
+| 30 | strategy_L03_N02 | Continuous marked Poisson renewal under discrete buffering $\Delta \ge 1$ has provably subcritical effective traversal velocity $v_{\mathrm{eff}} = \frac{2}{2+\Delta}\sqrt{1+4\varepsilon} \le 0.7303 < 1.0$ at $\varepsilon=0.05$, producing net negative drift. |
+| 31 | strategy_L03_N03 | Proposition 6.2 claims continuous traversal velocity $v_{21} = \sqrt{1+4\varepsilon} > 1.0$ for repeated-21, conflating peak cut-flux with actual traversal rate; in W44, empirical drift is $c_{21} \approx 0.941 < 1.0$ (leaving a capacity deficit of $-12.5$ points at $a_{\min}=960$), and under discrete buffering effective velocity collapses to $v_{\mathrm{eff}} \le 0.7303 < 1.0$. |
+| 32 | explorer_r2_L00_N20 | Theorem 3.1 commits a category error by applying Logan-Shepp / Vershik-Kerov LIS velocity $v = 2\sqrt{C} > 1$ to non-monotone quasirandom permutations with $\sim k/2$ descents; when order preservation is enforced in a ribbon of width $k^{-1/2}$, the acceptance window shrinks to $O(1/k)$ and forward velocity collapses to $v_{\mathrm{eff}} \le 0.35 \ll 1.0$ (embedding only $34.8\%$ of elements, $0/20$ full successes). |
+| 33 | explorer_r2_L00_N26 | Conflates 2D northeast LIS velocity ($2\sqrt{C} > 1$) with non-monotone permutations where interleaved Dilworth chains require southeast steps ($\Delta X > 0, \Delta Y < 0$) with $>95\%$ vertical span overlap, violating chain monotonicity and point conservation. |
+| 34 | strategy_r2_L03_N04 | Claiming a factor-of-4 spatial velocity gain $2\sqrt{C}/C = 4.0$ from LIS for 2D spatial non-local traversal (Risky Lemma 4) fails because LIS applies strictly to northeast monotone chains; non-monotone permutations with $\approx k/2$ descents require vertical rank order preservation, forcing Cauchy-Schwarz dilation $\mathbb{E}[X_k] \ge 3.636 > 1.0$ or $12.5\%$ to $45.12\%$ rank inversions. |
+| 35 | explorer_r3_L00_N00 | Logan-Shepp / Vershik-Kerov LIS velocity $2\sqrt{C} > 1$ applied to coarse non-monotone dyadic blocks with $\approx k/2$ descents, capturing only $O(\sqrt{k})$ points and violating point conservation. |
+| 36 | explorer_r3_L00_N06 | Theorem 9 asserts wavefront velocity $v = 2\sqrt{C} > 1$ on generic permutations, but exact order preservation collapses greedy point selection ($\mathbb{E}[X_{100}] \approx 2.9 \times 10^5 \gg 1.0$, 0/50 trials complete in $[0, 1]$). |
+| 37 | N16 (Level 0) | Monotone LIS velocity $v = 2\sqrt{C} > 1$ applied to non-monotone oscillating trajectories $\gamma_\pi(s)$ |
+| 38 | N23 (Level 0) | Conflates monotone LIS capacity $2\sqrt{\mu}$ with universal pattern embedding; random point sets fail to embed $21^{\oplus 10}$ in 36.7% of trials |
+| 39 | N24 (Level 0) | Applies macroscopic Logan-Shepp / Vershik-Kerov LIS velocity $v = 2\sqrt{C} > 1$ to microscopic quasirandom runs (mean length 2.50, 90% of runs length $\le 3$), where Cauchy-Schwarz forces $\mathbb{E}[X_k] \ge 3.636 > 1.0$ |
+| 40 | explore_merger_r3_L01_N02 | Conflating monotone LIS capacity $2\sqrt{\mu}$ with universal subpattern capacity: Poisson point sets of size $N=140$ fail to contain alternating pattern $21^{\oplus 10}$ in $38\%$ to $53.3\%$ of trials, so simultaneous mesoscopic block containment vanishes as $(1 - 0.38)^{2^{j^*}} \to 0$. |
+| 41 | explore_merger_r3_L01_N09 | Applying monotone LIS velocity $v = 2\sqrt{C} > 1$ along oscillating generic trajectories in Proposition 5.3 commits a category error: monotone paths capture only $2\sqrt{k} \ll k$ points on generic targets, while terminal blocks of size $m = \Theta(\varepsilon k)$ face 0% completion ($\mathbb{E}[X_m] \ge 4.7 \gg 1.0$). |
+| 42 | explore_merger_r3_L01_N11 | Theorem 5 overclaims that $c_{21} = 1.0$ is proved via undefined 'local transversal exchange' along the LIS chain; an LIS chain contains strictly increasing coordinates and zero descents, so pairing points along LIS cannot produce $21^{\oplus m}$ without modifying the fixed Poisson host point set. |

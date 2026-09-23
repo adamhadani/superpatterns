@@ -2,7 +2,7 @@
 
 Type: theorem
 Confidence: high
-Source: Candidates 0, 1, 2, 3, 4, 5, 6, 7 (Level 0)
+Source: Candidates 0, 1, 2, 3, 4, 5, 6, 7 (Level 0); explore_merger_r3_L04_N00, explore_falser_r3_L04_N00 (Round 3 Level 4)
 Relevant to: Transferring pattern containment results from continuous planar Poisson point processes to discrete uniform random permutations.
 
 ## Statement
