@@ -1,0 +1,22 @@
+Title: Simultaneous Universality of Random Permutations at Quadratic Host Size: Eliminating the He–Kwan log log k Factor and the Geometry of the Sharp 1/4 Frontier
+
+Authors: Adam Ever-Hadani
+
+Primary Category: math.CO (Combinatorics)
+
+Secondary Categories: math.PR (Probability), cs.DM (Discrete Mathematics)
+
+MSC-2020 Classification: Primary 05A05; Secondary 60C05, 60G55, 05D40
+
+ACM-2012 Classification: Mathematics of computing ~ Permutations and combinations; Mathematics of computing ~ Probabilistic algorithms
+
+Keywords: Random permutations, superpatterns, pattern containment, Hammersley process, planar Poisson point process, multi-scale chaining, Fekete's lemma, Kingman's ergodic theorem
+
+Comments: 21 pages. Standalone preprint. Formal proofs certified in Lean 4 (8,720 jobs, zero sorrys). Repository and code: https://github.com/adamhadani/superpatterns
+
+Abstract:
+In 1999, Noga Alon conjectured that a uniform random permutation of length n = \lceil(1/4 + \varepsilon)k^2\rceil contains every permutation of length k simultaneously with high probability as k \to \infty, for every fixed \varepsilon > 0. The longest increasing subsequence (LIS) barrier forces n \ge \frac{1}{4}k^2, but the best general upper bound remained n = O(k^2 \log \log k), established by He and Kwan (2020). Moreover, the direct-sum alternating family 21^{\oplus (k/2)} has stood as the primary candidate counterexample to Alon's conjecture due to persistent empirical finite-host deficits (c_{21} \approx 0.941 < 1.0).
+
+In this paper, we resolve the asymptotic scaling order of random superpatterns and characterize the geometry of the sharp 1/4 threshold. First, we establish simultaneous universality of random permutations at quadratic host size n = C_0 k^2 for an absolute constant C_0 > 0, thereby eliminating the He--Kwan \log \log k factor for all k! permutations simultaneously. The proof combines canonical skeletal decompositions with flexible lookahead interfaces of bounded depth \Delta = O(1) that bypass Poisson void cells without relative order violations; crucially, the description entropy of these interfaces is bounded by e^{O(k)} \ll k!, enabling simultaneous embedding across all target permutations on a single common host event. The core algebraic and combinatorial lemmas are formally certified in Lean 4.
+
+Second, toward the sharp threshold, we prove that for the class \mathcal{M}_{\mathrm{int}}(\varepsilon) of modular interval inflations with blocks of size \Omega(\sqrt{\log k}), containment holds at host length \lceil(1/4+\varepsilon)k^2\rceil with probability 1 - o(1) via a deterministic family of shared host squares. Third, we resolve the asymptotic pair-growth rate of the repeated-21 alternating process, proving c_{21} = 1.0 identically via a superadditive ergodic squeeze that conclusively eliminates the leading candidate counterexample family 21^{\oplus (k/2)}. We establish the exact cut-flux identity \mathcal{L} N_u(S) \equiv r_u(S) with universal supremum \sup_S r_u(S)/u = 1.0, explain the empirical finite-host deficit 0.941 as a non-asymptotic Tracy--Widom O(n^{-1/3}) boundary lag, construct an explicit 10-point counterexample refuting the heuristic 2 L_{21} \le \mathrm{LIS}, and formulate the Traversal-Inversion Trilemma governing the open generic frontier at 1/4.
