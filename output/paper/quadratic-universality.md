@@ -743,9 +743,13 @@ $$\text{\url{https://github.com/adamhadani/superpatterns/tree/main/formal-verifi
 
 The individual Lean 4 source modules are located under `formal-verification/lean/` and can be inspected directly at the following URLs:
 
+- [`Superpatterns/TheoremA.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/TheoremA.lean): Formal certification of Theorem A (simultaneous quadratic universality at $C_0 k^2$).
 - [`Superpatterns/Patterns.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Patterns.lean): Standardisation, pattern containment, and order isomorphism.
 - [`Superpatterns/ErdosSzekeres.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/ErdosSzekeres.lean): Formal proof connecting Mathlib's Erdős--Szekeres theorem to pattern containment.
 - [`Superpatterns/Interleaving.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Interleaving.lean): Formal proofs that strictly increasing lists avoid 21 (`strictly_increasing_avoids_21`) and 321 (`strictly_increasing_avoids_321`), multi-chain word entropy power identities $d^{2k} = (d^2)^k$, lookahead profile power bounds, non-overlapping coordinate intervals for disjoint blocks, window coordinate separation under positive buffer spacing, dynamic bypass order preservation (`lookahead_bypass_order`), and supercritical accumulation rate rational algebraic inequalities (`supercritical_velocity_quad`).
+- [`Superpatterns/Witness.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Witness.lean): Probabilistic witness counting and finite-probability concentration bounds.
+- [`Superpatterns/Encoding.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Encoding.lean): Gap encoding and coordinate replacement properties.
+- [`Superpatterns/BlockSplit.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/BlockSplit.lean): Disjoint block coordinate splittings.
 - [`Superpatterns/Axioms.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Axioms.lean): Automated axiom audit confirming that all formal proofs build cleanly using standard foundational axioms only (`propext`, `Quot.sound`, `Classical.choice`), with zero `sorry`s and zero compiler trust axioms on analytic proofs.
 
 ---
