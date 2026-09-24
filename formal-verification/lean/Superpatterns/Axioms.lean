@@ -83,5 +83,7 @@ namespace Superpatterns
 #print axioms bundle_width_ge_two
 #print axioms bundle_total_width_le
 #print axioms bundle_tracks_disjoint
+-- W73 (Forward Descent Chain Strict Increasing Invariant)
+#print axioms forward_descent_chain_strict_increasing
 
 end Superpatterns

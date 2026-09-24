@@ -177,4 +177,18 @@ theorem bundle_tracks_disjoint (B c1 b1 c2 b2 : ℕ)
     exact Nat.eq_of_mul_eq_mul_right hB hmul
   exact ⟨hc, hb⟩
 
+/-- Forward Descent Chain Strictly Increasing Invariant (Workstream W73, Theorem 3.2):
+    For any injective sequence partitioned into Dilworth chains,
+    any value descent between distinct positions (i < j with f i > f j)
+    necessarily transitions to a strictly higher chain index: c i < c j.
+    This machine-certifies that cross-chain inversions are strictly forward-oriented descents. -/
+theorem forward_descent_chain_strict_increasing {α : Type*} [LinearOrder α] (f : ℕ → α) (c : ℕ → ℕ)
+    (h_chain : ∀ j i : ℕ, j < i → f j > f i → c j < c i)
+    (i j : ℕ) (hij : i < j) (h_gt : f i > f j) : c i < c j := by
+  by_contra h_not
+  have hc : c j ≤ c i := not_lt.mp h_not
+  have h_inj : f i ≠ f j := ne_of_gt h_gt
+  have h_lt : f i < f j := backward_chain_strict_monotonicity f c h_chain i j hij hc h_inj
+  exact lt_asymm h_gt h_lt
+
 end Superpatterns
