@@ -157,3 +157,36 @@ No general asymptotic improvement or disproof is claimed by this strategy.
 The next deliverable should be a proved interface/kernel/drift lemma, or a
 precise counterexample eliminating a candidate lemma, with a stated route
 from that deliverable to the conjecture.
+
+---
+
+## 5. The Generic Bulk at Sharp 1/4 Frontier (Updated 24 September 2026)
+
+### State of the Art
+1. **Unconditional Quadratic Universality at $C_0 k^2$ (PROVED):**
+   Theorem 1.2 proves that a random permutation of length $n = C_0 k^2$ ($C_0 \approx 9.62$) simultaneously contains all $k!$ permutations in $S_k$, eliminating the He–Kwan (2020) $\log\log k$ factor across the entire symmetric group $S_k$. All core combinatorial lemmas are certified in Lean 4.
+2. **Sharp Threshold $C^* = 1/4 = 0.25000$ for Structured Classes (PROVED):**
+   - Bounded-LDS ($\operatorname{LDS} \le d$, all Stanley–Wilf classes) via $d$-box antidiagonal optimal split theorem (Theorem 1.3).
+   - Modular interval inflations via shared host squares (Theorem 1.4).
+   - Repeated-$21$ direct-sum alternating family via cut-flux identity $\mathcal{L} N_u \equiv r_u \le u$ and superadditive squeeze ($c_{21} = 1.0000$ identically, Theorem 1.5).
+   - Autocorrelation Extremality: monotone identity uniquely maximizes self-overlap profile $\mathcal{O}_j(\pi) \le \binom{k}{j}^2$.
+3. **The Generic Bulk ($\operatorname{LDS} \approx 2\sqrt{k}$) at $C^* = 1/4$:**
+   W66–W69 established the Two-Scale Permuton Coupling and Cluster Sieve architecture:
+   - Macroscopic permuton non-regularity decays as $\exp(-\Omega(k^2)) \ll 1/k!$.
+   - Continuous streamlines provide capacity super-surplus $\ge \frac{1}{2}\sqrt{k} \to \infty$.
+   - Target Dilworth chains demand zero backward cross-layer inversions (Lean 4 certified).
+   - Microscopic host boxes are universal superpatterns for sub-patterns of length $m_{\max}$.
+   - The Cluster Sieve identity $\Pr(M > 0) \le \frac{1}{R}\mathbb{E}[M]$ is Lean 4 certified.
+
+### The Remaining Analytical Debt
+To unconditionally conclude $\Pr(M > 0) \to 0$ at $C^* = 1/4$ across all $k!$ permutations simultaneously, one must prove:
+$$R(n, k) = \mathbb{E}[M \mid M > 0] \ge \rho_0 k! \quad \text{asymptotically as } k \to \infty.$$
+Until $R(n, k) = \Omega(k!)$ is analytically proved (or bypassed by a direct transversal matching theorem), claiming unconditional full universality at $C^* = 1/4$ is a **FALSE ALARM**.
+
+### Workstream W70 Queue: Most Promising Attack Vectors
+1. **Vector 1 (Macroscopic Defect Sieve):**
+   Prove that any host defect that causes avoidance of at least one generic bulk target is a macroscopic/mesoscopic defect (e.g., in a box or along a streamline bundle) that simultaneously eliminates $\ge \rho_0 k!$ targets. This establishes $R(n, k) \ge \rho_0 k!$ and closes the gap via the Cluster Sieve Inequality.
+2. **Vector 2 (Dynamic Transversal Streamline Matching):**
+   Bypass the cluster sieve by directly proving that the exploding streamline capacity surplus ($\ge \frac{1}{2}\sqrt{k}$) and automatic backward monotonicity allow dynamic greedy embedding of all $(w^{\mathrm{pos}}, w^{\mathrm{val}})$ interleavings with joint failure $\exp(-\Omega(k^2))$.
+3. **Vector 3 (Janson / Suen Dependency Concentration):**
+   Apply dependency graph concentration to the sum of missing-pattern indicators $M = \sum I_\pi$, bounding $\operatorname{Var}(M)$ via the autocorrelation extremality covariance bounds from W54/W67.
