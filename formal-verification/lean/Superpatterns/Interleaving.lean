@@ -114,4 +114,28 @@ theorem two_blocks_len_le (b1 b2 : MonotoneBlock) (k : ℕ)
     have : b1.pos_start + b1.len ≤ k := hv1.1
     omega
 
+/-- Backward Cross-Layer Monotonicity Invariant (Theorem 3.1):
+    In any sequence where descending steps force strictly increasing chain indices
+    (as in canonical Dilworth / patience sorting chains c(i) = LDS_end(i)),
+    whenever a later index i has a chain index no greater than an earlier index j (c i ≤ c j),
+    the values cannot decrease: f j ≤ f i. -/
+theorem backward_chain_monotonicity {α : Type*} [LinearOrder α] (f : ℕ → α) (c : ℕ → ℕ)
+    (h_chain : ∀ j i : ℕ, j < i → f j > f i → c j < c i)
+    (j i : ℕ) (hji : j < i) (hc : c i ≤ c j) : f j ≤ f i := by
+  by_contra h_not
+  have h_gt : f j > f i := lt_of_not_ge h_not
+  have h_c_lt : c j < c i := h_chain j i hji h_gt
+  omega
+
+/-- Strict Backward Cross-Layer Monotonicity Invariant (Theorem 3.1):
+    For any injective sequence (such as a permutation) partitioned into Dilworth chains,
+    whenever a point in a higher-indexed chain precedes a point in a lower-indexed chain
+    in position (j < i with c i ≤ c j), the values are strictly increasing: f j < f i.
+    Target permutations demand zero backward cross-layer inversions. -/
+theorem backward_chain_strict_monotonicity {α : Type*} [LinearOrder α] (f : ℕ → α) (c : ℕ → ℕ)
+    (h_chain : ∀ j i : ℕ, j < i → f j > f i → c j < c i)
+    (j i : ℕ) (hji : j < i) (hc : c i ≤ c j) (hinj : f j ≠ f i) : f j < f i := by
+  have hle : f j ≤ f i := backward_chain_monotonicity f c h_chain j i hji hc
+  exact lt_of_le_of_ne hle hinj
+
 end Superpatterns

@@ -72,5 +72,8 @@ namespace Superpatterns
 #print axioms total_chain_steps_bound
 #print axioms coarse_trajectory_entropy_bound
 #print axioms coarse_spatial_entropy_bits
+-- W66 (Theorem 3.1: Backward Chain Monotonicity)
+#print axioms backward_chain_monotonicity
+#print axioms backward_chain_strict_monotonicity
 
 end Superpatterns
