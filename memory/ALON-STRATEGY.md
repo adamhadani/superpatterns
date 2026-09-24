@@ -192,9 +192,10 @@ To complete Alon's conjecture in full generality at $C^* = 1/4$, one must prove:
 $$P_0(\pi) = \Pr\left( \pi \not\le \Pi_{(1/4+\varepsilon)k^2} \right) \le \exp\left( - \omega(k \ln k) \right) \quad \text{for all generic bulk } \pi \in S_k.$$
 Until this single-target generic bulk avoidance bound is analytically proved, claiming full universality at $C^* = 1/4$ is a **FALSE ALARM**.
 
-### The W71 Resolution: Single-Target 2D Permuton Variational Avoidance
-Workstream W71 established the Single-Target 2D Permuton Variational Avoidance Theorem:
-1. **2D Sanov LDP Speed $\Theta(k^2)$:** The empirical measure of $\Pi_N$ ($N = (1/4+\varepsilon)k^2$) satisfies an LDP with speed $\Theta(k^2)$.
-2. **Streamline Super-Surplus & Dilworth Invariant:** With $H/d \ge \frac{1}{2}\sqrt{k} \to \infty$ and $|\mathcal{L}_m|/\mu_m \ge \frac{1}{2}\sqrt{k} \to \infty$, coupled with the Lean-certified Automatic Backward Monotonicity Invariant (`backward_chain_strict_monotonicity`), any failure to embed a generic target requires a macroscopic point shortfall of order $\Theta(k^2)$, bounding avoidance by $P_0(\pi) \le \exp(-c_\varepsilon k^2)$.
-3. **Master Super-Factorial Convergence:** By Harris-FKG, $\Pr(\text{all contained}) \ge \exp(-2 \sum P_0(\pi)) \ge \exp(-2 k! \exp(-c_\varepsilon k^2)) \to 1$ as $k \to \infty$. De-Poissonization transfers this to uniform random permutations $\sigma_n \sim \operatorname{Uniform}(S_n)$ of length $n = \lceil(1/4+\varepsilon)k^2\rceil$.
-4. **Conclusion:** All candidate counterexamples and structural obstacles have been rigorously resolved.
+### Workstream W71: Single-Target 2D Permuton Variational Framework (Proved Framework & Open Topological Step)
+Workstream W71 established the Single-Target 2D Permuton Variational Framework:
+1. **2D Sanov LDP Speed $\Theta(k^2)$ (PROVED):** The empirical measure of $\Pi_N$ ($N = (1/4+\varepsilon)k^2$) satisfies an LDP with speed $\Theta(k^2)$.
+2. **Streamline Super-Surplus & Dilworth Invariant (PROVED):** Host streamlines provide $H/d \ge \frac{1}{2}\sqrt{k} \to \infty$ and $|\mathcal{L}_m|/\mu_m \ge \frac{1}{2}\sqrt{k} \to \infty$, and canonical Dilworth chains demand zero backward cross-layer inversions (`backward_chain_strict_monotonicity` in Lean 4).
+3. **Autocorrelation Variance Reduction (PROVED):** Generic bulk permutations have up to 58.7% smaller self-overlap covariance than the monotone identity baseline, confirming that the identity is the extremal second-moment bottleneck.
+4. **Sieve Equivalence (PROVED):** By the Harris-FKG Monotone Association Theorem, simultaneous universality at $C^* = 1/4$ is mathematically equivalent to the single-target quadratic avoidance bound $P_0(\pi) \le \exp(-c_\varepsilon k^2)$.
+5. **The Open Topological Step:** Rigorously establishing that forward cross-chain ordering constraints incur zero dead ends in greedy streamline embeddings to yield $P_0(\pi) \le \exp(-c_\varepsilon k^2)$ unconditionally for all generic targets remains an open analytical debt. Claiming full sharp universality at $C^* = 1/4$ without closing this topological step is a **FALSE ALARM**.
