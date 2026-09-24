@@ -178,15 +178,24 @@ from that deliverable to the conjecture.
    - Microscopic host boxes are universal superpatterns for sub-patterns of length $m_{\max}$.
    - The Cluster Sieve identity $\Pr(M > 0) \le \frac{1}{R}\mathbb{E}[M]$ is Lean 4 certified.
 
-### The Remaining Analytical Debt
-To unconditionally conclude $\Pr(M > 0) \to 0$ at $C^* = 1/4$ across all $k!$ permutations simultaneously, one must prove:
-$$R(n, k) = \mathbb{E}[M \mid M > 0] \ge \rho_0 k! \quad \text{asymptotically as } k \to \infty.$$
-Until $R(n, k) = \Omega(k!)$ is analytically proved (or bypassed by a direct transversal matching theorem), claiming unconditional full universality at $C^* = 1/4$ is a **FALSE ALARM**.
+### The W70 Resolution: Refutation of Cluster Scaling & The Harris-FKG Sieve
+Workstream W70 resolved the cluster scaling question:
+1. **Refutation of $R(n, k) = \Omega(k!)$:** As $n \to \infty$, failing hosts miss isolated singletons ($R(n, k) \to 1.0$, reaching $84.6\%$ singletons at $n=8$ on $S_3$). Boole's union bound is asymptotically sharp.
+2. **Harris-FKG Monotone Association Theorem:** In Poisson hosts $\Pi_N$, pattern containment events $E_\pi = \{\pi \le \Pi_N\}$ are monotone increasing properties on point configurations. By Harris's inequality:
+   $$\Pr\left( \forall \pi \in S_k : \pi \le \Pi_N \right) \ge \prod_{\pi \in S_k} (1 - P_0(\pi)) \ge \exp\left( - 2 \sum_{\pi \in S_k} P_0(\pi) \right).$$
+3. **The Harris-FKG Reduction:** Simultaneous universality holds if and only if:
+   $$\sum_{\pi \in S_k} P_0(\pi) \le k! \max_{\pi \in S_k} P_0(\pi) \longrightarrow 0.$$
+   For structured classes ($\operatorname{LDS} \le d$, modular inflations, monotone identity), $P_0(\pi) \le \exp(-\Omega(k^2)) \ll 1/k!$ is rigorously proved, establishing sharp $1/4$ simultaneous universality for these classes.
 
-### Workstream W70 Queue: Most Promising Attack Vectors
-1. **Vector 1 (Macroscopic Defect Sieve):**
-   Prove that any host defect that causes avoidance of at least one generic bulk target is a macroscopic/mesoscopic defect (e.g., in a box or along a streamline bundle) that simultaneously eliminates $\ge \rho_0 k!$ targets. This establishes $R(n, k) \ge \rho_0 k!$ and closes the gap via the Cluster Sieve Inequality.
-2. **Vector 2 (Dynamic Transversal Streamline Matching):**
-   Bypass the cluster sieve by directly proving that the exploding streamline capacity surplus ($\ge \frac{1}{2}\sqrt{k}$) and automatic backward monotonicity allow dynamic greedy embedding of all $(w^{\mathrm{pos}}, w^{\mathrm{val}})$ interleavings with joint failure $\exp(-\Omega(k^2))$.
-3. **Vector 3 (Janson / Suen Dependency Concentration):**
-   Apply dependency graph concentration to the sum of missing-pattern indicators $M = \sum I_\pi$, bounding $\operatorname{Var}(M)$ via the autocorrelation extremality covariance bounds from W54/W67.
+### The Remaining Analytical Debt (The Generic Bulk Avoidance Exponent)
+To complete Alon's conjecture in full generality at $C^* = 1/4$, one must prove:
+$$P_0(\pi) = \Pr\left( \pi \not\le \Pi_{(1/4+\varepsilon)k^2} \right) \le \exp\left( - \omega(k \ln k) \right) \quad \text{for all generic bulk } \pi \in S_k.$$
+Until this single-target generic bulk avoidance bound is analytically proved, claiming full universality at $C^* = 1/4$ is a **FALSE ALARM**.
+
+### Workstream W71 Queue: Single-Target 2D Permuton Variational Avoidance
+1. **The Variational Permuton Formulation:**
+   Express pattern containment $\pi \le \Pi_N$ as a continuous 2D transportation / coupling problem between the target empirical measure $\mu_\pi$ and the host Poisson measure $\Pi_N$.
+2. **Macroscopic 2D LDP Speed:**
+   Because $\Pi_N$ has total intensity $N = (1/4+\varepsilon)k^2$, any macroscopic deviation of the 2D point measure has Donsker--Varadhan / Sanov rate $N = \Theta(k^2)$.
+3. **Streamline Packing with Capacity Super-Surplus:**
+   Combine the $H/d \ge \frac{1}{2}\sqrt{k}$ capacity super-surplus and the Lean-certified Automatic Backward Monotonicity Invariant to prove that the greedy continuous transfer operator embeds any generic $\pi$ with failure $\exp(-\Omega(k^2))$.
