@@ -153,6 +153,35 @@ theorem Pr_pos_le_mean : P.Pr (fun ω => 0 < cnt A ω) ≤ P.E (cnt A) := by
   · exact one_le_cnt_of_pos A h
   · exact cnt_nonneg A ω
 
+/-- (Cluster Sieve Inequality, undivided form) If on `{M > 0}` we have `R ≤ M ω`, then
+`R · Pr(M > 0) ≤ E[M]`. -/
+theorem cluster_sieve_le {R : ℝ}
+    (hR : ∀ ω, 0 < cnt A ω → R ≤ cnt A ω) :
+    R * P.Pr (fun ω => 0 < cnt A ω) ≤ P.E (cnt A) := by
+  classical
+  unfold Pr
+  rw [← P.E_const_mul]
+  refine P.E_mono fun ω => ?_
+  unfold ind
+  split_ifs with h
+  · exact (mul_one R).symm ▸ hR ω h
+  · have h0 : cnt A ω = 0 := by
+      have := cnt_nonneg A ω
+      linarith
+    rw [mul_zero, h0]
+
+/-- (Cluster Sieve Inequality, divided form) If `0 < R` and on `{M > 0}` we have `R ≤ M ω`, then
+`Pr(M > 0) ≤ (1 / R) · E[M]`. -/
+theorem Pr_pos_le_mean_div_cluster {R : ℝ} (hRpos : 0 < R)
+    (hR : ∀ ω, 0 < cnt A ω → R ≤ cnt A ω) :
+    P.Pr (fun ω => 0 < cnt A ω) ≤ (1 / R) * P.E (cnt A) := by
+  have h := P.cluster_sieve_le A hR
+  have hRinv : 0 ≤ R⁻¹ := le_of_lt (inv_pos.2 hRpos)
+  have h2 := mul_le_mul_of_nonneg_left h hRinv
+  rw [← mul_assoc, inv_mul_cancel₀ hRpos.ne', one_mul] at h2
+  rw [one_div]
+  exact h2
+
 /-- (a) `μ = ∑ π, Pr(A π)` (linearity). -/
 theorem mean_eq_sum_Pr : P.E (cnt A) = ∑ π, P.Pr (A π) := by
   unfold cnt Pr
@@ -298,6 +327,19 @@ theorem witness_reduction_uniform (n k : ℕ) {𝒲 : Type*} [Fintype 𝒲] [Non
         (FinProb.uniform (Perms n)).Pr (fun σ => ¬ IsSuperpattern k σ.1) := by
   have := (FinProb.uniform (Perms n)).witness_reduction_max (missing n k) W
   convert this using 3
+  ext σ
+  exact (cnt_missing_pos_iff n k σ).symm
+
+/-- Cluster sieve in the uniform model on `S_n`: If every non-superpattern misses at least `R` patterns,
+then `Pr(σ_n is not a k-superpattern) ≤ (1 / R) · E[M]`. -/
+theorem uniform_cluster_sieve (n k : ℕ) {R : ℝ} (hRpos : 0 < R)
+    (hR : ∀ σ : Perms n, ¬ IsSuperpattern k σ.1 → R ≤ FinProb.cnt (missing n k) σ) :
+    (FinProb.uniform (Perms n)).Pr (fun σ => ¬ IsSuperpattern k σ.1) ≤
+      (1 / R) * (FinProb.uniform (Perms n)).E (FinProb.cnt (missing n k)) := by
+  have h := (FinProb.uniform (Perms n)).Pr_pos_le_mean_div_cluster (missing n k) hRpos (fun σ hpos => by
+    have hnot := (cnt_missing_pos_iff n k σ).1 hpos
+    exact hR σ hnot)
+  convert h using 2
   ext σ
   exact (cnt_missing_pos_iff n k σ).symm
 

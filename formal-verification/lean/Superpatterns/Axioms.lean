@@ -48,6 +48,9 @@ namespace Superpatterns
 #print axioms FinProb.witness_reduction
 #print axioms FinProb.witness_reduction_max
 #print axioms witness_reduction_uniform
+#print axioms FinProb.cluster_sieve_le
+#print axioms FinProb.Pr_pos_le_mean_div_cluster
+#print axioms uniform_cluster_sieve
 #print axioms contains_ranks_iff
 #print axioms blockStd_avoids
 #print axioms ranks_perm_range
