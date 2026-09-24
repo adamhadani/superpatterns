@@ -14,6 +14,11 @@ formal-verification/lean/.lake/
 # Paper build intermediates (the PDF itself is committed)
 output/paper/build.*
 output/paper/pg-*.png
+output/arxiv/main.aux
+output/arxiv/main.bbl
+output/arxiv/main.blg
+output/arxiv/main.log
+output/arxiv/main.out
 
 # Local compatibility symlinks to the pre-reorganisation layout (work/, paper/, lean/, lit/)
 /work

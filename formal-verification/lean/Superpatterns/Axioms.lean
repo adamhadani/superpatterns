@@ -78,5 +78,10 @@ namespace Superpatterns
 -- W66 (Theorem 3.1: Backward Chain Monotonicity)
 #print axioms backward_chain_monotonicity
 #print axioms backward_chain_strict_monotonicity
+-- W72 (Streamline Buffer Reservation)
+#print axioms bundle_width_ge_one
+#print axioms bundle_width_ge_two
+#print axioms bundle_total_width_le
+#print axioms bundle_tracks_disjoint
 
 end Superpatterns

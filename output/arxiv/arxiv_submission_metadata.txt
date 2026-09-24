@@ -12,7 +12,7 @@ ACM-2012 Classification: Mathematics of computing ~ Permutations and combination
 
 Keywords: Random permutations, superpatterns, pattern containment, Hammersley process, planar Poisson point process, RSK correspondence, Greene theorem, multi-scale chaining, Stanley--Wilf conjecture, Fekete's lemma, Kingman's ergodic theorem
 
-Comments: 28 pages. Standalone preprint. Formal proofs certified in Lean 4 (8,721 jobs, zero sorrys). Repository and code: https://github.com/adamhadani/superpatterns
+Comments: 32 pages. Standalone preprint. Formal proofs certified in Lean 4 (8,721 jobs, zero sorrys). Repository and code: https://github.com/adamhadani/superpatterns
 
 Abstract:
 In 1999, Noga Alon conjectured that a uniform random permutation of length n = \lceil(1/4 + \varepsilon)k^2\rceil contains every permutation of length k simultaneously with high probability as k \to \infty, for every fixed \varepsilon > 0. The longest increasing subsequence (LIS) barrier forces n \ge \frac{1}{4}k^2, but the best general upper bound remained n = O(k^2 \log \log k), established by He and Kwan (2020). Moreover, the direct-sum alternating family 21^{\oplus (k/2)} stood as the primary candidate counterexample to Alon's conjecture due to persistent empirical finite-host deficits (c_{21} \approx 0.941 < 1.0).
