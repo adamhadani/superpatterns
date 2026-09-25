@@ -973,75 +973,75 @@ $$\text{\url{https://github.com/adamhadani/superpatterns}}$$
 
 The repository maintains an automated regression harness covering the core components of the proof with zero failures:
 
-1. **Repeated-21 Dominance Pruning (`experiments/w40-c21-frontier/`):**
+1. **Repeated-21 Dominance Pruning:** (`experiments/w40-c21-frontier/`)
    Verifies exact agreement between the $O(n \log n)$ dominance-pruned algorithm and the unpruned recurrence across all 46,233 permutations in $S_{\le 8}$ (372,249 prefix states).
-2. **Marked Poisson Cut-Flux Verification (`experiments/w44-c21-drift/`):**
+2. **Marked Poisson Cut-Flux Verification:** (`experiments/w44-c21-drift/`)
    Verifies the cut-flux identity $\mathcal{L} N_u(S) \equiv r_u(S)$ across 6,162 reachable states with $0.0$ error, and confirms the 4-point mark necessity counterexample.
 3. **Multi-Chain Interleaving Interfaces (`experiments/w43-interleaving/`, `w45-multichain/`):**
    Verifies 2-chain and 3-chain boundary-compatible interfaces across all 617 permutations in $S_{\le 7}$ with $\mathrm{LDS} \le 2$, and all 3,400 permutations in $S_{\le 7}$ with $\mathrm{LDS} \le 3$, across all completion orders with zero collisions.
-4. **Flexible Lookahead Void Bypass (`experiments/w46-lookahead/`):**
+4. **Flexible Lookahead Void Bypass:** (`experiments/w46-lookahead/`)
    Simulates Poisson hosts across varying constants $C \in \{5, 10, 20\}$ and depths $\Delta \in \{1, 2, 3, 4\}$, demonstrating that lookahead $\Delta \ge 2$ eliminates void trapping.
-5. **General Simultaneous Universality (`experiments/w47-universality/`):**
+5. **General Simultaneous Universality:** (`experiments/w47-universality/`)
    Verifies skeletal decomposition and combined gluing across all 46,224 permutations in $S_{\le 8}$, testing 7,904 embeddings and 552 completion orderings with zero ordering conflicts.
-6. **Hammersley Limiting Point Accumulation (`experiments/w48-sharp-alon/`):**
+6. **Hammersley Limiting Point Accumulation:** (`experiments/w48-sharp-alon/`)
    Simulates continuous Poisson host processes across $C \in \{0.25, 0.26, 0.28, 0.30, 0.35, 0.50\}$ and scales $k \in \{10, 20, 50, 100\}$, verifying strictly positive surplus drift $D(1) > 0$ for all $C \ge 0.26$, and confirming the critical threshold at $C = 0.25$.
-7. **Multi-Scale Dyadic Chaining & Interface Collision Verification (`experiments/w49-multiscale-chaining/`):**
+7. **Multi-Scale Dyadic Chaining & Interface Collision Verification:** (`experiments/w49-multiscale-chaining/`)
    Verifies multi-scale dyadic chaining across 9 target profiles (rapid oscillations, Cantor fractals, fine-block alternating, and canonical baselines) at scales $k \in \{20, 50, 100, 200\}$. Evaluates 236,385 pairwise coordinate interface checks with zero collisions ($p_{\mathrm{inv}} = 0$). Verifies strictly positive net surplus drift $D_{\mathrm{net}}(s) \ge 1.758 \varepsilon s k > 0$ for all $C \ge 0.26$ and sharp deficit $D_{\mathrm{net}}(1) \le 0$ at critical boundary $C = 0.25$.
-8. **Repeated-21 Invariant Measure & Superadditive Squeeze (`experiments/w50-c21-disproof/`):**
+8. **Repeated-21 Invariant Measure & Superadditive Squeeze:** (`experiments/w50-c21-disproof/`)
    Verifies direct-sum combinatorial superadditivity $L_{21}(\pi_1 \oplus \pi_2) \ge L_{21}(\pi_1) + L_{21}(\pi_2)$ across 300 random pairs (0 violations). Verifies strict monotonic growth of $\bar{L}_{21}/\sqrt{n}$ from $n = 256$ to $n = 65,536$, certifying $c_{21} \ge 0.97156 > 0.95$ (and $\ge 0.98655$ at $n = 1,048,576$). Fits Tracy--Widom deficit scaling $y = c_\infty - A n^{-1/3}$, confirming $c_\infty = 1.0000 \pm 0.0033$ ($R^2 = 0.9622$) and compression of $C^*(c_{21}) \to 0.25000 = 1/4$.
-9. **321-Avoiding Sharp Universality (`experiments/w51-interleaved-chains/`):**
+9. **321-Avoiding Sharp Universality:** (`experiments/w51-interleaved-chains/`)
    Verifies the adjacent-descent invariant ($P_2$-free), two-box optimal split geometry, continuous surplus drift across extremal families, and linear Catalan entropy $|\mathcal{H}| \le \exp(O(\varepsilon^2 k))$ across all 2,047 permutations in $S_{\le 8}(321)$.
-10. **Bounded-LDS Optimal Splittings (`experiments/w52-multichain-split/`):**
+10. **Bounded-LDS Optimal Splittings:** (`experiments/w52-multichain-split/`)
     Verifies the exact $d$-box antidiagonal split areas $(a_i/k)^2$, critical threshold $C^* = 1/4 = 0.25000$ identically for all $d \ge 1$, multi-chain riffle shuffle scaling surplus $\sqrt{d} m$, $P_d$-free descent invariant, and Marcus--Tardos linear entropy across all 3,400 permutations in $S_{\le 7}(4321)$.
-11. **RSK Young Diagram Census & Entropy Diagnostics (`experiments/w53-rsk-hydrodynamics/`):**
+11. **RSK Young Diagram Census & Entropy Diagnostics:** (`experiments/w53-rsk-hydrodynamics/`)
     Verifies RSK limit shape convergence, horizontal Greene corridor area conservation $\sum \operatorname{Area}(S_i) = 1.000000$, and the $k^{3/4}$ local capacity super-surplus law $\operatorname{Cap}/\lambda \ge \frac{1}{\sqrt{2}} k^{1/4} \to \infty$ at $C=1/4$.
-12. **Adversarial Extremal Targets (`experiments/w54-adversarial-targets/`):**
+12. **Adversarial Extremal Targets:** (`experiments/w54-adversarial-targets/`)
     Evaluates candidate adversarial counterexamples across 6 families at $k \in \{6, 8, 10\}$ and $C \in [0.25, 0.50]$ (60 trials/point). Verifies universal first-moment invariance $\mathbb{E}[\operatorname{occ}(\pi)] \equiv \binom{n}{k}/k!$, autocorrelation extremality of the monotone identity ($\mathcal{O}_j(\text{id}_k) = \binom{k}{j}^2$), and balanced RSK shape for alternating permutations ($\lambda_1, d \sim \sqrt{2k}$), confirming zero counterexamples exceeding $1/4$.
-13. **Growing LDS Threshold Sieve (`experiments/w55-growing-lds/`):**
+13. **Growing LDS Threshold Sieve:** (`experiments/w55-growing-lds/`)
     Verifies the Erdős–Szekeres LIS-LDS product invariant across $S_k$, certifies the shared host squares architecture ($|\mathcal{S}| \le (k+1)^3$ with logarithmic entropy $3 \ln k$), and verifies Deuschel–Zeitouni concentration bounding host failure to $o(1)$ for blocks $\ge K\sqrt{\log k}$, covering $m! \ge \exp(\Omega(k\sqrt{\log k}))$ modular inflations simultaneously at $\lceil(1/4+\varepsilon)k^2\rceil$.
-14. **Multi-Layer Hammersley Coupling (`experiments/w56-hammersley-coupling/`):**
+14. **Multi-Layer Hammersley Coupling:** (`experiments/w56-hammersley-coupling/`)
     Verifies the BDJ hydrodynamic limit $|\mathcal{L}_m| \sim 2\sqrt{C} k = 1.00 k$ at $C = 1/4$ for all $m \le 2\sqrt{k}$, the $\sqrt{k}$ capacity super-surplus law ($\operatorname{Cap}/\operatorname{Demand} \ge \frac{1}{2}\sqrt{k} \to \infty$), full-square spatial span $\ge 70\%$, and row-by-row Young diagram dominance $\lambda(\text{host}) \supseteq \lambda(\text{target})$.
-15. **Dynamic Greene Chain Routing (`experiments/w57-dynamic-routing/`):**
+15. **Dynamic Greene Chain Routing:** (`experiments/w57-dynamic-routing/`)
     Verifies constructive Dilworth chain decomposition into $d = \operatorname{LDS}(\pi)$ strictly increasing chains via $\operatorname{chain}(i) = \operatorname{lds\_end}(i) - 1$ across $S_{\le 6}$ (964 permutations), certifies the two-dimensional capacity super-surplus ($H/d \ge \frac{1}{2}\sqrt{k}$ and $|\mathcal{L}|/\mu \ge \frac{1}{2}\sqrt{k}$), confirms generic bulk containment superiority over the monotone identity, and measures autocorrelation variance reduction up to $94.9\%$ at $k=8$.
-16. **Coarse Lattice Chaining & Entropy Bound (`experiments/w58-bulk-multiplexing/`):**
+16. **Coarse Lattice Chaining & Entropy Bound:** (`experiments/w58-bulk-multiplexing/`)
     Verifies that all $d \le 2\sqrt{k}$ chains take $\le 4k$ total grid steps, bounding coarse trajectory tuples by $|\mathcal{T}_k| \le \binom{4k}{k} \le (4e)^k \approx \exp(2.386 k) \ll k!$, certified across scales $k \in [16, 400]$ with zero violations.
-17. **Microscopic Intra-Box Order Realization (`experiments/w59-box-realization/`):**
+17. **Microscopic Intra-Box Order Realization:** (`experiments/w59-box-realization/`)
     Verifies balls-into-bins maximum load $m_{\max} \le \frac{\ln k}{\ln\ln k}(1+o(1))$ and Marcus--Tardos--Fox superexponential avoidance tail decay $\exp(-\Omega(k \ln k))$, and certifies 100.0% empirical pattern containment across all patterns in $S_3, S_4, S_5$ inside host boxes of size $N = (1/4+\varepsilon)k$.
-18. **The Global Sieve at $(1/4+\varepsilon)k^2$ (`experiments/w60-global-sieve/`):**
+18. **The Global Sieve at $(1/4+\varepsilon)k^2$:** (`experiments/w60-global-sieve/`)
     Verifies exhaustive tripartite partition across all permutations in $S_4, S_5, S_6, S_7$ (5,884 permutations), certifies convergence of failure bounds across Regimes 1, 2, and 3, and establishes total host universality with failure $\Pr(E_{\mathrm{univ}}^c) \to 0$.
-19. **Continuous Hydrodynamic Coupling & Poset Duality (`experiments/w66-hydrodynamic-coupling/`):**
+19. **Continuous Hydrodynamic Coupling & Poset Duality:** (`experiments/w66-hydrodynamic-coupling/`)
     Evaluates 5,904 target permutations in $S_{\le 7}$, certifying the Automatic Backward Monotonicity Invariant ($p_{\mathrm{inv}} = 0$) across all pairs $j < i$ with $c(i) \le c(j)$, confirms two-dimensional capacity super-surplus $\ge \frac{1}{2}\sqrt{k}$, and verifies full-square spatial span $\ge 70\%$.
-20. **Autocorrelation Sieve & Extremality (`experiments/w67-quasirandom-regularity/`):**
+20. **Autocorrelation Sieve & Extremality:** (`experiments/w67-quasirandom-regularity/`)
     Evaluates self-overlap covariance profiles across candidate families at $k=7$, certifying that the monotone identity strictly maximizes $\mathcal{O}_j(\pi) \le \binom{k}{j}^2$, confirming that generic bulk targets cluster strictly less and exhibit superior individual containment probability.
-21. **Quasirandom Permuton Conditioning & Cluster Sieve (`experiments/w68-quasirandom-embedding/`):**
+21. **Quasirandom Permuton Conditioning & Cluster Sieve:** (`experiments/w68-quasirandom-embedding/`)
     Simulates macroscopic box concentration in $3 \times 3$ grids, demonstrating super-factorial decay $\Pr(E_{\mathrm{reg}}^c) \le \exp(-\Omega(k^2)) \ll 1/k!$ with crossover scale $k_0 \le 2200$. Evaluates missing-pattern cluster sizes at $k=4, 5$, certifying macroscopic cluster suppression ($R = 4.22$ and $4.39$, respectively), and proves that low-discrepancy sets suppress LIS to $\le \sqrt{2n}$ while Poisson fluctuations generate the supercritical rate $2\sqrt{C} > 1$.
-22. **Master Two-Scale Permuton Coupling (`experiments/w69-two-scale-coupling/`):**
+22. **Master Two-Scale Permuton Coupling:** (`experiments/w69-two-scale-coupling/`)
     Certifies joint host event concentration $E_{\mathrm{univ}} = E_{\mathrm{macro}} \cap E_{\mathrm{shape}} \cap E_{\mathrm{boxes}}$ across scales $k \in [6, 20]$, verifies microscopic superpattern box property for $S_3$ in cells with $N \ge 10$ ($>97.5\%$), measures monotonic finite-size Tracy--Widom scaling toward $C^* = 0.25000$, and audits net failure probability decay across all 5 verification parts with zero errors.
-23. **The Harris-FKG Planar Poisson Sieve (`experiments/w70-cluster-scaling/`):**
+23. **The Harris-FKG Planar Poisson Sieve:** (`experiments/w70-cluster-scaling/`)
     Evaluates missing-pattern cluster sizes $R(n, 3)$ on failing hosts, proving singleton convergence $R(n, 3) \to 1.0$ (singletons reach $84.6\%$ at $n=8$) and refuting $R = \Omega(k!)$. Verifies the Harris-FKG positive association inequality in Poisson hosts across intensities $N \in [4, 8]$ (all FKG ratios $\ge 1.63$). Certifies avoidance rate uniformity on $S_4$, audits 2D planar LDP speed $\Theta(k^2)$, and confirms super-factorial convergence across all 5 verification parts with zero errors.
-24. **Single-Target 2D Permuton Variational Avoidance (`experiments/w71-single-target-ldp/`):**
+24. **Single-Target 2D Permuton Variational Avoidance:** (`experiments/w71-single-target-ldp/`)
     Evaluates pattern containment across candidate target families at intensities $C \in [0.35, 0.80]$ ($>93.5\%$ at $C=0.80$), verifies that the 2D planar LDP rate $-\ln P_0(\pi)/k^2 \in [0.160, 0.192]$ is strictly positive and uniform across families, confirms streamline capacity super-surplus $H/d \ge \frac{1}{2}\sqrt{k}$ up to $k=64$, measures up to $58.7\%$ second-moment variance reduction in generic bulk permutations, and audits super-factorial convergence $k! \cdot P_0(\pi) \to 0$ with crossover $k_0 \le 32$ across all 5 verification parts with zero errors.
-25. **Streamline Buffer Reservation (`experiments/w72-streamline-buffers/`):**
+25. **Streamline Buffer Reservation:** (`experiments/w72-streamline-buffers/`)
     Evaluates streamline bundle scaling $B = \lfloor H/d \rfloor \ge \frac{1}{2}\sqrt{k}$ across scales up to $k=64$, measures dead-end elimination via track selection on adversarial targets, audits 2D planar LDP rates $-\ln P_0(\pi)/k^2 > 0$, confirms up to $64.0\%$ second-moment variance reduction in generic bulk permutations, and audits super-factorial convergence across all 5 verification parts with zero errors.
-26. **Continuous Topological Streamline Embedding (`experiments/w73-topological-embedding/`):**
+26. **Continuous Topological Streamline Embedding:** (`experiments/w73-topological-embedding/`)
     Evaluates forward descent cone $Q_+(x_i, y_i)$ traversal geometry, confirming streamline hit rates up to $100.0\%$ with point yields $\Omega(k) \to \infty$ across scales up to $k=64$, verifies multi-track containment across adversarial target families ($>78.5\%$), audits 2D planar LDP rates $-\ln P_0(\pi)/k^2 > 0$, confirms up to $72.9\%$ second-moment variance reduction in generic bulk permutations at $k=6$, and audits super-factorial convergence across all 5 verification parts with zero errors.
-27. **Master Sharp Threshold Synthesis (`experiments/w74-master-synthesis/`):**
+27. **Master Sharp Threshold Synthesis:** (`experiments/w74-master-synthesis/`)
     Unifies the five foundational pillars (general quadratic universality at $C_0 k^2$, sharp threshold $C^* = 1/4$ for structured classes, Lean-certified Dilworth poset duality, streamline buffer reservation $B \ge \frac{1}{2}\sqrt{k}$, continuous topological embedding, 2D variational LDP, and Lean-certified master sieve bound), certifies 100.0% zero-defect rate across all 5,904 permutations in $S_4, S_5, S_6, S_7$ (58,992 checked pairs), confirms full census covariance extremality in $S_4$ and $S_5$, and audits super-factorial crossover $k_0 \le 33$ across all 5 verification parts with zero errors.
-28. **Discrete Macroscopic Grid Concentration & Generic Bulk Embedding (`experiments/w75-discrete-grid/`):**
+28. **Discrete Macroscopic Grid Concentration & Generic Bulk Embedding:** (`experiments/w75-discrete-grid/`)
     Proves and formalizes the Discrete Macroscopic Grid Concentration Theorem, establishing the single-target quadratic avoidance bound via finite $M \times M$ grid partitions ($M = \lceil 2/\sqrt{\varepsilon} \rceil$); evaluates macroscopic concentration across scales $k \in [10, 100]$ (Chernoff bound decaying to $3.14 \times 10^{-8}$), certifies trajectory allocation and 100% poset monotonicity across all 5,904 permutations in $S_4, S_5, S_6, S_7$, confirms intra-cell capacity surplus $2\sqrt{C} > 1$, tests dynamic lookahead boundary stitching with zero collisions, and audits super-factorial crossover $k_0 \le 20$ across all 5 verification parts with zero errors.
-29. **Multi-Chain Discrete Grid Embedding & Buffer Reservation (`experiments/w76-multichain-grid/`):**
+29. **Multi-Chain Discrete Grid Embedding & Buffer Reservation:** (`experiments/w76-multichain-grid/`)
     Audits single-chain $|T_a| \le 2M - 1$ and total traversal $\sum |T_a| \le 4M\sqrt{k}$ bounds across scales $k \in [10, 100]$ on an $M=4$ grid; audits 2D track allocation and interleaving obstructions across all $5,904$ permutations in $S_4, S_5, S_6, S_7$, confirming that static horizontal tracks fail on counterexamples $\pi = (3, 1, 4, 2)$ (100% vertical inversion) and $\pi = (1, 4, 2, 3)$ (interleaved chains); measures intra-cell partition shapes via genuine Robinson--Schensted insertion; verifies genuine 2D coordinate point embedding with strict non-reuse across chains; and audits super-factorial domination crossover across all 5 verification parts with zero errors.
-30. **Continuum Variational LDP & Global Rate Minimizer (`experiments/w77-variational-ldp/`):**
+30. **Continuum Variational LDP & Global Rate Minimizer:** (`experiments/w77-variational-ldp/`)
     Evaluates numerical Euler--Lagrange rate functional $I(\rho) = D_{\mathrm{KL}}(\rho \,\|\, \operatorname{Leb})$ on a 2D grid ($40 \times 40$), verifies rate dominance $I(\rho^*_{\mathrm{bulk}}) > I(\rho^*_{\mathrm{id}})$ across $\varepsilon \in \{0.01, 0.03, 0.05, 0.10\}$, confirms hydrodynamic multi-chain capacity surplus under perturbed minimizers, evaluates finite-$k$ convergence to continuous variational rates, and audits master sieve crossover across all 5 verification parts with zero errors.
-31. **Dynamic Multi-Track Routing & Uniform Rate Lower Bound (`experiments/w81-generic-bulk-routing/`):**
+31. **Dynamic Multi-Track Routing & Uniform Rate Lower Bound:** (`experiments/w81-generic-bulk-routing/`)
     Verifies dynamic 2D lookahead tube embedding on adversarial counterexamples $\pi = (1, 4, 2, 3)$, $\pi = (3, 1, 4, 2)$, and generic bulk permutations with zero coordinate collisions and 100% success rate; evaluates the 2D Euler--Lagrange rate functional across fine grids ($50 \times 50$); confirms the proof certificate for the uniform rate lower bound $I(\rho^*) \ge c(\varepsilon) = \Omega(\varepsilon^2) > 0$; evaluates quadratic avoidance decay $\exp(-\Omega(k^2))$; and verifies master sieve domination crossover at $k_0 \approx 500$ across all 5 verification parts with zero errors.
-32. **Non-Asymptotic Discretization Bridge (`experiments/w82-discretization-bridge/`):**
+32. **Non-Asymptotic Discretization Bridge:** (`experiments/w82-discretization-bridge/`)
     Numerically audits discrete vs continuous relative entropy on $M \times M$ dyadic cells ($M \in \{20, 30, 40, 60\}$), confirming discretization loss bounded by $O(1/M)$ and $D_{\mathrm{KL}}(p \,\|\, u) \ge 0.60 \cdot I(\rho^*) > 0$; verifies finite multinomial Sanov prefactor $(n+1)^{M^2} \le \exp(2k \ln k)$ is absorbed by quadratic decay $n D_{\mathrm{KL}} = \Omega(k^2)$ for all $k \ge 500$; audits Stirling de-Poissonization penalty $\ln(3\sqrt{n}) \le \ln k + 1.1$ with vanishing ratio $\le 0.0002$; simulates exact uniform random permutations $\sigma_n \in S_n$ embedding adversarial targets $(1, 4, 2, 3)$ and $(3, 1, 4, 2)$ with 100% success rate; and certifies discrete master sieve domination crossover on $S_n$ at $k_0 \approx 750$ across all 5 verification parts with zero errors.
-33. **Hierarchical Permuton Bundles & Collective Transversal Sieve (`experiments/w83-permuton-bundles/`):**
+33. **Hierarchical Permuton Bundles & Collective Transversal Sieve:** (`experiments/w83-permuton-bundles/`)
     Groups permutations into coarse trajectory bundles with entropy $|\mathcal{T}_k| \le \binom{4k}{k} \le (4e)^k \ll k!$; proves the Footprint Sieve Dichotomy separating Type A Generic Bulk ($\operatorname{Area}(T) \ge 0.25$, balls-into-bins occupancy $\sim 1 - 1/e \approx 0.632$ on $M^2$ cells, covering $1 - \exp(-\Omega(k \ln k))$ of all permutations) from Type B Structured Footprints ($S = o(k)$, sub-factorial entropy $\le \exp(\frac{1}{2} k \ln k)$); proves that collective area $A_0 \ge 0.25$ forces quadratic rate $I(\rho_T) \ge c(\varepsilon) > 0$, yielding master bundle union bound $|\mathcal{T}_k| \exp(-c(\varepsilon) k^2) \to 0$ with crossover $k_0 \le 400$; verified across all 5 parts in `verify.py` with zero errors.
-34. **Coordinate Track Buffer Formalization & Final Generic Bulk Synthesis (`experiments/w84-track-buffers/`):**
+34. **Coordinate Track Buffer Formalization & Final Generic Bulk Synthesis:** (`experiments/w84-track-buffers/`)
     Formalizes the Coordinate Track Buffer Lemma, partitioning row intervals $[c/M, (c+1)/M)$ into $m_c \le 2\sqrt{k}$ horizontal sub-tracks of width $w = 1/(m_c M) \ge 1/(2k)$ and column intervals into $m_r \le 2\sqrt{k}$ vertical sub-tracks of width $1/(m_r M)$; proves zero coordinate collisions, zero inversions, and 100% order fidelity across all permutations in $S_k$, resolving adversarial instances $(3, 1, 4, 2)$ and $(1, 4, 2, 3)$; machine-checked in Lean 4 (`intra_row_track_separation`, `cross_row_track_separation`, `track_buffer_order_fidelity` with 0 sorrys); simulates continuous Poisson hosts achieving 100% containment at $k=400$; and audits master sieve failure bound $< 10^{-101}$ at $k=400$ across all 5 verification parts with zero errors.
-35. **Post-Synthesis Adversarial Red-Team Audit & Stress-Testing (`experiments/w85-redteam-audit/`):**
+35. **Post-Synthesis Adversarial Red-Team Audit & Stress-Testing:** (`experiments/w85-redteam-audit/`)
     Executes an exhaustive 5-part adversarial stress-test battery on the synthesized Permuton Bundle & Track Buffer architecture: tests adversarial permutations (high-frequency alternating, reverse identity, Cantor fractals, dense multi-point cells) verifying 100% order fidelity; audits macroscopic footprint concentration; stress-tests continuum variational rates under singular measure perturbations; simulates planar Poisson host embedding at $C = 1/4 + \varepsilon$; and certifies asymptotic master sieve domination and finite crossover robustness against polynomial prefactors across all verification parts with zero errors.
 
 ## Formal Verification in Lean 4
@@ -1122,6 +1122,9 @@ info: Superpatterns.coarse_trajectory_entropy_bound depends on axioms: [propext,
 info: Superpatterns.coarse_spatial_entropy_bits depends on axioms: [propext]
 info: Superpatterns.backward_chain_monotonicity depends on axioms: [propext, Quot.sound]
 info: Superpatterns.backward_chain_strict_monotonicity depends on axioms: [propext, Quot.sound]
+info: Superpatterns.intra_row_track_separation depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Superpatterns.cross_row_track_separation depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Superpatterns.track_buffer_order_fidelity depends on axioms: [propext, Classical.choice, Quot.sound]
 info: Superpatterns.FinProb.cluster_sieve_le depends on axioms: [propext, Classical.choice, Quot.sound]
 info: Superpatterns.FinProb.Pr_pos_le_mean_div_cluster depends on axioms: [propext, Classical.choice, Quot.sound]
 info: Superpatterns.uniform_cluster_sieve depends on axioms: [propext, Classical.choice, Quot.sound]
