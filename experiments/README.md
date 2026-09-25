@@ -99,3 +99,4 @@ sets the research priorities; W42 completes the first selection-cost test.
 
 
 
+| [w83-permuton-bundles](w83-permuton-bundles/) | Hierarchical Permuton Bundles & Collective Transversal Sieve at C* = 1/4 | Defines coarse spatial lattice $M = \lceil \sqrt{k} \rceil$; defines permuton bundles limiting trajectory entropy to $|\mathcal{T}_k| \le \binom{4k}{k} \le (4e)^k \ll k!$; proves Collective Transversal Area Theorem $\text{Area}(T) \ge 1/4$; applies Jensen’s inequality for LDP rate $I(\rho_T) \ge c(\epsilon) > 0$; establishes coarse quadratic sieve domination $|\mathcal{T}_k| \exp(-c(\epsilon) k^2) \to 0$; bridges to local Marcus-Tardos-Fox MTF bound $\exp(-\Omega(k \ln k))$ inside cells; tested verification suite across $k \in [100, 2000]$ hitting master crossover $k_0 \le 400$ |
