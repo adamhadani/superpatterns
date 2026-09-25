@@ -93,5 +93,12 @@ namespace Superpatterns
 #print axioms FinProb.Pr_exists_le
 #print axioms FinProb.macro_grid_failure_le
 #print axioms uniform_discrete_macro_sieve_bound
+-- W76 (Multi-Chain Discrete Grid Embedding & Super-Factorial Domination)
+#print axioms card_perms
+#print axioms card_perms_le_pow
+#print axioms uniform_master_sieve_pow_bound
+#print axioms FinProb.Pr_or_le
+#print axioms FinProb.multichain_grid_failure_le
+#print axioms uniform_multichain_discrete_sieve_bound
 
 end Superpatterns

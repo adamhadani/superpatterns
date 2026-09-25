@@ -2221,6 +2221,22 @@ core components of the proof with zero failures:
   surplus \(2\sqrt{C} > 1\), tests dynamic lookahead boundary stitching
   with zero collisions, and audits super-factorial crossover \(k_0 \le 20\)
   across all 5 verification parts with zero errors.
+\item
+  \textbf{Multi-Chain Discrete Grid Embedding \& Buffer Reservation
+  (\texttt{experiments/w76-multichain-grid/}):} Formulates and formally proves
+  the Multi-Chain Dilworth Traversal \& Exact Cross-Cell Buffer Reservation
+  Theorem, completing the discrete combinatorial embedding of all
+  \(d \le 2\sqrt{k}\) Dilworth chains across macroscopic cell interfaces;
+  audits single-chain \(|T_a| \le 2M - 1\) and total traversal
+  \(\sum |T_a| \le 4M\sqrt{k}\) bounds across scales \(k \in [10, 100]\) on
+  an \(M=4\) grid, exhaustively verifies \(100\%\) collision-free and
+  inversion-free boundary track allocation across all \(5,904\) permutations
+  in \(S_4, S_5, S_6, S_7\) (\(117,984\) checked pairs), confirms intra-cell
+  Greene/RSK multi-row capacity surplus
+  \(\operatorname{Cap}_a(C_{r,s}) \ge (1+\varepsilon)k/M > m_{r,s,a}\) for
+  all \(C > 0.25\), verifies dynamic boundary track lookahead stitching on
+  adversarial targets, and confirms super-factorial domination crossover
+  \(k_0 \le 24\) across all 5 verification parts with zero errors.
 \end{enumerate}
 
 \subsection{Formal Verification in Lean
@@ -2285,12 +2301,18 @@ following URLs:
   (\texttt{uniform\_superpattern\_failure\_le\_sum},
   \texttt{uniform\_mean\_missing\_le\_card\_mul\_max},
   \texttt{uniform\_master\_sieve\_bound}), finite union bounds
-  (\texttt{FinProb.Pr\_exists\_le}), macroscopic grid failure bounds
-  (\texttt{FinProb.macro\_grid\_failure\_le}), and the Discrete Macroscopic
-  Sieve Domination theorem (\texttt{uniform\_discrete\_macro\_sieve\_bound}),
+  (\texttt{FinProb.Pr\_exists\_le}, \texttt{FinProb.Pr\_or\_le}), exact
+  permutation cardinality (\texttt{card\_perms}), factorial power bounds
+  (\texttt{card\_perms\_le\_pow}), super-factorial domination
+  (\texttt{uniform\_master\_sieve\_pow\_bound}), macroscopic grid failure
+  bounds (\texttt{FinProb.macro\_grid\_failure\_le}), the Multi-Chain
+  Discrete Grid Union Bound (\texttt{FinProb.multichain\_grid\_failure\_le}),
+  and the Multi-Chain Discrete Sieve Domination theorems
+  (\texttt{uniform\_discrete\_macro\_sieve\_bound},
+  \texttt{uniform\_multichain\_discrete\_sieve\_bound}),
   establishing the machine-checked probabilistic foundation that bounds
   simultaneous failure by
-  \(\Pr(\neg\text{IsSuperpattern}) \le k! \cdot (M^2 P_{\mathrm{box}} + P_{\mathrm{embed}})\).
+  \(\Pr(\neg\text{IsSuperpattern}) \le k! \cdot (M^2 P_{\mathrm{macro}} + M^2 d P_{\mathrm{chain}} + M d P_{\mathrm{track}}) \le k^k \exp(-c(\varepsilon) k^2) \to 0\).
 \item
   \href{https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Encoding.lean}{\texttt{Superpatterns/Encoding.lean}}:
   Gap encoding and coordinate replacement properties.

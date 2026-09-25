@@ -377,6 +377,57 @@ theorem uniform_master_sieve_bound (n k : ℕ) (P_max : ℝ)
   have h2 := uniform_mean_missing_le_card_mul_max n k P_max hP
   exact le_trans h1 h2
 
+/-- Cardinality of Perms n is n! (Workstream W76). -/
+theorem card_perms (n : ℕ) : Fintype.card (Perms n) = n.factorial := by
+  have H : ∀ σ : List ℕ, σ ∈ (List.permutations (List.range n)).toFinset ↔ σ.Perm (List.range n) := by
+    intro σ
+    simp [List.mem_permutations]
+  have hcard := Fintype.card_of_subtype (List.permutations (List.range n)).toFinset H
+  rw [hcard]
+  rw [List.toFinset_card_of_nodup]
+  · rw [List.length_permutations]
+    simp
+  · exact List.nodup_permutations _ List.nodup_range
+
+/-- Factorial bound: |Perms n| ≤ n^n (Workstream W76). -/
+theorem card_perms_le_pow (n : ℕ) : (Fintype.card (Perms n) : ℝ) ≤ (n : ℝ) ^ n := by
+  rw [card_perms n]
+  exact_mod_cast Nat.factorial_le_pow n
+
+/-- Super-Factorial Domination: superpattern failure probability is bounded by k^k * P_max (Workstream W76). -/
+theorem uniform_master_sieve_pow_bound (n k : ℕ) (P_max : ℝ) (hPmax : 0 ≤ P_max)
+    (hP : ∀ π : Perms k, (FinProb.uniform (Perms n)).Pr (missing n k π) ≤ P_max) :
+    (FinProb.uniform (Perms n)).Pr (fun σ => ¬ IsSuperpattern k σ.1) ≤
+      (k : ℝ) ^ k * P_max := by
+  have h1 := uniform_master_sieve_bound n k P_max hP
+  have h2 := mul_le_mul_of_nonneg_right (card_perms_le_pow k) hPmax
+  exact le_trans h1 h2
+
+/-- Union bound for two events in a FinProb space (Workstream W76). -/
+theorem FinProb.Pr_or_le {Ω : Type*} [Fintype Ω] (P : FinProb Ω) (A B : Ω → Prop) :
+    P.Pr (fun ω => A ω ∨ B ω) ≤ P.Pr A + P.Pr B := by
+  have hsum : P.Pr A + P.Pr B = P.E (fun ω => ind A ω + ind B ω) := by
+    unfold Pr
+    rw [P.E_add]
+  rw [hsum]
+  unfold Pr
+  refine P.E_mono (fun ω => ?_)
+  unfold ind
+  by_cases hA : A ω <;> by_cases hB : B ω
+  · have : (fun ω => A ω ∨ B ω) ω := Or.inl hA
+    rw [if_pos this, if_pos hA, if_pos hB]
+    linarith
+  · have : (fun ω => A ω ∨ B ω) ω := Or.inl hA
+    rw [if_pos this, if_pos hA, if_neg hB]
+    linarith
+  · have : (fun ω => A ω ∨ B ω) ω := Or.inr hB
+    rw [if_pos this, if_neg hA, if_pos hB]
+    linarith
+  · have : ¬(fun ω => A ω ∨ B ω) ω := by
+      intro h; cases h with | inl ha => exact hA ha | inr hb => exact hB hb
+    rw [if_neg this, if_neg hA, if_neg hB]
+    linarith
+
 /-- Finite union bound for families of events in a FinProb space. -/
 theorem FinProb.Pr_exists_le {Ω ι : Type*} [Fintype Ω] [Fintype ι] (P : FinProb Ω)
     (B : ι → Ω → Prop) :
@@ -414,5 +465,65 @@ theorem uniform_discrete_macro_sieve_bound (n k M : ℕ) (P_box P_embed : ℝ)
     (FinProb.uniform (Perms n)).Pr (fun σ => ¬ IsSuperpattern k σ.1) ≤
       (Fintype.card (Perms k) : ℝ) * ((M : ℝ)^2 * P_box + P_embed) := by
   exact uniform_master_sieve_bound n k ((M : ℝ)^2 * P_box + P_embed) hP
+
+/-- Multi-Chain Discrete Grid Union Bound (Workstream W76):
+    The failure probability over an M x M grid with d chains across macroscopic cells,
+    intra-cell chain capacities, and boundary tracks is bounded by
+    M^2 * P_macro + M^2 * d * P_chain + M * d * P_track. -/
+theorem FinProb.multichain_grid_failure_le {Ω : Type*} [Fintype Ω] (P : FinProb Ω)
+    (M d : ℕ)
+    (B_macro : Fin M × Fin M → Ω → Prop)
+    (B_chain : (Fin M × Fin M) × Fin d → Ω → Prop)
+    (B_track : Fin M × Fin d → Ω → Prop)
+    (P_macro P_chain P_track : ℝ)
+    (h_macro : ∀ c, P.Pr (B_macro c) ≤ P_macro)
+    (h_chain : ∀ ca, P.Pr (B_chain ca) ≤ P_chain)
+    (h_track : ∀ ma, P.Pr (B_track ma) ≤ P_track) :
+    P.Pr (fun ω => (∃ c, B_macro c ω) ∨ (∃ ca, B_chain ca ω) ∨ (∃ ma, B_track ma ω)) ≤
+      (M : ℝ)^2 * P_macro + (M : ℝ)^2 * (d : ℝ) * P_chain + (M : ℝ) * (d : ℝ) * P_track := by
+  have h_or1 := P.Pr_or_le (fun ω => ∃ c, B_macro c ω)
+    (fun ω => (∃ ca, B_chain ca ω) ∨ (∃ ma, B_track ma ω))
+  have h_or2 := P.Pr_or_le (fun ω => ∃ ca, B_chain ca ω) (fun ω => ∃ ma, B_track ma ω)
+  have h_macro_bound : P.Pr (fun ω => ∃ c, B_macro c ω) ≤ (M : ℝ)^2 * P_macro :=
+    P.macro_grid_failure_le M B_macro P_macro h_macro
+  have h_chain_exists := P.Pr_exists_le B_chain
+  have h_chain_sum : (∑ ca, P.Pr (B_chain ca)) ≤ ∑ _ca : (Fin M × Fin M) × Fin d, P_chain :=
+    Finset.sum_le_sum (fun ca _ => h_chain ca)
+  have h_chain_card : (∑ _ca : (Fin M × Fin M) × Fin d, P_chain) =
+      (Fintype.card ((Fin M × Fin M) × Fin d) : ℝ) * P_chain := by
+    simp [Finset.sum_const, nsmul_eq_mul]
+  have h_chain_dim : (Fintype.card ((Fin M × Fin M) × Fin d) : ℝ) = (M : ℝ)^2 * (d : ℝ) := by
+    simp only [Fintype.card_prod, Fintype.card_fin]
+    push_cast
+    ring
+  rw [h_chain_dim] at h_chain_card
+  have h_chain_bound : P.Pr (fun ω => ∃ ca, B_chain ca ω) ≤ (M : ℝ)^2 * (d : ℝ) * P_chain :=
+    le_trans h_chain_exists (le_trans h_chain_sum (le_of_eq h_chain_card))
+  have h_track_exists := P.Pr_exists_le B_track
+  have h_track_sum : (∑ ma, P.Pr (B_track ma)) ≤ ∑ _ma : Fin M × Fin d, P_track :=
+    Finset.sum_le_sum (fun ma _ => h_track ma)
+  have h_track_card : (∑ _ma : Fin M × Fin d, P_track) =
+      (Fintype.card (Fin M × Fin d) : ℝ) * P_track := by
+    simp [Finset.sum_const, nsmul_eq_mul]
+  have h_track_dim : (Fintype.card (Fin M × Fin d) : ℝ) = (M : ℝ) * (d : ℝ) := by
+    simp only [Fintype.card_prod, Fintype.card_fin]
+    push_cast
+    ring
+  rw [h_track_dim] at h_track_card
+  have h_track_bound : P.Pr (fun ω => ∃ ma, B_track ma ω) ≤ (M : ℝ) * (d : ℝ) * P_track :=
+    le_trans h_track_exists (le_trans h_track_sum (le_of_eq h_track_card))
+  linarith [h_or1, h_or2, h_macro_bound, h_chain_bound, h_track_bound]
+
+/-- Workstream W76: Multi-Chain Discrete Grid Sieve Domination.
+    If each target permutation avoidance is bounded by the multi-chain grid failure bound
+    (M^2 * P_macro + M^2 * d * P_chain + M * d * P_track), then the superpattern failure
+    probability is bounded by k! * (M^2 * P_macro + M^2 * d * P_chain + M * d * P_track). -/
+theorem uniform_multichain_discrete_sieve_bound (n k M d : ℕ) (P_macro P_chain P_track : ℝ)
+    (hP : ∀ π : Perms k, (FinProb.uniform (Perms n)).Pr (missing n k π) ≤
+      (M : ℝ)^2 * P_macro + (M : ℝ)^2 * (d : ℝ) * P_chain + (M : ℝ) * (d : ℝ) * P_track) :
+    (FinProb.uniform (Perms n)).Pr (fun σ => ¬ IsSuperpattern k σ.1) ≤
+      (Fintype.card (Perms k) : ℝ) *
+        ((M : ℝ)^2 * P_macro + (M : ℝ)^2 * (d : ℝ) * P_chain + (M : ℝ) * (d : ℝ) * P_track) := by
+  exact uniform_master_sieve_bound n k _ hP
 
 end Superpatterns
