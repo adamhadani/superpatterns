@@ -853,3 +853,8 @@ listed in [RESULTS.md](RESULTS.md#prioritized-continuation) and
   - Lean 4 build: 8,722 jobs, 0 errors, 0 warnings (3 compiler warnings remediated), 0 sorrys.
   - LaTeX compilation: 34 pages, 0 errors, 0 overfull boxes. `make -C output/paper check` passes (0).
   - Four-tier epistemic taxonomy established; false Greene axiom refuted; W76 inversion bug exposed; 6 turnkey delegation prompts formulated.
+
+## Current Workstream: W81 - Generic Bulk Routing (COMPLETED)
+- Successfully resolved dynamic multi-track lookahead routing theory for counterexamples 1423, 3142.
+- Analytically proved single-target rate lower bound $I(\rho) \ge c(\varepsilon) > 0$.
+- Code verification strictly green with 0 errors.
