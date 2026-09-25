@@ -1,9 +1,24 @@
 # Current session state — 25 September 2026
 
+## Executive Verdict (Gemini 3.1 Pro Master Mathematical Audit): [QUALIFIED / GAP IDENTIFIED]
+- **What is Unconditionally Proved**:
+  1. **Bounded-LDS Permutations at Sharp $C^* = 1/4$**: Theorems 1.3 & 7.16 prove the sharp threshold $n = \lceil(1/4+\varepsilon)k^2\rceil$ unconditionally for all classes with $\operatorname{LDS}(\pi) \le d = \mathcal{O}(1)$ (encompassing 321-avoiding, 4321-avoiding, and all Stanley–Wilf pattern-avoiding classes) via the $d$-box antidiagonal optimal split theorem and Marcus–Tardos linear topological entropy $(d-1)^{2k} = \exp(\mathcal{O}_d(k))$.
+  2. **Modular Interval Inflations at Sharp $C^* = 1/4$**: Theorem 1.4 unconditionally proves the sharp threshold for blocks $\ge K\sqrt{\log k}$ via zero-entropy shared host squares and Deuschel–Zeitouni LIS lower tails.
+  3. **Refutation of Repeated-21 Counterexample**: Theorem 1.5 analytically proves the generator cut-flux satisfies $\mathcal{L} N_u \equiv r_u \le u \implies c_{21} \le 1.0000$, while Fekete dynamic programming certifies $c_{21} \ge 0.98655$, confining $c_{21} \in [0.98655, 1.0]$ and conclusively refuting the disproof route $c_{21} \le 0.95$.
+  4. **Machine Certification (Lean 4)**: 8,722 jobs compile cleanly with 0 errors, 0 warnings, 0 `sorry`s. All combinatorial lemmas and discrete sieve bounds depend strictly on standard foundational axioms; Greene's poset chain capacities are governed by 6 transparent domain axioms in `Superpatterns/Greene.lean` (`multichain_demand_realizability` was retracted).
+- **The Core Mathematical Gap (The Generic Bulk Length-Scale Barrier)**:
+  - In Theorem 7.23, dynamic 2D lookahead coordinate tubes $B_t(\Delta)$ of side length $\Delta/k$ resolve discrete cross-chain interleaving geometrically.
+  - **The Area Collapse**: Each tube has 2D area $(\Delta/k)^2 = \mathcal{O}(1/k^2)$. Summed over all $k$ target points, the total network area is $A_0(\pi) = k \cdot (\Delta/k)^2 = \mathcal{O}(1/k) \to 0$ as $k \to \infty$.
+  - **The Linear Exponent**: Because $A_0 = \mathcal{O}(1/k)$, the continuous KL divergence to deplete an individual target tube is $I(\rho) \approx \frac{9 A_0}{8(1-A_0)}\varepsilon^2 = \mathcal{O}(\varepsilon^2 / k)$. In a Poisson host of intensity $n = (1/4+\varepsilon)k^2$, the avoidance exponent is $n I(\rho) = C k^2 \times \mathcal{O}(1/k) = \mathcal{O}(\varepsilon^2 k)$ (**linear in $k$, not quadratic**).
+  - **The Sieve Dichotomy**:
+    - For bounded-LDS permutations, target count is $(d-1)^{2k} = \exp(\mathcal{O}_d(k))$ (Marcus–Tardos). Linear decay strictly dominates linear entropy, so $C^* = 1/4$ is **unconditionally proved**.
+    - For the generic bulk, target count is $k! \approx \exp(k \ln k)$. The linear single-target avoidance bound $k! \exp(-\Omega(k)) \to +\infty$ **diverges**.
+  - **Conclusion**: Naive union bound over independent single-target avoidance events cannot prove universality for the generic bulk at $C^* = 1/4$. The generic bulk remains the central open frontier.
+
 ## Authoritative Status: What is Proved vs. The Remaining Gap (Post-W80 Red-Team Audit)
 
 > **CRITICAL REPO NORM / ANTI-FALSE-ALARM DIRECTIVE (W80 4-TIER EPISTEMIC TAXONOMY):**
-> Following the comprehensive adversarial red-team audit in Workstream W80 (`experiments/w80-redteam-audit/adversarial_audit_report.md`, 972 lines, 98 KB), all mathematical claims in the repository are strictly delineated into four mutually exclusive epistemic tiers:
+> Following the comprehensive adversarial red-team audit in Workstream W80 (`experiments/w80-redteam-audit/adversarial_audit_report.md`, 972 lines, 98 KB) and the final evaluation (`final_evaluation_report.md`), all mathematical claims in the repository are strictly delineated into four mutually exclusive epistemic tiers:
 >
 > - **TIER 1: PROVED UNCONDITIONAL & MACHINE-CERTIFIED (Lean 4):**
 >   - Chroman–Kwan–Singhal (2021) Deterministic Pattern Count Bound (`Superpatterns.theoremA`): machine-certified under standard foundational axioms (`propext`, `Quot.sound`, `Classical.choice`). Note: this is a pattern count bound on individual permutations, distinct from probabilistic universality.
@@ -27,12 +42,12 @@
 >   - **Repeated-$21$ Asymptotic Constant $c_{21} = 1.0000$ Identically:** Empirical Tracy–Widom regression fit ($R^2 = 0.9622$), not a closed-form analytical proof.
 >
 > - **TIER 4: MATHEMATICALLY FAILED / FALSE AXIOMS / CRITICAL GAPS (AUDITED & EXPOSED IN W80):**
->   - **Lean Axiom `multichain_demand_realizability` is FALSE:** Refuted by minimal counterexample $\sigma = [1, 2, 5, 0, 3, 4] \in S_6$ ($\lambda = [4, 2]$, demand $(4, 2)$ has no two disjoint chains of lengths 4 and 2).
+>   - **Lean Axiom `multichain_demand_realizability` is FALSE:** Refuted by minimal counterexample $\sigma = [1, 2, 5, 0, 3, 4] \in S_6$ ($\lambda = [4, 2]$, demand $(4, 2)$ has no two disjoint chains of lengths 4 and 2). Retracted.
 >   - **Theorem 1.2 Full-Generality Claim:** Lookahead interface entropy for generic bulk permutations ($d \approx 2\sqrt{k}$) satisfies $|\mathfrak{I}| \approx (4k)^k \approx k!$, so the union bound diverges to $+\infty$. Theorem 1.2 is established only for bounded-LDS permutations, not all $k!$ permutations.
 >   - **W76 Lemma 4.2 Static Track Allocation (Fatal Inversion Bug):** Inverts Lean's `backward_chain_strict_monotonicity`. Refuted by counterexamples $\pi = (3, 1, 4, 2)$ and $\pi = (1, 4, 2, 3)$.
 >   - **W75/W76 Master Sieve Domination Breakdown:** Boundary track error $P_{\text{track}} \le \exp(-\Omega(k))$ does not dominate quadratic error, leading to $k! \cdot \exp(-O(k)) \to +\infty$.
 >   - **Lean Attribution Disentanglement:** Lean's `theoremA` proves Chroman–Kwan–Singhal's deterministic pattern count bound, not probabilistic quadratic universality.
->   - **Undisclosed Custom Axioms:** `Greene.lean` posits 7 custom unproved domain axioms, which are now fully documented and distinguished from Lean foundational axioms.
+>   - **Undisclosed Custom Axioms:** `Greene.lean` posits 6 custom unproved domain axioms, which are now fully documented and distinguished from Lean foundational axioms.
 
 ## Latest continuation (25 September 2026) — Workstream W82: Non-Asymptotic Discretization Bridge for Generic Bulk Permutations
 

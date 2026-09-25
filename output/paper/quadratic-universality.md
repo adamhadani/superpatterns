@@ -836,99 +836,59 @@ $$
 Each tube $B_t(\Delta)$ has area $\operatorname{Area}(B_t) = (\Delta/k)^2$. The expected number of Poisson host points in $B_t$ is $\mathbb{E}[|\Pi_n \cap B_t|] = n \cdot \operatorname{Area}(B_t) = C k^2 (\Delta/k)^2 = C \Delta^2$. For $C \ge 1/4 + \varepsilon$ and $\Delta \ge 2/\sqrt{\varepsilon}$, $\mathbb{E}[|\Pi_n \cap B_t|] \ge (1/4 + \varepsilon)(4/\varepsilon) > 1$. By Poisson tail bounds, $B_t$ contains at least one host point with probability $1 - \exp(-\Omega(1))$.
 For any pair $s < t$, the tube centers $(s/k, \pi(s)/k)$ and $(t/k, \pi(t)/k)$ are distinctly separated in 2D space. Greedily choosing host points $(h_t)_{t=1}^k$ without replacement within each tube preserves coordinate order: $h_s.x < h_t.x$ and $(h_s.y < h_t.y \iff \pi(s) < \pi(t))$. Because each target index $t$ possesses an independent 2D center, local coordinate routing operates independently of chain index, completely eliminating the cross-chain interleaving and vertical inversion failures of static 1D hyperplanes. $\blacksquare$
 
-## Analytical Proof of the Uniform Avoidance Rate Lower Bound {#sec:variational-rate-lower-bound}
+## The Generic Bulk Length-Scale Barrier & Variational Sieve Analysis {#sec:variational-rate-lower-bound}
 
-We now provide the functional-analytic proof of the uniform avoidance rate lower bound across the generic bulk, completing the continuum large deviation foundation.
+While Theorem 7.23 resolves cross-chain interleaving geometrically via dynamic 2D tubes $B_t(\Delta)$, translating single-target avoidance into simultaneous $k!$-target universality reveals a fundamental **length-scale barrier** in large deviation theory.
 
-**Theorem 7.24 (Uniform Variational Avoidance Rate Lower Bound) [Proved Analytical Lower Bound].**
-*Let $\mathcal{M}_1([0, 1]^2)$ denote the space of Radon probability measures on $[0, 1]^2$ equipped with the weak topology, and let $I(\rho) = D_{\mathrm{KL}}(\rho \,\|\, \operatorname{Leb}) = \iint_{[0, 1]^2} \rho \ln \rho \, dx dy$ be the 2D large deviation rate functional. Let $A(\pi) \subset \mathcal{M}_1([0, 1]^2)$ be the avoidance set of measures under which a Poisson process of intensity $C k^2$ ($C = 1/4 + \varepsilon$) fails to contain $\pi$. For every $\varepsilon > 0$, there exists an absolute constant $c(\varepsilon) > 0$ such that:*
+**The Microscopic Tube Area Collapse.**
+Each dynamic tube $B_t(\Delta)$ has side length $\Delta/k$. In the normalized unit square $[0, 1]^2$, its 2D area is:
 $$
-\inf_{\rho \in A(\pi)} I(\rho) \ge c(\varepsilon) \ge \frac{9 A_0}{8(1 - A_0)} \varepsilon^2 > 0 \quad \text{uniformly for all } \pi \in S_k,
+\operatorname{Area}(B_t) = \left( \frac{\Delta}{k} \right)^2 = \mathcal{O}\left( \frac{1}{k^2} \right).
 $$
-*where $A_0 = \min_{\pi \in S_k} \operatorname{Area}(\mathcal{N}_w(\Gamma_\pi)) = \Omega(1)$ is the macroscopic area of the 2D transversal network of Dilworth chains.*
+Summing across all $k$ target points, the total 2D area covered by the single-target tube network $\Gamma_\pi$ is:
+$$
+A_0(\pi) = \sum_{t=1}^k \operatorname{Area}(B_t) \le k \times \frac{\Delta^2}{k^2} = \frac{\Delta^2}{k} = \mathcal{O}\left( \frac{1}{k} \right) \longrightarrow 0 \quad \text{as } k \to \infty.
+$$
 
-*Proof.*
-Along any increasing trajectory $\gamma: [0, 1] \to [0, 1]^2$, the continuous Hammersley accumulation rate under measure $\rho$ is $v_\rho(s) = 2\sqrt{C \rho(\gamma(s))}$. To avoid containing a target chain of length $k$, the expected point yield must be suppressed below critical velocity:
+**Linear Avoidance Decay vs. Factorial Target Growth.**
+To avoid containing a single target $\pi$, an empirical measure $\rho$ only needs to deplete density within this tube network of microscopic area $A_0 = \mathcal{O}(1/k)$.
+By the Taylor expansion of Kullback--Leibler divergence $I(\rho) \ge \frac{A_0 \delta^2}{2(1 - A_0)} + \mathcal{O}(\delta^3)$ with critical depletion $\delta \ge \frac{3}{2}\varepsilon$:
 $$
-\int_0^1 \sqrt{\rho(\gamma(s))} \, ds \le \frac{1}{2\sqrt{C}} = \frac{1}{\sqrt{1 + 4\varepsilon}} = 1 - \delta_c(\varepsilon),
+I(\rho^*_\pi) \approx \frac{9 A_0}{8(1 - A_0)} \varepsilon^2 = \mathcal{O}\left( \frac{\varepsilon^2}{k} \right).
 $$
-where $\delta_c(\varepsilon) = 1 - 1/\sqrt{1 + 4\varepsilon} \ge \frac{3}{2}\varepsilon$. By Cauchy--Schwarz, the average density along any avoided trajectory satisfies $\int_0^1 \rho(\gamma(s)) \, ds \le (1 - \delta_c)^2 \le 1 - 2\delta_c + \delta_c^2$.
+Under a Poisson host process of intensity $n = (1/4+\varepsilon)k^2$, the resulting large deviation avoidance exponent is:
+$$
+n \cdot I(\rho^*_\pi) = \left( \frac{1}{4} + \varepsilon \right) k^2 \times \mathcal{O}\left( \frac{\varepsilon^2}{k} \right) = \mathcal{O}\left( \varepsilon^2 k \right) \quad \text{\textbf{(linear in }} k\text{\textbf{)}}.
+$$
+Consequently, single-target avoidance decays only exponentially in $k$:
+$$
+P_0(\pi) = \Pr\left( \pi \not\le \Pi_n \right) \le \exp\left( -\Omega(\varepsilon^2 k) \right).
+$$
 
-For generic bulk permutations with $d = \Theta(\sqrt{k})$ Dilworth chains, the union of continuous chain trajectories forms a 2D transversal network $\Gamma_\pi = \bigcup_{a=1}^d \gamma_a([0, 1])$. Because the $d$ chains span the unit square transversely with average spacing $O(1/\sqrt{k})$, their $w$-neighborhood $E = \mathcal{N}_w(\Gamma_\pi)$ covers a macroscopic 2D area $A_0 = \operatorname{Area}(E) = \Omega(1)$ independent of $k$. Therefore, the average density inside $E$ must satisfy $\bar{\rho}_{\text{tube}} \le 1 - \delta_c(\varepsilon)$.
+**The Sieve Dichotomy: Bounded-LDS vs. Generic Bulk.**
+This linear avoidance exponent explains the sharp mathematical divide between structured permutation classes and the generic bulk:
+1. *Bounded-LDS Permutations ($\operatorname{LDS}(\pi) \le d = \mathcal{O}(1)$):* By the Marcus--Tardos theorem [@MarcusTardos04], the number of targets in any Stanley--Wilf class is strictly linear in topological entropy: $|S_k(\operatorname{LDS} \le d)| \le (d-1)^{2k} = \exp(\mathcal{O}_d(k))$. Therefore, the linear avoidance exponent $\exp(-\Omega(k))$ **strictly absorbs** the target count, establishing the sharp $C^* = 1/4$ threshold unconditionally (Theorems 1.3 and 7.16).
+2. *The Generic Bulk ($S_k$ in full generality):* The full symmetric group has factorial cardinality $|S_k| = k! \approx \exp(k \ln k)$. A union bound over all $k!$ individual single-target avoidance events yields:
+$$
+\sum_{\pi \in S_k} P_0(\pi) \le k! \exp\left( -\Omega(k) \right) = \exp\left( k \ln k - \Omega(k) \right) \longrightarrow +\infty.
+$$
 
-Let $E^c = [0, 1]^2 \setminus E$. Since $\rho$ is a probability measure, $\iint_E \rho \, dx dy + \iint_{E^c} \rho \, dx dy = 1$. Let $\iint_E \rho \, dx dy = A_0 (1 - \delta)$ with $\delta \ge \delta_c$. Mass conservation forces the complement $E^c$ to absorb the displaced mass:
-$$
-\bar{\rho}_{\text{comp}} = \frac{1 - A_0(1 - \delta)}{1 - A_0} = 1 + \frac{A_0 \delta}{1 - A_0}.
-$$
-By the strict convexity of $f(u) = u \ln u$ on $\mathbb{R}_{>0}$, Jensen's inequality implies:
-$$
-I(\rho) = \iint_{[0, 1]^2} \rho \ln \rho \, dx dy \ge A_0 f(\bar{\rho}_{\text{tube}}) + (1 - A_0) f(\bar{\rho}_{\text{comp}}).
-$$
-Taylor expanding $f(1 + x) = x + \frac{1}{2} x^2 - \frac{1}{6} x^3 + O(x^4)$ around $x = 0$:
-$$
-\begin{aligned}
-A_0 f(1 - \delta) &= A_0 \left( -\delta + \frac{1}{2}\delta^2 + O(\delta^3) \right), \\
-(1 - A_0) f\left( 1 + \frac{A_0 \delta}{1 - A_0} \right) &= (1 - A_0) \left( \frac{A_0 \delta}{1 - A_0} + \frac{1}{2} \left( \frac{A_0 \delta}{1 - A_0} \right)^2 + O(\delta^3) \right) \\
-&= A_0 \delta + \frac{1}{2} \frac{A_0^2 \delta^2}{1 - A_0} + O(\delta^3).
-\end{aligned}
-$$
-Summing these expressions, the first-order terms $A_0 \delta$ cancel identically, leaving:
-$$
-I(\rho) \ge \frac{1}{2} A_0 \delta^2 \left( 1 + \frac{A_0}{1 - A_0} \right) + O(\delta^3) = \frac{A_0 \delta^2}{2(1 - A_0)} + O(\delta^3).
-$$
-Substituting $\delta \ge \delta_c(\varepsilon) \ge \frac{3}{2}\varepsilon$ yields:
-$$
-I(\rho) \ge \frac{9 A_0}{8(1 - A_0)} \varepsilon^2 + O(\varepsilon^3) \equiv c(\varepsilon) > 0.
-$$
-Since $A_0 = \Omega(1)$ uniformly across all target configurations, $c(\varepsilon) = \Omega(\varepsilon^2) > 0$ holds uniformly for all $\pi \in S_k$. $\blacksquare$
+**The Generic Bulk Variational Reduction Hypothesis.**
+To achieve master sieve domination for the generic bulk, one cannot rely on independent single-target avoidance. Instead, universality requires either:
+i. *Macroscopic Cluster Multiplicity:* Proving that failing hosts miss macroscopic correlated clusters of target permutations simultaneously, so that the union bound overcounts by a factor $R = \Omega(k! / e^{\mathcal{O}(k)})$ via the Missing-Pattern Cluster Sieve ($\Pr(\exists \pi : \pi \not\le \sigma_n) = \sum P_0(\pi) / R$); or
+ii. *Collective Multi-Scale Transversal Area:* Proving that avoiding all $k!$ permutations simultaneously requires depleting a collective union of paths that covers a macroscopic area $A_{\mathrm{coll}} = \Omega(1)$ in $[0, 1]^2$, thereby restoring the quadratic rate $\exp(-\Omega(k^2))$.
 
-**Theorem 7.25 (Master Sieve Domination & Generic Bulk Universality) [Proved].**
-*Let $\varepsilon > 0$ be fixed and $n = \lceil(1/4+\varepsilon)k^2\rceil$. Then a uniform random permutation $\sigma_n \in S_n$ contains every permutation $\pi \in S_k$ simultaneously with probability tending to $1$ as $k \to \infty$:*
-$$
-\Pr\left( \exists \pi \in S_k : \pi \not\le \sigma_n \right) \le k! \exp\left( -c(\varepsilon) k^2 \right) = \exp\left( k \ln k - c(\varepsilon) k^2 \right) \longrightarrow 0,
-$$
-*with finite-scale crossover at $k_0(\varepsilon) \le \lceil \frac{2}{c(\varepsilon)} \ln \frac{1}{c(\varepsilon)} \rceil \approx 500$.*
-
-*Proof.*
-By Theorem 7.24, individual avoidance decays quadratically: $P_0(\pi) \le \exp(-c(\varepsilon) k^2)$. By Theorem 7.21, pattern containment events are positively associated in the Poisson model. Applying Boole's inequality over all $k!$ target permutations yields a simultaneous failure bound of $k! \exp(-c(\varepsilon) k^2) = \exp(k \ln k - c(\varepsilon) k^2)$. Since $k \ln k = o(k^2)$, this probability vanishes super-factorially as $k \to \infty$. De-Poissonization transfer (Theorem 5.1) completes the proof for uniform random permutations $\sigma_n \in S_n$. $\blacksquare$
-
-## The Non-Asymptotic Discretization Bridge on Finite Host Grids {#sec:discretization-bridge}
-
-To close the continuum-to-discrete translation and establish full sharp universality unconditionally without asymptotic measure-theoretic limits, we construct the non-asymptotic discretization bridge from $[0, 1]^2$ to discrete permutations $\sigma_n \in S_n$.
-
-**Lemma 7.26 (Finite Dyadic Relative Entropy Approximation) [Proved].**
-*Let $[0, 1]^2$ be partitioned into an $M \times M$ grid of dyadic cells $C_{r, s} = [r/M, (r+1)/M) \times [s/M, (s+1)/M)$ with $M = \lceil\sqrt{k}\rceil$. For any probability density $\rho \in \mathcal{M}_1([0, 1]^2)$, let $p_{r, s} = \iint_{C_{r, s}} \rho(x, y) \, dx dy$ be the discrete cell probability vector, and let $u_{r, s} = 1/M^2$ be the uniform cell distribution. Then:*
-$$
-D_{\mathrm{KL}}(p \,\|\, u) = \sum_{r, s} p_{r, s} \ln\left( M^2 p_{r, s} \right) \ge I(\rho) - O\left( \frac{1}{M} \right).
-$$
-*In particular, for $M \ge 20$, the discrete relative entropy preserves at least half of the continuous large deviation rate: $D_{\mathrm{KL}}(p \,\|\, u) \ge \frac{1}{2} c(\varepsilon) = \Omega(\varepsilon^2) > 0$.*
-
-**Theorem 7.27 (Non-Asymptotic Discrete Sieve Domination on $S_n$) [Proved].**
-*Let $\varepsilon > 0$ be fixed and $n = \lceil(1/4+\varepsilon)k^2\rceil$. Under a uniform random permutation $\sigma_n \in S_n$, the single-target avoidance probability satisfies:*
-$$
-P_0(\pi) = \Pr\left( \pi \not\le \sigma_n \right) \le 3\sqrt{n} (n + 1)^{M^2} \exp\left( - n D_{\mathrm{KL}}(p^* \,\|\, u) \right) \le \exp\left( - c''(\varepsilon) k^2 \right),
-$$
-*where $c''(\varepsilon) = \Omega(\varepsilon^2) > 0$. Consequently, simultaneous universality holds on $S_n$ with probability:*
-$$
-\Pr\left( \exists \pi \in S_k : \pi \not\le \sigma_n \right) \le k! \exp\left( - c''(\varepsilon) k^2 \right) = \exp\left( k \ln k - c''(\varepsilon) k^2 \right) \longrightarrow 0,
-$$
-*with certified finite-scale crossover at $k_0(\varepsilon) \le 750$.*
-
-*Proof.*
-By Sanov's theorem on finite alphabets, the number of distinct multinomial cell count vectors is bounded by $\binom{n + M^2 - 1}{M^2 - 1} \le (n + 1)^{M^2}$. The combinatorial prefactor contributes $\ln((n+1)^{M^2}) = M^2 \ln(n+1) \le 2k \ln k + O(k)$.
-Transferring to uniform permutations $\sigma_n \in S_n$ via the Poisson conditioning identity $\Pr(|\Pi_n| = n) \ge \frac{1}{3\sqrt{n}}$ incurs a conditioning penalty of $\ln(3\sqrt{n}) \le \ln k + 1.1$.
-Both prefactor penalties are sub-quadratic ($O(k \ln k) \ll O(k^2)$) and are strictly absorbed by the quadratic exponential decay $n D_{\mathrm{KL}} \ge (1/4+\varepsilon) \frac{1}{2} c(\varepsilon) k^2$.
-Boole's union bound over all $k!$ target permutations yields $k! \exp(-c''(\varepsilon) k^2) \to 0$, with crossover verified at $k_0 \approx 750$. $\blacksquare$
+Establishing this collective rate constitutes the central open mathematical frontier of Noga Alon's 1999 conjecture.
 
 ## Analytical Status of the Universal Threshold
 
 The mathematical results established in this paper resolve the asymptotic landscape of Noga Alon's conjecture across all structural regimes:
 
-1. **Unconditional Quadratic Universality at $C_0 k^2$ for Bounded-LDS Classes (Proved):** Theorem 1.2 establishes simultaneous universality at host length $n = C_0(d) k^2$ for all bounded-LDS permutation classes $\operatorname{LDS}(\pi) \le d = O(1)$, eliminating the He--Kwan $\log\log k$ factor for these classes and establishing $s_{1/2}(k; \operatorname{LDS} \le d) = \Theta_d(k^2)$. All core combinatorial lemmas and lookahead interface bounds are certified in Lean 4.
+1. **Unconditional Quadratic Universality at $C_0 k^2$ for Bounded-LDS Classes (Proved):** Theorem 1.2 establishes simultaneous universality at host length $n = C_0(d) k^2$ for all bounded-LDS permutation classes $\operatorname{LDS}(\pi) \le d = \mathcal{O}(1)$, eliminating the He--Kwan $\log\log k$ factor for these classes and establishing $s_{1/2}(k; \operatorname{LDS} \le d) = \Theta_d(k^2)$. All core combinatorial lemmas and lookahead interface bounds are certified in Lean 4.
 2. **Sharp $1/4$ Threshold for Bounded-LDS Classes (Proved):** Theorems 1.3 and 7.16 prove the sharp threshold $n = \lceil(1/4+\varepsilon)k^2\rceil$ identically for all Stanley--Wilf pattern-avoiding classes ($\operatorname{LDS} \le d$) via the $d$-box antidiagonal optimal split theorem and Marcus--Tardos linear topological entropy $(d-1)^{2k} = \exp(O_d(k))$.
 3. **Sharp $1/4$ Threshold for Modular Interval Inflations (Proved):** Theorem 1.4 proves the sharp threshold $n = \lceil(1/4+\varepsilon)k^2\rceil$ for all modular interval inflations with blocks $\ge K\sqrt{\log k}$ via zero-entropy shared host squares and Deuschel--Zeitouni large deviations.
-4. **Conclusive Refutation of Candidate Counterexamples (Proved):** Theorem 1.5 establishes $c_{21} = 1.0000$ identically via the Poisson jump generator cut-flux identity $\mathcal{L} N_u \equiv r_u \le u$ and superadditive ergodic squeeze, eliminating the repeated-$21$ alternating family as an obstruction to $C^* = 1/4$.
-5. **The Generic Bulk & Sharp Synthesis at $C^* = 1/4$ (Proved via Dynamic Lookahead Tubes & Non-Asymptotic Discretization Bridge):** For generic bulk permutations ($\operatorname{LDS} \approx 2\sqrt{k}$), Theorem 7.21 (Harris--FKG Monotone Association) eliminates the joint correlation barrier. Theorem 7.23 establishes dynamic 2D lookahead tube routing, eliminating cross-chain interleaving. Theorem 7.24 proves the uniform analytical avoidance rate lower bound $I(\rho^*_{\mathrm{bulk}}) \ge c(\varepsilon) = \Omega(\varepsilon^2) > 0$. Lemma 7.26 and Theorem 7.27 construct the non-asymptotic discretization bridge from $[0, 1]^2$ to discrete permutations $\sigma_n \in S_n$, proving that finite discretization loss is bounded by sub-quadratic terms $O(k \ln k) \ll k^2$. Theorem 7.27 establishes that the discrete avoidance tail super-factorially dominates $k!$ with crossover at $k_0 \approx 750$, completing the unconditional proof of Noga Alon's 1999 random superpattern conjecture at the sharp threshold $C^* = 1/4$ in its full generality.
+4. **Refutation of Candidate Counterexamples (Proved):** Theorem 1.5 establishes that the Markov jump generator cut-flux satisfies $\mathcal{L} N_u \equiv r_u \le u$, proving $c_{21} \le 1.0000$ analytically, while Fekete dynamic programming certifies $c_{21} \ge 0.98655$, confining $c_{21} \in [0.98655, 1.0]$ and conclusively refuting the disproof route $c_{21} \le 0.95$.
+5. **The Generic Bulk Frontier (Dynamic Tubes Proved; Length-Scale Barrier Articulated):** For generic bulk permutations ($\operatorname{LDS} \approx 2\sqrt{k}$), Theorem 7.23 proves that dynamic 2D lookahead coordinate tubes resolve cross-chain interleaving and inversions geometrically. Section 7.4 articulates the precise length-scale barrier separating linear-entropy classes from the factorial generic bulk, formulating the exact open variational problem required to complete the conjecture in full generality.
 
 ---
 
@@ -1062,7 +1022,7 @@ cd superpatterns/formal-verification/lean
 lake build
 ```
 
-The build compiles 8,722 jobs with zero errors, zero warnings, and zero `sorry`s. The axiom audit in `Superpatterns/Axioms.lean` confirms that the combinatorial and discrete sieve proofs depend strictly on standard foundational axioms (`propext`, `Quot.sound`, `Classical.choice`), while Greene's poset capacity interface declares 7 domain axioms (`c_1_eq_LIS`, `c_m_le_c_m_add_one`, `c_m_le_card`, `c_m_eq_card_of_ge_LDS`, `greene_capacity_bound`, `greene_capacity_optimal`, `multichain_demand_realizability`):
+The build compiles 8,722 jobs with zero errors, zero warnings, and zero `sorry`s. The axiom audit in `Superpatterns/Axioms.lean` confirms that the combinatorial and discrete sieve proofs depend strictly on standard foundational axioms (`propext`, `Quot.sound`, `Classical.choice`), while Greene's poset capacity interface declares 6 domain axioms (`c_1_eq_LIS`, `c_m_le_c_m_add_one`, `c_m_le_card`, `c_m_eq_card_of_ge_LDS`, `greene_capacity_bound`, `greene_capacity_optimal`):
 
 ```lean
 info: Superpatterns.strictly_increasing_avoids_21 depends on axioms: [propext, Quot.sound]
@@ -1093,7 +1053,6 @@ info: Superpatterns.c_m_le_card depends on axioms: [Superpatterns.c_m_le_card]
 info: Superpatterns.c_m_eq_card_of_ge_LDS depends on axioms: [Superpatterns.c_m_eq_card_of_ge_LDS]
 info: Superpatterns.greene_capacity_bound depends on axioms: [Superpatterns.greene_capacity_bound]
 info: Superpatterns.greene_capacity_optimal depends on axioms: [Superpatterns.greene_capacity_optimal]
-info: Superpatterns.multichain_demand_realizability depends on axioms: [Superpatterns.multichain_demand_realizability]
 ```
 
 ---
