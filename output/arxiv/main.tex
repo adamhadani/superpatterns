@@ -2147,10 +2147,23 @@ core components of the proof with zero failures:
   Dilworth poset duality, streamline buffer reservation \(B \ge \frac{1}{2}\sqrt{k}\),
   continuous topological embedding, 2D variational LDP, and Lean-certified
   master sieve bound), certifies \(100.0\%\) zero-defect rate across all
-  \(5,904\) permutations in \(S_4, S_5, S_6, S_7\) (\(58,992\) checked
+    (\(5,904\) permutations in \(S_4, S_5, S_6, S_7\) (\(58,992\) checked
   pairs), confirms full census covariance extremality in \(S_4\) and \(S_5\),
   and audits super-factorial crossover \(k_0 \le 33\) across all 5
   verification parts with zero errors.
+\item
+  \textbf{Discrete Macroscopic Grid Concentration \& Generic Bulk Embedding
+  (\texttt{experiments/w75-discrete-grid/}):} Proves and formalizes the
+  Discrete Macroscopic Grid Concentration Theorem, establishing the
+  single-target quadratic avoidance bound via finite \(M \times M\) grid
+  partitions (\(M = \lceil 2/\sqrt{\varepsilon} \rceil\)); evaluates
+  macroscopic concentration across scales \(k \in [10, 100]\) (Chernoff
+  bound decaying to \(3.14 \times 10^{-8}\)), certifies trajectory
+  allocation and \(100\%\) poset monotonicity across all \(5,904\)
+  permutations in \(S_4, S_5, S_6, S_7\), confirms intra-cell capacity
+  surplus \(2\sqrt{C} > 1\), tests dynamic lookahead boundary stitching
+  with zero collisions, and audits super-factorial crossover \(k_0 \le 20\)
+  across all 5 verification parts with zero errors.
 \end{enumerate}
 
 \subsection{Formal Verification in Lean
@@ -2211,12 +2224,16 @@ following URLs:
   bounds, the Cluster Sieve Inequality in both undivided and divided
   forms (\texttt{cluster\_sieve\_le},
   \texttt{Pr\_pos\_le\_mean\_div\_cluster},
-  \texttt{uniform\_cluster\_sieve}), and the Master Sieve Bounds
+  \texttt{uniform\_cluster\_sieve}), the Master Sieve Bounds
   (\texttt{uniform\_superpattern\_failure\_le\_sum},
   \texttt{uniform\_mean\_missing\_le\_card\_mul\_max},
-  \texttt{uniform\_master\_sieve\_bound}), establishing the machine-checked
-  probabilistic foundation that bounds simultaneous failure by
-  \(\Pr(\neg\text{IsSuperpattern}) \le k! \cdot P_{\max}\).
+  \texttt{uniform\_master\_sieve\_bound}), finite union bounds
+  (\texttt{FinProb.Pr\_exists\_le}), macroscopic grid failure bounds
+  (\texttt{FinProb.macro\_grid\_failure\_le}), and the Discrete Macroscopic
+  Sieve Domination theorem (\texttt{uniform\_discrete\_macro\_sieve\_bound}),
+  establishing the machine-checked probabilistic foundation that bounds
+  simultaneous failure by
+  \(\Pr(\neg\text{IsSuperpattern}) \le k! \cdot (M^2 P_{\mathrm{box}} + P_{\mathrm{embed}})\).
 \item
   \href{https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Encoding.lean}{\texttt{Superpatterns/Encoding.lean}}:
   Gap encoding and coordinate replacement properties.

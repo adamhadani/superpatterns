@@ -89,5 +89,9 @@ namespace Superpatterns
 #print axioms uniform_superpattern_failure_le_sum
 #print axioms uniform_mean_missing_le_card_mul_max
 #print axioms uniform_master_sieve_bound
+-- W75 (Discrete Macroscopic Grid Concentration & Sieve Domination)
+#print axioms FinProb.Pr_exists_le
+#print axioms FinProb.macro_grid_failure_le
+#print axioms uniform_discrete_macro_sieve_bound
 
 end Superpatterns

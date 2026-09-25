@@ -377,4 +377,42 @@ theorem uniform_master_sieve_bound (n k : ℕ) (P_max : ℝ)
   have h2 := uniform_mean_missing_le_card_mul_max n k P_max hP
   exact le_trans h1 h2
 
+/-- Finite union bound for families of events in a FinProb space. -/
+theorem FinProb.Pr_exists_le {Ω ι : Type*} [Fintype Ω] [Fintype ι] (P : FinProb Ω)
+    (B : ι → Ω → Prop) :
+    P.Pr (fun ω => ∃ i, B i ω) ≤ ∑ i, P.Pr (B i) := by
+  have hpos : P.Pr (fun ω => 0 < FinProb.cnt B ω) ≤ P.E (FinProb.cnt B) := P.Pr_pos_le_mean B
+  have hmean : P.E (FinProb.cnt B) = ∑ i, P.Pr (B i) := P.mean_eq_sum_Pr B
+  rw [hmean] at hpos
+  convert hpos using 2
+  ext ω
+  exact (FinProb.cnt_pos_iff B ω).symm
+
+/-- Macroscopic Grid Regularity Union Bound (Workstream W75):
+    For an M x M grid, the probability that any cell fails is bounded by M^2 * P_box. -/
+theorem FinProb.macro_grid_failure_le {Ω : Type*} [Fintype Ω] (P : FinProb Ω)
+    (M : ℕ) (B : Fin M × Fin M → Ω → Prop) (P_box : ℝ)
+    (hB : ∀ cell, P.Pr (B cell) ≤ P_box) :
+    P.Pr (fun ω => ∃ cell, B cell ω) ≤ (M : ℝ)^2 * P_box := by
+  have h := P.Pr_exists_le B
+  have hsum : (∑ cell, P.Pr (B cell)) ≤ ∑ _cell : Fin M × Fin M, P_box :=
+    Finset.sum_le_sum (fun cell _ => hB cell)
+  have hcard : (∑ _cell : Fin M × Fin M, P_box) = (Fintype.card (Fin M × Fin M) : ℝ) * P_box := by
+    simp [Finset.sum_const, nsmul_eq_mul]
+  have hM2 : (Fintype.card (Fin M × Fin M) : ℝ) = (M : ℝ)^2 := by
+    simp [Fintype.card_prod]
+    ring
+  rw [hM2] at hcard
+  exact le_trans h (le_trans hsum (le_of_eq hcard))
+
+/-- Workstream W75: Discrete Macroscopic Grid Sieve Domination.
+    If each target permutation avoidance is bounded by a macroscopic grid failure bound
+    (M^2 * P_box + P_embed), then the superpattern failure probability is bounded
+    by k! * (M^2 * P_box + P_embed). -/
+theorem uniform_discrete_macro_sieve_bound (n k M : ℕ) (P_box P_embed : ℝ)
+    (hP : ∀ π : Perms k, (FinProb.uniform (Perms n)).Pr (missing n k π) ≤ (M : ℝ)^2 * P_box + P_embed) :
+    (FinProb.uniform (Perms n)).Pr (fun σ => ¬ IsSuperpattern k σ.1) ≤
+      (Fintype.card (Perms k) : ℝ) * ((M : ℝ)^2 * P_box + P_embed) := by
+  exact uniform_master_sieve_bound n k ((M : ℝ)^2 * P_box + P_embed) hP
+
 end Superpatterns

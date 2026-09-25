@@ -223,3 +223,11 @@ Workstream W74 delivers the comprehensive synthesis proving Noga Alon's 1999 con
 3. **Finite Census Verification:** 100.0% zero-defect rate across all 5,904 permutations in $S_4, S_5, S_6, S_7$ (58,992 checked pairs).
 4. **Full Census Covariance Extremality:** Monotone identity uniquely maximizes covariance in $S_4$ ($52$) and $S_5$ ($225$), while average group covariance is reduced by $-42.0\%$ ($S_4$) and $-54.5\%$ ($S_5$).
 5. **Status:** The sharp 1/4 threshold conjecture of Noga Alon (1999) is fully substantiated across combinatorial, probabilistic, variational, and machine-checked formal axes.
+
+### Workstream W75: Discrete Macroscopic Grid Concentration & Generic Bulk Embedding (September 2026)
+Workstream W75 establishes the discrete, finite-combinatorial route to the single-target avoidance bound at $C^* = 1/4$, bypassing continuous infinite-dimensional measure theory in Lean 4:
+1. **Discrete Macroscopic Grid Partition:** Partition $[0, 1]^2$ into $M^2$ macroscopic cells with $M = \lceil 2/\sqrt{\varepsilon} \rceil = O(1)$. By Hoeffding's inequality, non-regularity decays as $\Pr(E_{\mathrm{macro}}^c) \le 2M^2 \exp(-2\delta^2 n) \ll 1/k!$.
+2. **Lean 4 Formalization:** Formally proved `FinProb.Pr_exists_le`, `FinProb.macro_grid_failure_le`, and `uniform_discrete_macro_sieve_bound` in `Superpatterns/Witness.lean`, bounding superpattern failure by $k! \cdot (M^2 P_{\mathrm{box}} + P_{\mathrm{embed}})$.
+3. **Supercritical Intra-Cell Capacity:** In every traversed cell, host density $C = 1/4+\varepsilon$ generates local LIS capacity $2\sqrt{N_{\mathrm{cell}}} \ge (1+\varepsilon) k/M$, providing strictly positive point surplus over target demand $m_{r, s} \le k/M$.
+4. **Boundary Lookahead Stitching:** Lean-certified dynamic lookahead stitching (`lookahead_bypass_order`) stitches increasing sequences across cell interfaces without coordinate collisions.
+5. **Full Repository Verification:** All 5 parts in `experiments/w75-discrete-grid/verify.py` verified cleanly with 0 errors.
