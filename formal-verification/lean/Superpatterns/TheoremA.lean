@@ -29,7 +29,7 @@ theorem compSum_gaps {k m n : ℕ} (hk : k = 2 * m + 1) {T : Finset ℕ} (hT : T
     | succ M ih =>
       intro hM
       rw [Fin.sum_univ_castSucc]
-      simp only [Fin.coe_castSucc, Fin.val_last]
+      simp only [Fin.val_castSucc, Fin.val_last]
       rw [ih (by omega)]
       have h1 := posGet_lt_posGet hT (i := 2 * M) (j := 2 * M + 1) (by omega) (by omega)
       have h2 := posGet_lt_posGet hT (i := 2 * M + 1) (j := 2 * M + 2) (by omega) (by omega)
@@ -87,7 +87,7 @@ theorem gaps_injOn {k m n : ℕ} (hk : k = 2 * m + 1) :
       rcases Nat.even_or_odd i with ⟨j, hj⟩ | ⟨j, hj⟩
       · have hjm : j < m := by omega
         obtain ⟨h1, -⟩ := hpair ⟨j, hjm⟩
-        simp only [Fin.val_mk] at h1
+        simp only at h1
         have hlt := posGet_lt_posGet hT (i := 2 * j) (j := 2 * j + 1) (by omega) (by omega)
         have hlt' := posGet_lt_posGet hT' (i := 2 * j) (j := 2 * j + 1) (by omega) (by omega)
         rw [show i + 1 = 2 * j + 1 by omega]
@@ -95,7 +95,7 @@ theorem gaps_injOn {k m n : ℕ} (hk : k = 2 * m + 1) :
         omega
       · have hjm : j < m := by omega
         obtain ⟨-, h2⟩ := hpair ⟨j, hjm⟩
-        simp only [Fin.val_mk] at h2
+        simp only at h2
         have hlt := posGet_lt_posGet hT (i := 2 * j + 1) (j := 2 * j + 2) (by omega) (by omega)
         have hlt' := posGet_lt_posGet hT' (i := 2 * j + 1) (j := 2 * j + 2) (by omega) (by omega)
         rw [show i + 1 = 2 * j + 2 by omega]

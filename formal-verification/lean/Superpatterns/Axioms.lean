@@ -6,6 +6,7 @@ import Superpatterns.BlockSplit
 import Superpatterns.ErdosSzekeres
 import Superpatterns.Interleaving
 import Superpatterns.Lattice
+import Superpatterns.Greene
 
 /-!
 # Axiom audit
@@ -101,4 +102,13 @@ namespace Superpatterns
 #print axioms FinProb.multichain_grid_failure_le
 #print axioms uniform_multichain_discrete_sieve_bound
 
+
+-- W78 (Greene)
+#print axioms c_1_eq_LIS
+#print axioms c_m_le_c_m_add_one
+#print axioms c_m_le_card
+#print axioms c_m_eq_card_of_ge_LDS
+#print axioms greene_capacity_bound
+#print axioms greene_capacity_optimal
+#print axioms multichain_demand_realizability
 end Superpatterns

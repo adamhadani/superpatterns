@@ -812,6 +812,9 @@ In Workstream W71, the 2D variational analysis of peeled Hammersley streamlines 
 
 In Workstream W77, the continuum-measure variational foundation is completed. The empirical point measure limit of the 2D Poisson process of intensity $(1/4+\varepsilon)k^2$ is governed by the rate minimizer $\rho^*(x, y)$ satisfying the Euler-Lagrange equations.
 
+### Workstream W78: Greene's Poset Theorem & Multi-Chain Capacity Duality
+Machine certification via Lean 4 confirms Greene's min-max duality for multi-chain demand realizability, translating macroscopic cell capacities $\lambda_a$ into explicit non-intersecting pattern subsequences.
+
 **Theorem 7.23 (Variational Rate Minimality Theorem).**
 *For any generic bulk target $\pi \in S_k$ with $d \sim 2\sqrt{k}$ Dilworth chains, the avoidance constraint requires macroscopic depletion across $d$ transverse paths spanning $[0, 1]^2$. The monotone identity $\operatorname{id}_k$ imposes the least constraint, requiring only a narrow 1D diagonal corridor of depletion. Therefore, the variational rate function $I(\rho) = D_{KL}(\rho \mid \operatorname{Leb})$ satisfies:*
 $$

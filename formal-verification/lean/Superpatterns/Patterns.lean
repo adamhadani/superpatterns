@@ -65,7 +65,7 @@ theorem rank_lt_rank (l : List ℕ) {a b : ℕ} (ha : a ∈ l) (hab : a < b) :
     · have h1 : rank xs a ≤ rank xs b := rank_mono xs hab.le
       unfold rank at h1
       have : ¬ (a < a) := lt_irrefl a
-      simp [this, hab]
+      simp [hab]
       omega
     · have := ih ha
       have h2 : (if decide (x < a) = true then 1 else 0) ≤ (if decide (x < b) = true then 1 else 0) := by
@@ -79,7 +79,7 @@ theorem lt_iff_rank_lt (l : List ℕ) {a b : ℕ} (ha : a ∈ l) :
   · exact rank_lt_rank l ha
   · intro h
     by_contra hba
-    push_neg at hba
+    push Not at hba
     have := rank_mono l hba
     omega
 

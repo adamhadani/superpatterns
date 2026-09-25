@@ -538,16 +538,19 @@ theorem replSet_mem : replSet k I₀ T g ∈ Subsets k n := by
     obtain ⟨j, hj, rfl⟩ := hx
     exact replPos_lt_n hT hI₀ hg j (List.mem_range.1 hj)
 
+
 theorem posGet_replSet {j : ℕ} (hj : j < k) : posGet (replSet k I₀ T g) j = replPos I₀ T g j := by
   unfold replSet
   rw [posGet_toFinset (replList_pairwise hT hnonadj hg)]
   simp [hj]
+
 
 theorem posGet_replSet_of_notMem {j : ℕ} (hj1 : 1 ≤ j) (hjk : j ≤ k) (hjI : j ∉ I₀) :
     posGet (replSet k I₀ T g) (j - 1) = posGet T (j - 1) := by
   rw [posGet_replSet hT hI₀ hnonadj hg (by omega)]
   unfold replPos
   rw [dif_neg (by rw [show j - 1 + 1 = j by omega]; exact hjI)]
+
 
 theorem posGet_replSet_of_mem {i : ℕ} (hi : i ∈ I₀) :
     posGet (replSet k I₀ T g) (i - 1) = g i hi := by
