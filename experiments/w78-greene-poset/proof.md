@@ -14,12 +14,24 @@ For any collection of $m$ disjoint chains $C_1, \dots, C_m$, we have:
 $$ \left| \bigcup_{i=1}^m C_i \right| \le \sum_{i=1}^m \lambda_i(P) = c_m(P) $$
 with equality achieving the optimal $m$-chain union.
 
-## Multi-Chain Demand Realizability Lemma
+## Status of Multi-Chain Demand Realizability (Refuted & Retracted)
 
-A direct consequence of Greene's Theorem is the demand realizability bound for pattern embeddings. If a host permutation (or discrete grid block) $H$ possesses multi-chain capacities $\lambda_a(H) \ge d_a$ for $1 \le a \le d$, then $H$ can realize the demand of $d$ chains. 
+A candidate proposition asserted that if a host permutation $H$ possesses multi-chain capacities $\lambda_a(H) \ge d_a$ for $1 \le a \le d$, then $H$ can realize the individual demands of $d$ disjoint chains of lengths at least $d_a$.
 
-*Proof approach*:
-By Greene's definition, the maximum number of elements we can extract using $d$ chains is $\sum_{a=1}^d \lambda_a(H)$. Since $\lambda_a(H)$ is a non-increasing partition sequence, any demand sequence $d_a$ bounded point-wise by $\lambda_a(H)$ is realizable by a valid chain partition of $H$.
+**Refutation by Minimal Counterexample in $S_6$ (Workstream W80 Audit):**
+This assertion is mathematically false. Consider $\sigma = [1, 2, 5, 0, 3, 4] \in S_6$:
+- Its longest increasing subsequence has length 4 ([1, 2, 3, 4]), so $c_1 = 4$ and $\lambda_1 = 4$.
+- The maximum cardinality of a union of 2 disjoint chains is 6 = $|\sigma|$ (e.g., [1, 2, 5] and [0, 3, 4]), so $c_2 = 6$ and $\lambda_2 = 2$.
+- The Greene shape is $\lambda = (4, 2)$.
+- Consider demand vector $d = (4, 2)$, which satisfies $d_1 \le \lambda_1$ ($4 \le 4$) and $d_2 \le \lambda_2$ ($2 \le 2$).
+- To realize this demand, $\sigma$ would require two disjoint chains of lengths 4 and 2.
+- The unique chain of length 4 in $\sigma$ is $[1, 2, 3, 4]$. Removing it leaves elements $\{5, 0\}$.
+- The pair $(5, 0)$ is descending and contains no increasing chain of length 2.
+- Thus, no two disjoint chains of lengths 4 and 2 exist in $\sigma$.
+
+Consequently, `multichain_demand_realizability` is false and has been retracted from Lean 4.
+Greene's theorem guarantees cumulative capacity bounds (`greene_capacity_bound` and `greene_capacity_optimal`),
+namely that $\max \sum_{i=1}^m |C_i| = \sum_{i=1}^m \lambda_i$, which remains mathematically sound.
 
 ## Lean 4 Formalization
 
@@ -27,8 +39,7 @@ The theorem is formalized in `formal-verification/lean/Superpatterns/Greene.lean
 1. `IsChain` and `DisjointChains`.
 2. $c_m$ (`c_m`) as the supremum over sizes of unions of $m$ disjoint chains.
 3. The Greene difference function `greene_lambda`.
-4. The capacity bounds `greene_capacity_bound` and `greene_capacity_optimal`.
-5. The demand realizability lemma `multichain_demand_realizability`.
+4. The cumulative capacity bounds `greene_capacity_bound` and `greene_capacity_optimal`.
 
 ## Empirical Verification
 Exhaustive machine verification (`verify.py`) confirmed:

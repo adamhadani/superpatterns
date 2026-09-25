@@ -19,6 +19,8 @@ output/arxiv/main.bbl
 output/arxiv/main.blg
 output/arxiv/main.log
 output/arxiv/main.out
+output/arxiv/main.fdb_latexmk
+output/arxiv/main.fls
 
 # Local compatibility symlinks to the pre-reorganisation layout (work/, paper/, lean/, lit/)
 /work

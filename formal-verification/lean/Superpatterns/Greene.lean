@@ -51,9 +51,26 @@ axiom greene_capacity_optimal (σ : List ℕ) (m : ℕ) :
   ∃ chains : List (Finset (Fin σ.length)), chains.length = m ∧ DisjointChains σ chains ∧
   (chainUnion chains).card = ∑ i ∈ Finset.range (m + 1), greene_lambda σ i
 
-axiom multichain_demand_realizability (σ : List ℕ) (d : ℕ) (demand : ℕ → ℕ)
-  (h_cap : ∀ a, 1 ≤ a ∧ a ≤ d → demand a ≤ greene_lambda σ a) :
-  ∃ chains : List (Finset (Fin σ.length)), ∃ hd : chains.length = d, DisjointChains σ chains ∧
-  ∀ a (ha : 1 ≤ a ∧ a ≤ d), demand a ≤ (chains[a - 1]'(by omega)).card
+/-
+NOTE ON DEMAND REALIZABILITY:
+A candidate proposition asserting that ANY demand profile satisfying `demand a ≤ greene_lambda σ a`
+can be realized simultaneously by disjoint chains of lengths at least `demand a` is
+MATHEMATICALLY FALSE in general.
+
+Minimal Counterexample in S_6:
+Consider σ = [1, 2, 5, 0, 3, 4] ∈ S_6.
+- The longest increasing subsequence has length 4 (unique chain: [1, 2, 3, 4]). Thus c_1 = 4, λ_1 = 4.
+- The maximum cardinality of a union of 2 disjoint chains is 6 = |σ| (e.g. [1, 2, 5] and [0, 3, 4]). Thus c_2 = 6, λ_2 = 2.
+- The Greene shape is λ = (4, 2).
+- Consider demand = (4, 2), which satisfies demand 1 ≤ λ_1 (4 ≤ 4) and demand 2 ≤ λ_2 (2 ≤ 2).
+- To realize this demand, σ would need two disjoint chains of lengths 4 and 2.
+- Any chain of length 4 must use [1, 2, 3, 4]. The remaining elements are {5, 0}.
+- The set {5, 0} has position/value order (2:5, 3:0), which forms a descending pair and contains no increasing chain of length 2.
+- Hence no two disjoint chains of lengths 4 and 2 exist in σ.
+
+Therefore, `multichain_demand_realizability` is false and has been retracted.
+Greene's theorem establishes cumulative capacity bounds (`greene_capacity_bound` and `greene_capacity_optimal`),
+namely that max ∑ |C_i| = ∑ λ_i, which is sound.
+-/
 
 end Superpatterns

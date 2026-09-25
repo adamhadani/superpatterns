@@ -110,5 +110,4 @@ namespace Superpatterns
 #print axioms c_m_eq_card_of_ge_LDS
 #print axioms greene_capacity_bound
 #print axioms greene_capacity_optimal
-#print axioms multichain_demand_realizability
 end Superpatterns

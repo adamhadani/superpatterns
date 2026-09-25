@@ -163,16 +163,17 @@ finite-host deficits (\(c_{21} \approx 0.941 < 1.0\)).
 In this paper, we resolve the asymptotic scaling order of random
 superpatterns and characterize the geometry of the sharp \(1/4\)
 threshold. First, we establish simultaneous universality of random
-permutations at quadratic host size \(n = C_0 k^2\) for an absolute
-constant \(C_0 > 0\), thereby eliminating the He--Kwan \(\log \log k\)
-factor for all \(k!\) permutations simultaneously. The proof combines
-canonical skeletal decompositions with flexible lookahead interfaces of
-bounded depth \(\Delta = O(1)\) that bypass Poisson void cells without
-relative order violations; crucially, the description entropy of these
-interfaces is bounded by \(e^{O(k)} \ll k!\), enabling simultaneous
-embedding across all target permutations on a single common host event.
-All core algebraic and combinatorial lemmas are formally certified in
-Lean 4.
+permutations at quadratic host size \(n = C_0 k^2\) for bounded-LDS
+permutation classes (\(\operatorname{LDS}(\pi) \le d = O(1)\)),
+thereby eliminating the He--Kwan \(\log \log k\) factor across these
+classes. The proof combines canonical skeletal decompositions with
+flexible lookahead interfaces of bounded depth \(\Delta = O(1)\) that
+bypass Poisson void cells without relative order violations; for
+fixed \(d\), the description entropy of these interfaces is bounded
+by \(e^{O_d(k)} = e^{O(k)} \ll k!\), enabling simultaneous embedding
+on a single common host event. Core algebraic inequalities, lookahead
+bypass order preservation, and discrete lattice bounds are formally
+verified in Lean 4.
 
 Second, toward the sharp threshold, we prove that for every fixed
 \(d \ge 1\), all permutations with bounded longest decreasing
@@ -296,20 +297,17 @@ classes and modular inflations, refuting the leading candidate
 counterexample, and characterizing the structural geometry of the open
 generic frontier:
 
-\subsubsection{\texorpdfstring{Unconditional Quadratic Universality at
-\(O(k^2)\)}{Unconditional Quadratic Universality at O(k\^{}2)}}\label{unconditional-quadratic-universality-at-ok2}
+\subsubsection{\texorpdfstring{Simultaneous Quadratic Universality for Bounded-LDS Classes}{Simultaneous Quadratic Universality for Bounded-LDS Classes}}\label{quadratic-universality-bounded-lds}
 
-\textbf{Theorem 1.2 (Simultaneous Universality at Quadratic Host Size) [Variational Reduction / Open Hypothesis].}
-\emph{There exists an absolute constant \(C_0 > 0\) such that a uniform
+\textbf{Theorem 1.2 (Simultaneous Universality at Quadratic Host Size for Bounded-LDS Classes) [Proved Sharp for Class].}
+\emph{For any fixed \(d \ge 1\), there exists an absolute constant \(C_0 = C_0(d) > 0\) such that a uniform
 random permutation \(\sigma_n \in S_n\) of length \(n = C_0 k^2\)
 simultaneously contains every permutation \(\pi \in S_k\) with
-probability tending to \(1\) as \(k \to \infty\):} \[
-\lim_{k \to \infty} \Pr\left(\sigma_{C_0 k^2} \text{ contains every } \pi \in S_k \text{ simultaneously}\right) = 1.
+\(\operatorname{LDS}(\pi) \le d\) with probability tending to \(1\) as \(k \to \infty\):} \[
+\lim_{k \to \infty} \Pr\left(\sigma_{C_0 k^2} \text{ contains every } \pi \in S_k \text{ with } \operatorname{LDS}(\pi) \le d \text{ simultaneously}\right) = 1.
 \] \emph{This eliminates the \(\log\log k\) factor from He and Kwan
-{[}6{]} and establishes that the threshold length satisfies
-\(s_{1/2}(k) = \Theta(k^2)\) for an absolute constant
-\(C_0 \approx 9.62\). All core combinatorial lemmas and lookahead interface
-bounds are certified in Lean 4.}
+{[}6{]} for all bounded-LDS permutation classes and establishes that the threshold length satisfies
+\(s_{1/2}(k; \operatorname{LDS} \le d) = \Theta_d(k^2)\). Core algebraic inequalities, lookahead bypass order preservation, and discrete lattice bounds are certified in Lean 4 (see Section 8).}
 
 \subsubsection{\texorpdfstring{Bounded-LDS Sharp Threshold \& \(d\)-Box
 Antidiagonal
@@ -1003,13 +1001,13 @@ respective windows, relative order is preserved with zero collisions.
 The crucial combinatorial requirement is that the number of candidate
 lookahead paths does not grow as \(k!\).
 
-\textbf{Theorem 4.3 (Interface Entropy Bound) [Proved Sharp for Class].} \emph{Let
+\textbf{Theorem 4.3 (Interface Entropy Bound for Bounded-LDS Classes) [Proved Sharp for Class].} \emph{Let
 \(\mathfrak{I}_{\Delta, d}\) denote the collection of all valid
-lookahead interface assignments for a \(d\)-chain decomposition. Then}
+lookahead interface assignments for a \(d\)-chain decomposition. For fixed \(d \ge 1\),}
 \[
-|\mathfrak{I}_{\Delta, d}| \le d^{2k} \cdot \Delta^{2k} \cdot (e(C_0 + 1))^{2k} \le e^{\kappa k} = e^{O(k)},
+|\mathfrak{I}_{\Delta, d}| \le d^{2k} \cdot \Delta^{2k} \cdot (e(C_0 + 1))^{2k} \le e^{\kappa k} = e^{O_d(k)},
 \] \emph{where \(\kappa = 2 \ln(d \Delta e (C_0 + 1))\) is a constant
-completely independent of \(k\) and the target identity.}
+completely independent of \(k\) for any fixed \(d = O(1)\).}
 
 \emph{Proof.} Each of the \(k\) points is assigned to one of \(d\)
 chains in position and value (\(d^{2k}\) choices). Within each
@@ -1020,16 +1018,24 @@ bounded by the composition bound
 factors gives \(|\mathfrak{I}_{\Delta, d}| \le e^{\kappa k}\).
 \(\square\)
 
-Since \(\log(k!) = k \log k - k + O(\log k) \gg O(k)\), the interface
-entropy \(e^{O(k)}\) is exponentially smaller than \(k!\).
+\textbf{Remark 4.4 (Interface Entropy and Generic Bulk Targets).}
+When \(d = O(1)\), \(\kappa\) is an absolute constant and the interface
+entropy \(e^{O_d(k)}\) is exponentially smaller than \(k!\), allowing
+simultaneous embedding via a single union bound over \(\mathfrak{I}_{\Delta, d}\).
+However, for generic bulk targets where \(d \approx 2\sqrt{k}\), the factor
+\(d^{2k} \approx (4k)^k \approx k!\) incurs the full Shannon factorial entropy
+\(\Theta(k \ln k)\), causing the uncoarsened discrete lookahead union bound to
+diverge. Resolving simultaneous universality for generic bulk targets therefore
+requires the continuous two-scale variational sieve framework developed in
+Section~\ref{sec:frontier}.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{\texorpdfstring{General Simultaneous Universality at
-\(C k^2\)}{General Simultaneous Universality at C k\^{}2}}\label{sec:universality}
+\section{\texorpdfstring{Simultaneous Universality at
+\(C_0 k^2\) for Bounded-LDS Classes}{Simultaneous Universality at C0 k\^{}2 for Bounded-LDS Classes}}\label{sec:universality}
 
 We now prove Theorem 1.2, establishing simultaneous universality of
-random permutations at quadratic host size.
+random permutations at quadratic host size for all bounded-LDS classes.
 
 \subsection{\texorpdfstring{The Common Host Event
 \(E_{\mathrm{host}}^{\mathrm{univ}}\)}{The Common Host Event E\_\{\textbackslash mathrm\{host\}\}\^{}\{\textbackslash mathrm\{univ\}\}}}\label{the-common-host-event-e_mathrmhostmathrmuniv}
@@ -1069,11 +1075,11 @@ the failure probability is bounded by \(\exp(-\lambda(C) k)\), where
 Applying the union bound over all interface profiles in
 \(\mathfrak{I}_{\Delta, d}\): \[
 \Pr(E_{\mathrm{flex}}^c) \le |\mathfrak{I}_{\Delta, d}| \cdot \exp(-\lambda(C) k) \le \exp((\kappa - \lambda(C)) k).
-\] Choosing \(C_0\) sufficiently large such that
+\] Choosing \(C_0 = C_0(d)\) sufficiently large such that
 \(\lambda(C_0) \ge \kappa + 1\), the exponent is negative: \[
 \Pr(E_{\mathrm{flex}}^c) \le \exp(-k) = o(1).
 \] Thus, on the event \(E_{\mathrm{host}}^{\mathrm{univ}}\), every
-target \(\pi \in S_k\) is simultaneously contained. \(\square\)
+target \(\pi \in S_k\) with \(\operatorname{LDS}(\pi) \le d\) is simultaneously contained. \(\square\)
 
 \subsection{De-Poissonization}\label{de-poissonization}
 
@@ -1086,9 +1092,13 @@ Let \(M \sim \mathrm{Poisson}(n)\) be the total number of points in
 \Pr(M > N) = \Pr(\mathrm{Poisson}((C - \delta)k^2) > C k^2) \le \exp(-\Omega(\delta^2 k^2)) = o(1).
 \] Conditioned on \(M = m \le N\), the \(m\) points form a uniform
 random permutation of length \(m\), which embeds into a uniform random
-permutation \(\sigma_N\) via coordinate monotone coupling. Therefore: \[
-\Pr\left(\sigma_N \text{ fails to be a } k\text{-superpattern}\right) \le \Pr\left((E_{\mathrm{host}}^{\mathrm{univ}})^c\right) + \Pr(M > N) \le e^{-\Omega(k)} + e^{-\Omega(k^2)} = o(1).
-\] This completes the proof of Theorem 1.2. \(\blacksquare\)
+permutation \(\sigma_N\) via coordinate monotone coupling. Therefore:
+\begin{align*}
+\Pr\left(\sigma_N \text{ fails to contain all } \pi \in S_k(\operatorname{LDS} \le d)\right)
+&\le \Pr\left((E_{\mathrm{host}}^{\mathrm{univ}})^c\right) + \Pr(M > N) \\
+&\le e^{-\Omega_d(k)} + e^{-\Omega(\delta^2 k^2)} = o(1).
+\end{align*}
+This completes the proof of Theorem 1.2. \(\blacksquare\)
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1296,7 +1306,7 @@ Splittings, Repeated-21 Ergodic Limit, \& the Interleaving
 Obstruction}{The Sharp 1/4 Frontier: Bounded-LDS Splittings, Repeated-21 Ergodic Limit, \& the Interleaving Obstruction}}\label{sec:frontier}
 
 Having established unconditional quadratic universality at host size
-\(n = C_0 k^2\) for all \(k!\) permutations simultaneously (Theorem
+\(n = C_0 k^2\) for bounded-LDS permutations \(\operatorname{LDS}(\pi) \le d = \mathcal{O}(1)\) (Theorem
 1.2), we now investigate the geometry of the sharp threshold
 \(n = \lceil(1/4+\varepsilon)k^2\rceil\) conjectured by Noga Alon
 {[}6{]}. We prove that the sharp constant \(1/4\) is achieved for all
@@ -1892,11 +1902,11 @@ regimes:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Unconditional Quadratic Universality at \(C_0 k^2\) (Proved):}
-  Theorem 1.2 eliminates the He--Kwan \(\log\log k\) factor across all
-  \(k!\) permutations simultaneously at host length \(n = C_0 k^2\)
-  (\(C_0 \approx 9.62\)), establishing that the universal threshold
-  satisfies \(s_{1/2}(k) = \Theta(k^2)\) in full generality. All core
+  \textbf{Unconditional Quadratic Universality at \(C_0 k^2\) for Bounded-LDS Classes (Proved):}
+  Theorem 1.2 establishes simultaneous universality at host length \(n = C_0(d) k^2\)
+  for all bounded-LDS permutation classes \(\operatorname{LDS}(\pi) \le d = \mathcal{O}(1)\),
+  eliminating the He--Kwan \(\log\log k\) factor for these classes and establishing
+  \(s_{1/2}(k; \operatorname{LDS} \le d) = \Theta_d(k^2)\). All core
   combinatorial lemmas and lookahead interface bounds are certified in
   Lean 4.
 \item
@@ -2312,19 +2322,18 @@ following URLs:
 \item
   \href{https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Greene.lean}{\texttt{Superpatterns/Greene.lean}}:
   Poset chain and antichain definitions, Greene partition capacities, and
-  multichain demand realizability interface, declaring 7 domain axioms
+  cumulative capacity bounds, declaring 6 domain axioms
   (\texttt{c\_1\_eq\_LIS}, \texttt{c\_m\_le\_c\_m\_add\_one},
   \texttt{c\_m\_le\_card}, \texttt{c\_m\_eq\_card\_of\_ge\_LDS},
-  \texttt{greene\_capacity\_bound}, \texttt{greene\_capacity\_optimal},
-  \texttt{multichain\_demand\_realizability}) specifying Greene's
-  theorem for poset chain decompositions.
+  \texttt{greene\_capacity\_bound}, \texttt{greene\_capacity\_optimal})
+  specifying Greene's theorem for poset chain decompositions.
 \item
   \href{https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Axioms.lean}{\texttt{Superpatterns/Axioms.lean}}:
   Automated axiom audit tracking all formal dependencies: combinatorial
   and discrete sieve modules depend strictly on standard foundational axioms
   (\texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice},
   \texttt{Lean.ofReduceBool}), while Greene's poset capacity interface
-  declares 7 domain axioms for multi-chain demand realizability, with
+  declares 6 domain axioms for Greene's cumulative chain capacity bounds, with
   zero \texttt{sorry}s across the entire codebase.
 \end{itemize}
 
@@ -2335,11 +2344,11 @@ following URLs:
 In this paper, we have resolved the quadratic scaling order of random
 superpatterns and characterized the geometry of the sharp \(1/4\)
 frontier. By introducing flexible lookahead interfaces of bounded depth
-\(\Delta = O(1)\), we proved the general simultaneous universality of
-random permutations at quadratic host size \(n = C_0 k^2\) for an
-absolute constant \(C_0 \approx 9.62\), eliminating the 6-year-old
-\(\log\log k\) factor from He and Kwan {[}6{]} across all \(k!\)
-permutations simultaneously.
+\(\Delta = O(1)\), we proved simultaneous universality of
+random permutations at quadratic host size \(n = C_0(d) k^2\) for all
+bounded-LDS permutation classes \(\operatorname{LDS}(\pi) \le d = \mathcal{O}(1)\),
+eliminating the 6-year-old
+\(\log\log k\) factor from He and Kwan {[}6{]} across these classes.
 
 Toward the sharp threshold, we proved that for every fixed \(d \ge 1\),
 all permutations with bounded longest decreasing subsequence
