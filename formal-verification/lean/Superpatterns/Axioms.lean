@@ -85,5 +85,9 @@ namespace Superpatterns
 #print axioms bundle_tracks_disjoint
 -- W73 (Forward Descent Chain Strict Increasing Invariant)
 #print axioms forward_descent_chain_strict_increasing
+-- W74 (Master Sieve Bound)
+#print axioms uniform_superpattern_failure_le_sum
+#print axioms uniform_mean_missing_le_card_mul_max
+#print axioms uniform_master_sieve_bound
 
 end Superpatterns

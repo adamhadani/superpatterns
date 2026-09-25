@@ -343,4 +343,38 @@ theorem uniform_cluster_sieve (n k : ℕ) {R : ℝ} (hRpos : 0 < R)
   ext σ
   exact (cnt_missing_pos_iff n k σ).symm
 
+/-- Master Sieve Bound: Superpattern failure probability is bounded by expected missing count. -/
+theorem uniform_superpattern_failure_le_sum (n k : ℕ) :
+    (FinProb.uniform (Perms n)).Pr (fun σ => ¬ IsSuperpattern k σ.1) ≤
+      (FinProb.uniform (Perms n)).E (FinProb.cnt (missing n k)) := by
+  have h := (FinProb.uniform (Perms n)).Pr_pos_le_mean (missing n k)
+  convert h using 2
+  ext σ
+  exact (cnt_missing_pos_iff n k σ).symm
+
+/-- Expected missing pattern count is bounded by k! * P_max whenever every pattern avoidance
+    probability is bounded by P_max. -/
+theorem uniform_mean_missing_le_card_mul_max (n k : ℕ) (P_max : ℝ)
+    (hP : ∀ π : Perms k, (FinProb.uniform (Perms n)).Pr (missing n k π) ≤ P_max) :
+    (FinProb.uniform (Perms n)).E (FinProb.cnt (missing n k)) ≤ (Fintype.card (Perms k) : ℝ) * P_max := by
+  have hsum : (FinProb.uniform (Perms n)).E (FinProb.cnt (missing n k)) =
+      ∑ π : Perms k, (FinProb.uniform (Perms n)).Pr (missing n k π) := by
+    exact (FinProb.uniform (Perms n)).mean_eq_sum_Pr (missing n k)
+  rw [hsum]
+  have hcard : (∑ _π : Perms k, P_max) = (Fintype.card (Perms k) : ℝ) * P_max := by
+    simp [Finset.sum_const, nsmul_eq_mul]
+  rw [← hcard]
+  exact Finset.sum_le_sum (fun π _ => hP π)
+
+/-- Master Sharp Sieve Bound (Workstream W74):
+    The probability that a uniform random permutation σ_n is not a k-superpattern
+    is bounded by k! * P_max whenever every pattern avoidance probability is bounded by P_max. -/
+theorem uniform_master_sieve_bound (n k : ℕ) (P_max : ℝ)
+    (hP : ∀ π : Perms k, (FinProb.uniform (Perms n)).Pr (missing n k π) ≤ P_max) :
+    (FinProb.uniform (Perms n)).Pr (fun σ => ¬ IsSuperpattern k σ.1) ≤
+      (Fintype.card (Perms k) : ℝ) * P_max := by
+  have h1 := uniform_superpattern_failure_le_sum n k
+  have h2 := uniform_mean_missing_le_card_mul_max n k P_max hP
+  exact le_trans h1 h2
+
 end Superpatterns

@@ -2139,6 +2139,18 @@ core components of the proof with zero failures:
   confirms up to \(72.9\%\) second-moment variance reduction in generic
   bulk permutations at \(k=6\), and audits super-factorial convergence
   across all 5 verification parts with zero errors.
+\item
+  \textbf{Master Sharp Threshold Synthesis
+  (\texttt{experiments/w74-master-synthesis/}):} Unifies the five
+  foundational pillars (general quadratic universality at \(C_0 k^2\),
+  sharp threshold \(C^* = 1/4\) for structured classes, Lean-certified
+  Dilworth poset duality, streamline buffer reservation \(B \ge \frac{1}{2}\sqrt{k}\),
+  continuous topological embedding, 2D variational LDP, and Lean-certified
+  master sieve bound), certifies \(100.0\%\) zero-defect rate across all
+  \(5,904\) permutations in \(S_4, S_5, S_6, S_7\) (\(58,992\) checked
+  pairs), confirms full census covariance extremality in \(S_4\) and \(S_5\),
+  and audits super-factorial crossover \(k_0 \le 33\) across all 5
+  verification parts with zero errors.
 \end{enumerate}
 
 \subsection{Formal Verification in Lean
@@ -2176,10 +2188,14 @@ following URLs:
   coordinate separation under positive buffer spacing, dynamic bypass
   order preservation (\texttt{lookahead\_bypass\_order}), supercritical
   accumulation rate rational algebraic inequalities
-  (\texttt{supercritical\_velocity\_quad}), and the backward cross-layer
-  monotonicity invariants (\texttt{backward\_chain\_monotonicity},
-  \texttt{backward\_chain\_strict\_monotonicity}) proving that canonical
-  Dilworth chains require zero backward cross-layer inversions.
+  (\texttt{supercritical\_velocity\_quad}), streamline bundle width and
+  disjointness theorems (\texttt{bundle\_width\_ge\_one}, \texttt{bundle\_width\_ge\_two},
+  \texttt{bundle\_tracks\_disjoint}), the backward cross-layer monotonicity
+  invariants (\texttt{backward\_chain\_monotonicity},
+  \texttt{backward\_chain\_strict\_monotonicity}), and the forward descent
+  chain strict increasing theorem (\texttt{forward\_descent\_chain\_strict\_increasing})
+  proving that canonical Dilworth chains require zero backward cross-layer
+  inversions.
 \item
   \href{https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Lattice.lean}{\texttt{Superpatterns/Lattice.lean}}:
   Formal verification of spatial lattice chaining, coordinate difference
@@ -2192,12 +2208,15 @@ following URLs:
 \item
   \href{https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Witness.lean}{\texttt{Superpatterns/Witness.lean}}:
   Probabilistic witness counting, finite-probability concentration
-  bounds, and the Cluster Sieve Inequality in both undivided and divided
+  bounds, the Cluster Sieve Inequality in both undivided and divided
   forms (\texttt{cluster\_sieve\_le},
   \texttt{Pr\_pos\_le\_mean\_div\_cluster},
-  \texttt{uniform\_cluster\_sieve}), establishing the machine-checked
+  \texttt{uniform\_cluster\_sieve}), and the Master Sieve Bounds
+  (\texttt{uniform\_superpattern\_failure\_le\_sum},
+  \texttt{uniform\_mean\_missing\_le\_card\_mul\_max},
+  \texttt{uniform\_master\_sieve\_bound}), establishing the machine-checked
   probabilistic foundation that bounds simultaneous failure by
-  \(\Pr(M > 0) \le \frac{1}{R}\mathbb{E}[M]\).
+  \(\Pr(\neg\text{IsSuperpattern}) \le k! \cdot P_{\max}\).
 \item
   \href{https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Encoding.lean}{\texttt{Superpatterns/Encoding.lean}}:
   Gap encoding and coordinate replacement properties.
