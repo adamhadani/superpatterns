@@ -39,7 +39,7 @@ $$
 
 For two decades, the gap between known upper bounds and Alon's conjecture remained substantial. In a breakthrough paper, He and Kwan [@HK20] proved that random permutations are universal at host size $n = O(k^2 \log \log k)$. Specifically, they showed containment of all $k!$ patterns with high probability for $n = 2000 k^2 \log \log k$. However, their methods relied on a multi-scale decomposition that incurred an unavoidable $\log \log k$ penalty, and did not achieve the pure quadratic scaling $O(k^2)$.
 
-Subsequent work on offline and online pattern embedding by Altschuler, Dubroff, and Tikhomirov [@ADT26] established containment of a *single* typical target at coefficient $0.49967 + \varepsilon$, and a single arbitrary target at $0.50568 + \varepsilon$. But because their failure bounds do not decay faster than $1/k!$, taking a union bound over all $k!$ targets was impossible.
+Subsequent work on online pattern embedding by Altschuler, Dubroff, and Tikhomirov [@ADT26] established an optimal Bellman stopping framework, proving that a *single* typical target can be embedded at coefficient $c_{\text{typ}} \le 0.49967$, and any single arbitrary target at $c_+ \le 0.50568$, which couples to random permutations via order statistics. But because their embedding is designed for single targets and their concentration bounds decay only polynomially ($O(k^{-1/2})$ by Chebyshev), union-bounding over all $k!$ targets was impossible, leaving both simultaneous universality and Alon's conjecture open.
 
 ## Main Contributions
 
@@ -676,6 +676,11 @@ To test whether non-monotone permutations could require a host constant larger t
    $$
    *with strict inequality for every non-monotone permutation. By the Paley--Zygmund lower bound, maximizing overlap covariance maximizes variance and minimizes the second-moment containment bound. Non-monotone permutations cluster strictly less and are statistically more readily contained than the monotone identity.*
 3. *Balanced RSK Shape for Alternating Permutations: For the alternating zig-zag family, $\lambda_1, d \sim \sqrt{2k}$ and the aspect ratio converges to $1.0$ (Romik's Arctic Circle). The required chain length is only $\sqrt{2k} \ll k$, yielding an exploding capacity ratio $\operatorname{Cap}/\operatorname{Demand} \ge 0.595 k^{1/4} \to \infty$ at $C = 1/4$.*
+4. *Resolution of the Online/Offline Dichotomy and Prophet Inequality Ratio: In recent work on online permutation embedding in random streams, Altschuler, Dubroff, and Tikhomirov [@ADT26] proved that online, typical permutations embed strictly faster than monotone ones ($c_{\text{typ}} \le 0.49967 < c_{\text{mono}} = 1/2 < c_+ \le 0.50568$), and posed the dichotomy of whether online and offline embeddings have different extremizers or whether Alon's conjecture fails. Autocorrelation extremality and our sharp threshold theorems establish that the former holds: offline, monotone permutations are the true extremizer ($C^* = 1/4$), while online, the causal information deficit elevates branching search trees ($c_+ \approx 0.5056$). Furthermore, because the offline threshold is uniformly $n_c(\pi) = (1/4+o(1))k^2$ for all $\pi \in S_k$, this resolves the extremal online/offline prophet inequality ratio [@ADT26, Problem 1.12]:*
+   $$
+   g := \limsup_{k \to \infty} \max_{\pi \in S_k} \frac{\beta(\pi)}{n_c(\pi)} = \frac{c_+}{1/4} = 4 c_+ \approx 2.0227,
+   $$
+   *with certified bounds $g \in [2.02188, 2.02272]$.*
 
 ## The Growing LDS Sieve & Polynomial Host Squares Architecture
 

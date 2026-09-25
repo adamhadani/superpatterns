@@ -271,12 +271,16 @@ However, their methods relied on a multi-scale decomposition that
 incurred an unavoidable \(\log \log k\) penalty, and did not achieve the
 pure quadratic scaling \(O(k^2)\).
 
-Subsequent work on offline and online pattern embedding by Altschuler,
-Dubroff, and Tikhomirov {[}7{]} established containment of a
-\emph{single} typical target at coefficient \(0.49967 + \varepsilon\),
-and a single arbitrary target at \(0.50568 + \varepsilon\). But because
-their failure bounds do not decay faster than \(1/k!\), taking a union
-bound over all \(k!\) targets was impossible.
+Subsequent work on online pattern embedding by Altschuler, Dubroff,
+and Tikhomirov [7] established an optimal Bellman stopping framework,
+proving that a \emph{single} typical target can be embedded at coefficient
+$c_{\mathrm{typ}} \le 0.49967$, and any single arbitrary target at
+$c_+ \le 0.50568$, which couples to random permutations via order
+statistics. But because their embedding is designed for single targets
+and their concentration bounds decay only polynomially
+($\mathcal{O}(k^{-1/2})$ by Chebyshev), union-bounding over all $k!$
+targets was impossible, leaving both simultaneous universality and Alon's
+conjecture open.
 
 \subsection{Main Contributions}\label{main-contributions}
 
@@ -1607,7 +1611,25 @@ family, \(\lambda_1, d \sim \sqrt{2k}\) and the aspect ratio converges
 to \(1.0\) (Romik's Arctic Circle). The required chain length is only
 \(\sqrt{2k} \ll k\), yielding an exploding capacity ratio
 \(\operatorname{Cap}/\operatorname{Demand} \ge 0.595 k^{1/4} \to \infty\)
-at \(C = 1/4\).}
+at \(C = 1/4\).} 4. \emph{Resolution of the Online/Offline Dichotomy and Prophet Inequality Ratio:
+In recent work on online permutation embedding in random streams,
+Altschuler, Dubroff, and Tikhomirov [7] proved that online, typical
+permutations embed strictly faster than monotone ones
+($c_{\mathrm{typ}} \le 0.49967 < c_{\mathrm{mono}} = 1/2 < c_+ \le 0.50568$),
+and posed the dichotomy of whether online and offline embeddings have
+different extremizers or whether Alon's conjecture fails.
+Autocorrelation extremality and our sharp threshold theorems establish
+that the former holds: offline, monotone permutations are the true
+extremizer ($C^* = 1/4$), while online, the causal information deficit
+elevates branching search trees ($c_+ \approx 0.5056$).
+Furthermore, because the offline threshold is uniformly
+$n_c(\pi) = (1/4+o(1))k^2$ for all $\pi \in S_k$, this resolves the
+extremal online/offline prophet inequality ratio [7, Problem 1.12]:}
+\[
+g := \limsup_{k \to \infty} \max_{\pi \in S_k} \frac{\beta(\pi)}{n_c(\pi)}
+= \frac{c_+}{1/4} = 4 c_+ \approx 2.0227,
+\]
+\emph{with certified bounds $g \in [2.02188, 2.02272]$.}
 
 \subsection{The Growing LDS Sieve \& Polynomial Host Squares
 Architecture}\label{the-growing-lds-sieve-polynomial-host-squares-architecture}
