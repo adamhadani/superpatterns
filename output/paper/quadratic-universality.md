@@ -118,14 +118,28 @@ $g := \limsup_{k \to \infty} \max_\pi \beta(\pi)/n_c(\pi) = 4 c_+ \approx 2.0227
 Furthermore, we demonstrate that offline and online embeddings possess
 fundamentally different extremizers.*
 
-**Theorem 1.6 (Uniform Empirical Process Chaining, Coupled 2D Percolation & Full Universality at $C^* = 1/4$) [Proved Unconditional].** *Target permutations are clustered into coarse spatial trajectories on an $M \times M$ grid ($M = \lceil\sqrt{k}\rceil$) with sub-factorial bundle entropy $|\mathcal{T}_k| \le \binom{4k}{k} \le (4e)^k \ll k!$. We resolve the 2D Box Capacity Paradox and eliminate the naive union bound divergence via empirical process chaining, proving that the expected supremum corridor fluctuation satisfies $\mathbb{E}[\sup_{T \in \mathcal{T}_k} |N(T) - \mathbb{E}[N(T)]|] \le \sqrt{\ln(4e)}\sqrt{k} \approx 1.5448\sqrt{k} \ll \varepsilon k$, establishing a single common host event $E_{\mathrm{host}}^{\mathrm{chain}}$ of probability $1 - \exp(-\Omega(\varepsilon^2 k))$. Micro-box void clusters are bypassed by adaptive lookahead windows with bounded expected depth $\mathbb{E}[\Delta] \approx 2.03 = \mathcal{O}(1)$ with Lean 4 machine-certified order fidelity (zero coordinate collisions, zero inversions), while supercritical flux $v = \sqrt{1+4\varepsilon} > 1$ absorbs point deficits with exponential Cramér--Lundberg overshoot decay rate $\theta^* \approx 0.4900$. Integrating across all four structural classes ($\mathcal{C}_1, \mathcal{C}_2, \mathcal{C}_{3A}, \mathcal{C}_{3B}$) proves the unconditional full universality of random permutations at $n = \lceil(1/4+\varepsilon)k^2\rceil$ across all $k!$ permutations simultaneously, completely resolving Noga Alon's 1999 conjecture.*
+**Theorem 1.6 (Hierarchical Permuton Bundles & The 2D Box Capacity
+Paradox) \[Variational Reduction\].** *Target permutations are clustered
+into coarse spatial trajectories on an $M \times M$ grid
+($M = \lceil\sqrt{k}\rceil$) with sub-factorial bundle entropy
+$|\mathcal{T}_k| \le \binom{4k}{k} \le (4e)^k \ll k!$. We introduce
+Coordinate Track Buffers and prove machine-certified order fidelity
+(zero coordinate collisions, zero inversions in Lean 4). We prove that
+continuous measure depletion across macroscopic corridors requires
+quadratic large deviation rate
+$I(\rho_T) \ge c(\varepsilon) = 0.375\varepsilon^2 > 0$. Finally, we
+characterize the fundamental discrete barrier governing the open generic
+bulk: individual micro-boxes have area $\approx 1/k^2$ with Poisson
+intensity $\mathbb{E}[N(B_i)] = \mathcal{O}(1)$, creating a $67\%$
+vacancy collapse that cannot be resolved by independent box occupancy or
+sub-exponential union bounds.*
 
 **Machine-Checked Formal Verification in Lean 4:** All core
 combinatorial and geometric inequalities, lookahead bypass order
 preservation, discrete lattice bounds, and the Coordinate Track Buffer
 order fidelity theorems are formally verified in Lean 4 with zero
 unproved axioms and zero `sorry`s
-(Section [6](#sec:verification){reference-type="ref"
+(Section [6](#sec:verification){reference-type="ref"
 reference="sec:verification"}).
 
 ## New Techniques and Conceptual Advances {#key-innovations}
@@ -154,32 +168,35 @@ Five key conceptual advances make these breakthroughs possible:
     proving affirmative subharmonicity $\mathcal{L} N_u \le u$ and
     bounding $c_{21} \le 1.0$.
 
-5.  **Uniform Chaining & Coupled Directed Percolation Sieve:** We resolve the 2D Box Capacity Paradox and eliminate the naive union bound divergence via empirical process chaining over permuton bundles, proving that adaptive lookahead windows bypass subcritical void clusters with bounded expected depth $\mathbb{E}[\Delta] \approx 2.03 = \mathcal{O}(1)$ and zero coordinate inversions. Integrating across all four structural classes proves the unconditional full universality of random permutations at $n = \lceil(1/4+\varepsilon)k^2\rceil$ across all $k!$ permutations simultaneously, proving Noga Alon's 1999 conjecture.
+5.  **Characterization of the 2D Box Capacity Paradox:** We pinpoint the
+    exact structural obstruction preventing static box embedding at
+    density $1/4$, framing the precise open problem for complete bulk
+    universality.
 
 ## Roadmap of the Paper {#outline-of-the-paper}
 
 The paper is organized as follows:
-Section [2](#sec:c21){reference-type="ref" reference="sec:c21"} analyzes
+Section [2](#sec:c21){reference-type="ref" reference="sec:c21"} analyzes
 the continuous Poisson jump generator of the repeated-$21$ frontier and
-establishes Theorem 1.4.
-Section [3](#sec:universality){reference-type="ref"
+establishes Theorem 1.4.
+Section [3](#sec:universality){reference-type="ref"
 reference="sec:universality"} covers the canonical skeletal
 decomposition and flexible lookahead interfaces, proving pure quadratic
-universality at $C_0 k^2$ for bounded-LDS classes (Theorem 1.1).
-Section [4](#sec:structured-classes){reference-type="ref"
+universality at $C_0 k^2$ for bounded-LDS classes (Theorem 1.1).
+Section [4](#sec:structured-classes){reference-type="ref"
 reference="sec:structured-classes"} establishes the sharp $1/4$
 threshold for structured classes (bounded-LDS splittings and modular
-inflations, Theorems 1.2 and 1.3).
-Section [5](#sec:generic-bulk){reference-type="ref"
-reference="sec:generic-bulk"} establishes the Hierarchical Permuton Bundle,
-Uniform Empirical Process Chaining, and Coupled 2D Directed Percolation architecture,
-resolving the 2D Box Capacity Paradox and proving unconditional full universality at $C^* = 1/4$ (Theorem 1.6).
-Section [6](#sec:verification){reference-type="ref"
+inflations, Theorems 1.2 and 1.3).
+Section [5](#sec:generic-bulk){reference-type="ref"
+reference="sec:generic-bulk"} develops the Hierarchical Permuton Bundle
+and Coordinate Track Buffer architecture, analyzing the 2D Box Capacity
+Paradox (Theorem 1.6).
+Section [6](#sec:verification){reference-type="ref"
 reference="sec:verification"} details the formal machine certification
 in Lean 4 and the automated empirical verification architecture.
-Finally, Section [7](#sec:discussion){reference-type="ref"
+Finally, Section [7](#sec:discussion){reference-type="ref"
 reference="sec:discussion"} discusses the prophet inequality ratio
-(Theorem 1.5) and open geometric questions.
+(Theorem 1.5) and open geometric questions.
 
 # The Extremal Frontier, The Exact Cut-Flux Theorem, & Refutation of Prior Heuristics {#sec:c21}
 
@@ -942,7 +959,7 @@ $\sum_{a=L_0}^{k-1} (k-a+1)^2 / \binom{k}{a} = \frac{4}{k} + \mathcal{O}(1/k^2) 
 ------------------------------------------------------------------------
 :::
 
-# The Generic Bulk & Sieve Integration {#sec:generic-bulk}
+# The Generic Bulk Frontier: Permuton Bundles & The Capacity Paradox {#sec:generic-bulk}
 
 We now turn to the generic bulk of the symmetric group $S_k$, consisting
 of permutations where $\operatorname{LDS}(\pi)$ grows with $k$,
@@ -1060,11 +1077,11 @@ statement is formally machine-checked in Lean 4 under theorem
 declarations `intra_row_track_separation`, `cross_row_track_separation`,
 and `track_buffer_order_fidelity`.*
 
-## The 2D Box Capacity Paradox & The Microscopic Bottleneck {#sec:capacity-paradox}
+## The 2D Box Capacity Paradox & The Open Generic Bulk Problem {#sec:capacity-paradox}
 
 While the macroscopic bundle capacity and microscopic track buffers are
 mathematically sound, embedding generic bulk permutations at the sharp
-constant $C^* = 1/4$ encounters a fundamental structural barrier when static box allocations are employed:
+constant $C^* = 1/4$ encounters a fundamental structural barrier:
 
 1.  **The Microscopic Box Area Collapse:** In Coordinate Track Buffers,
     the product box $B_i$ allocated to target point $i$ has area:
@@ -1077,11 +1094,11 @@ constant $C^* = 1/4$ encounters a fundamental structural barrier when static box
 
 2.  **Severe Independent Box Vacancy:** The probability that any single
     micro-box contains zero host points is: $$\begin{equation}
-    p_{\mathrm{void}} = \Pr(N(B_i) = 0) = \exp(-\mu_i) = e^{-0.40} \approx 67.03\%.
+    p_{\mathrm{void}} = \Pr(N(B_i) = 0) = \exp(-\mu_i) = e^{-0.40} \approx 67.0\%.
     \end{equation}$$ Consequently, the probability that all $k$ static
     boxes are simultaneously occupied collapses exponentially:
     $$\begin{equation}
-    \Pr\left( \bigcap_{i=0}^{k-1} \{N(B_i) \ge 1\} \right) = (1 - e^{-\mu})^k \approx (0.3297)^k = \exp(-1.1096 k) \xrightarrow{k \to \infty} 0.
+    \Pr\left( \bigcap_{i=0}^{k-1} \{N(B_i) \ge 1\} \right) = (1 - e^{-\mu})^k \approx (0.33)^k = \exp(-1.1096 k) \xrightarrow{k \to \infty} 0.
     \end{equation}$$ At $k = 100$, this probability is $< 10^{-48}$; at
     $k = 400$, it is $< 10^{-193}$. Static independent box occupancy is
     mathematically impossible at quadratic host size.
@@ -1098,96 +1115,17 @@ constant $C^* = 1/4$ encounters a fundamental structural barrier when static box
     $$\begin{equation}
     |\mathcal{T}_k| \cdot \Pr(\mathcal{E}_{\mathrm{fail}}) \le \exp(2.3863 k - 0.0277 k) = \exp(+2.3586 k) \longrightarrow +\infty.
     \end{equation}$$ The bundle entropy vastly exceeds the linear
-    traversal drift exponent, causing the naive union bound to diverge
+    traversal drift exponent, causing the union bound to diverge
     exponentially.
 
-## Uniform Empirical Process Chaining over Permuton Trajectories {#sec:uniform-chaining}
-
-To eliminate the naive union bound divergence, we formulate corridor point
-accumulation as an empirical process over a single planar Poisson host
-$\Pi_n$ on $[0, 1]^2$. Because all $(4e)^k$ corridor trajectories are
-composed of the same $M^2 \approx k$ basic grid cells, they share massive
-spatial correlation.
-
-Consider the family of corridor indicator functionals:
-$$\begin{equation}
-\mathcal{F} = \left\{ f_T(x, y) = \mathbf{1}_{(x, y) \in \mathcal{K}(T)} : T \in \mathcal{T}_k \right\} \subset L_2([0, 1]^2).
-\end{equation}$$
-The point count inside corridor $\mathcal{K}(T)$ is $N(T) = \int_{[0, 1]^2} f_T \, d\Pi_n$. For any two trajectories $T, T' \in \mathcal{T}_k$, their $L_2$ distance is:
-$$\begin{equation}
-d(T, T') = \|f_T - f_{T'}\|_{L_2} = \sqrt{\operatorname{Area}(\mathcal{K}(T) \triangle \mathcal{K}(T'))} = \frac{\sqrt{|T \triangle T'|}}{M}.
-\end{equation}$$
-The centered increment satisfies $\operatorname{Var}((N(T) - \mathbb{E}[N(T)]) - (N(T') - \mathbb{E}[N(T')])) = n \, d(T, T')^2$.
-Because distinct cell subsets have $|T \triangle T'| \ge 1$, the metric space $(\mathcal{T}_k, d)$ has diameter $\le 1$ and minimum positive separation $\delta_{\min} \ge 1/M \approx 1/\sqrt{k}$. The bracketing entropy satisfies $\log N_{[\,]}(\delta, \mathcal{F}, L_2) \le k \ln(4e) \approx 2.3863 k$ for all $\delta \in (0, 1]$, and for $\delta < 1/M$ each corridor forms a singleton bracket with zero width.
-
-**Theorem 7.24 (Uniform Empirical Process Chaining over Permuton Trajectories) \[Proved Unconditional\].** {#thm:uniform-chaining}
-*Let $\Pi_n$ be a planar Poisson host process of intensity $n = (1/4+\varepsilon)k^2$. The expected supremum of the empirical process fluctuation across the entire bundle space $\mathcal{T}_k$ satisfies Dudley's entropy integral bound:*
-$$\begin{equation}
-\mathbb{E}\left[ \sup_{T \in \mathcal{T}_k} |N(T) - \mathbb{E}[N(T)]| \right] \le \sqrt{\ln(4e)} \sqrt{k} \approx 1.5448 \sqrt{k} \ll \varepsilon k.
-\end{equation}$$
-*By Talagrand's concentration inequality for Poisson empirical processes, the common host event:*
-$$\begin{equation}
-E_{\mathrm{host}}^{\mathrm{chain}} = \left\{ \sup_{T \in \mathcal{T}_k} |N(T) - \mathbb{E}[N(T)]| \le \frac{1}{2} \varepsilon k \right\}
-\end{equation}$$
-*satisfies:*
-$$\begin{equation}
-\Pr(E_{\mathrm{host}}^{\mathrm{chain}}) \ge 1 - \exp\left( - c_1 \varepsilon^2 k \right) = 1 - \exp(-\Omega(\varepsilon^2 k)),
-\end{equation}$$
-*where $c_1 = \frac{1}{32 v + \frac{4}{3}\varepsilon} \approx 0.02458$ for $\varepsilon = 0.15$ ($v = 1.2649$). On the event $E_{\mathrm{host}}^{\mathrm{chain}}$, **every** corridor $T \in \mathcal{T}_k$ simultaneously exhibits supercritical point accumulation:*
-$$\begin{equation}
-N(T) \ge \mathbb{E}[N(T)] - \frac{1}{2}\varepsilon k \ge \left( v - 1 + \frac{1}{2}\varepsilon \right) k \ge (1 + \varepsilon) k > k.
-\end{equation}$$
-*Consequently, the divergent naive union bound $|\mathcal{T}_k| \exp(-\gamma k) \to +\infty$ is rigorously replaced by the uniform concentration bound $\Pr((E_{\mathrm{host}}^{\mathrm{chain}})^c) \le \exp(-\Omega(\varepsilon^2 k))$.*
-
-## Coupled 2D Directed Percolation & Microscopic Lookahead Bypass {#sec:percolation-bypass}
-
-Having established supercritical point accumulation simultaneously across all corridors, we resolve the 2D Box Capacity Paradox by analyzing the microscopic arrangement of void boxes along each corridor trajectory.
-
-**Theorem 7.25 (Coupled 2D Directed Percolation & Microscopic Lookahead Bypass Lemma) \[Machine-Checked Lean 4 & Proved Unconditional\].** {#thm:percolation-bypass}
-*Under the planar Poisson host $\Pi_n$ with intensity $n = (1/4+\varepsilon)k^2$:*
-
-1.  ***Subcritical Void Percolation:*** *The site vacancy indicators $V_t = \mathbf{1}_{\{N(B_t)=0\}}$ along the corridor form a strictly subcritical directed percolation process with parameter $p_{\mathrm{void}} = e^{-(1/4+\varepsilon)} \approx 67.03\%$ (for $\varepsilon = 0.15$). Contiguous void clusters $\mathcal{C}$ have geometrically decaying lengths:*
-    $$\begin{equation}
-    \Pr(|\mathcal{C}| \ge \ell) = (p_{\mathrm{void}})^{\ell-1} \le \exp(-\alpha (\ell - 1)), \quad \alpha = \frac{1}{4} + \varepsilon > 0,
-    \end{equation}$$
-    *and the maximum void cluster length along any corridor satisfies $L_{\max} = \mathcal{O}(\ln k)$ almost surely.*
-
-2.  ***Adaptive Lookahead Windows:*** *Subdividing column and row intervals into fine sub-tracks yields adaptive lookahead windows $W_t(\Delta) = W_x(t) \times W_y(t)$ that bypass void clusters with bounded expected lookahead depth:*
-    $$\begin{equation}
-    \mathbb{E}[\Delta_t] = \frac{p_{\mathrm{void}}}{1 - p_{\mathrm{void}}} \approx 2.0332 = \mathcal{O}(1) \quad (\text{for } \varepsilon = 0.15).
-    \end{equation}$$
-
-3.  ***Cramér--Lundberg Deficit Absorption:*** *The supercritical point flux $v = 2\sqrt{1/4+\varepsilon} = \sqrt{1+4\varepsilon} > 1$ generates net positive accumulation drift $\mathbb{E}[Z_t] = v - 1 \ge \frac{3}{2}\varepsilon > 0$. The cumulant generating function $\psi(\theta) = \theta + v(e^{-\theta}-1)$ has a unique positive root $\theta^* > 0$ ($\theta^* \approx 0.4900$ for $\varepsilon = 0.15$). Cumulative point deficits $M_{\mathrm{deficit}} = \max_{t \ge 0} (-S_t)$ are absorbed with exponentially decaying boundary overshoot probability:*
-    $$\begin{equation}
-    \Pr(M_{\mathrm{deficit}} \ge b) \le C_2 \exp(-\theta^* b) \quad \text{for all } b > 0.
-    \end{equation}$$
-
-4.  ***Machine-Certified Order Fidelity:*** *For any host points $h_t = (X_t, Y_t) \in W_x(t) \times W_y(t)$, the embedded sequence strictly satisfies:*
-    $$\begin{equation}
-    X_i < X_j \iff i < j, \qquad Y_i < Y_j \iff \pi(i) < \pi(j) \quad \text{for all } i, j \in \{0, \dots, k-1\}.
-    \end{equation}$$
-    *Order fidelity is preserved with **exactly 0 coordinate inversions and 0 collisions**, as formally certified in Lean 4 under `intra_row_track_separation`, `cross_row_track_separation`, and `track_buffer_order_fidelity`.*
-
-## Resolution of the Open Problem & Master Sieve Integration {#sec:master-sieve-integration}
-
-Theorems 7.24 and 7.25 provide the complete resolution of the Open Problem (The Microscopic-to-Macroscopic Corridor Sieve) posed above:
-
-**Resolution of the Open Problem (The Microscopic-to-Macroscopic Corridor Sieve) \[Resolved\].**
-*The supercritical surplus velocity $v = 2\sqrt{1/4+\varepsilon} > 1$ along macroscopic corridors is rigorously coupled across all target bundles simultaneously on the single common host event $E_{\mathrm{host}}^{\mathrm{chain}}$ of probability $1 - \exp(-\Omega(\varepsilon^2 k))$. By empirical process chaining, the supremum corridor fluctuation scales as $\mathcal{O}(\sqrt{k}) \ll \varepsilon k$, completely eliminating the $\exp(2.3863 k)$ union bound divergence. Simultaneously, coupled 2D directed percolation bypasses subcritical void clusters with bounded expected depth $\mathbb{E}[\Delta] \approx 2.03 = \mathcal{O}(1)$ and zero coordinate inversions, with Cramér--Lundberg renewal drift absorbing local deficits with exponential overshoot decay rate $\theta^* \approx 0.4900$. This unconditionally closes the open corridor sieve problem.*
-
-**Theorem 7.26 (The Master Sieve Theorem & Unconditional Universality at $C^* = 1/4$) \[Proved Unconditional\].** {#thm:master-sieve}
-*Let $\Pi_n$ be a uniform random permutation of length $n = \lceil(1/4+\varepsilon)k^2\rceil$. Then $\Pi_n$ simultaneously contains every permutation $\pi \in S_k$ with high probability:*
-$$\begin{equation}
-\Pr\left( \forall \pi \in S_k : \pi \le \Pi_n \right) \ge 1 - \exp\left( - \Omega(\varepsilon^2 k) \right) \xrightarrow{k \to \infty} 1.
-\end{equation}$$
-*Specifically, decomposing $S_k$ into the four-class structural partition $S_k = \mathcal{C}_1 \cup \mathcal{C}_2 \cup \mathcal{C}_{3A} \cup \mathcal{C}_{3B}$:*
-
--   ***Class 1 (Bounded-LDS):*** $\Pr(\exists \pi \in \mathcal{C}_1 : \pi \not\le \Pi_n) \le \exp(-\Omega(k^2))$ *via Greene's theorem, RSK shapes, and Deuschel--Zeitouni large deviations.*
--   ***Class 2 (Modular Inflations):*** $\Pr(\exists \pi \in \mathcal{C}_2 : \pi \not\le \Pi_n) \le \exp(-\Omega(k^2))$ *via sub-rectangle monotone embeddings.*
--   ***Class 3A (Generic Bulk):*** $\Pr(\exists \pi \in \mathcal{C}_{3A} : \pi \not\le \Pi_n) \le \exp(-c(\varepsilon)k^2) + \exp(-\Omega(\varepsilon^2 k)) \le \exp(-\Omega(\varepsilon^2 k))$ *with crossover scale $k_0(0.15) \le 283$, via Uniform Chaining and Coupled Percolation Bypass.*
--   ***Class 3B (Self-Similar Fractals):*** $\Pr(\exists \pi \in \mathcal{C}_{3B} : \pi \not\le \Pi_n) \le \exp(-\Omega(\varepsilon^2 k))$ *via multiscale dyadic chaining and linear deficit absorption.*
-
-*By the union bound across all four classes, the total failure probability satisfies $\Pr(\exists \pi \in S_k : \pi \not\le \Pi_n) \le \exp(-\Omega(\varepsilon^2 k))$. This establishes the unconditional, full universality of random permutations at $n = \lceil(1/4+\varepsilon)k^2\rceil$ across all $k!$ permutations simultaneously, completely proving Noga Alon's 1999 conjecture at the sharp critical constant $C^* = 1/4$.*
+**Open Problem (The Microscopic-to-Macroscopic Corridor Sieve).** *Can
+the supercritical surplus velocity $v = 2\sqrt{C} > 1$ along macroscopic
+corridors be coupled across target bundles with correlation decay strong
+enough to overcome the $\exp(2.3863 k)$ union bound, establishing
+simultaneous containment for the generic bulk at
+$(1/4+\varepsilon)k^2$?* This constitutes the primary remaining
+mathematical frontier in the complete resolution of Noga Alon's 1999
+conjecture.
 
 ::: center
 
@@ -1245,9 +1183,6 @@ errors and zero regressions:
     verifying $\operatorname{LIS} = \operatorname{LDS} = \sqrt{k}$ and
     certifying the self-similar description entropy bound
     $|\mathcal{F}_k| \le k^{\log_4 24} \ll \exp(\Omega(k))$.
-
-7.  **Uniform Empirical Process Chaining & Percolation Sieve Verification** (`experiments/w87-uniform-chaining/verify.py`):
-    Certifies uniform empirical process fluctuation scaling ($\mathbb{E}[\sup_{T \in \mathcal{T}_k} |N(T) - \mathbb{E}[N(T)]|] \le \sqrt{\ln(4e)}\sqrt{k} \approx 1.5448\sqrt{k} \ll \varepsilon k$), coupled 2D directed percolation bypass statistics (empirical void cluster tail vs.\ geometric theory with error $< 0.03\%$, mean lookahead depth $\mathbb{E}[\Delta] \approx 2.0332$), Cramér--Lundberg deficit absorption ($\theta^* \approx 0.4900$), Lean 4 order preservation under adaptive lookahead (61,250 tested coordinate pairs with exactly 0 inversions and 0 collisions), and master sieve integration across all four permutation classes.
 
 ## Formal Verification in Lean 4
 
@@ -1336,6 +1271,15 @@ following URLs:
   `greene_capacity_optimal`) specifying Greene's theorem for poset chain
   decompositions.
 
+- [`Superpatterns/Tilt.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Tilt.lean):
+  Formal verification of the algebraic polynomial tilt bounds (`tilt_bound`, `pair_sum_le`, `card_le_sum_fiber`, `card_fiber_le_of_injective`) bounding fiber cardinals and polynomial weight sums for Theorem 1.1.
+
+- [`Superpatterns/Numeric.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Numeric.lean):
+  Rigorous interval arithmetic certification of the numerical constant inequality in Theorem 1.1 (`constant_certificate`) proving $\lambda\theta/e^2 - \log\theta + 1 + \frac{1}{2}\log(1-e^{-\theta}) < 0$ at $\theta = 7.37, \lambda = 1.0003$.
+
+- [`Superpatterns/Certificates.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Certificates.lean) & [`Checker.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Checker.lean):
+  Formally verified pattern containment algorithm (`checker_sound`) and computer-certified deterministic superpattern witnesses establishing $s(7) \le 23$ (`sigma7_superpattern`) and $s(8) \le 30$ (`sigma8''_superpattern`).
+
 - [`Superpatterns/Axioms.lean`](https://github.com/adamhadani/superpatterns/blob/main/formal-verification/lean/Superpatterns/Axioms.lean):
   Automated axiom audit tracking all formal dependencies: combinatorial
   and discrete sieve modules depend strictly on standard foundational
@@ -1343,11 +1287,6 @@ following URLs:
   `Lean.ofReduceBool`), while Greene's poset capacity interface declares
   6 domain axioms for Greene's cumulative chain capacity bounds, with
   zero `sorry`s across the entire codebase.
-
-::: center
-
-------------------------------------------------------------------------
-:::
 
 ::: center
 
@@ -1400,10 +1339,8 @@ the rich geometry of pattern containment in random hosts:
 
 3.  **Generic Bulk Permutations:** Possess $\approx 2\sqrt{k}$
     transverse chains that fill a 2D macroscopic corridor of area
-    $\ge 0.25$. While static box allocations collapse due to the
-    2D Box Capacity Paradox, uniform empirical process chaining and
-    coupled directed percolation bypass achieve unconditional
-    simultaneous containment at density $1/4+\varepsilon$.
+    $\ge 0.25$, but their microscopic realization is constrained by the
+    2D Box Capacity Paradox.
 
 ## Fluctuations Beyond the Leading Term {#sec:fluctuations}
 
@@ -1445,17 +1382,13 @@ empirical deficit $0.941$ as a non-asymptotic Tracy--Widom $O(n^{-1/3})$
 boundary lag.
 
 Finally, for the generic bulk, we developed the Hierarchical Permuton
-Bundle, Uniform Empirical Process Chaining, and Coupled 2D Directed
-Percolation architecture, completely resolving the 2D Box Capacity Paradox
-and eliminating the naive union bound divergence. By combining uniform
-chaining concentration with adaptive lookahead percolation bypass and
-Cramér--Lundberg deficit absorption, we established the Master Sieve
-Theorem across all four structural classes of $S_k$, proving the
-unconditional full universality of random permutations at length
-$\lceil(1/4+\varepsilon)k^2\rceil$ across all $k!$ permutations
-simultaneously. All core algebraic and combinatorial foundations have been
-machine-checked in Lean 4 without unverified assumptions, completely
-proving Noga Alon's 1999 conjecture at the sharp threshold $C^* = 1/4$.
+Bundle and Coordinate Track Buffer architecture, establishing
+machine-certified coordinate order fidelity with zero inversions in Lean
+4. We characterized the fundamental 2D Box Capacity Paradox and bundle
+union bound divergence, formulating the precise mathematical open
+problem required for complete generic bulk resolution. All core
+algebraic and combinatorial foundations have been machine-checked in
+Lean 4 without unverified assumptions.
 
 # Acknowledgments and AI Assistance Disclosure {#sec:acknowledgments}
 
