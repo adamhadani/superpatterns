@@ -461,3 +461,70 @@ Implement an automated verification tool in `experiments/w86-dynamic-corridor/ve
   - `python3 experiments/w86-dynamic-corridor/verify.py`
 - [ ] Lean 4 project builds cleanly with 0 errors, 0 warnings, and 0 `sorry`s (`lake build`).
 - [ ] Paper manuscripts `output/arxiv/main.tex` and `output/paper/quadratic-universality.md` compile with 0 errors and EXACTLY 0 overfull boxes.
+
+## 2026-09-25T14:00:47Z
+
+Use a very large team of agents.
+
+Advance the proof of Noga Alon's 1999 random superpattern conjecture at the sharp threshold $C^* = 1/4$ toward full generality for all permutations in $S_k$ by launching Workstream W87: Uniform Chaining & Coupled 2D Percolation on Permuton Trajectories at $C^* = 1/4$.
+
+Working directory: `/Users/adamhadani/Development/math-proofs/superpatterns`
+Integrity mode: development
+
+Reference material:
+- [output/paper/quadratic-universality.md](file:///Users/adamhadani/Development/math-proofs/superpatterns/output/paper/quadratic-universality.md)
+- [output/arxiv/main.tex](file:///Users/adamhadani/Development/math-proofs/superpatterns/output/arxiv/main.tex)
+- [experiments/w86-dynamic-corridor/verify.py](file:///Users/adamhadani/Development/math-proofs/superpatterns/experiments/w86-dynamic-corridor/verify.py)
+- [experiments/w85-redteam-audit/adversarial_audit_report.md](file:///Users/adamhadani/Development/math-proofs/superpatterns/experiments/w85-redteam-audit/adversarial_audit_report.md)
+- [experiments/w84-track-buffers/proof.md](file:///Users/adamhadani/Development/math-proofs/superpatterns/experiments/w84-track-buffers/proof.md)
+- [experiments/w83-permuton-bundles/proof.md](file:///Users/adamhadani/Development/math-proofs/superpatterns/experiments/w83-permuton-bundles/proof.md)
+- [formal-verification/lean/Superpatterns/Interleaving.lean](file:///Users/adamhadani/Development/math-proofs/superpatterns/formal-verification/lean/Superpatterns/Interleaving.lean)
+- [formal-verification/lean/Superpatterns/Lattice.lean](file:///Users/adamhadani/Development/math-proofs/superpatterns/formal-verification/lean/Superpatterns/Lattice.lean)
+- [CLAUDE.md](file:///Users/adamhadani/Development/math-proofs/superpatterns/CLAUDE.md)
+- He–Kwan (2020), "Universality of random permutations", arXiv:1911.12878
+
+## Requirements
+
+### R1. Uniform Empirical Process Chaining over Permuton Trajectories
+Develop a uniform empirical process and chaining bound for 2D Poisson host point accumulations across all $(4e)^k$ coarse corridor trajectories in $\mathcal{T}_k$:
+1. Formulate the collection of corridor indicator functionals $\{f_T : T \in \mathcal{T}_k\}$ as an empirical process over a single 2D Poisson host process $\Pi_n$ of intensity $n = (1/4+\varepsilon)k^2$.
+2. Establish a bracketing entropy / generic chaining bound showing that because trajectories heavily overlap in $[0, 1]^2$, the supremum of empirical process deviations is sub-linear:
+   $$
+   \mathbb{E}\left[ \sup_{T \in \mathcal{T}_k} \left| N(T) - \mathbb{E}[N(T)] \right| \right] = \mathcal{O}(\sqrt{k \ln(4e)}) = \mathcal{O}(\sqrt{k}) \ll \varepsilon k.
+   $$
+3. Conclude that on a single common host event $E_{\mathrm{host}}^{\mathrm{chain}}$ of probability $1 - o(1)$, EVERY corridor $T \in \mathcal{T}_k$ simultaneously exhibits supercritical point accumulation density, replacing the divergent naive union bound $|\mathcal{T}_k| \exp(-\gamma k) \to +\infty$ with a unified concentration bound.
+
+### R2. Coupled 2D Percolation & Microscopic Lookahead Bypass
+Resolve the 2D Box Capacity Paradox ($\mathbb{E}[N(B_i)] \approx 0.40$, void rate $>80\%$) through dependent corridor percolation:
+1. Construct a coupled directed percolation model along each corridor $T$, proving that empty $1/k^2$ micro-boxes form subcritical finite clusters that are bypassed by adaptive lookahead windows $W_t(\Delta)$ of bounded expected depth $\mathbb{E}[\Delta] = \mathcal{O}(1)$.
+2. Prove that the supercritical point flux ($v = 2\sqrt{1/4+\varepsilon} > 1$) guarantees that point deficit along any bypassed void cluster is absorbed with exponentially decaying boundary overshoot probability.
+3. Prove that the Lean-certified Coordinate Track Buffer ordering ($X_i < X_j \iff i < j$ and $Y_i < Y_j \iff \pi(i) < \pi(j)$) is preserved under the percolating bypass paths with zero coordinate inversions.
+
+### R3. Automated Empirical & Combinatorial Verification Suite
+Implement an automated verification tool in `experiments/w87-uniform-chaining/verify.py` testing:
+1. Empirical process fluctuation test: measure $\sup_{T \in \mathcal{T}_k} |N(T) - \mathbb{E}[N(T)]|$ across Poisson host simulations for $k \in \{20, 50, 100, 200\}$ at intensity $C = 1/4 + \varepsilon$, verifying $\mathcal{O}(\sqrt{k})$ scaling.
+2. Coupled percolation simulation: evaluate lookahead bypass depth distributions and verify that void cluster lengths decay exponentially with 0 order inversions across generic bulk targets.
+3. Master sieve convergence: verify the unified non-containment probability decays to zero.
+4. Comprehensive regression run verifying 0 regressions across all existing suites (`check_witness.py --all`, `certify_cprime.py`, `w83`, `w84`, `w85`, `w86`).
+
+### R4. Complete Research Documentation & Lean Alignment
+1. Author `experiments/w87-uniform-chaining/proof.md` detailing the mathematical proofs.
+2. Author `experiments/w87-uniform-chaining/log.md` recording the investigation audit trail.
+3. Register W87 in `experiments/README.md`, `memory/SESSION-STATE.md`, and `memory/RESULTS.md`.
+4. Check that all Lean 4 formalizations compile cleanly with `lake build` (0 sorrys, 0 warnings).
+
+## Acceptance Criteria
+
+### Automated Combinatorial & Mathematical Verification
+- [ ] Uniform Empirical Process Chaining Theorem is proved in `proof.md`, establishing $\sup_{T \in \mathcal{T}_k} |N(T) - \mathbb{E}[N(T)]| = \mathcal{O}(\sqrt{k})$ and proving simultaneous supercritical flux across all $|\mathcal{T}_k| \le (4e)^k$ corridors on a single host event of probability $1 - o(1)$.
+- [ ] Coupled 2D Percolation Bypass Lemma is proved, establishing that lookahead windows bypass micro-box vacancies with zero coordinate inversions and geometrically decaying bypass length.
+- [ ] Automated verification script `experiments/w87-uniform-chaining/verify.py` passes all parts with exit code 0.
+- [ ] All existing regression test suites pass with 0 errors:
+  - `python3 experiments/witnesses/check_witness.py --all`
+  - `python3 experiments/w25-asymptopia-review/certify_cprime.py`
+  - `python3 experiments/w83-permuton-bundles/verify.py`
+  - `python3 experiments/w84-track-buffers/verify.py`
+  - `python3 experiments/w85-redteam-audit/verify.py`
+  - `python3 experiments/w86-dynamic-corridor/verify.py`
+- [ ] Lean 4 project builds cleanly with 0 errors, 0 warnings, and 0 `sorry`s (`lake build`).
+- [ ] LaTeX and Pandoc manuscripts compile with 0 errors and EXACTLY 0 overfull boxes.
