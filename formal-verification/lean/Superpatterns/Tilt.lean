@@ -174,7 +174,7 @@ noncomputable def Wcomp (k : ℕ) {m : ℕ} (a : Comp m) : ℝ :=
   ∏ j : Fin m, wt k ((a.2.2 j).1 + (a.2.2 j).2)
 
 theorem Wcomp_nonneg (k : ℕ) {m : ℕ} (a : Comp m) : 0 ≤ Wcomp k a :=
-  prod_nonneg (fun j _ => wt_nonneg k _)
+  prod_nonneg (fun _ _ => wt_nonneg k _)
 
 /-- The box `[1,N]^{k+1}` in block form. -/
 def box (m N : ℕ) : Finset (Comp m) :=

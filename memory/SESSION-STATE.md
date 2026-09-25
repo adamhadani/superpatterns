@@ -1,24 +1,79 @@
 # Current session state — 25 September 2026
 
-## Authoritative Status: What is Proved vs. The Remaining Gap
+## Authoritative Status: What is Proved vs. The Remaining Gap (Post-W80 Red-Team Audit)
 
-> **CRITICAL REPO NORM / ANTI-FALSE-ALARM DIRECTIVE:**
-> - **Unconditional Theorem at Quadratic Host Size $C_0 k^2$ (PROVED IN FULL GENERALITY):**
->   A uniform random permutation of length $n = C_0 k^2$ ($C_0 \approx 9.62$) simultaneously contains ALL $k!$ permutations in $S_k$ with probability $1 - o(1)$ (Theorem 1.2 / Theorem A in Lean 4). This unconditionally eliminates the 6-year-old He–Kwan (2020) $\log\log k$ factor for all $k!$ permutations simultaneously.
-> - **Sharp Threshold $C^* = 1/4 = 0.25000$ for Structured Classes (PROVED):**
->   - Bounded-LDS ($\operatorname{LDS}(\pi) \le d$, all Stanley–Wilf classes): PROVED via $d$-box antidiagonal optimal split theorem (Theorem 1.3).
->   - Modular interval inflations (blocks $\ge K\sqrt{\log k}$): PROVED via zero-entropy shared host squares (Theorem 1.4).
->   - Repeated-$21$ direct-sum alternating family: PROVED $c_{21} = 1.0000$ identically via cut-flux identity $\mathcal{L} N_u \equiv r_u \le u$ and superadditive squeeze, conclusively eliminating candidate counterexamples (Theorem 1.5).
->   - Autocorrelation Extremality: PROVED that monotone identity uniquely maximizes self-overlap profile $\mathcal{O}_j(\pi) \le \binom{k}{j}^2$.
-> - **The Master Sieve & Poset Duality Architecture (PROVED & LEAN-CERTIFIED IN W70-W74):**
->   - Proved the Harris-FKG Monotone Association Theorem for random superpatterns: pattern containment events are positively associated in Poisson hosts, proving $\Pr(\forall \pi : \pi \le \Pi_N) \ge \prod_{\pi \in S_k} (1 - P_0(\pi)) \ge \exp(-2 \sum P_0(\pi))$.
->   - Certified in Lean 4: Canonical Dilworth chains demand zero backward cross-chain inversions (`backward_chain_strict_monotonicity`), and cross-chain inversions are strictly forward-oriented descents (`forward_descent_chain_strict_increasing`).
->   - Certified in Lean 4: Master Sieve Bounds (`uniform_superpattern_failure_le_sum`, `uniform_mean_missing_le_card_mul_max`, `uniform_master_sieve_bound`), proving $\Pr(\neg\text{IsSuperpattern}) \le k! \cdot P_{\max}$.
->   - Single-target 2D planar LDP with speed $\Theta(k^2)$ coupled with exploding streamline buffer reservation ($B \ge \frac{1}{2}\sqrt{k}$) yields $P_{\max} \le \exp(-c_\varepsilon k^2) \ll 1/k!$, super-factorially dominating $k!$ with finite crossover scale $k_0 \le 33$.
-> - **SYNTHESIS STATUS:**
->   - The complete architecture for Noga Alon's 1999 conjecture at $C^* = 1/4$ is synthesized in Workstream W74, integrating combinatorial, topological, variational, empirical, and Lean 4 formalization pillars.
+> **CRITICAL REPO NORM / ANTI-FALSE-ALARM DIRECTIVE (W80 4-TIER EPISTEMIC TAXONOMY):**
+> Following the comprehensive adversarial red-team audit in Workstream W80 (`experiments/w80-redteam-audit/adversarial_audit_report.md`, 972 lines, 98 KB), all mathematical claims in the repository are strictly delineated into four mutually exclusive epistemic tiers:
+>
+> - **TIER 1: PROVED UNCONDITIONAL & MACHINE-CERTIFIED (Lean 4):**
+>   - Chroman–Kwan–Singhal (2021) Deterministic Pattern Count Bound (`Superpatterns.theoremA`): machine-certified under standard foundational axioms (`propext`, `Quot.sound`, `Classical.choice`). Note: this is a pattern count bound on individual permutations, distinct from probabilistic universality.
+>   - Finite Probability Space Foundations & Second-Moment Inequalities (`Superpatterns/Witness.lean`).
+>   - Master Sieve Abstract Implications (`uniform_master_sieve_bound`, `uniform_master_sieve_pow_bound`).
+>   - Backward Cross-Layer Monotonicity Invariant (`backward_chain_strict_monotonicity`).
+>   - Small deterministic superpattern witnesses: $k=3, 4$ (kernel checked), $k=7, 8$ (`native_decide`).
+>
+> - **TIER 2: PROVED UNCONDITIONAL (PEN-AND-PAPER & HYBRID):**
+>   - **Sharp Threshold $C^* = 1/4 = 0.25000$ for Bounded-LDS Permutations** ($\operatorname{LDS}(\pi) \le d = O(1)$, all Stanley–Wilf classes): PROVED via $d$-box antidiagonal optimal split theorem (Theorem 1.3), where target description entropy is strictly linear $O_d(k)$.
+>   - **Sharp Threshold $C^* = 1/4$ for Modular Interval Inflations** ($\mathcal{M}_{\text{int}}(\varepsilon)$, blocks $\ge K\sqrt{\log k}$): PROVED via zero-entropy shared host squares and Deuschel–Zeitouni LIS lower tails (Theorem 1.4).
+>   - **Repeated-$21$ Direct-Sum Family:** Analytically proved $c_{21} \le 1.0$ via cut-flux identity $\mathcal{L} N_u \equiv r_u \le u$, and rigorously certified $c_{21} \ge 0.98655$ via dynamic programming.
+>   - **Harris-FKG Monotone Association Theorem:** Pattern containment events are positively associated in Poisson hosts, proving $\Pr(\forall \pi : \pi \le \Pi_N) \ge \prod_{\pi \in S_k} (1 - P_0(\pi))$.
+>   - **Autocorrelation Identity Extremality:** Monotone identity uniquely maximizes self-overlap profile $\mathcal{O}_j(\pi) \le \binom{k}{j}^2$.
+>   - **Simultaneous Universality at $C_0 k^2$ for Bounded-LDS Permutations:** Established for $\operatorname{LDS}(\pi) \le d = O(1)$.
+>
+> - **TIER 3: CONDITIONAL REDUCTIONS & OPEN HYPOTHESES (GENERIC BULK AT $C^* = 1/4$):**
+>   - **Full-Generality Sharp Universality at $C^* = 1/4$ for Generic Bulk Targets ($d \approx 2\sqrt{k}$):** Rigorously reduced via Harris-FKG (Theorem 7.21) to single-target quadratic avoidance $\max_\pi P_0(\pi) \le \exp(-\omega(k \ln k))$, but conditional upon the **Single-Target Avoidance Hypothesis**.
+>   - **Continuum Variational Rate Minimality (Theorem 7.23):** $I(\rho^*_{\text{bulk}}) \ge I(\rho^*_{\text{id}}) = c(\varepsilon) > 0$ is an open variational hypothesis; target avoidance does not require depleting all $d$ chains simultaneously.
+>   - **Extremal Prophet Inequality Ratio:** $g = 4 c_+ \approx 2.0227$ is conditional upon the Single-Target Avoidance Hypothesis for generic bulk targets.
+>   - **Repeated-$21$ Asymptotic Constant $c_{21} = 1.0000$ Identically:** Empirical Tracy–Widom regression fit ($R^2 = 0.9622$), not a closed-form analytical proof.
+>
+> - **TIER 4: MATHEMATICALLY FAILED / FALSE AXIOMS / CRITICAL GAPS (AUDITED & EXPOSED IN W80):**
+>   - **Lean Axiom `multichain_demand_realizability` is FALSE:** Refuted by minimal counterexample $\sigma = [1, 2, 5, 0, 3, 4] \in S_6$ ($\lambda = [4, 2]$, demand $(4, 2)$ has no two disjoint chains of lengths 4 and 2).
+>   - **Theorem 1.2 Full-Generality Claim:** Lookahead interface entropy for generic bulk permutations ($d \approx 2\sqrt{k}$) satisfies $|\mathfrak{I}| \approx (4k)^k \approx k!$, so the union bound diverges to $+\infty$. Theorem 1.2 is established only for bounded-LDS permutations, not all $k!$ permutations.
+>   - **W76 Lemma 4.2 Static Track Allocation (Fatal Inversion Bug):** Inverts Lean's `backward_chain_strict_monotonicity`. Refuted by counterexamples $\pi = (3, 1, 4, 2)$ and $\pi = (1, 4, 2, 3)$.
+>   - **W75/W76 Master Sieve Domination Breakdown:** Boundary track error $P_{\text{track}} \le \exp(-\Omega(k))$ does not dominate quadratic error, leading to $k! \cdot \exp(-O(k)) \to +\infty$.
+>   - **Lean Attribution Disentanglement:** Lean's `theoremA` proves Chroman–Kwan–Singhal's deterministic pattern count bound, not probabilistic quadratic universality.
+>   - **Undisclosed Custom Axioms:** `Greene.lean` posits 7 custom unproved domain axioms, which are now fully documented and distinguished from Lean foundational axioms.
 
-## Latest continuation (25 September 2026) — Workstream W79: Master Logical Trail Audit, Lean Formalization Alignment & Publication Hardening
+## Latest continuation (25 September 2026) — Workstream W80: Large-Scale Adversarial Red-Team Audit for Full-Generality Sharp Superpattern Universality
+
+Comprehensive execution and completion of Workstream W80:
+1. **Master Red-Team Audit Deliverable Authored:** Authored `/Users/adamhadani/Development/math-proofs/superpatterns/experiments/w80-redteam-audit/adversarial_audit_report.md` (972 lines, 98,185 bytes). Synthesized all findings from Explorers R1, R2, and R3 across the four mandated areas (R1 Claim-vs-Proof Cross-Audit, R2 Generic Bulk Chain Stress-Testing, R3 Lean 4 Axiom Scrutiny, R4 Action Backlog & Delegation Blueprint).
+2. **Epistemic Demarcation & Manuscript Badging:**
+   - Applied verified status badges to all 45 mathematical statements (39 Theorems, 4 Lemmas, 2 Propositions) across `output/arxiv/main.tex` and `output/paper/quadratic-universality.md`:
+     - `[Machine-Checked Lean 4]` (4 statements): Lemma 4.2, Theorem 7.1, Theorem 7.5, Theorem 7.18.
+     - `[Proved Sharp for Class]` (9 statements): Theorems 1.3, 1.4, 1.5, 2.6, 4.3, 6.5, 7.6, 7.7, 7.16.
+     - `[Variational Reduction / Open Hypothesis]` (10 statements): Theorems 1.2, 1.7, 1.8, 1.9, 5.2, 7.11, 7.20, 7.21, 7.22, 7.23.
+     - `[Proved Unconditional]` (22 statements): Theorem 1.6, Proposition 2.1, Theorems 2.2, 2.3, 2.4, 2.5, 3.2, Lemmas 6.3, 6.4, Proposition 6.6, Theorems 7.2, 7.3, 7.4, 7.8, Lemma 7.9, Theorems 7.10, 7.12, 7.13, 7.14, 7.15, 7.17, 7.19.
+   - Corrected scope claims: Section 7.5 Item 5 retitled to `(Variational Reduction / Single-Target Avoidance Hypothesis)`; Section 8.3 `TheoremA.lean` description corrected from universality to CKS pattern bound; Section 8.3 updated to catalog `Greene.lean` and disclose its 7 domain axioms; Theorem 1.9 Item 2 prophet inequality conditionality explicitly disclosed.
+3. **Lean 4 Warning Remediation & Pristine Build:**
+   - Remediated 3 syntax/compiler warnings in `formal-verification/lean/Superpatterns/`: `Patterns.lean` (tactic sequence parentheses), `Tilt.lean` (unused variable `j`), and `Encoding.lean` (`omit hI₀ in` for unused section variable).
+   - Executed `lake build`: 8,722 jobs completed cleanly with 0 errors, 0 warnings, and 0 sorrys.
+   - Cataloged all 181 Lean declarations: 159 standard foundational (`[propext, Quot.sound, Classical.choice]`), 11 constructive, 4 `native_decide`, 7 custom unproved axioms in `Greene.lean`.
+4. **LaTeX & Paper Compilation:**
+   - Compiled `output/arxiv/main.tex` via `latexmk -pdf -cd`: generated 34-page `output/arxiv/main.pdf` with 0 errors.
+   - Verified overfull boxes via `grep -i overfull output/arxiv/main.log`: exactly 0 overfull boxes found.
+   - Ran `make -C output/paper check`: exits with 0 (clean Pandoc build).
+5. **Full Core Regression Suite Verification:**
+   - Executed and verified all 13 core regression test suites with 0 errors:
+     - `check_witness.py --all`: PASS (0 errors, SHA-256 verified)
+     - `certify_cprime.py`: PASS (0 errors, outward Decimal certificate)
+     - `lemma_check.py`: PASS (0 errors, 0 violations of corrected bound)
+     - `experiments/w42-two-exchange/verify.py`: PASS (0 errors)
+     - `experiments/w43-interleaving/verify.py`: PASS (0 errors)
+     - `experiments/w44-c21-drift/verify.py`: PASS (0 errors)
+     - `experiments/w45-multichain/verify.py`: PASS (0 errors)
+     - `experiments/w46-lookahead/verify.py`: PASS (0 errors)
+     - `experiments/w47-universality/verify.py`: PASS (0 errors)
+     - `experiments/w48-sharp-alon/verify.py`: PASS (0 errors)
+     - `experiments/w76-multichain-grid/verify.py`: PASS (0 errors)
+     - `experiments/w77-variational-ldp/verify.py`: PASS (0 errors)
+     - `experiments/w78-greene-poset/verify.py`: PASS (0 errors)
+     - (plus `experiments/w49-multiscale-chaining/verify.py` and `experiments/w75-discrete-grid/verify.py`: both PASS with 0 errors).
+6. **Actionable Backlog & Turnkey Delegation Prompts:**
+   - Formulated prioritized 4-tier remediation backlog and authored 6 turnkey subagent delegation prompts in Section 5 of the audit report, ready for deployment to Gemini 3.1 Pro subagents.
+
+## Previous continuation (25 September 2026) — Workstream W79: Master Logical Trail Audit, Lean Formalization Alignment & Publication Hardening
+
 
 Comprehensive completion of Workstream W79:
 1. **Master Logical Dependency Trail Audit:** Verified 0 gaps, 0 circularities, and zero unverified heuristics across the entire proof chain from Theorem 1.1 to the sharp threshold $C^* = 1/4$.
@@ -785,3 +840,16 @@ listed in [RESULTS.md](RESULTS.md#prioritized-continuation) and
 - **Status:** W79 Master Logical Trail Audit is successfully completed.
 - **Artifacts:** `experiments/w79-logical-audit/audit_report.md`, updated `output/arxiv/arxiv_bundle.tar.gz`.
 - **Validation:** 0 overfull boxes in `main.pdf`, 0 physics metaphors found (except mathematically valid), 0 Lean sorrys.
+
+## Update: W80 Completed
+- **Status:** W80 Large-Scale Adversarial Red-Team Audit & Verification successfully completed.
+- **Artifacts:**
+  - `experiments/w80-redteam-audit/adversarial_audit_report.md` (972 lines, 98 KB)
+  - `output/arxiv/main.tex` and `output/paper/quadratic-universality.md` (all 45 mathematical statements badged)
+  - `output/arxiv/main.pdf` (34 pages, 0 overfull boxes)
+  - `experiments/README.md`, `memory/SESSION-STATE.md`, `memory/RESULTS.md` updated.
+- **Validation:**
+  - All 13 core regression test suites pass with 0 errors.
+  - Lean 4 build: 8,722 jobs, 0 errors, 0 warnings (3 compiler warnings remediated), 0 sorrys.
+  - LaTeX compilation: 34 pages, 0 errors, 0 overfull boxes. `make -C output/paper check` passes (0).
+  - Four-tier epistemic taxonomy established; false Greene axiom refuted; W76 inversion bug exposed; 6 turnkey delegation prompts formulated.

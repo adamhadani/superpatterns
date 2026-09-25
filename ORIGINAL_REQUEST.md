@@ -257,3 +257,61 @@ Record formal mathematical statements, dyadic decomposition equations, chaining 
 - [ ] Lean 4 project builds cleanly (`lake build`).
 - [ ] LaTeX documents and technical notes compile with 0 errors and 0 overfull boxes (`make -C output/paper check` passes).
 - [ ] `memory/SESSION-STATE.md`, `memory/RESULTS.md`, and paper manuscripts are updated to document the unconditional resolution of Noga Alon's conjecture for all permutations in $S_k$.
+
+## 2026-09-25T08:06:17Z
+
+Use a very large team of agents.
+
+Execute Workstream W80: Large-Scale Adversarial Red-Team Audit for Full-Generality Sharp Superpattern Universality on the paper "Simultaneous Universality of Random Permutations at Quadratic Host Size" and its accompanying Lean 4 formalization.
+
+Working directory: `/Users/adamhadani/Development/math-proofs/superpatterns`
+Integrity mode: development
+
+Reference material:
+- [output/paper/quadratic-universality.md](file:///Users/adamhadani/Development/math-proofs/superpatterns/output/paper/quadratic-universality.md)
+- [output/arxiv/main.tex](file:///Users/adamhadani/Development/math-proofs/superpatterns/output/arxiv/main.tex)
+- [output/arxiv/main.pdf](file:///Users/adamhadani/Development/math-proofs/superpatterns/output/arxiv/main.pdf)
+- [formal-verification/lean/Superpatterns/](file:///Users/adamhadani/Development/math-proofs/superpatterns/formal-verification/lean/Superpatterns/)
+- [memory/SESSION-STATE.md](file:///Users/adamhadani/Development/math-proofs/superpatterns/memory/SESSION-STATE.md)
+- [memory/RESULTS.md](file:///Users/adamhadani/Development/math-proofs/superpatterns/memory/RESULTS.md)
+- [CLAUDE.md](file:///Users/adamhadani/Development/math-proofs/superpatterns/CLAUDE.md)
+
+## Requirements
+
+### R1. Adversarial Claim-vs-Proof Cross-Audit
+Perform a rigorous, adversarial cross-check between what the paper claims to prove vs. what is mathematically established:
+1. Distinguish precisely between:
+   (a) Unconditional simultaneous universality at quadratic host length C_0 k^2 (C_0 approx 9.62, Theorem 1.2 / Lean theoremA),
+   (b) Unconditional sharp threshold C* = 1/4 for structured classes (Theorems 1.3–1.5),
+   (c) Full-generality sharp threshold C* = 1/4 for arbitrary generic bulk permutations in S_k,
+   (d) Machine-checked Lean 4 theorems vs. pen-and-paper functional-analytic proofs.
+2. Flag any sentence, abstract claim, or theorem statement where the scope might be construed as conflating (a), (b), and (c), or where asymptotic constants/dependencies are underspecified.
+
+### R2. Stress-Testing the Generic Bulk Reduction Chain
+Attack each link in the generic bulk proof chain (n = ceil((1/4 + eps) k^2)):
+1. Poset Decomposition: Can adversarial permutations generate Dilworth chain structures that evade Greene's shape bound or violate forward descent preservation?
+2. Macroscopic Grid Concentration (M x M): Verify that Hoeffding bounds hold uniformly over all M^2 cells simultaneously and that cell vacancy probability does not accumulate across chains.
+3. Cross-Cell Boundary Buffer Allocation: Test whether the track reservation w = 1/(d M) guarantees collision-free traversal under all corner cases (e.g. chains entering and exiting adjacent cell boundaries in dense configurations).
+4. Continuum Variational LDP & Euler-Lagrange Minimality: Rigorously scrutinize Theorem 7.23 (Rate Minimality I(rho*_bulk) >= I(rho*_id) = c(eps) > 0). Could a non-monotone target profile permit a localized depletion of measure with rate strictly less than c(eps)?
+5. Master Sieve Domination: Verify that the finite-scale crossover k_0(eps) where k! exp(-c(eps) k^2) < 1 is well-defined and has no hidden k-dependent prefactors in the exponent.
+
+### R3. Lean 4 Formalization Alignment & Axiom Scrutiny
+1. Audit every theorem in formal-verification/lean/Superpatterns/ referenced in the paper:
+   - Verify that theorem names, hypotheses, and conclusions in the LaTeX text match the Lean definitions byte-for-byte.
+   - Check the axiom dependency of every theorem (#print axioms), confirming that no unproved assumptions or unintentional circularities exist.
+   - Catalog exactly which steps of the proof pipeline are fully verified in Lean 4 vs. which rely on pen-and-paper functional analysis (e.g., continuum measure LDP).
+
+### R4. Actionable Backlog & Delegation Blueprint
+Synthesize all findings into a prioritized, concrete action backlog:
+- Categorize each flagged item: [CRITICAL GAP], [EXPOSITION MISALIGNMENT], [LEAN EXPANSION CANDIDATE], or [POLISH/HARDENING].
+- Provide concrete specification prompts for any item requiring resolution, ready to be immediately delegated to Gemini 3.1 Pro subagents.
+
+## Acceptance Criteria
+
+### Automated Combinatorial & Mathematical Verification
+- [ ] Deliverable experiments/w80-redteam-audit/adversarial_audit_report.md is authored, comprehensive, and catalogs all findings across R1–R4.
+- [ ] Every theorem statement in output/arxiv/main.tex and output/paper/quadratic-universality.md has an explicit, verified status badge (Proved Unconditional / Proved Sharp for Class / Machine-Checked Lean 4 / Variational Reduction).
+- [ ] All 13 core regression test suites pass with 0 errors (check_witness.py, certify_cprime.py, w76-multichain-grid/verify.py, w77-variational-ldp/verify.py, w78-greene-poset/verify.py, etc.).
+- [ ] Lean 4 build compiles with 0 errors, 0 warnings, and 0 sorrys (lake build).
+- [ ] output/arxiv/main.pdf compiles with 0 overfull boxes.
+- [ ] memory/SESSION-STATE.md, memory/RESULTS.md, and experiments/README.md are updated.

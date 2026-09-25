@@ -69,7 +69,7 @@ theorem rank_lt_rank (l : List ℕ) {a b : ℕ} (ha : a ∈ l) (hab : a < b) :
       omega
     · have := ih ha
       have h2 : (if decide (x < a) = true then 1 else 0) ≤ (if decide (x < b) = true then 1 else 0) := by
-        split_ifs <;> simp_all <;> omega
+        (split_ifs <;> simp_all; omega)
       omega
 
 /-- The key fact: the order between a member `a` of `l` and any `b` is determined by ranks. -/
