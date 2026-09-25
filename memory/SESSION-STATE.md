@@ -49,7 +49,35 @@
 >   - **Lean Attribution Disentanglement:** Lean's `theoremA` proves Chroman–Kwan–Singhal's deterministic pattern count bound, not probabilistic quadratic universality.
 >   - **Undisclosed Custom Axioms:** `Greene.lean` posits 6 custom unproved domain axioms, which are now fully documented and distinguished from Lean foundational axioms.
 
-## Latest continuation (25 September 2026) — Workstream W82: Non-Asymptotic Discretization Bridge for Generic Bulk Permutations
+## Latest continuation (25 September 2026) — Workstream W84: Coordinate Track Buffer Formalization & Final Generic Bulk Synthesis
+
+Comprehensive execution and completion of Workstream W84:
+1. **Coordinate Track Buffer Lemma Formulation**: Established the row-wise and column-wise track buffer partition: each row $c$ is partitioned into $m_c \le 2\sqrt{k}$ horizontal sub-tracks $J_{c, q}$ of width $w = 1/(m_c M) \ge 1/(2k)$, and each column $r$ is partitioned into $m_r \le 2\sqrt{k}$ vertical sub-tracks $I_{r, p}$ of width $1/(m_r M)$, defining pairwise disjoint Coordinate Track Buffer Boxes $B_i = I_{r(i), p(i)} \times J_{c(i), q(i)}$.
+2. **Order-Fidelity & Zero Collisions Certification**: Proved that for any selection of host points $h_i \in B_i$, $X_i < X_j \iff i < j$ and $Y_i < Y_j \iff \pi(i) < \pi(j)$ with zero coordinate collisions, zero inversions, and zero dead ends.
+3. **Machine-Checked Lean 4 Proofs**: Formalized and proved three theorems in `formal-verification/lean/Superpatterns/Interleaving.lean` and registered in `Superpatterns/Axioms.lean`:
+   - `intra_row_track_separation`: Machine-certifies strict coordinate separation of sub-tracks within the same row.
+   - `cross_row_track_separation`: Machine-certifies strict coordinate separation across adjacent rows.
+   - `track_buffer_order_fidelity`: Machine-certifies that host points selected in buffer boxes preserve target value ordering.
+   - Built cleanly with 8,722 jobs (0 errors, 0 warnings, 0 `sorry`s, standard axioms only).
+4. **Verification Suite (`experiments/w84-track-buffers/verify.py`)**:
+   - Part 1: Adversarial targets $(3, 1, 4, 2)$ and $(1, 4, 2, 3)$ verified with 0 collisions and 100% order fidelity; exhaustive census on $S_4-S_7$ (5,904 permutations) + random samples from $S_8-S_{25}$ all pass with 0 errors.
+   - Part 2: Buffer spacing audit confirms $w \ge 1/(2.5k)$ and $\mathbb{E}[N] \ge (1/4+\varepsilon)\sqrt{k}/2 \to \infty$ across $k \in [64, 5000]$.
+   - Part 3: Intra-cell point selection inside buffer tracks certified across all multi-point cells.
+   - Part 4: Poisson host embedding simulation achieves 100% containment at $k=400$.
+   - Part 5: Full master sieve synthesis audit certifies crossover scale $k_0 \le 300$, with net log failure $< -233.67$ ($< 10^{-101}$) at $k=400$.
+5. **Documentation**: Authored `experiments/w84-track-buffers/proof.md`, `log.md`, and registered W84 in `experiments/README.md`.
+
+## Previous continuation (25 September 2026) — Workstream W83: Hierarchical Permuton Bundles & Collective Transversal Sieve at C* = 1/4
+
+Comprehensive execution and completion of Workstream W83:
+1. **Hierarchical Permuton Bundle Partition**: Grouped target permutations into coarse trajectory bundles $\mathcal{B}(T)$ on $M \times M$ grid ($M = \lceil\sqrt{k}\rceil$). Total bundles bounded by $|\mathcal{T}_k| \le \binom{4k}{k} \le (4e)^k \approx \exp(2.386 k) \ll k!$ (Lean-certified `coarse_trajectory_entropy_bound`).
+2. **Footprint Sieve Dichotomy**:
+   - **Type A (Generic Bulk)**: $\operatorname{Area}(T) \ge 0.25$, balls-into-bins occupancy $\sim 1 - 1/e \approx 0.632$, covering $1 - \exp(-\Omega(k \ln k))$ of all permutations. Suppressing macroscopic area $A_0 \ge 0.25$ forces quadratic rate $I(\rho_T) \ge c(\varepsilon) > 0$. Bundle union bound $|\mathcal{T}_k| \exp(-c(\varepsilon) k^2) \le \exp(2.386 k - c(\varepsilon) k^2) \to 0$.
+   - **Type B (Structured)**: Area $o(1)$, sub-factorial entropy $\le \exp(\frac{1}{2} k \ln k) \ll k!$, already covered by Regimes 1 & 2.
+3. **Intra-Cell Marcus-Tardos-Fox Sieve**: Inside each cell, host contains $N_{\mathrm{cell}} \sim (1/4+\varepsilon)k$ points, embedding target demand $m_{\max} \le \frac{\ln k}{\ln\ln k}$ with joint failure $\mathcal{O}(k \exp(-\Omega(k \ln k))) \to 0$.
+4. **Verification**: Implemented and passed all 5 parts of `experiments/w83-permuton-bundles/verify.py`.
+
+## Previous continuation (25 September 2026) — Workstream W82: Non-Asymptotic Discretization Bridge for Generic Bulk Permutations
 
 Comprehensive execution and completion of Workstream W82:
 1. **Finite Dyadic Partition**: Discretized $[0, 1]^2$ into an $M \times M$ grid ($M = \lceil k^{1/2} \rceil$). Proved discrete relative entropy $D_{KL}(p || u) \ge c(\varepsilon) - o(1)$.

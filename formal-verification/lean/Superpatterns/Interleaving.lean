@@ -191,4 +191,46 @@ theorem forward_descent_chain_strict_increasing {α : Type*} [LinearOrder α] (f
   have h_lt : f i < f j := backward_chain_strict_monotonicity f c h_chain i j hij hc h_inj
   exact lt_asymm h_gt h_lt
 
+/-- Intra-row coordinate track separation (Workstream W84):
+    If row c has horizontal interval starting at c * W, subdivided into tracks of width w,
+    any point p1 in track a1 is strictly less than any point p2 in track a2 whenever a1 < a2. -/
+theorem intra_row_track_separation (c W w a1 a2 p1 p2 : ℕ)
+    (hp1 : c * W + a1 * w ≤ p1 ∧ p1 < c * W + (a1 + 1) * w)
+    (hp2 : c * W + a2 * w ≤ p2 ∧ p2 < c * W + (a2 + 1) * w)
+    (hlt : a1 < a2) : p1 < p2 := by
+  have : c * W + (a1 + 1) * w ≤ c * W + a2 * w := by
+    nlinarith
+  omega
+
+/-- Cross-row coordinate track separation (Workstream W84):
+    If row c1 precedes row c2 (c1 < c2), and each row has width W with d tracks of width w
+    satisfying d * w ≤ W, then any point in row c1 strictly precedes any point in row c2. -/
+theorem cross_row_track_separation (c1 c2 W w d a1 a2 p1 p2 : ℕ)
+    (h_width : d * w ≤ W) (ha1 : a1 < d)
+    (hp1 : c1 * W + a1 * w ≤ p1 ∧ p1 < c1 * W + (a1 + 1) * w)
+    (hp2 : c2 * W + a2 * w ≤ p2)
+    (h_row : c1 < c2) : p1 < p2 := by
+  have h_p1_lt : p1 < (c1 + 1) * W := by
+    calc
+      p1 < c1 * W + (a1 + 1) * w := hp1.2
+      _ ≤ c1 * W + d * w := by nlinarith
+      _ ≤ c1 * W + W := by omega
+      _ = (c1 + 1) * W := by ring
+  have h_c2_ge : (c1 + 1) * W ≤ c2 * W := by
+    nlinarith
+  omega
+
+/-- Coordinate track buffer order fidelity (Workstream W84):
+    Combining intra-row and cross-row separation, whenever target values satisfy v1 < v2,
+    the assigned row and track coordinates ensure the host points satisfy p1 < p2. -/
+theorem track_buffer_order_fidelity (c1 c2 W w d a1 a2 p1 p2 : ℕ)
+    (h_width : d * w ≤ W) (ha1 : a1 < d)
+    (hp1 : c1 * W + a1 * w ≤ p1 ∧ p1 < c1 * W + (a1 + 1) * w)
+    (hp2 : c2 * W + a2 * w ≤ p2 ∧ p2 < c2 * W + (a2 + 1) * w)
+    (h_order : c1 < c2 ∨ (c1 = c2 ∧ a1 < a2)) : p1 < p2 := by
+  rcases h_order with h_cross | ⟨h_eq, h_intra⟩
+  · exact cross_row_track_separation c1 c2 W w d a1 a2 p1 p2 h_width ha1 hp1 hp2.1 h_cross
+  · subst h_eq
+    exact intra_row_track_separation c1 W w a1 a2 p1 p2 hp1 hp2 h_intra
+
 end Superpatterns
