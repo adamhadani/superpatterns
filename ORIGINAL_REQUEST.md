@@ -314,4 +314,87 @@ Synthesize all findings into a prioritized, concrete action backlog:
 - [ ] All 13 core regression test suites pass with 0 errors (check_witness.py, certify_cprime.py, w76-multichain-grid/verify.py, w77-variational-ldp/verify.py, w78-greene-poset/verify.py, etc.).
 - [ ] Lean 4 build compiles with 0 errors, 0 warnings, and 0 sorrys (lake build).
 - [ ] output/arxiv/main.pdf compiles with 0 overfull boxes.
-- [ ] memory/SESSION-STATE.md, memory/RESULTS.md, and experiments/README.md are updated.
+
+
+## 2026-09-25T10:36:24Z
+
+Use a very large team of agents.
+
+Execute Workstream W85: Post-Synthesis Adversarial Red-Team Audit & Stress-Testing on the finalized proof of Noga Alon's 1999 random superpattern conjecture at the sharp threshold $C^* = 1/4 = 0.25000$ in full generality, as presented in the paper "Simultaneous Universality of Random Permutations at Quadratic Host Size" and its accompanying Lean 4 formalization.
+
+Working directory: `/Users/adamhadani/Development/math-proofs/superpatterns`
+Integrity mode: development
+
+Reference material:
+- [output/paper/quadratic-universality.md](file:///Users/adamhadani/Development/math-proofs/superpatterns/output/paper/quadratic-universality.md)
+- [output/arxiv/main.tex](file:///Users/adamhadani/Development/math-proofs/superpatterns/output/arxiv/main.tex)
+- [output/arxiv/main.pdf](file:///Users/adamhadani/Development/math-proofs/superpatterns/output/arxiv/main.pdf)
+- [formal-verification/lean/Superpatterns/](file:///Users/adamhadani/Development/math-proofs/superpatterns/formal-verification/lean/Superpatterns/)
+- [experiments/w84-track-buffers/proof.md](file:///Users/adamhadani/Development/math-proofs/superpatterns/experiments/w84-track-buffers/proof.md)
+- [experiments/w83-permuton-bundles/proof.md](file:///Users/adamhadani/Development/math-proofs/superpatterns/experiments/w83-permuton-bundles/proof.md)
+- [experiments/w80-redteam-audit/adversarial_audit_report.md](file:///Users/adamhadani/Development/math-proofs/superpatterns/experiments/w80-redteam-audit/adversarial_audit_report.md)
+- [memory/SESSION-STATE.md](file:///Users/adamhadani/Development/math-proofs/superpatterns/memory/SESSION-STATE.md)
+- [memory/RESULTS.md](file:///Users/adamhadani/Development/math-proofs/superpatterns/memory/RESULTS.md)
+- [CLAUDE.md](file:///Users/adamhadani/Development/math-proofs/superpatterns/CLAUDE.md)
+
+## Requirements
+
+### R1. Adversarial Stress-Testing of the Permuton Bundle & Track Buffer Architecture
+Scrutinize and attempt to break the newly synthesized W83–W84 Generic Bulk architecture:
+1. **Adversarial Permutation Attack**: Systematically test candidate counterexamples against the Coordinate Track Buffer box allocation $B_i = I_{r(i), p(i)} \times J_{c(i), q(i)}$:
+   - High-frequency alternating permutations (e.g. $2, 1, 4, 3, 6, 5, \dots$).
+   - Reverse identity ($\pi(i) = k - 1 - i$).
+   - Cantor-like fractal permutations and recursive block structures.
+   - Dense multi-point cells where $m_{r, s} = \Omega(\sqrt{k})$.
+   Verify whether track buffer separation strictly prevents coordinate inversions and track collisions under all possible adverse geometries.
+2. **Macroscopic Corridor Network Rate Lower Bound**:
+   Rigorously scrutinize the continuous large deviation rate lower bound $I(\rho_T) \ge c(\varepsilon) > 0$ for coarse trajectory matrices $T \in \mathcal{T}_k$:
+   - Verify that $\operatorname{Area}(T) \ge 1/4$ holds uniformly for all admissible target trajectories.
+   - Check whether any singular measure concentration could deplete capacity along target paths while keeping $I(\rho) < c(\varepsilon)$.
+3. **Master Sieve Convergence & Crossover Rigor**:
+   Evaluate the two-term master sieve bound:
+   $$
+   \Pr(\exists \pi \in S_k : \pi \not\le \Pi_n) \le |\mathcal{T}_k| \exp(-c(\varepsilon) k^2) + M^2 \exp(-\Omega(k \ln k)).
+   $$
+   Verify that the crossover scale $k_0(\varepsilon)$ is strictly finite and that no polynomial prefactors or dimension factors overturn the asymptotic decay for any $\varepsilon > 0$.
+
+### R2. Lean 4 Machine-Certification Audit
+Perform an exhaustive verification of the formal Lean 4 codebase:
+1. Audit all 3 newly added theorems in `Superpatterns/Interleaving.lean`:
+   - `intra_row_track_separation`
+   - `cross_row_track_separation`
+   - `track_buffer_order_fidelity`
+   Confirm that they prove the exact mathematical assertions needed for coordinate order preservation without hidden premises or trivialized hypotheses.
+2. Audit `#print axioms` across all declarations in `Superpatterns/Axioms.lean`, verifying zero custom axioms and zero `sorry`s.
+3. Verify that `lake build` executes cleanly with 0 warnings across all jobs.
+
+### R3. Manuscript Coherence & Journal Submission Readiness Audit
+1. Audit `output/arxiv/main.tex` and `output/paper/quadratic-universality.md`:
+   - Verify that Section 1, Section 7.5, and Section 7.6 are fully harmonized.
+   - Confirm that theorem statements, equations, and cross-references match the formalized mathematics.
+   - Verify that all literature citations (He–Kwan 2020, Altschuler–Dubroff–Tikhomirov 2026, Marcus–Tardos 2004, Deuschel–Zeitouni 1999) are accurate and fully integrated.
+2. Verify that `output/arxiv/main.pdf` compiles cleanly with **EXACTLY 0 overfull boxes**.
+
+### R4. Complete Audit Deliverables & Ledger Update
+1. Create deliverable `experiments/w85-redteam-audit/adversarial_audit_report.md` documenting:
+   - Comprehensive findings on each requirement.
+   - Edge case stress test results.
+   - Formal verification matrix.
+   - Final readiness verdict for submission to *Annals of Mathematics*.
+2. Implement automated stress-test script `experiments/w85-redteam-audit/verify.py` executing the adversarial permutation battery.
+3. Update `memory/SESSION-STATE.md`, `memory/RESULTS.md`, and `experiments/README.md`.
+
+## Acceptance Criteria
+
+### Automated Combinatorial & Mathematical Verification
+- [ ] Deliverable `experiments/w85-redteam-audit/adversarial_audit_report.md` is authored, comprehensive, and catalogs all findings across R1–R4.
+- [ ] Automated stress-test script `experiments/w85-redteam-audit/verify.py` passes all edge case checks with exit code 0.
+- [ ] All existing regression test suites pass with 0 errors:
+  - `python3 experiments/witnesses/check_witness.py --all`
+  - `python3 experiments/w25-asymptopia-review/certify_cprime.py`
+  - `python3 experiments/w83-permuton-bundles/verify.py`
+  - `python3 experiments/w84-track-buffers/verify.py`
+  - `python3 experiments/w85-redteam-audit/verify.py`
+- [ ] Lean 4 formalization compiles with 0 errors, 0 warnings, and 0 `sorry`s (`lake build`).
+- [ ] `output/arxiv/main.pdf` compiles with 0 errors and EXACTLY 0 overfull boxes.
+- [ ] `memory/SESSION-STATE.md` and `memory/RESULTS.md` are updated.
