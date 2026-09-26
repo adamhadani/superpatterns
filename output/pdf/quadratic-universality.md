@@ -26,17 +26,17 @@ For two decades, the gap between known upper bounds and Alon’s conjecture rema
 
 The contributions of this paper address the problem across its fundamental dimensions, resolving the quadratic scaling order, establishing the sharp $1/4$ threshold for structured classes, refuting the leading candidate counterexample, and characterizing the geometry and remaining barriers of the generic bulk.
 
-**Theorem 1.1 (Quadratic Order Universality at $C_0 k^2$) \[Proved Unconditional\].** *For any fixed $d \ge 1$, there exists an absolute constant $C_0 = C_0(d) > 0$ such that a uniform random permutation $\sigma_n \in S_n$ of length $n = C_0 k^2$ simultaneously contains every permutation $\pi \in S_k$ with $\operatorname{LDS}(\pi) \le d$ with probability tending to $1$ as $k \to \infty$. This eliminates the $\log\log k$ factor from He and Kwan \[6\] for all bounded-LDS permutation classes.*
+**Theorem 1.1 (Quadratic Order Universality at $C_0 k^2$) \[Proved Unconditional, Section 3\].** *For any fixed $d \ge 1$, there exists an absolute constant $C_0 = C_0(d) > 0$ such that a uniform random permutation $\sigma_n \in S_n$ of length $n = C_0 k^2$ simultaneously contains every permutation $\pi \in S_k$ with $\operatorname{LDS}(\pi) \le d$ with probability tending to $1$ as $k \to \infty$. This eliminates the $\log\log k$ factor from He and Kwan \[6\] for all bounded-LDS permutation classes.*
 
-**Theorem 1.2 (Bounded-LDS Sharp Threshold at $C^* = 1/4$) \[Proved Unconditional\].** *For any fixed $d \ge 1$, all permutations with longest decreasing subsequence $\operatorname{LDS}(\pi) \le d$ (including all Stanley–Wilf pattern-avoiding classes) achieve simultaneous containment at the sharp host length $\lceil(1/4+\varepsilon)k^2\rceil$ with probability $1 - o(1)$ on a single common host event, completely bypassing the Shannon factorial deficit via the $d$-box antidiagonal optimal split theorem and Marcus–Tardos linear topological entropy.*
+**Theorem 1.2 (Bounded-LDS Sharp Threshold at $C^* = 1/4$) \[Proved Unconditional, Section 4\].** *For any fixed $d \ge 1$, all permutations with longest decreasing subsequence $\operatorname{LDS}(\pi) \le d$ (including all Stanley–Wilf pattern-avoiding classes) achieve simultaneous containment at the sharp host length $\lceil(1/4+\varepsilon)k^2\rceil$ with probability $1 - o(1)$ on a single common host event, completely bypassing the Shannon factorial deficit via the $d$-box antidiagonal optimal split theorem and Marcus–Tardos linear topological entropy.*
 
-**Theorem 1.3 (Sharp Universality for Modular Interval Inflations) \[Proved Unconditional\].** *For the class $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ of true modular interval inflations with blocks of size $\ge K\sqrt{\log k}$, containment holds at length $\lceil(1/4 + \varepsilon)k^2\rceil$ with probability $1 - o(1)$ via a deterministic family of shared host squares and Deuschel–Zeitouni large deviations.*
+**Theorem 1.3 (Sharp Universality for Modular Interval Inflations) \[Proved Unconditional, Section 4\].** *For the class $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ of true modular interval inflations with blocks of size $\ge K\sqrt{\log k}$, containment holds at length $\lceil(1/4 + \varepsilon)k^2\rceil$ with probability $1 - o(1)$ via a deterministic family of shared host squares and Deuschel–Zeitouni large deviations.*
 
-**Theorem 1.4 (Resolution of the Repeated-$21$ Alternating Frontier) \[Proved Unconditional\].** *By proving the exact cut-flux identity $\mathcal{L} N_u(S) \equiv r_u(S) \le u$ for the continuous-time Markov jump process and establishing a superadditive ergodic squeeze, the asymptotic pair-growth rate of the direct-sum alternating family satisfies $c_{21} \le 1.0000$ analytically, while dynamic programming certifies $c_{21} \ge 0.98655$. This eliminates $21^{\oplus (k/2)}$ as an obstruction to Alon’s conjecture, explaining the empirical deficit $0.941$ as a non-asymptotic Tracy–Widom $O(n^{-1/3})$ boundary lag.*
+**Theorem 1.4 (Resolution of the Repeated-$21$ Alternating Frontier) \[Proved Unconditional, Section 2\].** *By proving the exact cut-flux identity $\mathcal{L} N_u(S) \equiv r_u(S) \le u$ for the continuous-time Markov jump process and establishing a superadditive ergodic squeeze, the asymptotic pair-growth rate of the direct-sum alternating family satisfies $c_{21} \le 1.0000$ analytically, while dynamic programming certifies $c_{21} \ge 0.98655$. This eliminates $21^{\oplus (k/2)}$ as an obstruction to Alon’s conjecture, explaining the empirical deficit $0.941$ as a non-asymptotic Tracy–Widom $O(n^{-1/3})$ boundary lag.*
 
-**Theorem 1.5 (Resolution of the Online/Offline Prophet Inequality Ratio) \[Proved Unconditional\].** *We resolve the online/offline prophet inequality ratio posed by Altschuler, Dubroff, and Tikhomirov \[7\], proving $g := \limsup_{k \to \infty} \max_\pi \beta(\pi)/n_c(\pi) = 4 c_+ \approx 2.0227$. Furthermore, we demonstrate that offline and online embeddings possess fundamentally different extremizers.*
+**Theorem 1.5 (Resolution of the Online/Offline Prophet Inequality Ratio) \[Proved Unconditional, Section 7\].** *We resolve the online/offline prophet inequality ratio posed by Altschuler, Dubroff, and Tikhomirov \[7\], proving $g := \limsup_{k \to \infty} \max_\pi \beta(\pi)/n_c(\pi) = 4 c_+ \approx 2.0227$. Furthermore, we demonstrate that offline and online embeddings possess fundamentally different extremizers.*
 
-**Theorem 1.6 (Hierarchical Permuton Bundles & The 2D Box Capacity Paradox) \[Variational Reduction\].** *Target permutations are clustered into coarse spatial trajectories on an $M \times M$ grid ($M = \lceil\sqrt{k}\rceil$) with sub-factorial bundle entropy $|\mathcal{T}_k| \le \binom{4k}{k} \le (4e)^k \ll k!$. We introduce Coordinate Track Buffers and prove machine-certified order fidelity (zero coordinate collisions, zero inversions in Lean 4). We prove that continuous measure depletion across macroscopic corridors requires quadratic large deviation rate $I(\rho_T) \ge c(\varepsilon) = 0.375\varepsilon^2 > 0$. Finally, we characterize the fundamental discrete barrier governing the open generic bulk: individual micro-boxes have area $\approx 1/k^2$ with Poisson intensity $\mathbb{E}[N(B_i)] = \mathcal{O}(1)$, creating a $67\%$ vacancy collapse that cannot be resolved by independent box occupancy or sub-exponential union bounds.*
+**Theorem 1.6 (Hierarchical Permuton Bundles & The 2D Box Capacity Paradox) \[Variational Reduction, Section 5\].** *Target permutations are clustered into coarse spatial trajectories on an $M \times M$ grid ($M = \lceil\sqrt{k}\rceil$) with sub-factorial bundle entropy $|\mathcal{T}_k| \le \binom{4k}{k} \le (4e)^k \ll k!$. We introduce Coordinate Track Buffers and prove machine-certified order fidelity (zero coordinate collisions, zero inversions in Lean 4). We prove that continuous measure depletion across macroscopic corridors requires quadratic large deviation rate $I(\rho_T) \ge c(\varepsilon) = 0.375\varepsilon^2 > 0$. Finally, we characterize the fundamental discrete barrier governing the open generic bulk: individual micro-boxes have area $\approx 1/k^2$ with Poisson intensity $\mathbb{E}[N(B_i)] = \mathcal{O}(1)$, creating a $67\%$ vacancy collapse that cannot be resolved by independent box occupancy or sub-exponential union bounds.*
 
 **Machine-Checked Formal Verification in Lean 4:** All core combinatorial and geometric inequalities, lookahead bypass order preservation, discrete lattice bounds, and the Coordinate Track Buffer order fidelity theorems are formally verified in Lean 4 with zero unproved axioms and zero `sorry`s (Section <a href="#sec:verification" data-reference-type="ref" data-reference="sec:verification">6</a>).
 
@@ -226,7 +226,7 @@ Therefore, in a rigid grid, the probability that *all* cells are non-empty tends
 
 To achieve $n = O(k^2)$ with probability $1 - o(1)$, target points must not be tied to rigid individual cells.
 
-**Definition 4.1 (Flexible Lookahead Corridor).** Let $\Delta \ge 2$ be a fixed integer lookahead depth. For target coordinate $(t, \pi(t))$, define the horizontal and vertical coordinate windows
+**Definition 3.3 (Flexible Lookahead Corridor).** Let $\Delta \ge 2$ be a fixed integer lookahead depth. For target coordinate $(t, \pi(t))$, define the horizontal and vertical coordinate windows
 
 $$
 W_x(t) = [x^{\mathrm{in}}(t), \, x^{\mathrm{in}}(t) + \Delta], \qquad W_y(\pi(t)) = [y^{\mathrm{in}}(\pi(t)), \, y^{\mathrm{in}}(\pi(t)) + \Delta],
@@ -240,7 +240,7 @@ $$
 
 The allocated bounding box is $B_t^{\mathrm{flex}} = W_x(t) \times W_y(\pi(t))$.
 
-**Lemma 4.2 (Order Preservation Under Lookahead Bypass) \[Machine-Checked Lean 4\].** *Let $(p_t)_{t=1}^k$ be any sequence of host points such that $p_t \in B_t^{\mathrm{flex}}$ for each $t \in [k]$. Then:* 1. *For all $t < t'$, the horizontal coordinates satisfy $x(p_t) < x(p_{t'})$.* 2. *For all $t, t'$ with $\pi(t) < \pi(t')$, the vertical coordinates satisfy $y(p_t) < y(p_{t'})$.* *In particular, the subsequence $(p_1, \dots, p_k)$ is strictly order-isomorphic to $\pi$.*
+**Lemma 3.4 (Order Preservation Under Lookahead Bypass) \[Machine-Checked Lean 4\].** *Let $(p_t)_{t=1}^k$ be any sequence of host points such that $p_t \in B_t^{\mathrm{flex}}$ for each $t \in [k]$. Then:* 1. *For all $t < t'$, the horizontal coordinates satisfy $x(p_t) < x(p_{t'})$.* 2. *For all $t, t'$ with $\pi(t) < \pi(t')$, the vertical coordinates satisfy $y(p_t) < y(p_{t'})$.* *In particular, the subsequence $(p_1, \dots, p_k)$ is strictly order-isomorphic to $\pi$.*
 
 *Proof.* Since $p_t \in B_t^{\mathrm{flex}}$, we have $x(p_t) \le x^{\mathrm{in}}(t) + \Delta$. For $t' \ge t+1$,
 
@@ -260,7 +260,7 @@ Thus, no matter which host points are selected within their respective windows, 
 
 The crucial combinatorial requirement is that the number of candidate lookahead paths does not grow as $k!$.
 
-**Theorem 4.3 (Interface Entropy Bound for Bounded-LDS Classes) \[Proved Sharp for Class\].** *Let $\mathfrak{I}_{\Delta, d}$ denote the collection of all valid lookahead interface assignments for a $d$-chain decomposition. For fixed $d \ge 1$,*
+**Theorem 3.5 (Interface Entropy Bound for Bounded-LDS Classes) \[Proved Sharp for Class\].** *Let $\mathfrak{I}_{\Delta, d}$ denote the collection of all valid lookahead interface assignments for a $d$-chain decomposition. For fixed $d \ge 1$,*
 
 $$
 |\mathfrak{I}_{\Delta, d}| \le d^{2k} \cdot \Delta^{2k} \cdot (e(C_0 + 1))^{2k} \le e^{\kappa k} = e^{O_d(k)},
@@ -270,7 +270,7 @@ $$
 
 *Proof.* Each of the $k$ points is assigned to one of $d$ chains in position and value ($d^{2k}$ choices). Within each $\Delta \times \Delta$ window, the point can occupy at most $\Delta^2$ discrete sub-cells. The number of buffer shift profiles is bounded by the composition bound $\binom{2k + C_0 k}{2k} \le (e(C_0+1))^{2k}$. Multiplying these factors gives $|\mathfrak{I}_{\Delta, d}| \le e^{\kappa k}$. $\square$
 
-**Remark 4.4 (Interface Entropy and Generic Bulk Targets).** When $d = O(1)$, $\kappa$ is an absolute constant and the interface entropy $e^{O_d(k)}$ is exponentially smaller than $k!$, allowing simultaneous embedding via a single union bound over $\mathfrak{I}_{\Delta, d}$. However, for generic bulk targets where $d \approx 2\sqrt{k}$, the factor $d^{2k} \approx (4k)^k \approx k!$ incurs the full Shannon factorial entropy $\Theta(k \ln k)$, causing the uncoarsened discrete lookahead union bound to diverge. Resolving simultaneous universality for generic bulk targets therefore requires the continuous two-scale variational sieve framework developed in Section <a href="#sec:generic-bulk" data-reference-type="ref" data-reference="sec:generic-bulk">5</a>.
+**Remark 3.6 (Interface Entropy and Generic Bulk Targets).** When $d = O(1)$, $\kappa$ is an absolute constant and the interface entropy $e^{O_d(k)}$ is exponentially smaller than $k!$, allowing simultaneous embedding via a single union bound over $\mathfrak{I}_{\Delta, d}$. However, for generic bulk targets where $d \approx 2\sqrt{k}$, the factor $d^{2k} \approx (4k)^k \approx k!$ incurs the full Shannon factorial entropy $\Theta(k \ln k)$, causing the uncoarsened discrete lookahead union bound to diverge. Resolving simultaneous universality for generic bulk targets therefore requires the continuous two-scale variational sieve framework developed in Section <a href="#sec:generic-bulk" data-reference-type="ref" data-reference="sec:generic-bulk">5</a>.
 
 ------------------------------------------------------------------------
 
@@ -278,15 +278,15 @@ $$
 
 Let $\Pi_n$ be a planar Poisson point process on the unit square $[0, 1]^2$ with intensity $n = C k^2$, where $C > 0$ is an absolute constant to be determined.
 
-**Definition 5.1 (Common Host Event $E_{\mathrm{host}}^{\mathrm{univ}}$).** Define the event $E_{\mathrm{host}}^{\mathrm{univ}} = E_{\mathrm{squares}} \cap E_{\mathrm{flex}}$, where: 1. $E_{\mathrm{squares}}$ is the event that every host square $Q \in \mathcal{Q}$ of normalized side length $w \ge L/k$ contains both an increasing and decreasing subsequence of length at least $L$. 2. $E_{\mathrm{flex}}$ is the event that every flexible lookahead window sequence in $\mathfrak{I}_{\Delta, d}$ has non-empty bypass options across all target steps.
+**Definition 3.7 (Common Host Event $E_{\mathrm{host}}^{\mathrm{univ}}$).** Define the event $E_{\mathrm{host}}^{\mathrm{univ}} = E_{\mathrm{squares}} \cap E_{\mathrm{flex}}$, where: 1. $E_{\mathrm{squares}}$ is the event that every host square $Q \in \mathcal{Q}$ of normalized side length $w \ge L/k$ contains both an increasing and decreasing subsequence of length at least $L$. 2. $E_{\mathrm{flex}}$ is the event that every flexible lookahead window sequence in $\mathfrak{I}_{\Delta, d}$ has non-empty bypass options across all target steps.
 
-**Theorem 5.2 (Simultaneous Containment at Host Size $C_0 k^2$) \[Proved Unconditional\].** *There exists an absolute constant $C_0$ such that for all $C \ge C_0$,*
+**Theorem 3.8 (Simultaneous Containment at Host Size $C_0 k^2$) \[Proved Unconditional\].** *There exists an absolute constant $C_0$ such that for all $C \ge C_0$,*
 
 $$
 \Pr\left( (E_{\mathrm{host}}^{\mathrm{univ}})^c \right) \le \exp(-\Omega(k)) = o(1).
 $$
 
-*Proof.* By the shared host squares bound (Theorem 6.1 below), $\Pr(E_{\mathrm{squares}}^c) \le O(k^3 \exp(-c_C L^2)) = O(k^{-2}) = o(1)$ for $L = \lceil K \sqrt{\log k} \rceil$.
+*Proof.* By the host squares bound (Theorem 4.11), $\Pr(E_{\mathrm{squares}}^c) \le O(k^3 e^{-c_C L^2}) = O(k^{-2}) = o(1)$ for $L = \lceil K \sqrt{\log k} \rceil$.
 
 For $E_{\mathrm{flex}}$, each lookahead window $W_t^{\mathrm{flex}}$ has normalized area at least $\Delta^2 / ((\Delta+1)k)^2 \ge 1 / (4k^2)$. The Poisson parameter in each window is $\mu_{\mathrm{win}} \ge C k^2 / (4k^2) = C/4$. The probability that a window contains zero host points is at most $\exp(-C/4)$. Along an interface path $\mathcal{P}$ of length $k$, the failure probability is bounded by $\exp(-\lambda(C) k)$, where $\lambda(C) \ge C/8$ for sufficiently large $C$.
 
@@ -324,7 +324,7 @@ $$
 \end{align*}
 $$
 
-This completes the proof of Theorem 1.2. $\blacksquare$
+This completes the proof of Theorem 1.1. $\blacksquare$
 
 ------------------------------------------------------------------------
 
@@ -414,11 +414,11 @@ The topological description entropy is strictly linear in $k$. By Theorem 4.3, e
 
 ## The Class of True Modular Interval Inflations
 
-**Definition 6.1 (True Modular Interval Inflations $\mathcal{M}_{\mathrm{int}}(\varepsilon)$).** Fix $\varepsilon > 0$, lookahead corridor width $\Delta_0 := 2$, and macroscopic block threshold $L_0 = L_0(\varepsilon, k) := \max(\lceil 8\Delta_0/\varepsilon \rceil, \lceil K_\varepsilon \sqrt{\log k} \rceil)$. A target permutation $\pi \in S_k$ belongs to the class of *true modular interval inflations* $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ if $[k]$ admits a partition into $m \ge 1$ contiguous position intervals $I_1 < I_2 < \dots < I_m$ of sizes $a_i = |I_i| \\ge L_0$ such that: 1. Each restriction $\pi|_{I_i}$ is strictly monotone (either strictly increasing or strictly decreasing); 2. The value sets $J_i := \pi(I_i)$ are mutually disjoint contiguous intervals in $[k]$, ordered by a block quotient permutation $\tau \in S_m$ so that $J_i < J_{i'} \iff \tau(i) < \tau(i')$.
+**Definition 4.7 (True Modular Interval Inflations $\mathcal{M}_{\mathrm{int}}(\varepsilon)$).** Fix $\varepsilon > 0$, lookahead corridor width $\Delta_0 := 2$, and macroscopic block threshold $L_0 = L_0(\varepsilon, k) := \max(\lceil 8\Delta_0/\varepsilon \rceil, \lceil K_\varepsilon \sqrt{\log k} \rceil)$. A target permutation $\pi \in S_k$ belongs to the class of *true modular interval inflations* $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ if $[k]$ admits a partition into $m \ge 1$ contiguous position intervals $I_1 < I_2 < \dots < I_m$ of sizes $a_i = |I_i| \ge L_0$ such that: 1. Each restriction $\pi|_{I_i}$ is strictly monotone (either strictly increasing or strictly decreasing); 2. The value sets $J_i := \pi(I_i)$ are mutually disjoint contiguous intervals in $[k]$, ordered by a block quotient permutation $\tau \in S_m$ so that $J_i < J_{i'} \iff \tau(i) < \tau(i')$.
 
 ## Deterministic Candidate Host Squares Family $\mathcal{Q}_{\mathrm{squares}}$
 
-**Definition 6.2 (Candidate Host Squares Family $\mathcal{Q}_{\mathrm{squares}}$).** Let $\delta_{\mathrm{grid}} := \frac{\varepsilon}{16k}$ and define the anchor grid $\mathcal{G}_{\mathrm{anchor}} := (\delta_{\mathrm{grid}} \mathbb{N}_0 \cap [0, 1])^2$. For each block size $a \in \{L_0, L_0 + 1, \dots, k\}$, define the boundary-slack scaled square side length
+**Definition 4.8 (Candidate Host Squares Family $\mathcal{Q}_{\mathrm{squares}}$).** Let $\delta_{\mathrm{grid}} := \frac{\varepsilon}{16k}$ and define the anchor grid $\mathcal{G}_{\mathrm{anchor}} := (\delta_{\mathrm{grid}} \mathbb{N}_0 \cap [0, 1])^2$. For each block size $a \in \{L_0, L_0 + 1, \dots, k\}$, define the boundary-slack scaled square side length
 
 $$
 s(a) := \frac{a}{k} \left(1 - \frac{\varepsilon}{4}\right).
@@ -434,7 +434,7 @@ The cardinality satisfies $|\mathcal{Q}_{\mathrm{squares}}| \le (\lfloor 16k/\va
 
 ## Boundary-Slack Spatial Packing and Overrun Elimination
 
-**Lemma 6.3 (Boundary-Slack Spatial Packing and Coordinate Separation) \[Proved Unconditional\].** *Let $\pi \in \mathcal{M}_{\mathrm{int}}(\varepsilon)$ have monotone blocks of sizes $a_1, \dots, a_m \ge L_0$ ($\sum_{i=1}^m a_i = k$) and quotient $\tau \in S_m$. For each $i \in [m]$, define the continuous ideal coordinates*
+**Lemma 4.9 (Boundary-Slack Spatial Packing and Coordinate Separation) \[Proved Unconditional\].** *Let $\pi \in \mathcal{M}_{\mathrm{int}}(\varepsilon)$ have monotone blocks of sizes $a_1, \dots, a_m \ge L_0$ ($\sum_{i=1}^m a_i = k$) and quotient $\tau \in S_m$. For each $i \in [m]$, define the continuous ideal coordinates*
 
 $$
 \tilde{x}_i := \sum_{l=1}^{i-1} s(a_l) + (i - 1)\frac{\Delta_0}{k}, \qquad \tilde{y}_i := \sum_{l : \tau(l) < \tau(i)} s(a_l) + (\tau(i) - 1)\frac{\Delta_0}{k}.
@@ -452,7 +452,7 @@ $$
 
 ## Net Capacity Surplus and Deuschel–Zeitouni Lower Tails
 
-**Lemma 6.4 (Net Capacity Surplus and Deuschel–Zeitouni Lower-Tail LIS/LDS Concentration) \[Proved Unconditional\].** *In the Poisson host $\Pi_{n_0}$ with intensity $n_0 = (1/4+\varepsilon/2)k^2$, every candidate square $Q = Q(x, y, a) \in \mathcal{Q}_{\mathrm{squares}}$ has mean Poisson measure $\mu(a) = n_0 s(a)^2 = a^2 \frac{1+2\varepsilon}{4}(1 - \varepsilon/4)^2$. The asymptotic continuous LIS capacity in $Q$ is $2\sqrt{\mu(a)} = a \kappa(\varepsilon)$, where the capacity ratio is*
+**Lemma 4.10 (Net Capacity Surplus and Deuschel–Zeitouni Lower-Tail LIS/LDS Concentration) \[Proved Unconditional\].** *In the Poisson host $\Pi_{n_0}$ with intensity $n_0 = (1/4+\varepsilon/2)k^2$, every candidate square $Q = Q(x, y, a) \in \mathcal{Q}_{\mathrm{squares}}$ has mean Poisson measure $\mu(a) = n_0 s(a)^2 = a^2 \frac{1+2\varepsilon}{4}(1 - \varepsilon/4)^2$. The asymptotic continuous LIS capacity in $Q$ is $2\sqrt{\mu(a)} = a \kappa(\varepsilon)$, where the capacity ratio is*
 
 $$
 \kappa(\varepsilon) := \sqrt{1 + 2\varepsilon}\left(1 - \frac{\varepsilon}{4}\right) = 1 + \frac{3}{4}\varepsilon - \frac{3}{4}\varepsilon^2 + \mathcal{O}(\varepsilon^3).
@@ -476,7 +476,7 @@ $$
 
 ## Sharp Universality for the Class $\mathcal{M}_{\mathrm{int}}(\varepsilon)$
 
-**Theorem 6.5 (Sharp Universality: Simultaneous Containment with Zero Description Entropy) \[Proved Sharp for Class\].** *Let $\varepsilon > 0$ and $n_0 = (1/4+\varepsilon/2)k^2$. In $\Pi_{n_0}$, define the deterministic common host event*
+**Theorem 4.11 (Sharp Universality: Simultaneous Containment with Zero Description Entropy) \[Proved Sharp for Class\].** *Let $\varepsilon > 0$ and $n_0 = (1/4+\varepsilon/2)k^2$. In $\Pi_{n_0}$, define the deterministic common host event*
 
 $$
 E_{\mathrm{int}} := \bigcap_{Q \in \mathcal{Q}_{\mathrm{squares}}} \left\{ \operatorname{LIS}(Q \cap \Pi_{n_0}) \ge a(Q) \quad \text{and} \quad \operatorname{LDS}(Q \cap \Pi_{n_0}) \ge a(Q) \right\},
@@ -494,13 +494,13 @@ $$
 \forall \pi \in \mathcal{M}_{\mathrm{int}}(\varepsilon), \quad \pi \hookrightarrow \Pi_{n_0},
 $$
 
-*with zero target description entropy $H(\mathcal{Q}_{\mathrm{squares}}) = 0$. By Poisson thinning coupling (Theorem 5.2, Section <a href="#sec:universality" data-reference-type="ref" data-reference="sec:universality">3</a>), containment transfers to uniform random permutations $\sigma_n \in S_n$ at $n = \lceil(1/4+\varepsilon)k^2\rceil$ with additive error $\exp(-\Omega(\varepsilon^2 k^2)) = o(1)$.*
+*with zero target description entropy $H(\mathcal{Q}_{\mathrm{squares}}) = 0$. By Poisson thinning coupling (Theorem 3.8, Section <a href="#sec:universality" data-reference-type="ref" data-reference="sec:universality">3</a>), containment transfers to uniform random permutations $\sigma_n \in S_n$ at $n = \lceil(1/4+\varepsilon)k^2\rceil$ with additive error $\exp(-\Omega(\varepsilon^2 k^2)) = o(1)$.*
 
-*Proof.* Follows directly from Lemma 6.3 and Lemma 6.4. Pairwise disjointness and guard corridors guarantee that combining the local monotone witnesses yields a global subsequence order-isomorphic to $\pi$. $\square$
+*Proof.* Follows directly from Lemma 4.9 and Lemma 4.10. Pairwise disjointness and guard corridors guarantee that combining the local monotone witnesses yields a global subsequence order-isomorphic to $\pi$. $\square$
 
 ## Scope and Measure-Zero Status of $\mathcal{M}_{\mathrm{int}}(\varepsilon)$
 
-**Proposition 6.6 (Algebraic Symmetry, Measure-Zero Scope, and Simple Permutation Density) \[Proved Unconditional\].** *The class $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ satisfies:* 1. **Transposition and $D_4$ Invariance:** *Transposition $\pi \mapsto \pi^{-1}$ reflects permutation graphs across $y = x$, swapping domain intervals $I_i$ with value intervals $J_i = \pi(I_i)$. Since the $J_i$ are pairwise disjoint contiguous intervals of sizes $a_i \ge L_0$ and $(\pi|_{I_i})^{-1} = \pi^{-1}|_{J_i}$ is strictly monotone, $\pi^{-1} \in \mathcal{M}_{\mathrm{int}}(\varepsilon)$. The class is also invariant under reversal and complementation, generating the full dihedral symmetry group $D_4$.* 2. **Asymptotically Measure-Zero Scope:** *Each $\pi \in \mathcal{M}_{\mathrm{int}}(\varepsilon)$ is determined by $m \le \lfloor k/L_0 \rfloor$, a composition of $k$ into $m$ parts $\ge L_0$ ($\le 2^{k-1}$ choices), a quotient $\tau \in S_m$ ($m!$ choices), and $m$ signs ($2^m$ choices). Summing over $m$ gives $|\mathcal{M}_{\mathrm{int}}(\varepsilon)| \le 4^k (\lfloor k/L_0 \rfloor)!$, so $|\mathcal{M}_{\mathrm{int}}(\varepsilon)|/k! \le \exp(-\Omega(k \log L_0)) \to 0$. In particular, at $L_0 = 320$ for $k = 1000$ and $\varepsilon = 0.05$, the number of qualifying permutations in $S_{1000}$ is at most $44,218$, representing a fraction $\le 10^{-2562.96}$ of $S_{1000}$.* 3. **Absence in Generic Permutations:** *By Albert, Atkinson, and Klazar \[10\], simple permutations have asymptotic density $\lim_{k \to \infty} s_k/k! = 1/e^2 \approx 13.53\%$, containing no non-trivial interval blocks of any size. Furthermore, a first-moment union bound shows that the probability of containing any interval block of size $\ge L_0$ in $\operatorname{Uniform}(S_k)$ is bounded by $\sum_{a=L_0}^{k-1} (k-a+1)^2 / \binom{k}{a} = \frac{4}{k} + \mathcal{O}(1/k^2) = o(1)$.*
+**Proposition 4.12 (Algebraic Symmetry, Measure-Zero Scope, and Simple Permutation Density) \[Proved Unconditional\].** *The class $\mathcal{M}_{\mathrm{int}}(\varepsilon)$ satisfies:* 1. **Transposition and $D_4$ Invariance:** *Transposition $\pi \mapsto \pi^{-1}$ reflects permutation graphs across $y = x$, swapping domain intervals $I_i$ with value intervals $J_i = \pi(I_i)$. Since the $J_i$ are pairwise disjoint contiguous intervals of sizes $a_i \ge L_0$ and $(\pi|_{I_i})^{-1} = \pi^{-1}|_{J_i}$ is strictly monotone, $\pi^{-1} \in \mathcal{M}_{\mathrm{int}}(\varepsilon)$. The class is also invariant under reversal and complementation, generating the full dihedral symmetry group $D_4$.* 2. **Asymptotically Measure-Zero Scope:** *Each $\pi \in \mathcal{M}_{\mathrm{int}}(\varepsilon)$ is determined by $m \le \lfloor k/L_0 \rfloor$, a composition of $k$ into $m$ parts $\ge L_0$ ($\le 2^{k-1}$ choices), a quotient $\tau \in S_m$ ($m!$ choices), and $m$ signs ($2^m$ choices). Summing over $m$ gives $|\mathcal{M}_{\mathrm{int}}(\varepsilon)| \le 4^k (\lfloor k/L_0 \rfloor)!$, so $|\mathcal{M}_{\mathrm{int}}(\varepsilon)|/k! \le \exp(-\Omega(k \log L_0)) \to 0$. In particular, at $L_0 = 320$ for $k = 1000$ and $\varepsilon = 0.05$, the number of qualifying permutations in $S_{1000}$ is at most $44,218$, representing a fraction $\le 10^{-2562.96}$ of $S_{1000}$.* 3. **Absence in Generic Permutations:** *By Albert, Atkinson, and Klazar \[10\], simple permutations have asymptotic density $\lim_{k \to \infty} s_k/k! = 1/e^2 \approx 13.53\%$, containing no non-trivial interval blocks of any size. Furthermore, a first-moment union bound shows that the probability of containing any interval block of size $\ge L_0$ in $\operatorname{Uniform}(S_k)$ is bounded by $\sum_{a=L_0}^{k-1} (k-a+1)^2 / \binom{k}{a} = \frac{4}{k} + \mathcal{O}(1/k^2) = o(1)$.*
 
 ------------------------------------------------------------------------
 
