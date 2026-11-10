@@ -144,6 +144,15 @@ at most stages). I could not prove the lemma by elementary means: the reference 
 the coarse-path averaging that settles the single-swap case does not transfer; see the plan file for the list of
 dead ends. No claim is made.
 
+## 5d. Second pass on the strict inequality (time-boxed, about two hours)  (`fibre_cost.py`, plan file addendum)
+
+Evaluated the exact fibre formula stage by stage (exact agreement on S₈, S₉; 0.15641 ± 0.00083 for flips 1…63 at
+n = 10⁴ against 0.153 ± 0.012 directly). Replaced the grid-box gadget by resampling the rectangle between two points
+of an optimal copy, which is affine-invariant and needs neither margins nor a regular front. This appears to give
+the single-swap statement by elementary means, and reduces the many-swap statement to a local increment estimate for
+point-to-point last passage times plus a multiplicity bound for near-optimal windows. Neither was proved; stopped
+at the time limit. Details and dead ends: `strict-deficit-plan.md`, addendum.
+
 ## 6. What this does and does not establish
 
 Established rigorously: Theorem 1, Corollary 2 (c₂₁ ≤ 1), the exact deficit identity, the equality cases and the

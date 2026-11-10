@@ -36,9 +36,13 @@ Routes, in order of expected tractability:
      from each corner). Compute or bound lim Σ_b E[(a−1)/F] directly; this is a statement about pure LIS geometry
      and may be accessible through known determinantal structure.
 
- Progress on (a)/(b), 10 Nov: `experiments/w90-layered-deficit/strict-deficit-plan.md` gives an explicit gadget
- (a planted 3-point lens plus a short run in the cell of a good notch) that makes a stage contribute exactly 1/3,
- and reduces everything to a "start regularity" lemma; the lemma is not proved.
+ Progress, 10 Nov (two time-boxed attempts, not closed): `experiments/w90-layered-deficit/strict-deficit-plan.md`.
+ The gadget is now a planted 3-point lens in the rectangle between two points of an optimal copy (affine-invariant,
+ no front regularity needed); the exact stage cost is E Σ_{b≥Y−1}(1 − 1/a_b) and is verified numerically. Route (c),
+ one swap, looks provable by a first-moment bound with exponential tilting. For many swaps two estimates are
+ missing: local increments of point-to-point last passage times (E1) and a multiplicity bound for near-optimal
+ windows (E2). Next step: write the single-swap theorem in full and test the planted gadget by simulation; then
+ read Cator–Groeneboom / Pimentel for (E1) or ask a specialist.
 
  Stop criterion: do not claim the disproof from numerics; do not accept a "density of defects" argument that
  ignores the global condition that the *whole* marginal region is inversion-free.

@@ -111,3 +111,79 @@ Two ways it could be closed:
    nearest good-notch box (should be tight in n).
  * Frequency of pure 3-point lenses at the critical level per stage (times 1/3 it is a lower bound for the
    per-block cost 0.0025 measured in `out/hybrid_n*.txt`; how much of the cost do 3-point lenses explain?).
+
+--------------------------------------------------------------------------------------------------
+# Addendum — second, time-boxed attempt (10 November 2026, about two hours). Outcome: not proved.
+
+Nothing below is a theorem unless it says "checked". It supersedes §3–§4 where they differ.
+
+## A1. An exact formula that is easy to evaluate (checked)
+
+For a stage (prefix α, increasing suffix), with X = longest increasing chain of fresh points beyond the front and
+Y = 2 + best increasing continuation after a front-anchored inversion,
+
+  Cost = E[X − Y] = E[ Σ_{b ≥ Y−1} (1 − 1/a_b) ],
+
+where a_b is the number of valid fillings without a D-inversion in the level-b fibre of the configuration (the
+realised level-b filling has no D-inversion exactly when b ≥ Y − 1). `fibre_cost.py` evaluates the right-hand side
+by brute force over fillings.
+
+ * Exact check on all of S_n: n = 8: both sides sum to 1; n = 9: both sides sum to 46 (80 + 6 + 6 realised defect
+   levels, each worth ½). Files `out/fibre_exact9.txt` and the command in the script header.
+ * At n = 10⁴, flips 1…63, 120 000 permutations (`out/fibre_table.txt`): formula 0.15641 ± 0.00083; direct
+   E[LIS − N₆₄] on the same permutations 0.153 ± 0.012; the C program gave 0.163 ± 0.017 on other permutations.
+   The formula is the same quantity with about fifteen times less noise.
+ * Per stage the contribution is 0.0024–0.0027, flat across the stage range. Essentially every contributing level
+   has a_b = 2; the inside set has 3 points in 20% of the cases, 4 in 28%, 5 in 23%, 6 in 16%, 7–8 in 14%; the level
+   is one or two below the top. So a stage has an ambiguous fibre with probability ≈ 0.5%, a pure 3-point lens with
+   probability ≈ 0.1%. The lemma asks only that this be bounded below.
+
+## A2. Two simplifications of the problem (reasoned, not written out)
+
+ 1. *The fresh field is an independent environment.* For a minimal point u of the front, the best fresh chain
+    from u is the point-to-point LIS from u to the corner (T,T) in a Poisson process independent of the front. So
+    X = max_k ψ(u_k) with ψ(z) = LIS(z → (T,T)) of an independent process, evaluated along an independent staircase.
+ 2. *Resample the rectangle between two points of an optimal copy, not a grid box.* Take e < x on an optimal copy
+    with g copy points strictly between them, both at levels in the increasing run before the swap. Empty the open
+    rectangle (e, x) and plant in it: an increasing run (long enough that its levels exceed those of every outside
+    point below-left of x, i.e. more than g points), two incomparable points u₁, u₂ at the swap level (they create
+    the notch), the lens, v₁, v₂, and a second run of more than g points ending below x. Chains in a rectangle are
+    invariant under (x,y) → (λx, y/λ), so the probability of the planted configuration depends only on the AREA of
+    the rectangle and on g — not on its shape, and not on the front. The deficit is at most g automatically. The
+    only condition on the pair is that the area lie in a fixed range [g²/Λ, Λg²].
+
+    With this gadget the stage is good as soon as one of the ≈ K/(g+1) consecutive segments of an optimal copy in
+    the window before the swap spans a rectangle of area in that range.
+
+## A3. What this settles and what it does not
+
+ * **One swap (expected to be provable by elementary means; not written).** For α = I_p, β = I_b the optimal copy
+   is an LIS geodesic, the same for every p. A first-moment bound over chains of anchors, with the exponential
+   tilt e^{−s(Σw+Σh)} (which removes the logarithmic divergence from extreme aspect ratios: ∫∫ f(wh) e^{−s(w+h)} dw dh
+   = ∫ f(A)·2K₀(2s√A) dA < ∞), shows that with high probability no geodesic has more than a θ fraction of
+   bad-area segments. Hence (1/T) Σ_p [E LIS − E N(I_p ⊕ 21 ⊕ I_∞)] ≥ ε₁ > 0: one adjacent transposition at a
+   typical position costs a positive constant, uniformly in n. This would be a theorem but does not give c₂₁ < 1.
+ * **Many swaps (open).** The reference copy changes with the stage, and the stage only looks at one window of it
+   (the first ≈ K positions after the previous swap). A bad stage therefore means that this particular window
+   consists entirely of bad-area segments, and the fraction statement above cannot be transferred. Two estimates
+   would close it:
+   - (E1) *Local increments of ψ.* For z in the bulk, P(ψ(z) − ψ(z + (w,0)) ≤ w/3) ≤ Ce^{−cw}, and the same
+     vertically. I tried to derive it from superadditivity and independence of the strip to the left of an optimal
+     chain; the argument closes only if the chain is not flat at its start, which is the statement being proved.
+     In the literature this is obtained by comparison with the stationary Hammersley process (Cator–Groeneboom;
+     Pimentel, "Local behaviour of Airy processes"; the Poissonian toolbox in Basu–Sidoravicius–Sly). I did not
+     check those statements against what is needed here.
+   - (E2) *Multiplicity of near-optimal windows.* E[number of windows within deficit D of optimal at a given level]
+     ≤ (CD)^D, by a Mecke-formula argument: planting D + 1 points in a near-optimal window makes it the unique
+     optimum, and these events are disjoint. With (E2), a rare local structure of weight ε^K on the optimal copy at
+     a given level has probability ≤ ε^K (CK)^K, small for suitable Λ. Sketched only.
+   With (E1) and (E2) the bad-stage probability is ≤ ½ for K large, giving Σ_j Cost_j ≥ cT and c₂₁ < 1.
+
+## A4. Dead ends of this attempt
+
+ * Stationary boundary conditions (sources and sinks) to get exact independence of increments: boundary points can
+   be inside points when the prefix or suffix is increasing, and then fibres are not uniformly distributed.
+ * Counting bad windows over all stages by a union bound over "one window per front": entropy ≈ J·log T.
+ * Bounding flat initial segments by Talagrand concentration plus curvature of 2√(xy): needs the difference of
+   two passage times to (T,T) from nearby points, which concentration of each one separately does not control.
+ * Grid boxes instead of pair windows: need margins and a regular front; both are selection problems at an argmax.
