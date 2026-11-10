@@ -1,0 +1,1 @@
+canon: n=40 trials=400 seed=12: 1930 consecutive pairs of the leftmost optimal copy, all chains, all empty rectangles, all satisfy (O1)-(O6) for s=0,1

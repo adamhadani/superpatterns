@@ -1,0 +1,1 @@
+cut T=20 (square side 40) samples=250 seed=2104 gridK=1600  mean m=36.8520  mean M=18.7840 (sd 1.070)  mean M'=18.5400  mean Mgrid=18.7880  mean M'grid=18.5480  slack 1+M+M'-m: mean=1.4720 min=0 max=4  violations(exact)=0 violations(grid)=0 grid<exact=0

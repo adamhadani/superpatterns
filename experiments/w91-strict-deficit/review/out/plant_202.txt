@@ -1,0 +1,25 @@
+plant: seed=202 trials=400 maxpairs=4: configurations of 20-40 random points, 6 block words each; 431s
+  candidate pairs with empty rectangle and (O1)-(O4): s=0: 26029, s=1: 26896
+  plantings tested: 15612  (identity pattern: 3200, patterns with 21-blocks: 12412; s=0: 7806, s=1: 7806)
+  per block word: {'()': 3200, '(2,)': 3198, '(2, 2)': 2922, '(1, 2)': 3156, '(2, 1, 1, 2)': 1528, '(1, 1, 2, 2)': 1608}
+  histogram of N - l(e) - h(x) over tested pairs (0 = pair lies on an optimal copy): {0: 11947, 1: 2399, 2: 1061, 3: 205}
+  Lemma 2.2 (l(e), h(x), (O1)-(O4) unchanged by planting): 15612/15612
+  (i)   planted config contains a+12+I_b and avoids a+21+I_b: 15612/15612
+  (ii)  among 231/312/321 exactly two contain a+12+I_b and exactly one contains a+21+I_b: 15612/15612
+        detail ((c12,c21) for 231, 312, 321): {((True, False), (True, False), (False, True)): 15612}
+  inside set for (Pi[1..p], I_b) equals {p1,p2,p3} (from the definition): 15612/15612
+  board = 3x3 minus (x1,y1) not in U, (x3,y3) not in S (from the definition, on O): 15612/15612
+  Lemma 2.4 / Remark 2.6 in the planted configuration (alpha = Pi[1..p]): |G_(p,s)| <= #lens levels <= 1 in 15612/15612; the set of lens levels is exactly {h(x)+1} in 15612/15612
+        |G_(p,s)| with (O1)-(O6): {0: 6200, 1: 9412}  pairs with (O1)-(O4) only (3 = 3 or more): {1: 14072, 2: 1442, 3: 98}  #lens levels: {1: 15612}
+  (iii) arrangement 123: some lens point no longer inside in 15612/15612; breakdown (inside flags of (x1,.),(x2,.),(x3,.)) , (contains a+12+I_b, contains a+21+I_b)) -> count:
+           ((False, True, False), (False, False)) 15612
+  (iii) arrangement 132: some lens point no longer inside in 15612/15612; breakdown (inside flags of (x1,.),(x2,.),(x3,.)) , (contains a+12+I_b, contains a+21+I_b)) -> count:
+           ((False, True, True), (False, False)) 15612
+  (iii) arrangement 213: some lens point no longer inside in 15612/15612; breakdown (inside flags of (x1,.),(x2,.),(x3,.)) , (contains a+12+I_b, contains a+21+I_b)) -> count:
+           ((True, True, False), (False, False)) 15612
+  generic backtracking matcher vs DP on a subsample: 37464 containment decisions compared, 0 mismatches, 0 node-limit timeouts
+  negative controls (exactly one of (O1)-(O4) violated; conclusion need not hold):
+     (O1) violated: tested 8000, (i) fails 5972, (ii) fails 6398, lens-from-definition fails 6398
+     (O2) violated: tested 6196, (i) fails 1254, (ii) fails 1722, lens-from-definition fails 1825
+     (O3) violated: tested 5914, (i) fails 1596, (ii) fails 2294, lens-from-definition fails 2411
+     (O4) violated: tested 1374, (i) fails 534, (ii) fails 667, lens-from-definition fails 1374

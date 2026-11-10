@@ -1,0 +1,6 @@
+selftest 1: prefix_blocks == standardised prefix in 96 cases
+selftest 2: DP / generic / brute force on 4000 random (config, direct-sum pattern) pairs: 0 mismatches
+selftest 3: generic matcher / brute force on 3000 random arbitrary patterns: 0 mismatches
+selftest 4: S_7: #contain 1234 - #contain 1324 = 1 (expected 1)
+selftest 4: S_8: #contain 1234 - #contain 1324 = 26 (expected 26)
+selftest 5: 145278369 contains 123456: True  contains 124356: False  (generic: True False )

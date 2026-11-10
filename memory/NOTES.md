@@ -6,8 +6,12 @@ Earlier notes are preserved under `archive/`, including their obsolete claims.
 
 **Where things stand.** Alon's conjecture is open here. W90 proves that flipping a block 12 → 21 in a direct sum
 never increases containment, hence c₂₁ ≤ 1, and gives numerical evidence (n up to 10⁸) that c₂₁ ≈ 0.99887 < 1,
-which would refute the conjecture at the sharp constant ¼. The strict inequality is reduced to a "start regularity"
-lemma in `experiments/w90-layered-deficit/strict-deficit-plan.md`; it is not proved.
+which would refute the conjecture at the sharp constant ¼. W91 proves a strict form, E LIS − 2·E L₂₁ ≥ c·√n/ln n,
+so 2 1 4 3 ⋯ needs n ≥ (k²/4)(1 + c′/ln k) and is strictly harder than the identity; and it proves that a single
+transposition costs a constant. W91 part 2 (`proof-c21.md`) then deduces c₂₁ < 1 from the classical rate of
+convergence of a superadditive mean (Alexander 1994), which contradicts Alon's conjecture for small fixed ε.
+This is a claim with a complete written proof, AI-written and AI-reviewed, not yet checked by a human. A deficit
+of order √n with an explicit constant is still open (hypothesis (H), `proof.md` §7).
 
 **What was withdrawn.** Workstreams W43–W89 (22–27 September 2026) claimed universality at C·k², the sharp ¼
 threshold for bounded-LDS classes, c₂₁ = 1 and the full conjecture. None is proved; see the audit. They are archived

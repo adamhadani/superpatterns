@@ -18,8 +18,10 @@ The [current ledger](RESULTS.md) supersedes the former blanket verification clai
 - [x] Add W42's exact selection-cost counterexample and first-moment representation, retaining independent verification and asymptotic limits of the claim.
 - [x] Audit and withdraw the September 2026 claims (W43–W89); archive the workstreams; restore the Lean library to its vetted modules (`lake build`: 8719 jobs, no `sorry`, no added axioms).
 - [x] Add W90: block-flip theorem, c₂₁ ≤ 1, exact deficit identity, paired simulations to n = 10⁸, brute-force fibre checks; fold into the notes paper (§6.2) with prior art (Jelínek–Karpilovskij, Burstein–Pantone, Backelin–West–Xin).
-- [ ] Independent specialist reading of C′, W31, W34/W36, W39, W40 and W90 — in particular of the numerical claim c₂₁ < 1 and of the plan for its proof.
-- [ ] Do not announce a disproof of Alon's conjecture: the strict inequality is numerical.
+- [x] Add W91: E LIS − 2·E L₂₁ ≥ c·√n/ln n, threshold separation, single-transposition theorem; gadget lemmas brute-forced by two independent programs; independent agent review; fold into the notes paper (§6.3).
+- [ ] Independent specialist reading of C′, W31, W34/W36, W39, W40, W90 and W91 — in particular of the proof of W91 Theorem B (one day old, AI-written, AI-reviewed), of the numerical claim c₂₁ < 1 and of hypothesis (H).
+- [x] Add W91 part 2: rate-of-convergence lemma, c₂₁ < 1, failure of Alon's conjecture for small fixed ε; second agent review and numerical checks; paper Lemma 34, Theorem 35, Corollary 36 with a caution paragraph.
+- [ ] Do not announce a disproof of Alon's conjecture until a human specialist has verified W90 Theorem 1, W91 Proposition 6.1 and `proof-c21.md`. The proof exists on paper only since 10 November 2026.
 - [ ] Priority check for monotone inflations, the Burke formulation and the frontier algorithm.
 - [ ] Independently checkable UNSAT artifacts for any small-value nonexistence claim included in a submission.
 - [ ] Fresh-machine reproduction of the principal numerical certificates.
