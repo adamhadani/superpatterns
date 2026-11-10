@@ -1,5 +1,72 @@
 # Research strategy: prove or disprove Alon's random-superpattern conjecture
 
+## 0. Revised strategy — 10 November 2026 (supersedes the ordering below)
+
+**Change of target.** W90 shows c₂₁ ≤ 1 rigorously and c₂₁ ≈ 0.99887 numerically (deficit ∝ √n over five decades,
+two independent programs). The working hypothesis is now that **the sharp conjecture is false** and that the
+identity is *not* the hardest pattern: every interior 21 block (more generally every interior decreasing layer)
+costs a fixed positive amount. Sections 1–5 below were written under the opposite hypothesis; §2 ("repeated-pattern
+obstruction") was the right instinct, §5 (generic bulk at ¼) is retracted (see the audit).
+
+### D1. Rigorous disproof: prove liminf (E⌊LIS/2⌋ − E L₂₁)/√n > 0   — top priority
+
+What is in hand (W90): the exact identity
+  E⌊LIS/2⌋ − E L₂₁ = Σ_{stages} E[(a − 1)/F],
+each term ≥ 0, where a stage is one flip 12 → 21 with prefix α and suffix β, F is the number of valid fillings of
+the skew region U_α ∩ S_β given the outside points, and a the number of those without a D-inversion. The smallest
+contributing fibre is a 3-point lens (weight 1/3), and a fibre with an *isolated* 3-point lens contributes at
+least ½·P(21-version avoided | fibre).
+
+Routes, in order of expected tractability:
+
+ (a) *Near-maximiser tightness.* Flip from the south-west end, so that S is a Hammersley region of fresh Poisson
+     points in U. Show: with probability ≥ p₀, the set of fresh points within two levels of the maximum of
+     h(z) = LIS(NE(z)) on U has at most N₀ points. Then a finite-energy resampling inside a bounded window around
+     the maximiser produces a defect lens at bounded cost. Needs: a local description of ∂U (it has an outer
+     corner between any two consecutive minimal points, which is all the lens needs) and an O(1) bound on the
+     number of near-maximal starting points. Test numerically first: measure the empirical law of the number of
+     points in the top two levels at each stage, and the frequency of isolated defect lenses; the product should
+     reproduce 0.00114 per pair.
+ (b) *Sparse swaps.* By Theorem 1 it is enough to beat the benchmark for ANY pattern with fewer 21 blocks, e.g.
+     the identity with one adjacent transposition every 2K places. Between swaps the thresholds evolve by the
+     Hammersley rule; show the composite particle's output relaxes to the stationary Poisson structure
+     (Mountford–Prabhakar type statement for tandem queues) and compute the single-defect cost in the stationary
+     system, where both fronts are Hammersley lines and the Burke/Cator–Groeneboom structure is explicit.
+ (c) *Single swap, exact.* For I_a ⊕ 21 ⊕ I_b both regions are Hammersley regions of the same Poisson process (one
+     from each corner). Compute or bound lim Σ_b E[(a−1)/F] directly; this is a statement about pure LIS geometry
+     and may be accessible through known determinantal structure.
+
+ Progress on (a)/(b), 10 Nov: `experiments/w90-layered-deficit/strict-deficit-plan.md` gives an explicit gadget
+ (a planted 3-point lens plus a short run in the cell of a good notch) that makes a stage contribute exactly 1/3,
+ and reduces everything to a "start regularity" lemma; the lemma is not proved.
+
+ Stop criterion: do not claim the disproof from numerics; do not accept a "density of defects" argument that
+ ignores the global condition that the *whole* marginal region is inversion-free.
+
+### D2. Size-≥3 layers and the hardest layered pattern
+
+Prove P(⊇ α⊕J_d⊕β) ≤ P(⊇ α⊕I_d⊕β) for d ≥ 3 (transversal case of the Jelínek–Karpilovskij conjecture); the fibre
+argument reduces it to: in every skew board, #fillings without an increasing d-chain ≤ #fillings without a
+D-decreasing d-chain. Numerically the deficit per unit length increases from d = 2 to d = 16 (0.0023 → 0.017 in
+D/√n). Determine the maximiser; for d → ∞ the per-layer cost should scale like d^{1/3} (KPZ), so the relative
+deficit must eventually decrease. The best lower bound on the true universality constant C* is the largest
+layered threshold.
+
+### D3. What replaces the conjecture?
+
+(i) Is sup over patterns of the single-pattern threshold attained by layered patterns? (ii) Is universality true
+at C*·k² with that C*? (iii) Independently of the constant: universality at C·k² for some C (remove He–Kwan's
+log log k). W9/W13/W15 are the honest starting points; nothing from W43–W89 can be reused without a new proof.
+
+### D4. Bookkeeping that follows from the audit
+
+Rewrite the paper around what is proved (deterministic bounds, W31, W34/W36, W39, W9/W13/W15, W90); withdraw
+Theorems 1.2, 1.4, 5.3 and the "[Proved]" badges; correct the Lean scope statement. Not done in this session.
+
+---
+
+*The text below is the strategy of 10–24 September, kept for reference.*
+
 Updated 10 September 2026. This queue supersedes the publication-first ordering
 in earlier session notes. The user prioritizes progress on the conjecture.
 The [current ledger](RESULTS.md) separates established results from candidates.

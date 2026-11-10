@@ -1,0 +1,8 @@
+n=12
+  m=0: #L21=m 1   #floor(LIS/2)=m 1   diff 0
+  m=1: #L21=m 24792704   #floor(LIS/2)=m 24792704   diff 0
+  m=2: #L21=m 345816210   #floor(LIS/2)=m 345738978   diff 77232
+  m=3: #L21=m 105982607   #floor(LIS/2)=m 106059626   diff -77019
+  m=4: #L21=m 2404015   #floor(LIS/2)=m 2404228   diff -213
+  m=5: #L21=m 6062   #floor(LIS/2)=m 6062   diff 0
+  m=6: #L21=m 1   #floor(LIS/2)=m 1   diff 0

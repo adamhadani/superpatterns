@@ -4,6 +4,16 @@ Research on permutations containing all patterns of length $k$, by **Adam Ever-H
 
 This repository contains certified deterministic lower bounds, exact small-witness constructions, exhaustive combinatorial verification suites, a formal verification library in **Lean 4**, and mathematical proofs addressing Noga Alon's 1999 random-superpattern conjecture.
 
+> **Status, 10 November 2026 — please read first.** An audit of this repository
+> ([memory/AUDIT-2026-11-10.md](memory/AUDIT-2026-11-10.md)) found that several results listed below are **not
+> proved**: simultaneous universality at $Ck^2$ for all patterns (item 1, W47), the "refutation" of the repeated-21
+> candidate and $c_{21} = 1$ (item 2, W44/W50), the hydrodynamic traversal framework as a proof of anything about
+> general patterns (item 4), and the corresponding rows of the summary table (W44–W48). Items 3 and 5 stand.
+> New work ([W90](experiments/w90-layered-deficit/proof.md)) proves $c_{21} \le 1$ and gives strong numerical
+> evidence that $c_{21} \approx 0.9989 < 1$, i.e. that the pattern $2\,1\,4\,3\,\dots$ needs length
+> $\approx 1.0023\,k^2/4$ and Alon's conjecture fails at the sharp constant $1/4$. That last statement is numerical,
+> not a theorem. The preprints linked below have not yet been revised.
+
 ## Key Results & Preprints
 
 1. **Simultaneous Universality at $O(k^2)$ & Resolution of the He–Kwan Gap**:

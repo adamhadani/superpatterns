@@ -1,0 +1,64 @@
+alpha=(1,) beta=(1,)
+  n=1: contains 12-version 0, 21-version 0, difference 0 = sum over 1 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=2: contains 12-version 0, 21-version 0, difference 0 = sum over 2 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=3: contains 12-version 0, 21-version 0, difference 0 = sum over 6 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=4: contains 12-version 1, 21-version 1, difference 0 = sum over 23 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=5: contains 12-version 17, 21-version 17, difference 0 = sum over 103 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=6: contains 12-version 207, 21-version 207, difference 0 = sum over 513 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=7: contains 12-version 2279, 21-version 2278, difference 1 = sum over 2761 fibres of (a-1); defect fibres (inside pts, #fillings, a): {(3, 3, 2): 1}
+  n=8: contains 12-version 24553, 21-version 24527, difference 26 = sum over 15767 fibres of (a-1); defect fibres (inside pts, #fillings, a): {(4, 10, 2): 4, (3, 3, 2): 20, (4, 8, 2): 2}
+alpha=(2, 1) beta=(2, 1)
+  n=1: contains 12-version 0, 21-version 0, difference 0 = sum over 1 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=2: contains 12-version 0, 21-version 0, difference 0 = sum over 2 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=3: contains 12-version 0, 21-version 0, difference 0 = sum over 6 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=4: contains 12-version 0, 21-version 0, difference 0 = sum over 24 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=5: contains 12-version 0, 21-version 0, difference 0 = sum over 120 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=6: contains 12-version 1, 21-version 1, difference 0 = sum over 719 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=7: contains 12-version 37, 21-version 37, difference 0 = sum over 5003 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=8: contains 12-version 891, 21-version 891, difference 0 = sum over 39429 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+alpha=(1, 2) beta=(1, 2)
+  n=1: contains 12-version 0, 21-version 0, difference 0 = sum over 1 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=2: contains 12-version 0, 21-version 0, difference 0 = sum over 2 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=3: contains 12-version 0, 21-version 0, difference 0 = sum over 6 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=4: contains 12-version 0, 21-version 0, difference 0 = sum over 24 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=5: contains 12-version 0, 21-version 0, difference 0 = sum over 120 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=6: contains 12-version 1, 21-version 1, difference 0 = sum over 719 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=7: contains 12-version 37, 21-version 37, difference 0 = sum over 5003 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=8: contains 12-version 891, 21-version 891, difference 0 = sum over 39429 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+alpha=(1,) beta=(2, 1)
+  n=1: contains 12-version 0, 21-version 0, difference 0 = sum over 1 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=2: contains 12-version 0, 21-version 0, difference 0 = sum over 2 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=3: contains 12-version 0, 21-version 0, difference 0 = sum over 6 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=4: contains 12-version 0, 21-version 0, difference 0 = sum over 24 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=5: contains 12-version 1, 21-version 1, difference 0 = sum over 119 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=6: contains 12-version 26, 21-version 26, difference 0 = sum over 694 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=7: contains 12-version 458, 21-version 458, difference 0 = sum over 4582 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=8: contains 12-version 6996, 21-version 6995, difference 1 = sum over 33324 fibres of (a-1); defect fibres (inside pts, #fillings, a): {(3, 3, 2): 1}
+alpha=(1, 3, 2) beta=(1,)
+  n=1: contains 12-version 0, 21-version 0, difference 0 = sum over 1 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=2: contains 12-version 0, 21-version 0, difference 0 = sum over 2 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=3: contains 12-version 0, 21-version 0, difference 0 = sum over 6 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=4: contains 12-version 0, 21-version 0, difference 0 = sum over 24 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=5: contains 12-version 0, 21-version 0, difference 0 = sum over 120 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=6: contains 12-version 1, 21-version 1, difference 0 = sum over 719 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=7: contains 12-version 37, 21-version 37, difference 0 = sum over 5003 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=8: contains 12-version 891, 21-version 891, difference 0 = sum over 39429 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+alpha=(2, 3, 1) beta=(2, 1)
+  n=1: contains 12-version 0, 21-version 0, difference 0 = sum over 1 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=2: contains 12-version 0, 21-version 0, difference 0 = sum over 2 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=3: contains 12-version 0, 21-version 0, difference 0 = sum over 6 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=4: contains 12-version 0, 21-version 0, difference 0 = sum over 24 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=5: contains 12-version 0, 21-version 0, difference 0 = sum over 120 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=6: contains 12-version 0, 21-version 0, difference 0 = sum over 720 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=7: contains 12-version 1, 21-version 1, difference 0 = sum over 5039 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=8: contains 12-version 50, 21-version 50, difference 0 = sum over 40270 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+alpha=() beta=(1,)
+  n=1: contains 12-version 0, 21-version 0, difference 0 = sum over 1 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=2: contains 12-version 0, 21-version 0, difference 0 = sum over 2 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=3: contains 12-version 1, 21-version 1, difference 0 = sum over 5 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=4: contains 12-version 10, 21-version 10, difference 0 = sum over 14 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=5: contains 12-version 78, 21-version 78, difference 0 = sum over 42 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=6: contains 12-version 588, 21-version 588, difference 0 = sum over 132 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=7: contains 12-version 4611, 21-version 4611, difference 0 = sum over 429 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=8: contains 12-version 38890, 21-version 38890, difference 0 = sum over 1430 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+ALL CHECKS PASSED
