@@ -109,6 +109,8 @@ def fibre(C, p, b, maxN=8):
 def is_lens(res): return res is not None and len(res[0]) == 3 and res[1] == 3 and res[2] == 2
 
 # ---------------------------------------------------------------- the outside conditions (O1)-(O6)
+STRICT = False   # True: tie-breaks (O5'), (O6') without the emptiness clauses (simplified form used in the note)
+
 def outside_ok(C, e, x, s, ties=True, which=None):
     pts, ell, h = C.pts, C.ell, C.h
     out = [r for r in C.all if not inrect(pts, e, x, r)]
@@ -126,9 +128,9 @@ def outside_ok(C, e, x, s, ties=True, which=None):
         for r in out:
             if r in (e, x): continue
             if ell[r] == ell[e] and nw(pts, r, e) and lt(pts, r, x):
-                if not any(inrect(pts, r, x, q) for q in out if q != r): bad.append(5)
+                if STRICT or not any(inrect(pts, r, x, q) for q in out if q != r): bad.append(5)
             if h[r] == h[x] and nw(pts, r, x) and lt(pts, e, r):
-                if not any(inrect(pts, e, r, q) for q in out if q != r): bad.append(6)
+                if STRICT or not any(inrect(pts, e, r, q) for q in out if q != r): bad.append(6)
     if which is not None: which.extend(bad)
     return not bad
 
@@ -288,6 +290,8 @@ def test_mecke(T, samples, seed):
           f"E sum area over empty = %.4f +- %.4f ; difference %.4f +- %.4f" % (ms(lhs) + ms(rhs) + ms(d)))
 
 if __name__ == "__main__":
+    if sys.argv[1] == "strict":
+        STRICT = True; sys.argv.pop(1); print("[strict tie-breaks (O5'), (O6')]", end=" ")
     t = sys.argv[1]
     if t == "dp": test_dp(int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]))
     elif t == "canon": test_canon(int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]))

@@ -16,7 +16,9 @@ Continues `proof.md` (same folder), whose Proposition 6.1 is used as a black box
 
 Hypothesis (H) of `proof.md` §7 is **not** used. The idea is the classical one for superadditive functionals
 (Alexander, Ann. Appl. Probab. 4 (1994) 1074–1082, proves γn − C√(n log n) ≤ E L_n ≤ γn for the longest common
-subsequence; Rhee, Ann. Appl. Probab. 5 (1995) 44–48, gives a short proof): superadditivity gives ℓ(T) ≤ c₂₁T, and cutting an optimal object in two plus concentration gives
+subsequence; Rhee, Ann. Appl. Probab. 5 (1995) 44–48, gives a short proof; cutting along an antidiagonal and
+using a concentration inequality is the scheme of Lember–Matzinger–Torres, Ann. Appl. Probab. 22 (2012)
+1046–1058): superadditivity gives ℓ(T) ≤ c₂₁T, and cutting an optimal object in two plus concentration gives
 the reverse inequality up to O(√(T ln T)). A deficit that is larger than this error at a single scale is
 therefore a deficit of the limit constant.
 

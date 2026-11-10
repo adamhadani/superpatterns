@@ -1,0 +1,1 @@
+[strict tie-breaks (O5'), (O6')] canon: n=40 trials=400 seed=22: 1922 consecutive pairs of the leftmost optimal copy, all chains, all empty rectangles, all satisfy (O1)-(O6) for s=0,1

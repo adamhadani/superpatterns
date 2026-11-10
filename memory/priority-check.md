@@ -89,3 +89,30 @@ last-passage percolation or permutation patterns, and search for "universality t
 | c₂₁ < 1; failure of Alon's conjecture for small fixed ε | [He–Kwan](https://arxiv.org/abs/1911.12878), Conjecture 1.1 (statement confirmed); searches for a proof or disproof dated 2020–2026 by the main session and by the reviewer | Nothing found. If the proofs are correct this is new. The searches were brief; unpublished work may exist |
 | Rate of convergence of a superadditive mean (Lemma R) | [Alexander 1994](https://www.projecteuclid.org/euclid.aoap/1177004903), Ann. Appl. Probab. 4, 1074–1082: γn − C√(n log n) ≤ E L_n ≤ γn for the longest common subsequence; Rhee 1995, Ann. Appl. Probab. 5, 44–48 | **Not new**: the same argument, adapted to L₂₁ in a Poisson square. Bollobás–Brightwell 1992 (Ann. Appl. Probab. 2, 1009–1018) is confirmed only as a concentration result |
 | Talagrand's inequality | Alon–Spencer, *The Probabilistic Method*, 4th ed. (2016), Theorem 7.7.1 — statement checked against the book | Standard |
+
+## Citation audit (10 November 2026, night) — corrections to the entries above
+
+Full report: `experiments/w91-strict-deficit/out/citation-audit.md` (an agent read the primary sources; the main
+session confirmed the Chen–Wang listing and the two book theorem numbers).
+
+* **Block flip: attribution corrected.** The transversal case k = 2 of the skew shape conjecture is due to Jelínek
+  (2008 thesis, not seen) and independently Burstein–Pantone (Lemmas 1.4, 1.5); Jelínek–Karpilovskij quote it as
+  their Theorem 2.5. Their own results are Theorem 2.2 (D-free shapes) and Theorem 2.6 (01-fillings, k = 2);
+  Conjecture 2.4 is the conjecture for all k. Burstein–Pantone (end of §3) also report, as a private communication
+  from Jelínek, {σ ⊕ 12 ⊕ τ} ∼ {σ ⊕ 21 ⊕ τ} ∪ B with B finite, which contains our inequality in pattern form. Our
+  Theorem 1 follows after reversing permutations (direct sums ↔ skew sums). Still not claimed as new.
+* **New prior art on universality.** Chen–Wang, arXiv:2610.13530 (v1 9 Oct 2026, v2 5 Nov 2026), "Quadratic-size
+  Random Permutations are Universal": a random permutation of length 32k² is k-universal w.h.p.; the abstract
+  says the proof was found by an AI system; unrefereed. Consistent with c₂₁ < 1. "Universality at C·k² is open"
+  is no longer an accurate description; say "published bound k² log log k; 32k² announced".
+* **Alon's conjecture: sources.** First in print as Conjecture 3 of Arratia 1999 (median-threshold form, attributed
+  to Alon); He–Kwan Conjecture 1.1 (w.h.p. form) and Conjecture 5.3 (single-pattern weakening). Our Corollary
+  concerns one explicit pattern, so it contradicts all three.
+* **Rate of convergence.** Alexander 1994 proves the result for the longest common subsequence; the
+  antidiagonal-cut scheme we use is that of Lember–Matzinger–Torres 2012. Do not write "this is Alexander's
+  argument".
+* **Bibliographic fixes applied:** JK21 (DMTCS 22:2, paper 8, DOI), BP15 (J. Comb. 6 (2015) 55–67), Last–Penrose
+  (CUP 2018, Theorem 4.4 on p. 30), plus DOIs.
+* **Prior art for the new claims:** none found (no statement that a specific pattern beats the identity offline,
+  no value or bound for c₂₁, no disproof of Alon's conjecture). MathOverflow, Google Scholar and MathSciNet were
+  not searchable by the agent.

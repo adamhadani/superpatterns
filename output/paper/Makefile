@@ -1,9 +1,9 @@
 SRC = superpatterns-notes.md
 PDF = $(SRC:.md=.pdf)
 
-.PHONY: all pdf check clean frontier-note
+.PHONY: all pdf check clean frontier-note refutation-note
 
-all: pdf frontier-note
+all: pdf frontier-note refutation-note
 
 pdf: $(PDF)
 
@@ -13,6 +13,12 @@ frontier-note:
 	$(MAKE) SRC=repeated-21-frontier.md PDF=../pdf/repeated-21-frontier.pdf check
 	pandoc -d defaults.yaml repeated-21-frontier.md -o ../pdf/repeated-21-frontier.pdf
 	pandoc repeated-21-frontier.md --from=markdown --to=markdown_strict+tex_math_dollars+pipe_tables+fenced_code_blocks --wrap=none --standalone --template=reader.md.template --citeproc --bibliography=references.bib --csl=springer-basic-brackets.csl --metadata=link-citations:false --lua-filter=reader.lua -o ../pdf/repeated-21-frontier.md
+
+# Standalone note for referees: the layered pattern and Alon's conjecture.
+refutation-note:
+	mkdir -p ../pdf
+	$(MAKE) SRC=layered-refutation.md PDF=../pdf/layered-refutation.pdf check
+	pandoc -d defaults.yaml layered-refutation.md -o ../pdf/layered-refutation.pdf
 
 $(PDF): $(SRC) references.bib defaults.yaml
 	pandoc -d defaults.yaml $(SRC) -o $(PDF)

@@ -169,3 +169,32 @@ argument could not be confirmed there), Alexander and Rhee for the technique.
 
 Status discipline: this is a claimed disproof of Alon's conjecture for small fixed ε, written and reviewed by AI
 systems on one day. It is recorded as "proved here, not externally verified".
+
+## 12. Referee package (10 November 2026, night)
+
+Goal: make the chain easy to check for a human specialist.
+
+ * **Standalone note** `output/paper/layered-refutation.md` (PDF in `output/pdf/`): self-contained, only the
+   disproof chain. Differences from `proof.md`/`proof-c21.md`: one planted pattern (3416725) instead of two, so
+   the deficit is T/(ln T)² (enough for c₂₁ < 1; the pigeonhole is "at least K+1 of 2K steps are not thin, so an
+   even-numbered one is"); tie-breaking rules without the emptiness clauses (below); two-sided threshold for
+   2 1 4 3 ⋯ (Corollary 1.3); section-based numbering; notation cleaned (anchors e < f, lens points q₁q₂q₃,
+   regions 𝒰, 𝒱, fillings φ, counts F and F°, means Λ and Λ₂₁, tail start t₀).
+ * **Simplified tie-break.** (O5): no lower point of the same level north-west of e; (O6): no upper point of the
+   same height north-west of f. Suggested by the cold reader, re-derived by the main session (the proof of
+   uniqueness becomes four lines: a second anchor e′ north-west of e is below the common lens point q₁, hence a
+   lower point of the same level, contradicting (O5)), and tested with `gadget_check.py strict …`
+   (`out/chk_strict_canon.txt`, `out/chk_strict_plant.txt`: 1922 copy pairs, 2365 plantings, 4730 uniqueness
+   cases). These rules are stronger than the old ones, so uniqueness also follows from the old checks.
+ * **Cold read 1** (`out/review-3-note.md`, a reviewer that saw only the first version of the note): no error;
+   fourteen small gaps (missing sentences: order-type invariance for the Poisson transfer, integer median in
+   Talagrand, edge cases of the cut, Fekete on the reals, …) and a list of overloaded symbols. All incorporated
+   in the rewrite. Its own programs: identity (2.1) exact on S_n, n ≤ 7, 13 pairs (α, β); 8040 plantings; 54 649
+   adversarial uniqueness cases.
+ * **Citation audit** (`out/citation-audit.md`) and **comparison with He–Kwan and Chen–Wang**
+   (`related-work.md`): see those files. Main corrections: the block-flip inequality is due to Jelínek's thesis and
+   Burstein–Pantone (quoted as Theorem 2.5 by Jelínek–Karpilovskij); Chen–Wang (arXiv:2610.13530) announce 32k²;
+   our corollary also contradicts He–Kwan's single-pattern Conjecture 5.3.
+ * The notes paper §6.3 now only states the results and points to the standalone note.
+ * Pending at the time of writing: second cold read of the rewritten note (`out/review-4-note.md`) and the Lean
+   small-case certificates (`formal-verification/lean/Superpatterns/BlockFlip.lean`).

@@ -17,7 +17,8 @@ of order √n with an explicit constant is still open (hypothesis (H), `proof.md
 threshold for bounded-LDS classes, c₂₁ = 1 and the full conjecture. None is proved; see the audit. They are archived
 in `experiments/archive-2026-09-unverified/`.
 
-**Literature anchors.** General random universality: He–Kwan, 2000 k² log log k. Individual / typical targets:
+**Literature anchors.** General random universality: He–Kwan, 2000 k² log log k (published); Chen–Wang,
+arXiv:2610.13530, 32k² (preprint, Oct 2026, unrefereed). Individual / typical targets:
 arXiv:2608.19050 (online embedding; 0.50568 and 0.49967), which also notes that the increasing permutation is not
 extremal online. Deterministic lower bound: Chroman–Kwan–Singhal 1.000076/e² (ours: 1.0073/e²). Skew-shape
 inequality behind W90: Jelínek–Karpilovskij 2021; Burstein–Pantone; equality case Backelin–West–Xin. Details and

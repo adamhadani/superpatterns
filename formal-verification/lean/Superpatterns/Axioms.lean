@@ -4,6 +4,7 @@ import Superpatterns.Numeric
 import Superpatterns.Witness
 import Superpatterns.BlockSplit
 import Superpatterns.ErdosSzekeres
+import Superpatterns.BlockFlip
 
 /-!
 # Axiom audit
@@ -16,6 +17,11 @@ import Superpatterns.ErdosSzekeres
 * `tilt_bound`, `pair_sum_le`, `card_le_sum_fiber`, `constant_certificate`, `checker_sound`:
   standard axioms only;
 * W35 (`Witness.lean`, `BlockSplit.lean`, `ErdosSzekeres.lean`): standard axioms only.
+* W90/W91 (`BlockFlip.lean`): standard axioms only for the checker (`containsB_iff`,
+  `numContaining_eq`, `card_Perms_contains`, `dsum_perm`, `blockFlipAt_of_sweepB`), for the two
+  explicit permutations, for every count with `n ≤ 7` and for `1234`/`1324` on `S_8` (kernel
+  `decide`); **`native_decide`** axioms for the other counts with `n = 8`, the counts with
+  `n = 9` and `blockFlipAt_of_le_2_of_le_8`.
 -/
 
 namespace Superpatterns
@@ -51,5 +57,44 @@ namespace Superpatterns
 #print axioms ranks_perm_range
 #print axioms erdos_szekeres_contains
 #print axioms not_avoid_both
+-- W90/W91 block flip (`BlockFlip.lean`): checker and reductions
+#print axioms containsB_iff
+#print axioms numContaining_eq
+#print axioms card_Perms_contains
+#print axioms dsum_perm
+#print axioms blockFlipAt_of_sweepB
+-- explicit permutations (kernel)
+#print axioms perm3416725_contains_1234
+#print axioms perm3416725_avoids_1324
+#print axioms perm145278369_contains_123456
+#print axioms perm145278369_avoids_124356
+-- 1234 vs 1324 (kernel for n ≤ 8, native_decide for n = 9); 123456 vs 124356 (kernel for n ≤ 7)
+#print axioms count_1234_eq_count_1324_of_le_6
+#print axioms count_1234_sub_count_1324_7
+#print axioms count_1234_sub_count_1324_8
+#print axioms count_1234_sub_count_1324_9
+#print axioms count_123456_eq_count_124356_of_le_8
+#print axioms count_123456_sub_count_124356_9
+-- block-flip instances: exact counts (kernel for n = 7 and for (1,1) at n = 8; native_decide otherwise)
+#print axioms blockFlip_1_1_7
+#print axioms blockFlip_12_1_7
+#print axioms blockFlip_1_12_7
+#print axioms blockFlip_21_1_7
+#print axioms blockFlip_12_12_7
+#print axioms blockFlip_21_21_7
+#print axioms blockFlip_1_1_8
+#print axioms blockFlip_12_1_8
+#print axioms blockFlip_1_12_8
+#print axioms blockFlip_21_1_8
+#print axioms blockFlip_12_12_8
+#print axioms blockFlip_21_21_8
+#print axioms blockFlip_1_1_9
+#print axioms blockFlip_12_1_9
+#print axioms blockFlip_1_12_9
+#print axioms blockFlip_21_1_9
+#print axioms blockFlip_12_12_9
+#print axioms blockFlip_21_21_9
+-- all |α|, |β| ≤ 2, n ≤ 8 (native_decide)
+#print axioms blockFlipAt_of_le_2_of_le_8
 
 end Superpatterns
