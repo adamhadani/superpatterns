@@ -4,8 +4,11 @@ This file lists what is accepted, at what scope, and how it was verified. It was
 2026; on 10 November 2026 the rows added between 22 and 27 September (workstreams W43–W89) were removed after the
 [audit](AUDIT-2026-11-10.md) found none of their general claims proved. Those workstreams are archived, unedited,
 in `experiments/archive-2026-09-unverified/`. **No proof or disproof of Alon's conjecture is claimed.** The
-strongest new statement is row W90: c₂₁ ≤ 1 is proved and c₂₁ ≈ 0.99887 < 1 is supported numerically, which would
-refute the sharp conjecture.
+strongest new statements are rows W90 and W91: c₂₁ ≤ 1 is proved; E LIS − 2·E L₂₁ ≥ c·√n/ln n is proved (so
+2 1 4 3 ⋯ is strictly harder than the identity); c₂₁ ≈ 0.99887 is the numerical value. **Update, 10 November
+evening:** row W91b records a complete written proof that c₂₁ < 1, which contradicts Alon's conjecture for small
+fixed ε. It is AI-written and AI-reviewed and has not been checked by a human; until it has, the status of the
+conjecture in this ledger is "disproof claimed, unverified".
 
 This is the authoritative status table after the review and authorized follow-up.
 It supersedes stronger claims in dated logs and `historical-*` files. The
@@ -15,7 +18,11 @@ This was a targeted audit, not a complete independent verification of every
 historical theorem. No general Alon proof or new c₂₁ asymptotic bound is claimed.
 
 **Featured W90 result:** [proof](../experiments/w90-layered-deficit/proof.md),
-[log](../experiments/w90-layered-deficit/log.md) and [plan for the strict inequality](../experiments/w90-layered-deficit/strict-deficit-plan.md).
+[log](../experiments/w90-layered-deficit/log.md) and [plan for the strict inequality](../experiments/w90-layered-deficit/strict-deficit-plan.md)
+(the plan is superseded by W91).
+
+**Featured W91 result:** [proof](../experiments/w91-strict-deficit/proof.md),
+[log](../experiments/w91-strict-deficit/log.md), [independent review](../experiments/w91-strict-deficit/out/review-1.md).
 
 **W40 result:** [standalone PDF](../output/pdf/repeated-21-frontier.pdf),
 [readable Markdown](../output/pdf/repeated-21-frontier.md) and
@@ -49,6 +56,8 @@ criterion. The [Alon strategy](ALON-STRATEGY.md) sets the new research priority.
 | W41 / Prop 25 | Exact canonical joint-emptiness integral at every overlap; nonnegative integer formula for fixed-host moments | [Proof](../experiments/w41-canonical-overlap/proof.md); 10 overlap-(k−2) and 22 general-overlap entries agree with exhaustive enumeration | Number of union types can be large; no asymptotic bounded-ratio or random-host divergence theorem |
 | W42 | Two-exchange selection preserves existence, eliminates overlaps k−1,k−2; exact forbidden-pair first moment; pattern independence is false at k=3,n=6 | [Proof and finite counterexample](../experiments/w42-two-exchange/proof.md); 93,416 independent local checks and independent aggregate recount of all six targets | Exact formula is not an efficient evaluation; no uniform asymptotic moment bound or containment improvement |
 | **W90** | **Block flip:** for all patterns α, β and all n, #{σ∈S_n ⊇ α⊕21⊕β} ≤ #{σ∈S_n ⊇ α⊕12⊕β}, with the exact difference Σ_fibres (a−1). Hence P(σ_n ⊇ 21^{⊕m}) ≤ P(LIS ≥ 2m), L₂₁ ≤_st ⌊LIS/2⌋ and **c₂₁ ≤ 1**. Equality when α or β is empty; smallest defect is a 3-point lens (weight 1/3); \|Av₉(214365)\| = \|Av₉(123456)\| + 1. **Numerical (not proved):** E⌊LIS/2⌋ − E L₂₁ = (0.00113 ± 0.00002)√n for n = 10³…10⁸, so c₂₁ ≈ 0.99887 < 1 and Alon's sharp conjecture would fail on 21^{⊕k/2} | [Proof](../experiments/w90-layered-deficit/proof.md), [log](../experiments/w90-layered-deficit/log.md); `verify_fibers.py` (all σ, n ≤ 8; n = 9 for (21,21)); exhaustive S_n, n ≤ 12; 1.29·10⁶ paired samples; independent cross-check with W40 `pruned.c` (0 disagreements on 81 240 permutations) | Theorem 1 is the k = 2 transversal case of Jelínek–Karpilovskij (2021) / Burstein–Pantone (2015): no novelty claimed. The strict asymptotic deficit, and with it the disproof of Alon's conjecture, is **open**. Layers of size ≥ 3: inequality conjectural, deficits measured (D/√n ≈ 0.0050, 0.0075, 0.0095, 0.0105 for sizes 3–6) |
+| **W91** | **Strict deficit.** For large n: E LIS(σ_n) − 2·E L₂₁(σ_n) ≥ c·√n/ln n (c = 10⁻⁹⁴). Hence P(σ_n ⊇ 21^{⊕k/2}) → 0 for n ≤ (k²/4)(1 + c′/ln k), while the identity of length k is contained w.h.p. for n ≥ k²/4 + ω(k^{4/3}). **One transposition:** in a unit Poisson process on [0,T]², Σ_p [E LIS − E N(I_p ⊕ 21 ⊕ 1 ⊕ 1 ⋯)] ≥ 10⁻⁸⁰·T. Tools: a planted copy of 3416725 between consecutive points of the leftmost optimal copy produces the 3-point defect fibre; resampling identity (Mecke); first-moment bounds on chains with many small steps; transpositions at random positions so that one optimal copy serves a window of positions | [Proof](../experiments/w91-strict-deficit/proof.md), [log](../experiments/w91-strict-deficit/log.md), [review](../experiments/w91-strict-deficit/out/review-1.md). Gadget lemmas: `gadget_check.py` (7756 plantings, 15 512 injectivity cases, from the fibre definitions) and independent `review/lemma23_containment.py` (47 428 plantings by direct containment). Probabilistic part: proof re-derived by the main session and by an independent reviewer | **Not c₂₁ < 1**: the deficit proved is √n/ln n, not √n; Alon's conjecture for fixed ε is not decided. Constants are not meaningful. Depends on Theorem 1 of W90, the Mecke formula, Baik–Deift–Johansson and Talagrand (Corollary C only). Not refereed; no specialist asked; prior art searched on 10 Nov 2026 only |
+| **W91b** | **c₂₁ < 1.** With ℓ(T) = E L₂₁ of a unit Poisson process on [0,T]²: ℓ(2T) ≤ 2ℓ(T) + 45√(T ln T) and c₂₁T − 200√(T ln T) ≤ ℓ(T) ≤ c₂₁T for large T; with row W91 this gives c₂₁ < 1. **Consequence:** for every fixed ε < c₂₁⁻² − 1, a uniform permutation of length ⌊(1+ε)k²/4⌋ contains 21^{⊕⌊k/2⌋} with probability → 0; so Alon's conjecture (He–Kwan, Conjecture 1.1) fails for small fixed ε | [Proof](../experiments/w91-strict-deficit/proof-c21.md), [review](../experiments/w91-strict-deficit/out/review-2.md), reviewer's code and data in `review2/`. Rate lemma is Alexander's (1994) argument; Talagrand's inequality checked against Alon–Spencer Thm 7.7.1 | **Claim, not externally verified.** Depends entirely on row W91 (Proposition 6.1) and W90 Theorem 1. No effective constant (1 − c₂₁ ≳ 10⁻⁹⁷ at T ≈ 10²⁰¹). Not testable by simulation. Says nothing about universality at C·k² |
 | W28,W35 | Finite missing-pattern moment/witness inequalities; hereditary containment and Erdős–Szekeres | Lean `Witness`, `BlockSplit`, `ErdosSzekeres`, `Axioms`; `lake build` re-run 10 Nov 2026 after removing the September modules | No Poisson containment theorem or asymptotic constant is formalized |
 
 ## Numerical certificates
@@ -141,6 +150,9 @@ python3 experiments/w42-two-exchange/analyze.py
 python3 experiments/w42-two-exchange/verify.py
 python3 experiments/w42-two-exchange/verify_census.py
 make -C output/paper frontier-note
+# W91
+sh experiments/w91-strict-deficit/run_checks.sh
+python3 experiments/w91-strict-deficit/review/lemma23_containment.py selftest
 # W90
 cd experiments/w90-layered-deficit && python3 verify_fibers.py 8 && python3 skew_boards.py
 cc -O2 -o /tmp/exact_dist exact_dist.c && /tmp/exact_dist 9
@@ -176,3 +188,12 @@ independently written `pruned.c` on 81 240 permutations (n up to 10⁶). Paired 
 n = 10³…10⁸, D(n)/√n = 0.002269 ± 0.000036, log–log slope 0.491 ± 0.006. Lean: after removing the September
 modules `Greene`, `Interleaving`, `Lattice` and restoring `Witness`, `Axioms` to their 30 August state, `lake build`
 was re-run (result recorded in SESSION-STATE).
+
+W91 verification (10 November 2026): Lemmas 2.3–2.5 of `experiments/w91-strict-deficit/proof.md` were brute-forced
+by `gadget_check.py`, which recomputes U_α, S_β, the inside sets, boards and fillings from the W90 definitions
+(7756 plantings, all giving the 3-point lens with F = 3, a = 2; 15 512 injectivity cases; 1930 pairs of the
+leftmost optimal copy), and by an independently written program that decides containment directly (47 428
+plantings; 70 144 copy pairs; negative controls fail). The resampling identity (Lemma 3.1) was checked by Monte
+Carlo with a one-point plant and exactly at leading order. Theorems A and B were re-derived line by line by the
+main session and by a reviewer agent that did not write them; the reviewer found no error and its nine remarks on
+under-justified steps were incorporated. The first-moment constants were recomputed (`out/constants.txt`).

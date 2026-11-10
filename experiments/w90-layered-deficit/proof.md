@@ -13,7 +13,7 @@ for every fixed ε > 0) requires c₂₁ ≥ 1.
 | Proposition 4 | Equality in Theorem 1 when α or β is empty; smallest defect is a 3-point lens with conditional weight 1/3; first discrepancy for 21^{⊕3} vs 123456 is exactly one permutation at n = 9 | **Proved** / exhaustively verified |
 | Numerical finding | E⌊LIS/2⌋ − E L₂₁ = (0.00113 ± 0.00002)·√n for n = 10³ … 10⁸, i.e. **c₂₁ ≈ 0.99887 < 1** | **Numerical** (1.29·10⁶ paired samples, plus 8.1·10⁴ from an independent program and RNG); not a proof |
 | Consequence | If c₂₁ < 1 then Alon's conjecture is false: 21^{⊕k/2} needs n ≥ k²/(4c₂₁²) ≈ 1.0023·k²/4 | Conditional on the numerical finding |
-| Open | Rigorous proof that liminf (E⌊LIS/2⌋ − E L₂₁)/√n > 0 | **Open** — reduced in §4 to positivity of an explicit non-negative local quantity |
+| Open | Rigorous proof that liminf (E⌊LIS/2⌋ − E L₂₁)/√n > 0 | **Open** — reduced in §4 to positivity of an explicit non-negative local quantity. Partial result (W91, `../w91-strict-deficit/proof.md`): E LIS − 2·E L₂₁ ≥ c·√n/ln n is proved |
 
 Prior art for the inequality: Bóna (|Av_n(1234)| < |Av_n(1324)|, n ≥ 7); Burstein–Pantone, *Two examples of
 unbalanced Wilf-equivalence* (1234 ∼ {1324, 3416725}), arXiv:1402.3842; Jelínek–Karpilovskij, *Fillings of skew

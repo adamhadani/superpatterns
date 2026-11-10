@@ -1,5 +1,10 @@
 # W90 — plan for a rigorous proof of c₂₁ < 1 (NOT a proof)
 
+> **Superseded on 10 November 2026 by `../w91-strict-deficit/proof.md`**, which proves the single-swap statement
+> and E LIS − 2·E L₂₁ ≥ c·√n/ln n with a simpler gadget (seven points of type 3416725 between consecutive copy
+> points; no runs, no upper bound on the area), settles (E2) for fat pairs and states the remaining gap as
+> hypothesis (H). This file is kept as the record of the two earlier attempts.
+
 Status: **plan and partial reductions only.** Nothing in this file is claimed as a theorem except where it
 restates `proof.md`. It records how far the attempt of 10 November 2026 got and exactly what is missing, so that
 the next session does not have to rediscover it.

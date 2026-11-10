@@ -1,0 +1,1 @@
+mecke: T=4.0 samples=40000 seed=17: E#(one point inside) = 1.6427 +- 0.0076 ; E sum area over empty = 1.6454 +- 0.0040 ; difference -0.0027 +- 0.0092

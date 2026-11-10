@@ -44,6 +44,22 @@ Routes, in order of expected tractability:
  windows (E2). Next step: write the single-swap theorem in full and test the planted gadget by simulation; then
  read Cator–Groeneboom / Pimentel for (E1) or ask a specialist.
 
+ Progress, 10 Nov, afternoon (W91, `experiments/w91-strict-deficit/proof.md`): route (c) is a theorem (one
+ transposition costs a constant on average), and route (b) gives **E LIS − 2 E L₂₁ ≥ c·√n/ln n** — proved, with
+ transpositions about 45 ln T blocks apart. The gadget needs no runs and no upper bound on the area: seven
+ points of type 3416725 between two consecutive points of the leftmost optimal copy. Randomising the position of
+ each transposition lets one optimal copy serve a whole window of positions. What remains for c₂₁ < 1 is
+ hypothesis (H) of that file (§7): a bounded window of steps of the optimal copy at a prescribed level contains a
+ step of non-negligible area with probability ≥ ½. (E2) is settled for fat pairs; (E1), or a statement on the
+ environment seen from a geodesic started at the best point of an independent staircase, is the missing input.
+ Next step: read Cator–Groeneboom, Cator–Pimentel and Martin–Sly–Zhang-type results against (H), or ask a
+ specialist; the two untried elementary ideas are in W91 `log.md` §10.
+
+ **10 Nov, evening: D1 is closed on paper without (H)** (`experiments/w91-strict-deficit/proof-c21.md`). A rate of
+ convergence for the superadditive mean, c₂₁T − 200√(T ln T) ≤ E L₂₁(P_T) ≤ c₂₁T, turns the deficit T/ln T into
+ c₂₁ < 1. Priorities now: (1) human verification of W90 Thm 1 → W91 Prop. 6.1 → proof-c21; (2) an effective
+ constant via (H); (3) D2–D4 below (larger layers, the true threshold constant, universality at C·k²).
+
  Stop criterion: do not claim the disproof from numerics; do not accept a "density of defects" argument that
  ignores the global condition that the *whole* marginal region is inversion-free.
 

@@ -68,3 +68,24 @@ no literature-priority claim or new asymptotic bound is asserted for W42.
 | Equality when α or β is empty | Backelin–West–Xin (I_k ⊕ τ ∼ J_k ⊕ τ) | Known; the k = 2 case has a three-line direct proof |
 | c₂₁ ≤ 1 and L₂₁ ≤_st ⌊LIS/2⌋ | No source located | Immediate corollary of the above; the asymptotic formulation for random permutations was not found in searches (10 Nov 2026) |
 | Numerical c₂₁ ≈ 0.99887 and the bearing on Alon's conjecture | [arXiv:2608.19050](https://arxiv.org/abs/2608.19050) states the dichotomy "online and offline have different extremisers, or Alon's conjecture fails" | No prior numerical or rigorous statement that a layered pattern beats the identity offline was found. Unpublished work may exist; a specialist should be asked before any announcement |
+
+## Continuation: W91 (10 November 2026, afternoon)
+
+| Topic | Primary comparison | Assessment |
+|---|---|---|
+| E LIS − 2·E L₂₁ ≥ c·√n/ln n; 2 1 4 3 ⋯ not contained for n ≤ (k²/4)(1 + c′/ln k) | [He–Kwan](https://arxiv.org/abs/1911.12878) and the survey literature state Alon's conjecture with the identity as the only known obstruction; [arXiv:2608.19050](https://arxiv.org/abs/2608.19050) raises the possibility that the identity is not extremal offline | No prior statement that a specific pattern has a strictly larger containment threshold than the identity was found (three web searches, 10 Nov 2026: layered patterns / 2143 and LIS thresholds; Alon's conjecture and lower bounds from specific patterns; Burstein–Pantone and random permutations). Prior best in this repository: the non-strict Corollary 2 of W90. Improvement: from "≥ 0" to √n/ln n. Unpublished work may exist; no specialist was asked |
+| Planted configuration 3416725 | [Burstein–Pantone](https://arxiv.org/abs/1402.3842): 1234 ∼ {1324, 3416725} | The gadget is their pattern; its use inside a resampling (Mecke) identity along an optimal copy is, as far as checked, new. No claim beyond that |
+| One transposition costs a constant (Theorem A) | Enumerative literature on 1324 vs 1234 (Bóna; Burstein–Pantone) concerns exact counts, not random permutations at the LIS scale | Not found. The statement is elementary once the gadget is available |
+| Tools | Bivariate Mecke formula ([Last–Penrose, Thm 4.4](https://stoch.math.kit.edu/img/Last/lastpenrose2017.pdf)); Talagrand's inequality; Baik–Deift–Johansson | Standard; the Alon–Spencer theorem number for Talagrand's inequality was not checked against the book and is cited by section only |
+
+The searches were shallow relative to the claim. Before any external announcement: ask a specialist in
+last-passage percolation or permutation patterns, and search for "universality threshold" lower bounds in the
+2024–2026 arXiv listings (math.CO, math.PR).
+
+## Continuation: W91 part 2 (10 November 2026, evening)
+
+| Topic | Primary comparison | Assessment |
+|---|---|---|
+| c₂₁ < 1; failure of Alon's conjecture for small fixed ε | [He–Kwan](https://arxiv.org/abs/1911.12878), Conjecture 1.1 (statement confirmed); searches for a proof or disproof dated 2020–2026 by the main session and by the reviewer | Nothing found. If the proofs are correct this is new. The searches were brief; unpublished work may exist |
+| Rate of convergence of a superadditive mean (Lemma R) | [Alexander 1994](https://www.projecteuclid.org/euclid.aoap/1177004903), Ann. Appl. Probab. 4, 1074–1082: γn − C√(n log n) ≤ E L_n ≤ γn for the longest common subsequence; Rhee 1995, Ann. Appl. Probab. 5, 44–48 | **Not new**: the same argument, adapted to L₂₁ in a Poisson square. Bollobás–Brightwell 1992 (Ann. Appl. Probab. 2, 1009–1018) is confirmed only as a concentration result |
+| Talagrand's inequality | Alon–Spencer, *The Probabilistic Method*, 4th ed. (2016), Theorem 7.7.1 — statement checked against the book | Standard |

@@ -1,0 +1,1 @@
+plant: n=24 trials=1500 seed=14: 2649 plantings on pairs with (O1)-(O4) (1533 with a pattern containing 21-blocks); lens (N=3, F=3, a=2) at (p,b)=(ell(e)+s+1, h(x)+1) in 2649; injectivity checked in 5298 (stage, s) cases, 2860 pairs with (O1)-(O6), all on distinct lens levels; 1726 cases where dropping (O5),(O6) gives extra pairs

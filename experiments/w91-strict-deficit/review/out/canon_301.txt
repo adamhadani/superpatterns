@@ -1,0 +1,1 @@
+canon: seed=301 trials=3000: 70144 consecutive pairs (z_i, z_i+1) of the leftmost optimal copy; chain + empty rectangle + (O1)-(O6) for s=0,1 hold in 70144; empty G_i: 0; skipped (N < T0+2): 1968

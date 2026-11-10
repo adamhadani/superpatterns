@@ -10,8 +10,10 @@ certificate status and the next research queue. `log.md` preserves chronology;
 `proof.md` gives the current argument where reviewed. Files marked historical
 may contain withdrawn claims and must not be used as current proof status.
 
-**Featured:** [W90](w90-layered-deficit/proof.md) — block-flip theorem, c₂₁ ≤ 1, and the numerical evidence that
-c₂₁ < 1; [plan for the strict inequality](w90-layered-deficit/strict-deficit-plan.md). Also
+**Featured:** [W91, part 2](w91-strict-deficit/proof-c21.md) — c₂₁ < 1, so Alon's conjecture fails for small fixed
+ε (complete proof, AI-written and AI-reviewed, not yet checked by a human);
+[W91](w91-strict-deficit/proof.md) — E LIS − 2·E L₂₁ ≥ c·√n/ln n, so 2 1 4 3 ⋯ is strictly harder than the identity; [W90](w90-layered-deficit/proof.md) — block-flip theorem, c₂₁ ≤ 1, and the numerical
+evidence that c₂₁ < 1. Also
 [W40's exact repeated-21 frontier](w40-c21-frontier/report.md) with its [standalone PDF](../output/pdf/repeated-21-frontier.pdf).
 The [current strategy](../memory/ALON-STRATEGY.md) sets the research priorities.
 
@@ -64,3 +66,4 @@ The [current strategy](../memory/ALON-STRATEGY.md) sets the research priorities.
 
 
 | [w90-layered-deficit](w90-layered-deficit/) | Layered patterns vs the identity: block-flip theorem, exact deficit identity, paired simulations | **Proved:** replacing a block 12 by 21 in a direct sum never increases containment; hence $L_{21} \le_{st} \lfloor \mathrm{LIS}/2 \rfloor$ and $c_{21} \le 1$. **Numerical:** $\mathbb{E}\lfloor \mathrm{LIS}/2\rfloor - \mathbb{E} L_{21} = (0.00113 \pm 0.00002)\sqrt{n}$ for $n = 10^3 \dots 10^8$, i.e. $c_{21} \approx 0.99887 < 1$, which would refute Alon's sharp conjecture; larger layers have larger deficits. Strict asymptotic deficit not proved |
+| [w91-strict-deficit](w91-strict-deficit/) | Strict form of W90: planted 3416725 gadgets, resampling identity, first-moment bounds | **Proved:** $\mathbb{E}\,\mathrm{LIS}(\sigma_n) - 2\,\mathbb{E} L_{21}(\sigma_n) \ge c\sqrt{n}/\ln n$; hence $2\,1\,4\,3\cdots$ of length $k$ is w.h.p. not contained for $n \le (k^2/4)(1 + c'/\ln k)$; one adjacent transposition at a typical position costs a constant. Gadget lemmas brute-forced by two independent programs; one independent reading; not refereed. **Part 2 (`proof-c21.md`):** $c_{21} < 1$ via $c_{21}T - 200\sqrt{T\ln T} \le \mathbb{E}L_{21}(P_T) \le c_{21}T$; hence a uniform permutation of length $(1+\varepsilon)k^2/4$ w.h.p. misses $2\,1\,4\,3\cdots$ for small fixed $\varepsilon$. Second independent review, numerical checks of the cutting inequality; not checked by a human. **Open:** an effective constant (hypothesis (H) of proof.md §7) |

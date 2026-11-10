@@ -1,0 +1,5 @@
+canonplant: seed=401 trials=300: 14024 plantings into steps of the leftmost optimal copy (9616 with 21-blocks in the pattern); 97s
+  (p, b) = (i+s+1, N-i+1): 14024/14024;  N of the planted configuration = N+s+4: 14024/14024
+  (O1)-(O6) still hold after planting (Lemma 2.2 for all six conditions): 14024/14024
+  (i), (ii), inside set, board all as in Lemma 2.3: 14024/14024
+  |G_(p,s)| = 1 exactly: 14024/14024;  lens levels = {b}: 14024/14024
