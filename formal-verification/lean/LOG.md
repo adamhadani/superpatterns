@@ -176,3 +176,64 @@ New module `Superpatterns/Interleaving.lean` (imported in `Superpatterns.lean` a
 | `two_blocks_len_le` | Two disjoint valid blocks satisfy $b_1.\mathrm{len} + b_2.\mathrm{len} \le k$ |
 
 Full `lake build`: 8,720 jobs, 0 errors, 0 `sorry`s.
+
+## 2026-11-10 (W90/W91): block-flip instances, verified containment test
+
+New module `Superpatterns/BlockFlip.lean` (imported in `Superpatterns.lean`, audited in `Superpatterns/Axioms.lean`),
+no `sorry`. **The block-flip theorem itself (W90 Theorem 1) is not proved**; it is stated as `BlockFlipStatement` and
+only finite instances are certified. Feasibility of a full formalisation: `BLOCKFLIP-PLAN.md` (assessment only).
+
+| part | content | checked by |
+|---|---|---|
+| containment test | `IsoPairs`, `compat`, `search` (structural recursion on the host), `search_iff`, `ordIso_iff_isoPairs`, `containsB`, **`containsB_iff : containsB σ π = true ↔ Contains σ π`** (sound and complete, no hypotheses), `instDecidableContains` | kernel |
+| counting | `countB base π` (over `List.permutations'`), `card_perm_contains`, `numContaining n π := Nat.card {σ // σ ~ [1..n] ∧ Contains σ π}`, `numContaining_eq`, `card_Perms_contains` (same for `Perms n` of `Witness.lean`) | kernel |
+| direct sum | `dsum` (`α ⊕ₚ β := α ++ β.map (· + α.length)`), `length_dsum`, `nil_dsum`, `dsum_nil`, `dsum_assoc`, `dsum_lt`, `dsum_perm` | kernel |
+| explicit permutations | `perm3416725_mem`, `_contains_1234`, `_avoids_1324`; `perm145278369_mem`, `_contains_123456`, `_avoids_124356`, `_eq_dsum` (= 1 ⊕ 3416725 ⊕ 1) | kernel |
+| counts | `count_π_n` for the 11 patterns 1234, 1324, 12345, 12435, 13245, 21345, 21435, 123456, 124356, 213465, 214365 and n = 7, 8, 9 | n = 7: kernel; n = 8: kernel for 1234, 1324, `native_decide` for the other nine; n = 9: `native_decide` |
+| 1234 vs 1324 | `count_1234_eq_count_1324_of_le_6`, `count_1234_sub_count_1324_7` (+1), `_8` (+26), `_9` (+417) | kernel for n ≤ 8, `native_decide` for n = 9 |
+| 123456 vs 124356 | `count_123456_eq_count_124356_of_le_8`, `count_123456_sub_count_124356_9` (+1) | kernel for n ≤ 7, `native_decide` for n = 8, 9 |
+| block-flip instances | `BlockFlipAt`, `BlockFlipAt.of_counts`, `blockFlip_α_β_n` (two exact counts) and `blockFlipAt_α_β_n` (inequality) for (α, β) ∈ {(1,1), (12,1), (1,12), (21,1), (12,12), (21,21)}, n = 7, 8, 9 | as the counts they use |
+| sweep | `sweepB`, `blockFlipAt_of_sweepB`, `blockFlipAt_of_le_2_of_le_8` (all α, β of size ≤ 2, all n ≤ 8) | `native_decide` |
+
+Exact counts (21-version, 12-version) at n = 7 / 8 / 9: (1,1): 2278, 2279 / 24527, 24553 / 268104, 268521;
+(12,1), (1,12), (21,1): 458, 458 / 6995, 6996 / 101027, 101072; (12,12), (21,21): 37, 37 / 891, 891 / 18042, 18043.
+All values agree with an independent brute-force program (Python, different search order, written before the Lean
+counts were run; 75 s for n ≤ 9) and with W90 §5 where that reports them (1 and 26 for 1234/1324; 1 at n = 9).
+
+### Axiom audit (from `Axioms.lean`)
+
+* `[propext, Classical.choice, Quot.sound]` only: `containsB_iff`, `numContaining_eq`, `card_Perms_contains`,
+  `blockFlipAt_of_sweepB`, `perm3416725_contains_1234`, `perm3416725_avoids_1324`, `perm145278369_contains_123456`,
+  `perm145278369_avoids_124356`, `count_1234_eq_count_1324_of_le_6`, `count_1234_sub_count_1324_7`,
+  `count_1234_sub_count_1324_8`, `blockFlip_*_7` (six), `blockFlip_1_1_8`; `dsum_perm`: `[propext, Quot.sound]`.
+* Standard axioms plus two `count_π_n._native.native_decide.ax_1_1` axioms (one per count used):
+  `count_1234_sub_count_1324_9`, `count_123456_eq_count_124356_of_le_8` (the two n = 8 counts),
+  `count_123456_sub_count_124356_9`, `blockFlip_{12_1, 1_12, 21_1, 12_12, 21_21}_8`, `blockFlip_*_9` (six).
+* `blockFlipAt_of_le_2_of_le_8`: standard axioms plus its own `native_decide` axiom.
+
+### Build times (wall clock, this machine, load average 8–12 from other jobs)
+
+* `Superpatterns/BlockFlip.lean`: **256 s and 265 s** (two runs); full `lake build`: 273 s and 280 s, 8720 jobs,
+  0 errors, 0 warnings; peak resident memory 12.4 GB (5.7 GB of it is the memory-mapped Mathlib import).
+* Per certificate, beyond the import: kernel count at n = 7 about 2.5 s; kernel count at n = 8 about 21 s and
+  5.5 GB; `native_decide` count at n = 8 under 1 s, at n = 9 about 7–13 s; the sweep about 6 s.
+
+### What did not work, or was not kept
+
+* **Kernel evaluation at n = 9** (`decide +kernel` on `count_123456_9`): 22.7 GB resident after 77 s; killed.
+* **Kernel evaluation of all eleven n = 8 counts**: works (first full build: module 479 s, peak 13.1 GB) but was
+  reduced to 1234 and 1324 to keep build time and memory down. Any `count_π_8` can be switched back by replacing
+  `native_decide` with `decide +kernel`.
+* A search with length pruning (stop when fewer host entries remain than pattern entries) was *slower* under the
+  kernel (33 s against 26 s for one n = 8 count, more memory), and a `compat` written with `Nat.blt` and `xor`
+  gained only 15%. The simple `search` was kept; kernel time is not dominated by the number of search nodes.
+* Sweep over all α, β of size ≤ 3, n ≤ 8 (`sweepB 3 8`, 100 pairs): passes, but takes 250 s; only `sweepB 2 8` is
+  in the module.
+* `native_decide` is interpreted here (no `precompileModules`), which is still enough for n = 9.
+
+### Commands
+
+```
+lake build Superpatterns.BlockFlip     # the module alone
+lake build                             # everything, prints the axiom audit
+```

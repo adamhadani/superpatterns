@@ -5,7 +5,8 @@ Research notes on permutations that contain every pattern of length $k$, by **Ad
 A permutation is a *$k$-superpattern* if it contains all $k!$ patterns of length $k$; $\mathrm{sp}(k)$ is the least
 length of one. Alon conjectured that a uniform random permutation of length $(1+\varepsilon)k^2/4$ is a
 $k$-superpattern with high probability, for every fixed $\varepsilon > 0$. The best published bound is
-$2000\,k^2\log\log k$ ([He–Kwan 2020](https://arxiv.org/abs/1911.12878)).
+$2000\,k^2\log\log k$ ([He–Kwan 2020](https://arxiv.org/abs/1911.12878)); a preprint of October 2026
+([Chen–Wang, arXiv:2610.13530](https://arxiv.org/abs/2610.13530), not yet refereed) announces $32k^2$.
 
 ## Status (10 November 2026)
 
@@ -38,10 +39,14 @@ claim to be verified, not as an established result. What is and is not proved:
   If so, a random permutation needs length about $1.0023\,k^2/4$ to contain $2\,1\,4\,3\,\cdots$, and Alon's
   conjecture fails for $\varepsilon < 0.0023$. Larger decreasing layers show larger gaps (about $1.4\%$ for layers of
   size 12).
+- **For referees.** Start with the self-contained note
+  [output/pdf/layered-refutation.pdf](output/pdf/layered-refutation.pdf) (16 pages: the full chain from the
+  block-flip theorem to $c_{21} < 1$, with a record of what has been machine-checked).
 - **Open.** (i) Independent verification of the two W91 proofs by a specialist. (ii) An effective bound: a
   deficit of order $\sqrt n$ with an explicit constant, reduced to one local estimate on the first steps of optimal
   copies ([W91 §7](experiments/w91-strict-deficit/proof.md)). (iii) The true threshold constant, and whether a
-  random permutation of length $Ck^2$ is a $k$-superpattern for some absolute $C$ (best known: $k^2\log\log k$).
+  random permutation of length $Ck^2$ is a $k$-superpattern for some absolute $C$ (published: $k^2\log\log k$;
+  announced in the Chen–Wang preprint: $32k^2$, which is consistent with the claim above).
 
 An earlier version of this README (September 2026) announced proofs of universality at $Ck^2$, of the sharp
 threshold for bounded-LDS classes and of $c_{21} = 1$. Those claims were withdrawn after a line-by-line audit
@@ -64,9 +69,10 @@ threshold for bounded-LDS classes and of $c_{21} = 1$. Those claims were withdra
 | $c_{21} < 1$ | A uniform permutation of length $(1+\varepsilon)k^2/4$ w.h.p. does not contain $2\,1\,4\,3\cdots$, for small fixed $\varepsilon$ (contradicts Alon's conjecture as stated) | Proof from the strict deficit and a rate-of-convergence lemma; two AI reviews; cutting inequality tested on 3,300 samples; **not checked by a human** | [W91, part 2](experiments/w91-strict-deficit/proof-c21.md) |
 | Strict deficit | $\mathbb{E}\,\mathrm{LIS} - 2\,\mathbb{E}L_{21} \ge c\sqrt n/\ln n$; $2\,1\,4\,3\cdots$ not contained for $n \le (k^2/4)(1+c'/\ln k)$; one transposition costs a constant on average | Proof; gadget lemmas brute-forced (7,756 and 47,428 random plantings, two programs); independent reading; not refereed | [W91](experiments/w91-strict-deficit/) |
 
-The block-flip inequality is the size-2 transversal case of a theorem of
-[Jelínek and Karpilovskij](https://arxiv.org/abs/2002.12308) (see also
-[Burstein–Pantone](https://arxiv.org/abs/1402.3842)); no novelty is claimed for it. What appears to be new is its
+The block-flip inequality is, after reversing permutations, the size-2 transversal case of the skew shape
+conjecture, proved by Jelínek (2008 thesis) and independently by
+[Burstein–Pantone](https://arxiv.org/abs/1402.3842); see
+[Jelínek–Karpilovskij](https://arxiv.org/abs/2002.12308), Theorem 2.5. No novelty is claimed for it. What appears to be new is its
 asymptotic consequence for random permutations, its strict form (W91) and its bearing on Alon's conjecture; no
 prior statement was found in the searches recorded in [memory/priority-check.md](memory/priority-check.md), and a
 specialist has not yet been asked. Exact scopes, quantifiers and
@@ -80,7 +86,10 @@ withdrawn claims are in [memory/RESULTS.md](memory/RESULTS.md).
   note `repeated-21-frontier.md`. Build with `make -C output/paper pdf`; `make -C output/paper check` must print `0`.
 - `formal-verification/lean/` — Lean 4 / Mathlib: pattern containment, a verified superpattern checker with the
   $k = 7, 8$ certificates, the finite counting theorem A with its numeric certificate, finite moment inequalities,
-  block splitting and Erdős–Szekeres. Nothing about random permutations containing all patterns is formalized.
+  block splitting and Erdős–Szekeres, and (`BlockFlip.lean`) machine-checked small instances of the block-flip
+  theorem: exact counts over $S_n$ for $n \le 9$ and the inequality for all $\alpha, \beta$ of size $\le 2$, $n \le 8$.
+  The general block-flip theorem and everything probabilistic are not formalized; `BLOCKFLIP-PLAN.md` estimates
+  what a formalization of the combinatorial core would take.
 - `memory/` — `SESSION-STATE.md` (current state), `RESULTS.md` (ledger), `AUDIT-2026-11-10.md`,
   `ALON-STRATEGY.md` (research plan).
 

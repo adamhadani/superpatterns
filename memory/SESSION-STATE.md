@@ -23,7 +23,9 @@ Read this first, then [AUDIT-2026-11-10.md](AUDIT-2026-11-10.md), [ALON-STRATEGY
 * Still **open**: an effective version (deficit ≥ c√n with a usable constant), i.e. removing the ln n directly.
   W91 §7 reduces it to hypothesis (H): a window of boundedly many consecutive steps of the leftmost optimal copy,
   at a prescribed level, contains a step whose rectangle has area ≥ a with probability ≥ ½.
-* Universality at C·k² for all patterns (removing He–Kwan's log log k) is **open** and untouched.
+* Universality at C·k² for all patterns (removing He–Kwan's log log k) is untouched here. A preprint of Oct 2026
+  (Chen–Wang, arXiv:2610.13530, unrefereed, AI-found proof per its abstract) announces 32k²; not read, not verified
+  here. It is consistent with c₂₁ < 1.
 
 ## Verified in this session (norm 1)
 
@@ -63,7 +65,8 @@ Jelínek–Karpilovskij 2021 / Burstein–Pantone 2015 in pattern language — n
 3. Which layered pattern is hardest? D/√n is still increasing at layer size 16 (0.012, 0.0135, 0.014, 0.017 for
    sizes 8, 10, 12, 16 at n = 10⁵); the large-layer limit should be a KPZ-scale constant times d^{−2/3}. A faster
    algorithm is needed beyond size 16.
-4. Universality at C·k²: no progress; W9/W13/W15 remain the honest state.
+4. Universality at C·k²: no progress here; W9/W13/W15 remain this repository's state. See Chen–Wang,
+   arXiv:2610.13530 (32k² announced). Reading it against W9 Theorem 8 would be a useful independent check.
 
 ## Clean-up done on 10 November 2026
 
@@ -92,6 +95,30 @@ Jelínek–Karpilovskij 2021 / Burstein–Pantone 2015 in pattern language — n
   `Alexander94`, `Rhee95`, `AlonSpencer16` added to `references.bib`.
 * Not committed at the time of writing unless `git log` shows a W91 commit. Nothing pushed; the public GitHub
   README still shows the withdrawn September claims.
+
+## Added on 10 November 2026 (night): referee package
+
+* `output/paper/layered-refutation.md` → `output/pdf/layered-refutation.pdf` (`make -C output/paper refutation-note`):
+  13-page self-contained note with only the disproof chain, one planted pattern (3416725), deficit
+  T/(ln T)² (enough for Theorem 1), dependency list, verification table. **This is the file to give a referee.**
+* `experiments/w91-strict-deficit/out/citation-audit.md`: every citation checked against primary sources;
+  corrections applied (block-flip attribution: Jelínek thesis / Burstein–Pantone, not Jelínek–Karpilovskij;
+  Chen–Wang preprint cited; Arratia Conjecture 3 and He–Kwan Conjecture 5.3 added; Alexander vs
+  Lember–Matzinger–Torres for the rate lemma).
+* Cold reads of the note: `out/review-3-note.md` (first version: no error, 14 small gaps, notation) and
+  `out/review-4-note.md` (rewritten version: no error; one wrong cross-reference and remaining symbol clashes,
+  all fixed). The last notation/wording pass after review 4 has not been re-read by a reviewer.
+* Note rewritten after review 3: section-based numbering, cleaned notation, simplified tie-breaks (O5), (O6)
+  (re-derived; `gadget_check.py strict`: 1922 copy pairs, 2365 plantings, 4730 uniqueness cases), two-sided
+  threshold (Corollary 1.3), AI declaration after the abstract, concluding remarks, verification appendix. 17 pages.
+* `related-work.md`: comparison with He–Kwan and Chen–Wang (opposite directions; bracket (1+ε₀)/4 ≤ C* ≤ 32).
+* Lean: `formal-verification/lean/Superpatterns/BlockFlip.lean` — containment checker proved sound and complete
+  (`containsB_iff`), direct sums, the two explicit permutations, exact counts on S₇, S₈, S₉ for six (α, β)
+  (1234 vs 1324: differences 1, 26, 417; 123456 vs 124356: 0, 0, 1), and the inequality for all α, β of size ≤ 2,
+  n ≤ 8. Kernel-only for n = 7 and for 1234/1324 at n = 8; `native_decide` otherwise. `lake build`: 8720 jobs,
+  0 errors, no `sorry` (re-run by the main session). The counts agree with the known |Av_n(1234)|, |Av_n(1324)|.
+  `BLOCKFLIP-PLAN.md`: full formalisation of Theorem 1 ≈ 1500–2200 lines; the Poisson part is out of reach.
+* The notes paper §6.3 now states the results and points to the note (24 pages, `make check` 0).
 
 ## Jobs
 

@@ -19,7 +19,10 @@ Prior art for the inequality: Bóna (|Av_n(1234)| < |Av_n(1324)|, n ≥ 7); Burs
 unbalanced Wilf-equivalence* (1234 ∼ {1324, 3416725}), arXiv:1402.3842; Jelínek–Karpilovskij, *Fillings of skew
 shapes avoiding diagonal patterns*, DMTCS 22:2 (2021), arXiv:2002.12308 (for every skew shape, #fillings avoiding
 δ₂ = #fillings avoiding ι₂ and φ_D; they conjecture the analogous inequality for chains of every size k and note
-it is known only for k ≤ 2). Theorem 1 is the transversal case k = 2 in the language of patterns; the short proof
+it is known only for k ≤ 2). Correction (citation audit, 10 Nov 2026): the transversal case k = 2 is not a theorem of that paper; it is due
+to Jelínek (2008 thesis) and independently Burstein–Pantone (Lemmas 1.4, 1.5), and is quoted by
+Jelínek–Karpilovskij as their Theorem 2.5; their own k = 2 result (Theorem 2.6) extends it to 01-fillings.
+Theorem 1 is, after reversing permutations, that transversal case in the language of patterns; the short proof
 below is self-contained. Backelin–West–Xin (I_k ⊕ τ ∼ J_k ⊕ τ) gives the equality case. No priority is claimed for
 Theorem 1. I found no prior statement of the asymptotic consequence for random permutations or of its relevance
 to Alon's conjecture (searches 10 Nov 2026; see log.md).
