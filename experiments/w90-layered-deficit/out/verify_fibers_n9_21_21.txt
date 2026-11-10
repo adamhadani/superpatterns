@@ -1,0 +1,11 @@
+alpha=(2, 1) beta=(2, 1)
+  n=1: contains 12-version 0, 21-version 0, difference 0 = sum over 1 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=2: contains 12-version 0, 21-version 0, difference 0 = sum over 2 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=3: contains 12-version 0, 21-version 0, difference 0 = sum over 6 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=4: contains 12-version 0, 21-version 0, difference 0 = sum over 24 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=5: contains 12-version 0, 21-version 0, difference 0 = sum over 120 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=6: contains 12-version 1, 21-version 1, difference 0 = sum over 719 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=7: contains 12-version 37, 21-version 37, difference 0 = sum over 5003 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=8: contains 12-version 891, 21-version 891, difference 0 = sum over 39429 fibres of (a-1); defect fibres (inside pts, #fillings, a): {}
+  n=9: contains 12-version 18043, 21-version 18042, difference 1 = sum over 344837 fibres of (a-1); defect fibres (inside pts, #fillings, a): {(3, 3, 2): 1}
+ALL CHECKS PASSED

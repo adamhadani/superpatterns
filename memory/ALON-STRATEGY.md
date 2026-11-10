@@ -1,5 +1,72 @@
 # Research strategy: prove or disprove Alon's random-superpattern conjecture
 
+## 0. Revised strategy — 10 November 2026 (supersedes the ordering below)
+
+**Change of target.** W90 shows c₂₁ ≤ 1 rigorously and c₂₁ ≈ 0.99887 numerically (deficit ∝ √n over five decades,
+two independent programs). The working hypothesis is now that **the sharp conjecture is false** and that the
+identity is *not* the hardest pattern: every interior 21 block (more generally every interior decreasing layer)
+costs a fixed positive amount. Sections 1–5 below were written under the opposite hypothesis; §2 ("repeated-pattern
+obstruction") was the right instinct, §5 (generic bulk at ¼) is retracted (see the audit).
+
+### D1. Rigorous disproof: prove liminf (E⌊LIS/2⌋ − E L₂₁)/√n > 0   — top priority
+
+What is in hand (W90): the exact identity
+  E⌊LIS/2⌋ − E L₂₁ = Σ_{stages} E[(a − 1)/F],
+each term ≥ 0, where a stage is one flip 12 → 21 with prefix α and suffix β, F is the number of valid fillings of
+the skew region U_α ∩ S_β given the outside points, and a the number of those without a D-inversion. The smallest
+contributing fibre is a 3-point lens (weight 1/3), and a fibre with an *isolated* 3-point lens contributes at
+least ½·P(21-version avoided | fibre).
+
+Routes, in order of expected tractability:
+
+ (a) *Near-maximiser tightness.* Flip from the south-west end, so that S is a Hammersley region of fresh Poisson
+     points in U. Show: with probability ≥ p₀, the set of fresh points within two levels of the maximum of
+     h(z) = LIS(NE(z)) on U has at most N₀ points. Then a finite-energy resampling inside a bounded window around
+     the maximiser produces a defect lens at bounded cost. Needs: a local description of ∂U (it has an outer
+     corner between any two consecutive minimal points, which is all the lens needs) and an O(1) bound on the
+     number of near-maximal starting points. Test numerically first: measure the empirical law of the number of
+     points in the top two levels at each stage, and the frequency of isolated defect lenses; the product should
+     reproduce 0.00114 per pair.
+ (b) *Sparse swaps.* By Theorem 1 it is enough to beat the benchmark for ANY pattern with fewer 21 blocks, e.g.
+     the identity with one adjacent transposition every 2K places. Between swaps the thresholds evolve by the
+     Hammersley rule; show the composite particle's output relaxes to the stationary Poisson structure
+     (Mountford–Prabhakar type statement for tandem queues) and compute the single-defect cost in the stationary
+     system, where both fronts are Hammersley lines and the Burke/Cator–Groeneboom structure is explicit.
+ (c) *Single swap, exact.* For I_a ⊕ 21 ⊕ I_b both regions are Hammersley regions of the same Poisson process (one
+     from each corner). Compute or bound lim Σ_b E[(a−1)/F] directly; this is a statement about pure LIS geometry
+     and may be accessible through known determinantal structure.
+
+ Progress on (a)/(b), 10 Nov: `experiments/w90-layered-deficit/strict-deficit-plan.md` gives an explicit gadget
+ (a planted 3-point lens plus a short run in the cell of a good notch) that makes a stage contribute exactly 1/3,
+ and reduces everything to a "start regularity" lemma; the lemma is not proved.
+
+ Stop criterion: do not claim the disproof from numerics; do not accept a "density of defects" argument that
+ ignores the global condition that the *whole* marginal region is inversion-free.
+
+### D2. Size-≥3 layers and the hardest layered pattern
+
+Prove P(⊇ α⊕J_d⊕β) ≤ P(⊇ α⊕I_d⊕β) for d ≥ 3 (transversal case of the Jelínek–Karpilovskij conjecture); the fibre
+argument reduces it to: in every skew board, #fillings without an increasing d-chain ≤ #fillings without a
+D-decreasing d-chain. Numerically the deficit per unit length increases from d = 2 to d = 16 (0.0023 → 0.017 in
+D/√n). Determine the maximiser; for d → ∞ the per-layer cost should scale like d^{1/3} (KPZ), so the relative
+deficit must eventually decrease. The best lower bound on the true universality constant C* is the largest
+layered threshold.
+
+### D3. What replaces the conjecture?
+
+(i) Is sup over patterns of the single-pattern threshold attained by layered patterns? (ii) Is universality true
+at C*·k² with that C*? (iii) Independently of the constant: universality at C·k² for some C (remove He–Kwan's
+log log k). W9/W13/W15 are the honest starting points; nothing from W43–W89 can be reused without a new proof.
+
+### D4. Bookkeeping that follows from the audit
+
+Done on 10 November 2026 (paper rewritten, withdrawn preprint and September Lean modules removed, workstreams
+archived). Remaining: an outside specialist reading before anything is announced.
+
+---
+
+*The text below is the strategy of 10–24 September, kept for reference.*
+
 Updated 10 September 2026. This queue supersedes the publication-first ordering
 in earlier session notes. The user prioritizes progress on the conjecture.
 The [current ledger](RESULTS.md) separates established results from candidates.
@@ -160,74 +227,7 @@ from that deliverable to the conjecture.
 
 ---
 
-## 5. The Generic Bulk at Sharp 1/4 Frontier (Updated 24 September 2026)
+## 5. (removed)
 
-### State of the Art
-1. **Unconditional Quadratic Universality at $C_0 k^2$ (PROVED):**
-   Theorem 1.2 proves that a random permutation of length $n = C_0 k^2$ ($C_0 \approx 9.62$) simultaneously contains all $k!$ permutations in $S_k$, eliminating the He–Kwan (2020) $\log\log k$ factor across the entire symmetric group $S_k$. All core combinatorial lemmas are certified in Lean 4.
-2. **Sharp Threshold $C^* = 1/4 = 0.25000$ for Structured Classes (PROVED):**
-   - Bounded-LDS ($\operatorname{LDS} \le d$, all Stanley–Wilf classes) via $d$-box antidiagonal optimal split theorem (Theorem 1.3).
-   - Modular interval inflations via shared host squares (Theorem 1.4).
-   - Repeated-$21$ direct-sum alternating family via cut-flux identity $\mathcal{L} N_u \equiv r_u \le u$ and superadditive squeeze ($c_{21} = 1.0000$ identically, Theorem 1.5).
-   - Autocorrelation Extremality: monotone identity uniquely maximizes self-overlap profile $\mathcal{O}_j(\pi) \le \binom{k}{j}^2$.
-3. **The Generic Bulk ($\operatorname{LDS} \approx 2\sqrt{k}$) at $C^* = 1/4$:**
-   W66–W69 established the Two-Scale Permuton Coupling and Cluster Sieve architecture:
-   - Macroscopic permuton non-regularity decays as $\exp(-\Omega(k^2)) \ll 1/k!$.
-   - Continuous streamlines provide capacity super-surplus $\ge \frac{1}{2}\sqrt{k} \to \infty$.
-   - Target Dilworth chains demand zero backward cross-layer inversions (Lean 4 certified).
-   - Microscopic host boxes are universal superpatterns for sub-patterns of length $m_{\max}$.
-   - The Cluster Sieve identity $\Pr(M > 0) \le \frac{1}{R}\mathbb{E}[M]$ is Lean 4 certified.
-
-### The W70 Resolution: Refutation of Cluster Scaling & The Harris-FKG Sieve
-Workstream W70 resolved the cluster scaling question:
-1. **Refutation of $R(n, k) = \Omega(k!)$:** As $n \to \infty$, failing hosts miss isolated singletons ($R(n, k) \to 1.0$, reaching $84.6\%$ singletons at $n=8$ on $S_3$). Boole's union bound is asymptotically sharp.
-2. **Harris-FKG Monotone Association Theorem:** In Poisson hosts $\Pi_N$, pattern containment events $E_\pi = \{\pi \le \Pi_N\}$ are monotone increasing properties on point configurations. By Harris's inequality:
-   $$\Pr\left( \forall \pi \in S_k : \pi \le \Pi_N \right) \ge \prod_{\pi \in S_k} (1 - P_0(\pi)) \ge \exp\left( - 2 \sum_{\pi \in S_k} P_0(\pi) \right).$$
-3. **The Harris-FKG Reduction:** Simultaneous universality holds if and only if:
-   $$\sum_{\pi \in S_k} P_0(\pi) \le k! \max_{\pi \in S_k} P_0(\pi) \longrightarrow 0.$$
-   For structured classes ($\operatorname{LDS} \le d$, modular inflations, monotone identity), $P_0(\pi) \le \exp(-\Omega(k^2)) \ll 1/k!$ is rigorously proved, establishing sharp $1/4$ simultaneous universality for these classes.
-
-### The Remaining Analytical Debt (The Generic Bulk Avoidance Exponent)
-To complete Alon's conjecture in full generality at $C^* = 1/4$, one must prove:
-$$P_0(\pi) = \Pr\left( \pi \not\le \Pi_{(1/4+\varepsilon)k^2} \right) \le \exp\left( - \omega(k \ln k) \right) \quad \text{for all generic bulk } \pi \in S_k.$$
-Until this single-target generic bulk avoidance bound is analytically proved, claiming full universality at $C^* = 1/4$ is a **FALSE ALARM**.
-
-### Workstream W71: Single-Target 2D Permuton Variational Framework (Proved Framework & Open Topological Step)
-Workstream W71 established the Single-Target 2D Permuton Variational Framework:
-1. **2D Sanov LDP Speed $\Theta(k^2)$ (PROVED):** The empirical measure of $\Pi_N$ ($N = (1/4+\varepsilon)k^2$) satisfies an LDP with speed $\Theta(k^2)$.
-2. **Streamline Super-Surplus & Dilworth Invariant (PROVED):** Host streamlines provide $H/d \ge \frac{1}{2}\sqrt{k} \to \infty$ and $|\mathcal{L}_m|/\mu_m \ge \frac{1}{2}\sqrt{k} \to \infty$, and canonical Dilworth chains demand zero backward cross-layer inversions (`backward_chain_strict_monotonicity` in Lean 4).
-3. **Autocorrelation Variance Reduction (PROVED):** Generic bulk permutations have up to 58.7% smaller self-overlap covariance than the monotone identity baseline, confirming that the identity is the extremal second-moment bottleneck.
-4. **Sieve Equivalence (PROVED):** By the Harris-FKG Monotone Association Theorem, simultaneous universality at $C^* = 1/4$ is mathematically equivalent to the single-target quadratic avoidance bound $P_0(\pi) \le \exp(-c_\varepsilon k^2)$.
-5. **The Open Topological Step:** Rigorously establishing that forward cross-chain ordering constraints incur zero dead ends in greedy streamline embeddings to yield $P_0(\pi) \le \exp(-c_\varepsilon k^2)$ unconditionally for all generic targets remains an open analytical debt. Claiming full sharp universality at $C^* = 1/4$ without closing this topological step is a **FALSE ALARM**.
-
-### Workstream W72: Streamline Buffer Reservation Theorem (September 2026)
-Workstream W72 addresses the forward cross-chain dead-end elimination problem:
-1. **Streamline Bundle Partition (PROVED):** Partitioning host streamlines into $d$ disjoint bundles $B_1, \dots, B_d$ of width $B = \lfloor H/d \rfloor \ge \frac{1}{2}\sqrt{k}$ allocates dedicated coordinate clearance tracks for each Dilworth chain.
-2. **Bundle Scaling Law (PROVED & VERIFIED):** $B$ scales from $1$ at $k=9$ to $4$ at $k=64$, strictly satisfying $B \ge \frac{1}{2}\sqrt{k} \to \infty$. Intra-bundle capacity ratio satisfies $\frac{B k}{2\sqrt{k}} \ge \frac{1}{4}k \to \infty$.
-3. **Dead-End Reduction (VERIFIED):** Buffered bundle embedding ($B \ge 2$) achieves high success rates across adversarial targets (alternating, Erdős--Szekeres, random bulk).
-4. **Second-Moment Covariance Extremality (PROVED & VERIFIED):** Monotone identity uniquely maximizes covariance $\mathcal{O}_{\mathrm{tot}} = 225$ at $k=5$; generic bulk targets exhibit a $-64.0\%$ variance reduction ($\mathcal{O}_{\mathrm{tot}} = 81$).
-5. **Exact Analytical Status:** Streamline buffering provides the exact structural mechanism for coordinate clearance, confirming that the remaining challenge is purely the continuous topological embedding of forward crossings.
-
-### Workstream W73: Continuous Topological Streamline Embedding Theorem (September 2026)
-Workstream W73 establishes the continuous topological embedding of generic bulk target permutations ($\operatorname{LDS} \approx 2\sqrt{k}$) across peeled Hammersley streamline bundles:
-1. **Forward Cone Topological Alignment (PROVED & LEAN-CERTIFIED):** Cross-chain inversions are strictly forward-oriented descents ($i < j \implies c(i) < c(j)$) proved in Lean 4 (`forward_descent_chain_strict_increasing`). The forward descent cone $Q_+(x_i, y_i)$ geometrically intersects bundle $B_b$ ($b > a$) across an extensive 2D region, achieving up to $100.0\%$ empirical hit rates and candidate point yields scaling to $\ge 49$ points per bundle.
-2. **Multi-Track Clearance (VERIFIED):** Multi-track buffering provides high containment rates ($>78.5\%$) across diverse adversarial families (alternating, Erdős--Szekeres, Cantor, random bulk).
-3. **2D LDP Single-Target Avoidance Bound (PROVED):** By the 2D Poisson empirical measure Large Deviation Principle with speed $\Theta(k^2)$, single-target avoidance satisfies $P_0(\pi) \le \exp(-c_\varepsilon k^2)$.
-4. **Second-Moment Covariance Extremality (PROVED & VERIFIED):** Confirmed across $S_5$ and $S_6$ that the monotone identity uniquely maximizes covariance ($\mathcal{O}_{\mathrm{tot}} = 225$ and $886$), while generic targets achieve $-64.0\%$ and $-72.9\%$ variance reduction.
-5. **Simultaneous Sieve Domination (PROVED):** Coupled with the Harris-FKG Monotone Association Theorem, $k! \cdot P_0(\pi) \le k! \exp(-c_\varepsilon k^2) \to 0$ with crossover $k_0 \le 32$, completing the single-target reduction to simultaneous universality at $C^* = 1/4$.
-
-### Workstream W74: Master Sharp Threshold Synthesis (September 2026)
-Workstream W74 delivers the comprehensive synthesis proving Noga Alon's 1999 conjecture at $n = \lceil(1/4+\varepsilon)k^2\rceil$ across all $k!$ permutations simultaneously:
-1. **The Five Foundational Pillars Unified:** General quadratic universality at $C_0 k^2$ (Theorem 1.2), sharp threshold $C^* = 1/4$ for structured classes (Theorems 1.3-1.5), Lean-certified Dilworth poset duality (`forward_descent_chain_strict_increasing`), streamline buffer reservation ($B \ge \frac{1}{2}\sqrt{k}$), continuous topological embedding, 2D variational LDP, and the Lean-certified master sieve bound (`uniform_master_sieve_bound`).
-2. **Master Factorial Domination:** Proved that $2 k! \max_{\pi} P_0(\pi) \le 2 k! \exp(-c(\varepsilon) k^2) \to 0$, with crossover scale $k_0 \le 33$ for all physical rates $c \ge 0.08$.
-3. **Finite Census Verification:** 100.0% zero-defect rate across all 5,904 permutations in $S_4, S_5, S_6, S_7$ (58,992 checked pairs).
-4. **Full Census Covariance Extremality:** Monotone identity uniquely maximizes covariance in $S_4$ ($52$) and $S_5$ ($225$), while average group covariance is reduced by $-42.0\%$ ($S_4$) and $-54.5\%$ ($S_5$).
-5. **Status:** The sharp 1/4 threshold conjecture of Noga Alon (1999) is fully substantiated across combinatorial, probabilistic, variational, and machine-checked formal axes.
-
-### Workstream W75: Discrete Macroscopic Grid Concentration & Generic Bulk Embedding (September 2026)
-Workstream W75 establishes the discrete, finite-combinatorial route to the single-target avoidance bound at $C^* = 1/4$, bypassing continuous infinite-dimensional measure theory in Lean 4:
-1. **Discrete Macroscopic Grid Partition:** Partition $[0, 1]^2$ into $M^2$ macroscopic cells with $M = \lceil 2/\sqrt{\varepsilon} \rceil = O(1)$. By Hoeffding's inequality, non-regularity decays as $\Pr(E_{\mathrm{macro}}^c) \le 2M^2 \exp(-2\delta^2 n) \ll 1/k!$.
-2. **Lean 4 Formalization:** Formally proved `FinProb.Pr_exists_le`, `FinProb.macro_grid_failure_le`, and `uniform_discrete_macro_sieve_bound` in `Superpatterns/Witness.lean`, bounding superpattern failure by $k! \cdot (M^2 P_{\mathrm{box}} + P_{\mathrm{embed}})$.
-3. **Supercritical Intra-Cell Capacity:** In every traversed cell, host density $C = 1/4+\varepsilon$ generates local LIS capacity $2\sqrt{N_{\mathrm{cell}}} \ge (1+\varepsilon) k/M$, providing strictly positive point surplus over target demand $m_{r, s} \le k/M$.
-4. **Boundary Lookahead Stitching:** Lean-certified dynamic lookahead stitching (`lookahead_bypass_order`) stitches increasing sequences across cell interfaces without coordinate collisions.
-5. **Full Repository Verification:** All 5 parts in `experiments/w75-discrete-grid/verify.py` verified cleanly with 0 errors.
+The section "The Generic Bulk at Sharp 1/4 Frontier" added on 24 September 2026 (W66–W75) asserted results that the
+audit of 10 November found unproved; it has been deleted. See `memory/AUDIT-2026-11-10.md` §3(d) and the archive.

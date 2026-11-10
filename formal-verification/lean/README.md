@@ -25,12 +25,11 @@ lake build
 | `Superpatterns/Witness.lean` | Probability measures on finite permutation sets, Cauchy–Schwarz for moments, and witness reductions. |
 | `Superpatterns/BlockSplit.lean` | Block standardisation and pattern avoidance preservation. |
 | `Superpatterns/ErdosSzekeres.lean` | Formal connection from Mathlib's Erdős–Szekeres theorem to pattern containment and reverse avoidance. |
-| `Superpatterns/Interleaving.lean` | Formal proofs for multi-chain decompositions, avoidance of 21 and 321 for increasing sequences, multi-chain word entropy power identities, collision-free coordinate intervals for disjoint monotone blocks, window separation, lookahead dynamic bypass order preservation, and supercritical velocity algebraic inequalities. |
 | `Superpatterns/Axioms.lean` | Automated axiom audit module. Every theorem prints its exact axiom dependencies. |
 
 ## Axiom Policy
 
-- All mathematical theorems in `Superpatterns/Interleaving.lean`, `TheoremA.lean`, `ErdosSzekeres.lean`, `BlockSplit.lean`, `Numeric.lean`, and `Witness.lean` depend **only on standard foundational axioms**:
+- All mathematical theorems in `TheoremA.lean`, `ErdosSzekeres.lean`, `BlockSplit.lean`, `Numeric.lean`, and `Witness.lean` depend **only on standard foundational axioms**:
   - `propext` (Propositional Extensionality)
   - `Quot.sound` (Quotient Soundness)
   - `Classical.choice` (Axiom of Choice)

@@ -22,14 +22,16 @@ This improves this project’s original implementation, which used $O(n(M+1)\log
 
 **Relevance to Alon.** The algorithm and exact flux create a tractable state for a proof or counterexample attempt. They do not yet bound the limiting constant $c_{21}$. A proved upper bound $c_{21}<1$ would disprove Alon’s conjecture. A proved lower bound $c_{21}\ge1$ would establish containment for this repeated-pattern family above coefficient $1/4$, leaving the simultaneous statement for all patterns unresolved.
 
+**Update, 10 November 2026.** Since this note was written the constant has been bounded from above: replacing a block $12$ by $21$ in a direct sum never increases containment, so $L_{21}$ is stochastically dominated by $\lfloor\mathrm{LIS}/2\rfloor$ and $c_{21}\le1$ (the case $k=2$ of \[1\] in the language of patterns; see the companion notes, section *Layered patterns are at least as hard as the identity*). Paired simulations with the algorithm of this note for $n$ up to $10^8$ give $\mathbb E\lfloor\mathrm{LIS}/2\rfloor-\mathbb EL_{21}=(0.00113\pm0.00002)\sqrt n$, that is $c_{21}\approx0.99887$. By Proposition 5 below, $c_{21}<1$ would refute Alon’s conjecture; this strict inequality is numerical evidence, not a theorem.
+
 # Prior art and the precise comparison
 
 The closest located prior work optimizes longest subsequences in the layered class $\operatorname{Av}(231,312,321)$, whose layers may have sizes one or two. Its objective is total selected length. Our objective counts complete two-point layers. Singleton layers can be omitted without changing the number of two-point layers, so our problem can also be phrased as maximizing a layer-weighted score on that same class. The ordinary unweighted optimum alone does not determine this score: an increasing host has a long unweighted subsequence and no decreasing pair.
 
 | Source | Objective | Bound and location |
 |:------------------|:-------------------------|:----------------------------|
-| Albert et al. (2003) \[1\] | Longest layered subsequence; layers of size at most two in class $C_1$ | $O(n^2)$ for $C_1$, section 3.7, p. 236; arbitrary layer sizes use $O(n^2\log n)$ in section 3.5 |
-| Albert (2005 preprint; 2007 publication) \[2\] | Longest subsequence in $\operatorname{Av}(231,312,321)$ | Reports a tableau-based $O(n\log n)$ algorithm in section 4 |
+| Albert et al. (2003) \[2\] | Longest layered subsequence; layers of size at most two in class $C_1$ | $O(n^2)$ for $C_1$, section 3.7, p. 236; arbitrary layer sizes use $O(n^2\log n)$ in section 3.5 |
+| Albert (2005 preprint; 2007 publication) \[3\] | Longest subsequence in $\operatorname{Av}(231,312,321)$ | Reports a tableau-based $O(n\log n)$ algorithm in section 4 |
 | This project’s original W40 implementation | Maximum complete $21$ pairs | $O(n(M+1)\log n)$ time; $O(n(M+1))$ space |
 | This note / pruned W40 | Same complete-pair objective, with every completed threshold | $O(n\log n)$ time; $O(n)$ space; explicit marked update and proof |
 
@@ -133,7 +135,7 @@ A stationary law must retain enough information to satisfy this generator, inclu
 
 # What would prove or disprove Alon
 
-Alon’s conjecture, in the formulation recorded by He and Kwan \[3, Conj. 1.1\], is that for every fixed $\varepsilon>0$ a uniform host of length $\lceil(1/4+\varepsilon)k^2\rceil$ simultaneously contains every $k$-pattern with probability tending to one.
+Alon’s conjecture, in the formulation recorded by He and Kwan \[4, Conj. 1.1\], is that for every fixed $\varepsilon>0$ a uniform host of length $\lceil(1/4+\varepsilon)k^2\rceil$ simultaneously contains every $k$-pattern with probability tending to one.
 
 For a fixed pattern $\tau$ of length $d$, write $L_\tau(\sigma_n)$ for its maximum number of direct-summed copies. The following elementary criterion explains the relevance of repeated patterns without assuming an unproved equality of their constants.
 
@@ -147,7 +149,7 @@ $$
 
 If $c_\tau<2/d$, choose $C>1/4$ sufficiently close to $1/4$ that $d\sqrt C\,c_\tau<1$. The target is then absent with probability tending to one along these $k$, disproving universality. If $c_\tau\ge2/d$, every fixed $C>1/4$ makes the limit exceed one, proving containment for this family. $\square$
 
-Thus Alon would require $c_{21}\ge1$, wherever the limit exists; it does not require equality. Settling $c_{21}=1$ would still leave all other families and the simultaneous quantifier. Finite-host estimates below one cannot certify $c_{21}<1$: in Workstream W44, analysis of the infinitesimal Poisson jump generator proved that $\sup_S r_u(S)/u = 1.0$ and established the benchmark $c_{21}\le1$ via a monotone comparison process. The finite-host sample mean ($\bar L_{21}/\sqrt n \approx 0.941$ at $n=4096$) is an artifact of boundary starvation at $y=0$, truncation at $y=R$, and initial transient lag, directly analogous to the $O(n^{-1/6})$ Tracy–Widom finite-size deficit in Ulam’s problem (where $\mathbb E[\mathrm{LIS}(\sigma_{4096})]/\sqrt{4096} \approx 1.83 < 2.0$). Hence, this empirical deficit does not witness $c_{21}<1$.
+Thus Alon would require $c_{21}\ge1$, wherever the limit exists; it does not require equality. Settling $c_{21}=1$ would still leave all other families and the simultaneous quantifier. Finite-host estimates below one cannot certify $c_{21}<1$: in Workstream W44, analysis of the infinitesimal Poisson jump generator proved that $\sup_S r_u(S)/u = 1.0$ and established the benchmark $c_{21}\le1$ via a monotone comparison process. The finite-host sample mean ($\bar L_{21}/\sqrt n \approx 0.941$ at $n=4096$) is an artifact of boundary starvation at $y=0$, truncation at $y=R$, and initial transient lag, directly analogous to the $O(n^{-1/6})$ Tracy–Widom finite-size deficit in Ulam’s problem (where $\mathbb E[\mathrm{LIS}(\sigma_{4096})]/\sqrt{4096} \approx 1.83 < 2.0$). Hence, this empirical deficit does not witness $c_{21}<1$. (As of November 2026: $c_{21}\le1$ is proved, and the numerical value is about $0.99887$; see the update in the introduction.)
 
 For general universality, the next proof target should be a common host event handling compatible structured and interleaved parts. Merely finding each part somewhere in the same host does not glue their embeddings. For a disproof, one sufficiently hard fixed family is enough, or one may prove that a positive fraction of hosts admit some missing target chosen after seeing the host. A failed restricted embedding algorithm is not a missing-pattern certificate.
 
@@ -181,8 +183,10 @@ This is an AI-assisted working note. Proof drafts, code, and verification were d
 
 # References
 
-1\. Albert MH, Aldred REL, Atkinson MD, et al (2003) [Longest subsequences in permutations](https://ajc.maths.uq.edu.au/pdf/28/ajc_v28_p225.pdf). Australasian Journal of Combinatorics 28:225–238
+1\. Jelı́nek V, Karpilovskij M (2021) [Fillings of skew shapes avoiding diagonal patterns](https://dmtcs.episciences.org/7594). Discrete Mathematics & Theoretical Computer Science 22:
 
-2\. Albert MH (2007) On the length of the longest subsequence avoiding an arbitrary pattern in a random permutation. Random Structures and Algorithms 31:227–238. <https://doi.org/10.1002/rsa.20140>
+2\. Albert MH, Aldred REL, Atkinson MD, et al (2003) [Longest subsequences in permutations](https://ajc.maths.uq.edu.au/pdf/28/ajc_v28_p225.pdf). Australasian Journal of Combinatorics 28:225–238
 
-3\. He X, Kwan M (2020) Universality of random permutations. Bulletin of the London Mathematical Society 52:515–529. <https://doi.org/10.1112/blms.12345>
+3\. Albert MH (2007) On the length of the longest subsequence avoiding an arbitrary pattern in a random permutation. Random Structures and Algorithms 31:227–238. <https://doi.org/10.1002/rsa.20140>
+
+4\. He X, Kwan M (2020) Universality of random permutations. Bulletin of the London Mathematical Society 52:515–529. <https://doi.org/10.1112/blms.12345>

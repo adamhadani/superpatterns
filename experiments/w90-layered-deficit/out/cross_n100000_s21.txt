@@ -1,0 +1,1 @@
+n=100000 S=1500 seed=21 L21_mismatch(w40 vs w90)=0 LIS_mismatch(py vs C)=0 E[2L21-LIS]=-1.5080 +- 0.1960  D=E[2floor(LIS/2)-2L21]=0.9960 +- 0.1960 D/sqrt(n)=0.00315
