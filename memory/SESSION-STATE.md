@@ -23,6 +23,7 @@ Read this first, then [AUDIT-2026-11-10.md](AUDIT-2026-11-10.md), [ALON-STRATEGY
 | L₂₁ ≤_st ⌊LIS/2⌋, c₂₁ ≤ 1 | Corollary of Theorem 1; exhaustive counts on S_n, n ≤ 12 (`exact_dist.c`): equal for n ≤ 8, deficits 1, 66, 2565(+2), 77232(+213) for n = 9…12 |
 | Smallest defect: 3 points, 3×3 board minus two opposite corners, weight 1/3 | `skew_boards.py` (all boards for N ≤ 5); the single extra avoider of 214365 at n = 9 is one such fibre |
 | Deficit ∝ √n | `l21_paired.c`: 1 290 950 paired samples; algorithm validated against an O(n³) DP (180 000 permutations) and against the exhaustive counts; independent cross-check with W40 `pruned.c`, numpy PCG64 and Python LIS: 0 disagreements on 81 240 permutations and the same deficit |
+| Exact fibre formula stage by stage | `fibre_cost.py`: equals Σ(LIS − N) exactly on S₈ (1) and S₉ (46); at n = 10⁴, flips 1…63, 120 000 permutations: 0.15641 ± 0.00083 vs 0.153 ± 0.012 measured directly on the same permutations |
 | Audit findings in AUDIT-2026-11-10.md §3 | Two reviewers; every cited line re-read by the main session |
 
 Not verified / not claimed: strict asymptotic deficit (numerical only); the inequality for layers of size ≥ 3
@@ -31,11 +32,14 @@ Jelínek–Karpilovskij 2021 / Burstein–Pantone 2015 in pattern language — n
 
 ## Open gaps, in priority order
 
-1. **Prove c₂₁ < 1.** Reduction in W90 `proof.md` §4, `log.md` §4 and `strict-deficit-plan.md`: enough to show that for a positive fraction of
-   the ≍ √n flip stages, with probability bounded below, some level has (i) the 21-version failing and (ii) an
-   isolated 3-point defect lens. Missing ingredient: tightness of the number of free points within O(1) levels of
-   the maximum, or a softer substitute. Alternative: sparse swaps (pattern "identity with a transposition every
-   2K places") plus relaxation of the Hammersley tandem between defects.
+1. **Prove c₂₁ < 1.** Two time-boxed attempts on 10 Nov did not close it; everything is in
+   `experiments/w90-layered-deficit/strict-deficit-plan.md` (main text + addendum). State: by Theorem 1 it suffices
+   to treat the identity with sparse swaps; each stage has the exact cost E Σ_{b≥Y−1}(1 − 1/a_b) (checked exactly on
+   S₈, S₉ and at n = 10⁴); a planted 3-point lens in the rectangle between two points of an optimal copy makes a
+   stage contribute ⅓ at a probability cost depending only on the rectangle's area. Missing for many swaps:
+   (E1) a local increment estimate for point-to-point last passage times (in the literature via the stationary
+   Hammersley process; not checked against our needs) and (E2) a multiplicity bound for near-optimal windows
+   (Mecke argument, sketched). The single-swap version looks provable by elementary means and is not written.
 2. Size-≥3 blocks: prove P(⊇ α⊕J_d⊕β) ≤ P(⊇ α⊕I_d⊕β) (transversal case of the JK conjecture).
 3. Which layered pattern is hardest? D/√n is still increasing at layer size 16 (0.012, 0.0135, 0.014, 0.017 for
    sizes 8, 10, 12, 16 at n = 10⁵); the large-layer limit should be a KPZ-scale constant times d^{−2/3}. A faster

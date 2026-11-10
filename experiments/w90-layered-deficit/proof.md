@@ -203,6 +203,12 @@ for every family tested, roughly additive in the number of non-trivial layers, a
 layer size at 16; e.g. layers of size 6 would need n ≈ 1.0105·k²/4 and layers of size 12 about 1.014·k²/4. The
 hardest layered pattern has not been located.
 
+**The fibre formula at scale** (`fibre_cost.py`, `out/fibre_table.txt`). Written as E[X − Y] = E Σ_{b≥Y−1}(1 − 1/a_b), the
+exact identity can be evaluated stage by stage by brute force over fillings. On all of S₈ and S₉ it reproduces
+Σ(LIS − N) exactly (1 and 46). At n = 10⁴, flips 1…63, 120 000 permutations: formula 0.15641 ± 0.00083 against
+0.153 ± 0.012 measured directly on the same permutations. Each stage contributes 0.0024–0.0027; contributing levels
+have a = 2 and 3–8 inside points (3 points in 20% of the cases).
+
 **Cost per flipped block** (`hybrid_profile.c`, `out/hybrid_table.txt`): for the pattern 21^{⊕i} ⊕ 1 ⊕ 1 ⊕ …,
 E[LIS − N_i] is linear in i with slope ≈ 0.0025 per block at n = 10⁴ (i ≤ 64) and n = 10⁵ (i ≤ 192), and 0 within
 error at i = 1 (the equality case). For layer sizes ≥ 3 the inequality itself is only conjectural (Jelínek–Karpilovskij conjecture
@@ -217,5 +223,6 @@ cc -O2 -o /tmp/l21_paired l21_paired.c -lm && /tmp/l21_paired 60 20000 1 v      
 /tmp/l21_paired 1000000 4000 1                                                   # one paired batch
 cc -O2 -o /tmp/layered_paired layered_paired.c -lm && /tmp/layered_paired 3 16 3000 1 v
 python3 verify_fibers.py 8 ; python3 skew_boards.py
+python3 fibre_cost.py exact 8 ; python3 fibre_cost.py mc 10000 200 1 64 60     # exact identity, stage by stage
 python3 aggregate.py ; python3 aggregate_family.py                               # tables from out/
 ```
