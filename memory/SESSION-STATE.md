@@ -42,12 +42,19 @@ Jelínek–Karpilovskij 2021 / Burstein–Pantone 2015 in pattern language — n
    algorithm is needed beyond size 16.
 4. Universality at C·k²: no progress; W9/W13/W15 remain the honest state.
 
-## Documents that are out of date
+## Clean-up done on 10 November 2026
 
-`output/arxiv/main.tex`, `output/paper/quadratic-universality.md`, `output/pdf/*`: state Theorems 1.2 and 1.4 that
-are contradicted by W90 and general claims that are unproved. Not rewritten in this session. `README.md` carries a
-status banner. `memory/RESULTS.md` has a banner and a W90 row; its rows W43–W86 are history, not accepted results.
-`output/arxiv/main.pdf` in the working tree is an 8 KB stub (it was already modified before this session).
+* W43–W89 moved, unedited, to `experiments/archive-2026-09-unverified/` (README there says why each approach fails).
+* Removed: `output/arxiv/` (submission bundle of the withdrawn preprint), `quadratic-universality.*`, `knowledge/`,
+  `implementation_plan.md`, `ORIGINAL_REQUEST.md`. All remain in git history (last present in commit `6978364`).
+* Lean: removed `Greene.lean` (six axioms), `Interleaving.lean`, `Lattice.lean`; restored `Witness.lean`,
+  `Axioms.lean`, `Superpatterns.lean` to their 30 August state. `lake exe cache get && lake build` on 10 Nov:
+  8719 jobs, 0 errors, 0 warnings, no `sorry`, no added axioms (the machine had no Mathlib build cache before).
+* Paper `output/paper/superpatterns-notes.md` rewritten around what is proved: new §6.2 (Theorem 26, Corollary 27,
+  Proposition 28, deficit table), new abstract and summary table, withdrawal note in §7. `make check` prints 0 for
+  the notes and for the repeated-21 note; pages 1, 2, 14, 15 inspected.
+* `README.md`, `RESULTS.md`, `NOTES.md`, `priority-check.md`, `PUBLICATION-CHECKLIST.md`, `experiments/README.md`
+  rewritten or pruned to the accepted statements.
 
 ## Jobs
 

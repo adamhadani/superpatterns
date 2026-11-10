@@ -59,3 +59,12 @@ to copies. Its Poisson first moment is an elementary Mecke/conditioning
 specialization with a forbidden-pair kernel. The explicit k=3,n=6
 counterexample to pattern independence is exhaustively verified here, but
 no literature-priority claim or new asymptotic bound is asserted for W42.
+
+## Continuation: W90 (10 November 2026)
+
+| Topic | Primary comparison | Assessment |
+|---|---|---|
+| Block-flip inequality (α⊕21⊕β vs α⊕12⊕β) | [Jelínek–Karpilovskij](https://arxiv.org/abs/2002.12308), DMTCS 22:2 (2021): for every skew shape, #fillings avoiding δ₂ = #fillings avoiding ι₂ and φ_D; [Burstein–Pantone](https://arxiv.org/abs/1402.3842): 1234 ∼ {1324, 3416725}; Bóna for 1324 vs 1234 | **Not new.** Theorem 26 is the size-2 transversal case in pattern language; our proof (fibres + two sorting arguments) is short and self-contained. The JK statement was confirmed from the abstract and search excerpts on 10 Nov 2026; the paper itself was not read line by line |
+| Equality when α or β is empty | Backelin–West–Xin (I_k ⊕ τ ∼ J_k ⊕ τ) | Known; the k = 2 case has a three-line direct proof |
+| c₂₁ ≤ 1 and L₂₁ ≤_st ⌊LIS/2⌋ | No source located | Immediate corollary of the above; the asymptotic formulation for random permutations was not found in searches (10 Nov 2026) |
+| Numerical c₂₁ ≈ 0.99887 and the bearing on Alon's conjecture | [arXiv:2608.19050](https://arxiv.org/abs/2608.19050) states the dichotomy "online and offline have different extremisers, or Alon's conjecture fails" | No prior numerical or rigorous statement that a layered pattern beats the identity offline was found. Unpublished work may exist; a specialist should be asked before any announcement |

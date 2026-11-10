@@ -1,20 +1,11 @@
 SRC = superpatterns-notes.md
 PDF = $(SRC:.md=.pdf)
 
-.PHONY: all pdf check clean frontier-note alon-preprint
+.PHONY: all pdf check clean frontier-note
 
-all: pdf frontier-note alon-preprint
+all: pdf frontier-note
 
 pdf: $(PDF)
-
-# Standalone preprint on quadratic universality and Alon's conjecture.
-quadratic-preprint:
-	mkdir -p ../pdf
-	$(MAKE) SRC=quadratic-universality.md PDF=../pdf/quadratic-universality.pdf check
-	pandoc -d defaults.yaml quadratic-universality.md -o ../pdf/quadratic-universality.pdf
-	pandoc quadratic-universality.md --from=markdown --to=markdown_strict+tex_math_dollars+pipe_tables+fenced_code_blocks --wrap=none --standalone --template=reader.md.template --citeproc --bibliography=references.bib --csl=springer-basic-brackets.csl --metadata=link-citations:false --lua-filter=reader.lua -o ../pdf/quadratic-universality.md
-
-alon-preprint: quadratic-preprint
 
 # Standalone mathematical note, plus Markdown with resolved citations.
 frontier-note:

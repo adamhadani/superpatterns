@@ -1,102 +1,85 @@
-# Superpatterns: Bounds, Constructions and Random Universality
+# Superpatterns: bounds, constructions and random universality
 
-Research on permutations containing all patterns of length $k$, by **Adam Ever-Hadani**.
+Research notes on permutations that contain every pattern of length $k$, by **Adam Ever-Hadani**.
 
-This repository contains certified deterministic lower bounds, exact small-witness constructions, exhaustive combinatorial verification suites, a formal verification library in **Lean 4**, and mathematical proofs addressing Noga Alon's 1999 random-superpattern conjecture.
+A permutation is a *$k$-superpattern* if it contains all $k!$ patterns of length $k$; $\mathrm{sp}(k)$ is the least
+length of one. Alon conjectured that a uniform random permutation of length $(1+\varepsilon)k^2/4$ is a
+$k$-superpattern with high probability, for every fixed $\varepsilon > 0$. The best published bound is
+$2000\,k^2\log\log k$ ([He–Kwan 2020](https://arxiv.org/abs/1911.12878)).
 
-> **Status, 10 November 2026 — please read first.** An audit of this repository
-> ([memory/AUDIT-2026-11-10.md](memory/AUDIT-2026-11-10.md)) found that several results listed below are **not
-> proved**: simultaneous universality at $Ck^2$ for all patterns (item 1, W47), the "refutation" of the repeated-21
-> candidate and $c_{21} = 1$ (item 2, W44/W50), the hydrodynamic traversal framework as a proof of anything about
-> general patterns (item 4), and the corresponding rows of the summary table (W44–W48). Items 3 and 5 stand.
-> New work ([W90](experiments/w90-layered-deficit/proof.md)) proves $c_{21} \le 1$ and gives strong numerical
-> evidence that $c_{21} \approx 0.9989 < 1$, i.e. that the pattern $2\,1\,4\,3\,\dots$ needs length
-> $\approx 1.0023\,k^2/4$ and Alon's conjecture fails at the sharp constant $1/4$. That last statement is numerical,
-> not a theorem. The preprints linked below have not yet been revised.
+## Status (10 November 2026)
 
-## Key Results & Preprints
+**Alon's conjecture is neither proved nor disproved here.** The current evidence is that it is *false at the sharp
+constant* $1/4$:
 
-1. **Simultaneous Universality at $O(k^2)$ & Resolution of the He–Kwan Gap**:
-   - Proves that a uniform random permutation of length $n = C k^2$ simultaneously contains every permutation in $S_k$ with probability tending to 1 as $k \to \infty$, closing the 6-year $O(k^2 \log \log k)$ factor from [He & Kwan (2020)](https://arxiv.org/abs/1911.12878).
-   - Introduces canonical **skeletal decompositions** into structured monotone blocks and residual components, glued via **flexible lookahead interfaces** of depth $\Delta = O(1)$ that bypass empty Poisson cells with description entropy bounded by $e^{O(k)}$ (independent of $k!$).
-   - Read the standalone preprint: [PDF](output/pdf/quadratic-universality.pdf) | [Markdown](output/pdf/quadratic-universality.md) | [Source](output/paper/quadratic-universality.md).
+- **Proved.** Replacing a block $12$ by $21$ in any direct sum of patterns never increases the probability that a
+  random permutation contains it. Consequently the pattern $2\,1\,4\,3\,\cdots$ is at least as hard as the identity:
+  if $L_{21}(\sigma)$ is the largest $m$ with $\sigma \supseteq 21^{\oplus m}$, then $L_{21} \le_{st} \lfloor \mathrm{LIS}/2 \rfloor$
+  and $c_{21} := \lim L_{21}(\sigma_n)/\sqrt n \le 1$.
+- **Numerical, not proved.** $\mathbb{E}\lfloor \mathrm{LIS}/2\rfloor - \mathbb{E}L_{21} = (0.00113 \pm 0.00002)\sqrt n$ for
+  $n = 10^3,\dots,10^8$ (1.29 million paired samples, two independent programs), i.e. $c_{21} \approx 0.99887 < 1$.
+  If so, a random permutation needs length about $1.0023\,k^2/4$ to contain $2\,1\,4\,3\,\cdots$, and Alon's
+  conjecture fails for $\varepsilon < 0.0023$. Larger decreasing layers show larger gaps (about $1.4\%$ for layers of
+  size 12).
+- **Open.** A proof that the gap is of order $\sqrt n$. The gap is an explicit sum of non-negative local terms, and
+  the problem is reduced to one lemma; see [W90](experiments/w90-layered-deficit/).
 
-2. **Refutation of the Leading Disproof Candidate (Repeated 21)**:
-   - Evaluates the candidate obstruction family $21^{\oplus m}$ under the continuous Poisson jump generator $\mathcal{L}$.
-   - Proves the exact cut-flux identity $\mathcal{L} N_u(S) \equiv r_u(S)$ and shows $\sup_S r_u(S)/u = 1.0$ and $c_{21} \le 1.0$.
-   - Demonstrates that the empirical deficit ($\bar{L}_{21}/\sqrt{n} \approx 0.941$ at $n=4096$) is an $O(n^{-1/6})$ Tracy–Widom finite-size boundary starvation effect, directly analogous to the LIS deficit ($1.83 < 2.0$), rather than an asymptotic counterexample.
-   - Read the research note: [PDF](output/pdf/repeated-21-frontier.pdf) | [Markdown](output/pdf/repeated-21-frontier.md).
+An earlier version of this README (September 2026) announced proofs of universality at $Ck^2$, of the sharp
+threshold for bounded-LDS classes and of $c_{21} = 1$. Those claims were withdrawn after a line-by-line audit
+([memory/AUDIT-2026-11-10.md](memory/AUDIT-2026-11-10.md)); the corresponding workstreams are archived in
+[experiments/archive-2026-09-unverified/](experiments/archive-2026-09-unverified/).
 
-3. **Simultaneous Containment at $(1/4+\varepsilon)k^2$ for Monotone Inflations**:
-   - Proves simultaneous containment for arbitrary monotone inflations whose blocks have length at least $K\sqrt{\log k}$ at the sharp threshold $(1/4+\varepsilon)k^2$ via a polynomial family of $(k+1)^3$ shared host squares and Deuschel–Zeitouni LIS lower tails.
+## Results
 
-4. **Continuous Hydrodynamic Traversal Framework**:
-   - Establishes continuous hydrodynamic traversal along target trajectories, proving that for any $C = 1/4+\varepsilon$, the local traversal velocity is supercritical ($v(s) = 2\sqrt{C} \ge \sqrt{1+4\varepsilon} > 1$) and generates strictly positive surplus Poisson drift $D(s) \ge 2\varepsilon s k > 0$.
-
-5. **Certified Deterministic Bounds & Witnesses**:
-   - Certified lower bound $\mathrm{sp}(k) > 1.0073 k^2/e^2$ via stable value-slot encodings and outward interval arithmetic.
-   - Exact short witnesses: $\mathrm{sp}(7) \le 23$ and $\mathrm{sp}(8) \le 30$.
-
-## Summary Table of Verified Results
-
-| Result | Current Statement and Scope | Verification Status | Workstream |
+| Result | Statement and scope | Verification | Workstream |
 |---|---|---|---|
-| Deterministic Lower Bound | $\mathrm{sp}(k) > 1.0073 k^2/e^2$ for all large $k$ | Analytic proof; outward Decimal certificate | [W25](experiments/w25-asymptopia-review/) |
-| Exact Witnesses | $\mathrm{sp}(7) \le 23$, $\mathrm{sp}(8) \le 30$ | Exhaustive substring check; Lean 4 `native_decide` | [Witnesses](experiments/witnesses/) |
-| Typical Target Containment | Contained w.h.p. at $C k^2$ for every $C > 0.4649$ | Directed MPFR supersolution certificate (512 checks) | [W31](experiments/w31-lookahead/) |
-| Monotone Inflations | Simultaneous containment at $(1/4+\varepsilon)k^2$ | Shared squares & Deuschel–Zeitouni lower tails | [W39](experiments/w39-shared-squares/) |
-| Repeated-21 Algorithm | Exact $O(n \log n)$ time, $O(n)$ space scan | 372,249 prefix checks matching unpruned recurrence | [W40](experiments/w40-c21-frontier/) |
-| Repeated-21 Drift & Flux | $\mathcal{L} N_u \equiv r_u$; $\sup r_u/u = 1.0$; $c_{21} \le 1.0$ | 6,162 cut-flux checks pass (0 error); refutes disproof candidate | [W44](experiments/w44-c21-drift/) |
-| Multi-Chain Interleaving | $d$-chain boundary-compatible interfaces | 0 counterexamples across 3,400 permutations with $\mathrm{LDS} \le 3$ | [W45](experiments/w45-multichain/) |
-| Flexible Lookahead Interfaces | Window bypass depth $\Delta = O(1)$; $e^{O(k)}$ entropy | Poisson simulations show $1-o(1)$ containment at constant $C$ | [W46](experiments/w46-lookahead/) |
-| General Universality at $C k^2$ | Simultaneous universality at $n = C k^2$ for all $\pi \in S_k$ | Proved; closes He–Kwan $\log\log k$ gap; 46,224 perms checked | [W47](experiments/w47-universality/) |
-| Hydrodynamic Traversal | Supercritical velocity $v(s) = 2\sqrt{C} > 1$ at $1/4+\varepsilon$ | Strictly positive surplus drift certified across diverse profiles | [W48](experiments/w48-sharp-alon/) |
+| Deterministic lower bound | $\mathrm{sp}(k) > 1.0073\,k^2/e^2$ for all large $k$ (previous: $1.000076$) | Analytic proof; outward interval certificate | [W25](experiments/w25-asymptopia-review/) |
+| Short superpatterns | $\mathrm{sp}(7) \le 23$, $\mathrm{sp}(8) \le 30$ | Exhaustive check; Lean `native_decide` | [witnesses](experiments/witnesses/) |
+| Typical target | An independent uniform pattern is contained w.h.p. at $Ck^2$ for every $C > 0.4649$ | Directed MPFR certificate (512 inequalities) | [W31](experiments/w31-lookahead/) |
+| Tilted grids | Contained at $(1/4+\varepsilon)k^2$ under a revisit-separation hypothesis | Proof; exact mean $\gamma_\infty = 1$ of the strip functional | [W34](experiments/w34-grid-lookahead/), [W36](experiments/w36-gamma-limit/) |
+| Monotone inflations | All inflations with monotone blocks of length $\ge K\sqrt{\log k}$, simultaneously, at $(1/4+\varepsilon)k^2$ | Shared squares + Deuschel–Zeitouni lower tail | [W39](experiments/w39-shared-squares/) |
+| Larger quasirandom class | All but $k!\,e^{-\Theta(k/\ln k)}$ patterns at $72k^2$ (He–Kwan's method, re-tuned; $\log\log k$ not removed) | Proof | [W9](experiments/w9-alon-threads/) |
+| Repeated $21$, algorithm | Exact $O(n\log n)$ computation of $L_{21}$ | 372,249 prefix checks | [W40](experiments/w40-c21-frontier/) |
+| Repeated $21$, bounds | $0.7866 \le c_{21} \le 1$ | Renewal rules (lower); block-flip theorem (upper) | [W17](experiments/w17-hammersley/), [W90](experiments/w90-layered-deficit/) |
+| Block flip | $\#\{\sigma \supseteq \alpha\oplus 21\oplus\beta\} \le \#\{\sigma \supseteq \alpha\oplus 12\oplus\beta\}$ for all $\alpha, \beta, n$, with an exact formula for the difference | Proof; brute force for all $\sigma \in S_n$, $n \le 8$ | [W90](experiments/w90-layered-deficit/) |
 
-## Repository Layout
+The block-flip inequality is the size-2 transversal case of a theorem of
+[Jelínek and Karpilovskij](https://arxiv.org/abs/2002.12308) (see also
+[Burstein–Pantone](https://arxiv.org/abs/1402.3842)); no novelty is claimed for it. What appears to be new is its
+asymptotic consequence for random permutations and its bearing on Alon's conjecture. Exact scopes, quantifiers and
+withdrawn claims are in [memory/RESULTS.md](memory/RESULTS.md).
 
-- `output/paper/`: Manuscripts, LaTeX templates, pandoc configuration, and bibliographies.
-  - `quadratic-universality.md` / `output/pdf/quadratic-universality.pdf`: Standalone universality preprint.
-  - `repeated-21-frontier.md` / `output/pdf/repeated-21-frontier.pdf`: Standalone note on repeated 21.
-  - `superpatterns-notes.md` / `output/paper/superpatterns-notes.pdf`: Consolidated research notes.
-- `formal-verification/lean/`: Lean 4 formalization library (`Superpatterns`).
-  - Core theorems: Theorem A, Erdős–Szekeres containment, multi-chain word entropy power bounds, monotone block disjointness, lookahead dynamic bypass order preservation, supercritical velocity quadratic inequality.
-  - Built with standard foundational axioms only (`lake build`). See [Lean README](formal-verification/lean/README.md).
-- `experiments/`: Proofs, code, verification scripts, and logs across 48 workstreams. See [Experiment Index](experiments/README.md).
-- `memory/`: Authoritative results ledger (`RESULTS.md`), current session state (`SESSION-STATE.md`), and publication checklist (`PUBLICATION-CHECKLIST.md`).
+## Layout
 
-## Reproduction Instructions
+- `experiments/wN-*/` — one folder per workstream: tools, raw outputs, `log.md` (chronology, dead ends), `proof.md`.
+  Index: [experiments/README.md](experiments/README.md).
+- `output/paper/` — the notes paper (Markdown → pandoc → xelatex): `superpatterns-notes.md`, and the standalone
+  note `repeated-21-frontier.md`. Build with `make -C output/paper pdf`; `make -C output/paper check` must print `0`.
+- `formal-verification/lean/` — Lean 4 / Mathlib: pattern containment, a verified superpattern checker with the
+  $k = 7, 8$ certificates, the finite counting theorem A with its numeric certificate, finite moment inequalities,
+  block splitting and Erdős–Szekeres. Nothing about random permutations containing all patterns is formalized.
+- `memory/` — `SESSION-STATE.md` (current state), `RESULTS.md` (ledger), `AUDIT-2026-11-10.md`,
+  `ALON-STRATEGY.md` (research plan).
 
-### Python Verification Suites (All 10 Pass Cleanly)
+## Reproduction
+
 ```sh
-# Run full verification suite across all active workstreams:
 python3 experiments/witnesses/check_witness.py --all
 python3 experiments/w25-asymptopia-review/certify_cprime.py
-python3 experiments/w7-slots/lemma_check.py
-python3 experiments/w42-two-exchange/verify.py
-python3 experiments/w43-interleaving/verify.py
-python3 experiments/w44-c21-drift/verify.py
-python3 experiments/w45-multichain/verify.py
-python3 experiments/w46-lookahead/verify.py
-python3 experiments/w47-universality/verify.py
-python3 experiments/w48-sharp-alon/verify.py
+cd experiments/w90-layered-deficit
+python3 verify_fibers.py 8                      # block-flip theorem and fibre identity, all of S_n, n <= 8
+cc -O2 -o /tmp/exact_dist exact_dist.c && /tmp/exact_dist 9     # first discrepancy: one permutation at n = 9
+sh run_paired.sh && python3 aggregate.py        # paired L21 / LIS batches (long)
+cd ../../formal-verification/lean && lake exe cache get && lake build
 ```
 
-### Lean 4 Formal Verification
-```sh
-cd formal-verification/lean
-lake build
-```
+## AI assistance disclosure
 
-### Paper & Preprint Build
-```sh
-make -C output/paper all
-```
-
-## AI Assistance Disclosure
-
-This research was developed by **Adam Ever-Hadani** with the assistance of agentic artificial intelligence tools: ChatGPT Codex for exploratory code and candidate recurrences, Claude Code for codebase searches and early proof drafting, and Google Antigravity utilizing the Stellar Colosseum multi-agent harness via the AntiGravity CLI for multi-workstream execution, hydrodynamic formulation, finite verification harnesses, and Lean 4 formalization. The author takes full responsibility for the mathematical claims, proofs, and specifications.
+This research was developed by **Adam Ever-Hadani** with agentic AI tools (ChatGPT Codex, Claude Code, and a
+multi-agent harness used in September 2026). The September multi-agent output is the part that was withdrawn; the
+audit and the W90 results were produced with Claude Code and re-derived or recomputed as described in
+`memory/SESSION-STATE.md`. The author takes responsibility for the mathematical claims.
 
 ## License
 
-- Code and Lean 4 formalizations: [MIT License](LICENSE).
-- Paper drafts and mathematical notes: [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+Code and Lean formalizations: MIT. Notes and papers: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
